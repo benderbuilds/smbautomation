@@ -4,17 +4,17 @@ import { useState, useEffect } from "react";
 import WorkflowDiagram from "@/components/WorkflowDiagram";
 
 const STYLE = `
-  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { font-family: 'Plus Jakarta Sans', sans-serif; background: #FAF7F2; color: #1E1A16; overflow-x: hidden; }
+  body { font-family: 'Instrument Sans', sans-serif; background: #FFFFFF; color: #0D0D0C; overflow-x: hidden; }
   .fraunces { font-family: 'Fraunces', serif; }
 
   :root {
-    --cream: #FAF7F2; --warm-white: #FFFDF9; --copper: #B5622A;
-    --copper-light: #D4844A; --copper-pale: #F5E8DC; --charcoal: #1E1A16;
-    --warm-gray: #6B6358; --clay: #E8DDD0; --clay-dark: #D4C5B0;
+    --cream: #F7F6F3; --warm-white: #FFFFFF; --copper: #C85A18;
+    --copper-light: #D97A3C; --copper-pale: #F5ECDF; --charcoal: #0D0D0C;
+    --warm-gray: #888480; --clay: #E3E0D8; --clay-dark: #C8C4BA;
   }
 
   /* NAV */
@@ -22,18 +22,18 @@ const STYLE = `
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 5vw; height: 72px;
-    background: rgba(250,247,242,0.94); backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(180,160,130,0.15); transition: all 0.3s ease;
+    background: rgba(255,255,255,0.96); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(227,224,216,0.6); transition: all 0.3s ease;
   }
-  .nav.scrolled { box-shadow: 0 2px 24px rgba(30,26,22,0.08); }
+  .nav.scrolled { box-shadow: 0 2px 24px rgba(13,13,12,0.07); }
   .nav-logo { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 500; color: var(--charcoal); letter-spacing: -0.01em; }
   .nav-logo span { color: var(--copper); }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
   .nav-links a { text-decoration: none; color: var(--warm-gray); font-size: 0.9rem; font-weight: 500; letter-spacing: 0.01em; transition: color 0.2s; }
   .nav-links a:hover { color: var(--charcoal); }
-  .btn-primary { background: var(--copper); color: white; padding: 0.6rem 1.5rem; border-radius: 100px; font-size: 0.875rem; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s ease; text-decoration: none; display: inline-block; letter-spacing: 0.01em; }
-  .btn-primary:hover { background: var(--copper-light); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(181,98,42,0.3); }
-  .btn-secondary { background: transparent; color: var(--charcoal); padding: 0.6rem 1.5rem; border-radius: 100px; font-size: 0.875rem; font-weight: 600; border: 2px solid var(--clay-dark); cursor: pointer; transition: all 0.2s ease; text-decoration: none; display: inline-block; }
+  .btn-primary { background: var(--copper); color: white; padding: 0.6rem 1.5rem; border-radius: 100px; font-size: 0.875rem; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s ease; text-decoration: none; display: inline-block; letter-spacing: 0.01em; font-family: 'Instrument Sans', sans-serif; }
+  .btn-primary:hover { background: var(--copper-light); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(200,90,24,0.28); }
+  .btn-secondary { background: transparent; color: var(--charcoal); padding: 0.6rem 1.5rem; border-radius: 100px; font-size: 0.875rem; font-weight: 600; border: 2px solid var(--clay-dark); cursor: pointer; transition: all 0.2s ease; text-decoration: none; display: inline-block; font-family: 'Instrument Sans', sans-serif; }
   .btn-secondary:hover { border-color: var(--copper); color: var(--copper); }
 
   /* HERO */
@@ -48,44 +48,32 @@ const STYLE = `
     align-items: center;
     position: relative;
   }
-  .hero-blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.5; pointer-events: none; }
-  .blob1 { width: 600px; height: 600px; background: radial-gradient(circle, #E8C9A8 0%, transparent 70%); top: -100px; right: -100px; }
+  .hero-blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.45; pointer-events: none; }
+  .blob1 { width: 600px; height: 600px; background: radial-gradient(circle, #F5E0CC 0%, transparent 70%); top: -100px; right: -100px; }
   .blob2 { width: 400px; height: 400px; background: radial-gradient(circle, #C5D8B8 0%, transparent 70%); bottom: 0; left: -50px; }
   .hero-content { position: relative; z-index: 1; }
   .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--copper-pale); color: var(--copper); padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 1.75rem; }
   .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--copper); border-radius: 50%; }
-  .hero-headline { font-family: 'Fraunces', serif; font-size: clamp(2.6rem, 4.5vw, 4rem); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; color: var(--charcoal); margin-bottom: 1.5rem; }
+  .hero-headline { font-family: 'Fraunces', serif; font-size: clamp(2.8rem, 4.8vw, 4.2rem); font-weight: 400; line-height: 1.08; letter-spacing: -0.025em; color: var(--charcoal); margin-bottom: 1.5rem; }
   .hero-headline em { font-style: italic; color: var(--copper); }
-  .hero-sub { font-size: 1.05rem; color: var(--warm-gray); line-height: 1.75; max-width: 500px; margin-bottom: 2.5rem; font-weight: 400; }
-  .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-bottom: 2.75rem; }
-  .hero-mini-stats { display: flex; gap: 2rem; flex-wrap: wrap; padding-top: 2rem; border-top: 1px solid var(--clay); }
-  .hero-mini-stat { display: flex; flex-direction: column; gap: 0.2rem; }
-  .hero-mini-n { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 400; color: var(--copper); line-height: 1; }
-  .hero-mini-l { font-size: 0.75rem; color: var(--warm-gray); line-height: 1.4; max-width: 120px; }
+  .hero-sub { font-size: 1.05rem; color: var(--warm-gray); line-height: 1.75; max-width: 480px; margin-bottom: 2.5rem; font-weight: 400; }
+  .hero-proofs { display: flex; flex-direction: column; gap: 0.9rem; padding-top: 2rem; border-top: 1px solid var(--clay); }
+  .hero-proof { display: flex; align-items: flex-start; gap: 0.75rem; }
+  .hero-proof-icon { font-size: 1.05rem; line-height: 1.55; flex-shrink: 0; }
+  .hero-proof-text { font-size: 0.9rem; color: var(--warm-gray); line-height: 1.55; }
 
-  /* HERO DIAGRAM */
-  .hero-diagram-wrap { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; }
-  .hero-diagram-card {
-    background: white;
-    border-radius: 24px;
-    box-shadow: 0 24px 80px rgba(30,26,22,0.12), 0 4px 16px rgba(30,26,22,0.06);
-    padding: 28px;
-    transform: rotate(-2.5deg);
-    width: 100%;
-    max-width: 420px;
-  }
-  .diagram-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-gray); margin-bottom: 12px; }
-  @keyframes draw-path { to { stroke-dashoffset: 0; } }
+  /* HERO FORM */
+  .hero-form-wrap { position: relative; z-index: 1; display: flex; align-items: flex-start; justify-content: center; }
 
   /* STATS BAR */
   .stats-bar { background: var(--charcoal); padding: 1.5rem 5vw; display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap; }
   .stat { text-align: center; }
   .stat-n { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 400; color: var(--copper-light); line-height: 1; display: block; }
-  .stat-l { font-size: 0.78rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; margin-top: 0.25rem; display: block; }
+  .stat-l { font-size: 0.78rem; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; margin-top: 0.25rem; display: block; }
 
   /* SECTIONS */
   .section { padding: 7rem 5vw; }
-  .section-alt { background: var(--warm-white); }
+  .section-alt { background: var(--cream); }
   .section-dark { background: var(--charcoal); }
   .inner { max-width: 1100px; margin: 0 auto; }
   .label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
@@ -95,13 +83,13 @@ const STYLE = `
   .h2 { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; color: var(--charcoal); max-width: 680px; margin-bottom: 1rem; }
   .h2.lt { color: white; }
   .sub { font-size: 1.05rem; color: var(--warm-gray); line-height: 1.7; max-width: 620px; margin-bottom: 3.5rem; }
-  .sub.lt { color: rgba(255,255,255,0.6); }
+  .sub.lt { color: rgba(255,255,255,0.55); }
 
   /* HOW IT WORKS */
-  .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; }
+  .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
   .step-card { background: white; border: 1px solid var(--clay); border-radius: 20px; padding: 2.5rem 2rem; transition: all 0.3s ease; position: relative; overflow: hidden; }
   .step-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--copper); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
-  .step-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(30,26,22,0.1); border-color: var(--copper-pale); }
+  .step-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(13,13,12,0.08); border-color: var(--copper-pale); }
   .step-card:hover::after { transform: scaleX(1); }
   .step-n { font-family: 'Fraunces', serif; font-size: 4rem; font-weight: 300; color: var(--clay-dark); line-height: 1; margin-bottom: 1rem; display: block; }
   .step-t { font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.75rem; line-height: 1.3; }
@@ -109,15 +97,15 @@ const STYLE = `
 
   /* WORKFLOW */
   .wf-section { padding: 7rem 5vw; background: var(--charcoal); position: relative; overflow: hidden; }
-  .wf-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 65%, rgba(181,98,42,0.14) 0%, transparent 55%), radial-gradient(ellipse at 85% 15%, rgba(107,126,96,0.07) 0%, transparent 50%); pointer-events: none; }
+  .wf-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 65%, rgba(200,90,24,0.12) 0%, transparent 55%), radial-gradient(ellipse at 85% 15%, rgba(107,126,96,0.06) 0%, transparent 50%); pointer-events: none; }
   .wf-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
   .wf-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem; }
-  .wf-canvas { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 2.5rem 2rem; overflow-x: auto; }
+  .wf-canvas { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 24px; padding: 2.5rem 2rem; overflow-x: auto; }
   .wf-row-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 1rem; min-width: 720px; }
   .wf-row { display: flex; align-items: flex-start; min-width: 720px; gap: 0; margin-bottom: 0; }
   .wf-step { display: flex; flex-direction: column; align-items: center; flex: 1; }
   .wf-node { width: 88px; height: 88px; border-radius: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.28rem; border: 1.5px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); transition: all 0.25s ease; position: relative; cursor: default; }
-  .wf-node:hover { transform: translateY(-5px); border-color: rgba(181,98,42,0.5); background: rgba(181,98,42,0.1); box-shadow: 0 14px 36px rgba(181,98,42,0.2); }
+  .wf-node:hover { transform: translateY(-5px); border-color: rgba(200,90,24,0.5); background: rgba(200,90,24,0.1); box-shadow: 0 14px 36px rgba(200,90,24,0.2); }
   .wf-icon { font-size: 1.65rem; line-height: 1; }
   .wf-brand { font-size: 0.56rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.35); line-height: 1; }
   .wf-badge { position: absolute; top: -10px; right: -10px; background: var(--copper); border-radius: 100px; padding: 0.14rem 0.44rem; font-size: 0.54rem; font-weight: 700; color: white; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; z-index: 2; }
@@ -127,15 +115,15 @@ const STYLE = `
   .wf-ls { font-size: 0.65rem; color: rgba(255,255,255,0.34); line-height: 1.35; display: block; }
   .wf-connector { display: flex; align-items: center; padding-top: 44px; flex-shrink: 0; }
   .wf-line-wrap { position: relative; width: 32px; height: 2px; }
-  .wf-line { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(181,98,42,0.28) 0%, rgba(181,98,42,0.7) 100%); }
+  .wf-line { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(200,90,24,0.28) 0%, rgba(200,90,24,0.7) 100%); }
   .wf-dot { position: absolute; top: 50%; transform: translateY(-50%); width: 5px; height: 5px; border-radius: 50%; background: var(--copper); animation: pulse-dot 1.8s ease-in-out infinite; }
-  .wf-arrowhead { position: absolute; right: -5px; top: 50%; transform: translateY(-50%); color: rgba(181,98,42,0.7); font-size: 0.6rem; line-height: 1; }
+  .wf-arrowhead { position: absolute; right: -5px; top: 50%; transform: translateY(-50%); color: rgba(200,90,24,0.7); font-size: 0.6rem; line-height: 1; }
   @keyframes pulse-dot { 0% { left: 2px; opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { left: calc(100% - 7px); opacity: 0; } }
 
   /* WORKFLOW BRANCH CONNECTOR */
   .wf-branch-wrap { display: flex; align-items: center; justify-content: center; gap: 2rem; min-width: 720px; padding: 1.5rem 0; }
   .wf-branch-center { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
-  .wf-branch-line { width: 2px; height: 44px; background: linear-gradient(180deg, rgba(181,98,42,0.4) 0%, rgba(181,98,42,0.85) 100%); position: relative; }
+  .wf-branch-line { width: 2px; height: 44px; background: linear-gradient(180deg, rgba(200,90,24,0.4) 0%, rgba(200,90,24,0.85) 100%); position: relative; }
   .wf-branch-dot-v { position: absolute; left: 50%; transform: translateX(-50%); width: 5px; height: 5px; border-radius: 50%; background: var(--copper); animation: pulse-dot-v 1.8s ease-in-out infinite; }
   .wf-hot-badge-v { background: var(--copper); border-radius: 100px; padding: 0.2rem 0.65rem; font-size: 0.6rem; font-weight: 700; color: white; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; }
   .wf-nurture-label { font-size: 0.7rem; color: rgba(255,255,255,0.28); font-weight: 500; letter-spacing: 0.04em; white-space: nowrap; display: flex; align-items: center; gap: 0.4rem; }
@@ -149,18 +137,18 @@ const STYLE = `
 
   /* AUTOMATION TABS + CARDS */
   .tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
-  .tab { padding: 0.6rem 1.4rem; border-radius: 100px; font-size: 0.875rem; font-weight: 500; border: 2px solid var(--clay); background: white; cursor: pointer; transition: all 0.2s ease; color: var(--warm-gray); }
+  .tab { padding: 0.6rem 1.4rem; border-radius: 100px; font-size: 0.875rem; font-weight: 500; border: 2px solid var(--clay); background: white; cursor: pointer; transition: all 0.2s ease; color: var(--warm-gray); font-family: 'Instrument Sans', sans-serif; }
   .tab:hover { border-color: var(--copper); color: var(--copper); }
   .tab.on { color: white; }
   .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
   .card { background: white; border: 1px solid var(--clay); border-radius: 16px; padding: 1.75rem; cursor: pointer; transition: all 0.25s ease; display: flex; flex-direction: column; gap: 0.75rem; }
-  .card:hover { border-color: var(--copper); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(181,98,42,0.12); }
+  .card:hover { border-color: var(--copper); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(200,90,24,0.1); }
   .card-t { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 500; color: var(--charcoal); line-height: 1.3; }
   .card-d { color: var(--warm-gray); font-size: 0.875rem; line-height: 1.65; flex: 1; }
   .card-cta { color: var(--copper); font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.3rem; }
 
   /* MODAL */
-  .modal-bg { position: fixed; inset: 0; background: rgba(30,26,22,0.6); backdrop-filter: blur(4px); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+  .modal-bg { position: fixed; inset: 0; background: rgba(13,13,12,0.65); backdrop-filter: blur(4px); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 2rem; }
   .modal { background: var(--cream); border-radius: 24px; padding: 3rem; max-width: 560px; width: 100%; position: relative; max-height: 90vh; overflow-y: auto; }
   .modal-x { position: absolute; top: 1.5rem; right: 1.5rem; background: var(--clay); border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; color: var(--charcoal); transition: background 0.2s; }
   .modal-x:hover { background: var(--clay-dark); }
@@ -171,34 +159,36 @@ const STYLE = `
   /* WHY US */
   .diff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
   .diff-c { padding: 2rem 1.75rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); transition: border-color 0.3s; }
-  .diff-c:hover { border-color: rgba(181,98,42,0.3); }
+  .diff-c:hover { border-color: rgba(200,90,24,0.3); }
   .diff-i { font-size: 1.75rem; margin-bottom: 1rem; display: block; }
   .diff-t { font-family: 'Fraunces', serif; font-size: 1.2rem; color: white; font-weight: 400; margin-bottom: 0.5rem; }
-  .diff-d { color: rgba(255,255,255,0.52); font-size: 0.9rem; line-height: 1.65; }
+  .diff-d { color: rgba(255,255,255,0.48); font-size: 0.9rem; line-height: 1.65; }
 
   /* CONTACT */
   .contact-section { background: var(--charcoal); padding: 7rem 5vw; }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; max-width: 1100px; margin: 0 auto; align-items: start; }
-  .cl h2 { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; color: white; line-height: 1.15; margin-bottom: 1.25rem; letter-spacing: -0.02em; }
-  .cl p { color: rgba(255,255,255,0.58); line-height: 1.7; font-size: 1rem; margin-bottom: 2rem; }
-  .promises { display: flex; flex-direction: column; gap: 1rem; }
-  .promise { display: flex; align-items: flex-start; gap: 0.75rem; color: rgba(255,255,255,0.68); font-size: 0.9rem; line-height: 1.5; }
-  .pdot { width: 20px; height: 20px; border-radius: 50%; background: var(--copper); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: white; }
-  .cform { background: white; border-radius: 24px; padding: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+  .contact-simple-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+  .contact-simple-inner h2 { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; color: white; line-height: 1.15; margin-bottom: 1.25rem; letter-spacing: -0.02em; }
+  .contact-simple-inner p { color: rgba(255,255,255,0.55); line-height: 1.75; font-size: 1.05rem; margin-bottom: 2.5rem; }
+  .btn-book { display: inline-block; background: var(--copper); color: white; padding: 1rem 2.75rem; border-radius: 10px; font-size: 1rem; font-weight: 700; font-family: 'Instrument Sans', sans-serif; text-decoration: none; transition: all 0.2s ease; margin-bottom: 2rem; }
+  .btn-book:hover { background: var(--copper-light); transform: translateY(-2px); box-shadow: 0 10px 32px rgba(200,90,24,0.35); }
+  .contact-trust { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; color: rgba(255,255,255,0.38); font-size: 0.82rem; }
+
+  /* FORM */
+  .cform { background: white; border-radius: 20px; padding: 2rem; display: flex; flex-direction: column; gap: 1.1rem; box-shadow: 0 20px 60px rgba(13,13,12,0.12); max-width: 420px; width: 100%; }
   .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .fg { display: flex; flex-direction: column; gap: 0.4rem; }
   .fg label { font-size: 0.8rem; font-weight: 600; color: var(--charcoal); letter-spacing: 0.02em; }
-  .fg input, .fg select, .fg textarea { padding: 0.75rem 1rem; border: 1.5px solid var(--clay); border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.925rem; color: var(--charcoal); background: var(--cream); transition: border-color 0.2s; outline: none; width: 100%; }
+  .fg input, .fg select, .fg textarea { padding: 0.75rem 1rem; border: 1.5px solid var(--clay); border-radius: 10px; font-family: 'Instrument Sans', sans-serif; font-size: 0.925rem; color: var(--charcoal); background: var(--cream); transition: border-color 0.2s; outline: none; width: 100%; }
   .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--copper); background: white; }
-  .fg textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
-  .fsub { background: var(--copper); color: white; padding: 1rem; border-radius: 12px; font-size: 1rem; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s ease; font-family: 'Plus Jakarta Sans', sans-serif; }
-  .fsub:hover { background: var(--copper-light); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(181,98,42,0.35); }
+  .fg textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+  .fsub { background: var(--copper); color: white; padding: 0.9rem; border-radius: 10px; font-size: 0.95rem; font-weight: 700; border: none; cursor: pointer; transition: all 0.2s ease; font-family: 'Instrument Sans', sans-serif; letter-spacing: 0.01em; }
+  .fsub:hover { background: var(--copper-light); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(200,90,24,0.3); }
   .fsub:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
   /* BLOG */
   .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.75rem; }
   .blog-card { background: white; border: 1px solid var(--clay); border-radius: 20px; overflow: hidden; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: block; }
-  .blog-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(30,26,22,0.1); }
+  .blog-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(13,13,12,0.08); }
   .blog-img { height: 190px; display: flex; align-items: center; justify-content: center; }
   .blog-body { padding: 1.5rem; }
   .blog-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--copper); margin-bottom: 0.5rem; display: block; }
@@ -206,13 +196,13 @@ const STYLE = `
   .blog-ex { color: var(--warm-gray); font-size: 0.875rem; line-height: 1.65; }
 
   /* FOOTER */
-  .footer { background: #141210; padding: 3rem 5vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(255,255,255,0.06); }
+  .footer { background: #0A0A09; padding: 3rem 5vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(255,255,255,0.06); }
   .flogo { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 400; color: white; }
   .flogo span { color: var(--copper-light); }
   .flinks { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
-  .flinks a { color: rgba(255,255,255,0.38); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .flinks a { color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
   .flinks a:hover { color: white; }
-  .fcopy { color: rgba(255,255,255,0.28); font-size: 0.8rem; }
+  .fcopy { color: rgba(255,255,255,0.25); font-size: 0.8rem; }
 
   /* TOAST */
   .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--charcoal); color: white; padding: 1rem 1.5rem; border-radius: 12px; font-size: 0.9rem; z-index: 999; box-shadow: 0 8px 32px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 0.5rem; animation: up 0.3s ease; }
@@ -223,99 +213,11 @@ const STYLE = `
   @media (max-width: 960px) {
     .nav-links { display: none; }
     .hero { grid-template-columns: 1fr; gap: 3rem; padding-top: 100px; }
-    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-form-wrap { justify-content: flex-start; }
+    .cform { max-width: 100%; }
     .frow { grid-template-columns: 1fr; }
-    .hero-diagram-card { transform: none; margin: 0 auto; }
   }
 `;
-
-// ─── Inline SVG: Automation Diagram ───────────────────────────────────────────
-function AutomationDiagram() {
-  const [drawn, setDrawn] = useState(false);
-
-  useEffect(() => {
-    const t = setTimeout(() => setDrawn(true), 200);
-    return () => clearTimeout(t);
-  }, []);
-
-  const inputs = [
-    { label: "Web Form", icon: "🌐", y: 32 },
-    { label: "Phone Call", icon: "📞", y: 112 },
-    { label: "Social DM",  icon: "💬", y: 192 },
-  ];
-  const outputs = [
-    { label: "SMS Sent",     icon: "📱", y: 32 },
-    { label: "Appt Booked", icon: "📅", y: 112 },
-    { label: "CRM Updated", icon: "📊", y: 192 },
-  ];
-
-  const cy = { center: 130 };
-  const connStyle = (delay: number): React.CSSProperties => ({
-    strokeDasharray: 1,
-    strokeDashoffset: drawn ? 0 : 1,
-    transition: `stroke-dashoffset 0.75s ease ${delay}s`,
-  });
-
-  return (
-    <div className="hero-diagram-wrap">
-      <div className="hero-diagram-card">
-        <div className="diagram-label">Your automation at work</div>
-        <svg viewBox="0 0 360 250" width="100%" style={{ display: "block" }}>
-          <defs>
-            <marker id="arr" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
-              <path d="M 0,0 L 7,2.5 L 0,5 z" fill="#B5622A" fillOpacity="0.45" />
-            </marker>
-          </defs>
-
-          {/* Connectors — inputs to AI Router */}
-          {inputs.map((inp, i) => (
-            <path
-              key={`in${i}`}
-              d={`M 98,${inp.y + 18} C 130,${inp.y + 18} 130,${cy.center} 154,${cy.center}`}
-              fill="none" stroke="#B5622A" strokeWidth="1.5" strokeOpacity="0.42"
-              markerEnd="url(#arr)" pathLength="1"
-              style={connStyle(i * 0.12)}
-            />
-          ))}
-
-          {/* Connectors — AI Router to outputs */}
-          {outputs.map((out, i) => (
-            <path
-              key={`out${i}`}
-              d={`M 206,${cy.center} C 232,${cy.center} 232,${out.y + 18} 260,${out.y + 18}`}
-              fill="none" stroke="#B5622A" strokeWidth="1.5" strokeOpacity="0.42"
-              markerEnd="url(#arr)" pathLength="1"
-              style={connStyle(0.36 + i * 0.12)}
-            />
-          ))}
-
-          {/* Input nodes */}
-          {inputs.map((inp, i) => (
-            <g key={`in-node${i}`}>
-              <rect x="8" y={inp.y} width="90" height="36" rx="8" fill="#FAF7F2" stroke="#D4C5B0" strokeWidth="1.5" />
-              <text x="53" y={inp.y + 14} textAnchor="middle" fontSize="13">{inp.icon}</text>
-              <text x="53" y={inp.y + 28} textAnchor="middle" fontSize="9" fill="#6B6358" fontFamily="Plus Jakarta Sans, sans-serif" fontWeight="600">{inp.label}</text>
-            </g>
-          ))}
-
-          {/* Central AI Router node */}
-          <rect x="154" y="109" width="52" height="42" rx="9" fill="#F5E8DC" stroke="#B5622A" strokeWidth="1.5" />
-          <text x="180" y="126" textAnchor="middle" fontSize="15">⚡</text>
-          <text x="180" y="141" textAnchor="middle" fontSize="7.5" fill="#B5622A" fontFamily="Plus Jakarta Sans, sans-serif" fontWeight="700" letterSpacing="0.05em">AI ROUTER</text>
-
-          {/* Output nodes */}
-          {outputs.map((out, i) => (
-            <g key={`out-node${i}`}>
-              <rect x="260" y={out.y} width="90" height="36" rx="8" fill="#FAF7F2" stroke="#D4C5B0" strokeWidth="1.5" />
-              <text x="305" y={out.y + 14} textAnchor="middle" fontSize="13">{out.icon}</text>
-              <text x="305" y={out.y + 28} textAnchor="middle" fontSize="9" fill="#6B6358" fontFamily="Plus Jakarta Sans, sans-serif" fontWeight="600">{out.label}</text>
-            </g>
-          ))}
-        </svg>
-      </div>
-    </div>
-  );
-}
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
 
@@ -429,7 +331,7 @@ export default function HomePage() {
   const inquire = (a: AutoItem) => {
     setActiveAuto(null);
     setForm(f => ({ ...f, bottleneck: `I'm interested in the "${a.title}" automation.` }));
-    setTimeout(() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }), 80);
+    setTimeout(() => document.getElementById("hero-form")?.scrollIntoView({ behavior: "smooth" }), 80);
   };
 
   const flash = (msg: string, icon: string) => {
@@ -477,39 +379,78 @@ export default function HomePage() {
       </nav>
 
       {/* HERO */}
-      <div style={{ background: "var(--cream)", overflow: "hidden" }}>
+      <div style={{ background: "#FFFFFF", overflow: "hidden" }}>
         <div className="hero" id="hero">
           <div className="hero-blob blob1" /><div className="hero-blob blob2" />
 
           {/* Left: copy */}
           <div className="hero-content">
-            <div className="hero-eyebrow">Custom AI Automation for Local Businesses</div>
+            <div className="hero-eyebrow">Custom AI Automation</div>
             <h1 className="hero-headline">
-              Stop losing revenue<br />
-              to processes that<br />
-              <em>should run themselves.</em>
+              Turn Your Bottlenecks<br />
+              Into <em>AI Automations.</em>
             </h1>
-            <p className="hero-sub">We build custom automation systems that connect your existing tools, qualify your leads, and follow up with every prospect — while you focus on the work that actually requires you.</p>
-            <div className="hero-actions">
-              <a href="#contact" className="btn-primary" style={{ padding: "0.8rem 2rem", fontSize: "0.95rem" }}>Book a Free Consult</a>
-              <a href="#workflow" className="btn-secondary" style={{ padding: "0.8rem 2rem", fontSize: "0.95rem" }}>See How It Works</a>
-            </div>
-            <div className="hero-mini-stats">
-              {[
-                { n: "78%", l: "of buyers work with the first business to respond" },
-                { n: "12 hrs", l: "average time saved per client per week" },
-                { n: "< 10 days", l: "from discovery call to live system" },
-              ].map((s, i) => (
-                <div key={i} className="hero-mini-stat">
-                  <span className="hero-mini-n">{s.n}</span>
-                  <span className="hero-mini-l">{s.l}</span>
-                </div>
-              ))}
+            <p className="hero-sub">We find where your business is losing time and money, then build systems that fix it automatically. Most clients recover the cost in the first 30 days.</p>
+            <div className="hero-proofs">
+              <div className="hero-proof">
+                <span className="hero-proof-icon">⚡</span>
+                <span className="hero-proof-text">Leads followed up within 60 seconds, automatically</span>
+              </div>
+              <div className="hero-proof">
+                <span className="hero-proof-icon">📅</span>
+                <span className="hero-proof-text">Appointments booked without anyone touching a calendar</span>
+              </div>
+              <div className="hero-proof">
+                <span className="hero-proof-icon">💰</span>
+                <span className="hero-proof-text">Clients recover setup cost within 30 days on average</span>
+              </div>
             </div>
           </div>
 
-          {/* Right: diagram */}
-          <AutomationDiagram />
+          {/* Right: form */}
+          <div className="hero-form-wrap">
+            <div className="cform" id="hero-form">
+              <div>
+                <h3 style={{ fontFamily: "'Fraunces',serif", fontSize: "1.3rem", fontWeight: 500, color: "var(--charcoal)", marginBottom: "0.3rem", lineHeight: 1.2 }}>
+                  Get a Free Automation Audit
+                </h3>
+                <p style={{ color: "var(--warm-gray)", fontSize: "0.875rem", lineHeight: 1.5 }}>
+                  Tell us your biggest bottleneck. We will tell you what to automate first.
+                </p>
+              </div>
+              <div className="fg">
+                <label>Your Name</label>
+                <input type="text" placeholder="Your name" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
+              </div>
+              <div className="fg">
+                <label>Email</label>
+                <input type="email" placeholder="your@email.com" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} />
+              </div>
+              <div className="fg">
+                <label>Business Type</label>
+                <select value={form.business} onChange={e => setForm(f => ({ ...f, business: e.target.value }))}>
+                  <option value="">Select your industry</option>
+                  <option>Real Estate / Property Management</option>
+                  <option>E-commerce / Retail</option>
+                  <option>Marketing Agency</option>
+                  <option>Local Service / Contractor</option>
+                  <option>Professional Services</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div className="fg">
+                <label>Biggest time drain</label>
+                <textarea
+                  placeholder="What task eats the most time in your business right now?"
+                  value={form.bottleneck}
+                  onChange={e => setForm(f => ({ ...f, bottleneck: e.target.value }))}
+                />
+              </div>
+              <button className="fsub" onClick={submit} disabled={submitting || submitted}>
+                {submitting ? "Sending..." : submitted ? "✓ Sent! We will be in touch soon." : "Show Me What to Automate →"}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -517,9 +458,9 @@ export default function HomePage() {
       <div className="stats-bar">
         {[
           { n: "< 60s", l: "Lead response time" },
-          { n: "5-10 days", l: "Average build time" },
-          { n: "3-10x", l: "Typical ROI in month one" },
-          { n: "0", l: "Templates. Every build is custom" },
+          { n: "30 days", l: "Average payback period" },
+          { n: "10-20 hrs", l: "Saved per client per week" },
+          { n: "100%", l: "Custom. No templates." },
         ].map((s, i) => (
           <div key={i} className="stat">
             <span className="stat-n">{s.n}</span>
@@ -532,14 +473,25 @@ export default function HomePage() {
       <section className="section section-alt" id="how-it-works">
         <div className="inner">
           <div className="label">The Process</div>
-          <h2 className="h2">Built Around Your ROI, Not a Feature Checklist</h2>
-          <p className="sub">Every engagement starts with a 30-minute conversation about where your business is losing time and money. We build from that. Nothing gets built that we cannot tie to a measurable outcome.</p>
+          <h2 className="h2">Here is how it works</h2>
+          <p className="sub">Three steps from your current bottleneck to a system that handles it automatically.</p>
           <div className="steps-grid">
             {[
-              { n: "01", t: "Find the Leak", d: "In a 30-minute discovery call, we identify the two or three places in your business where manual processes are costing you the most. We calculate the dollar value before we touch any tools." },
-              { n: "02", t: "Design the System", d: "No templates. We map the exact sequence of tools, triggers, and AI decision points your business needs. You approve the design before we write a single line of automation." },
-              { n: "03", t: "Build and Test Live", d: "Most builds take 5 to 10 business days. Before go-live, we run a live test on a call together. You watch real data move through the system in real time before it touches a customer." },
-              { n: "04", t: "Measure What Moved", d: "Monthly reporting shows leads captured, hours saved, and revenue influenced. If the system is not performing, we fix it. The retainer pays for continuous improvement, not just uptime." },
+              {
+                n: "01",
+                t: "We find where you're losing money",
+                d: "In a free 30-minute call, we identify the 2 to 3 places in your business where slow or manual processes are costing you deals, hours, or both. We put a dollar figure on it before we propose anything.",
+              },
+              {
+                n: "02",
+                t: "We build it around your existing tools",
+                d: "No new software to learn. We connect the tools you already use — your calendar, your phone, your email — and build a workflow that runs automatically in the background.",
+              },
+              {
+                n: "03",
+                t: "You get time back and results you can measure",
+                d: "Most clients see the system working within 10 business days. Every month, you get a simple report: leads captured, hours saved, revenue recovered. Numbers, not guesses.",
+              },
             ].map((s, i) => (
               <div key={i} className="step-card">
                 <span className="step-n">{s.n}</span>
@@ -588,8 +540,8 @@ export default function HomePage() {
           <p className="sub lt" style={{ marginBottom: "3rem" }}>Most automation consultants build workflows. We build systems that solve your business problem — and measure success in dollars and hours saved.</p>
           <div className="diff-grid">
             {[
-              { i: "🎯", t: "We start with your P&L, not our product", d: "Before we propose anything, we calculate what your current process is costing you. If the automation does not pay for itself in 60 days, we redesign it." },
-              { i: "🔧", t: "Custom-built on tools you already own", d: "We do not resell software. We build on your CRM, your phone system, your calendar. You own everything we build — credentials, workflows, documentation." },
+              { i: "💰", t: "We start with your P&L, not our tools", d: "Every engagement starts by calculating what your current process is costing you. If the automation does not pay for itself in 30 days, we redesign the scope." },
+              { i: "🔧", t: "Custom-built on tools you already own", d: "We do not resell software. We build on your calendar, your phone system, your inbox. You own everything we build — credentials, workflows, documentation." },
               { i: "📐", t: "Multi-system workflows, not single triggers", d: "Real automation connects 4 to 6 tools in a single workflow. A form submission that qualifies, routes, books, briefs, and logs — without a human touching it." },
               { i: "📊", t: "Monthly reporting tied to business outcomes", d: "Every retainer includes a monthly summary: leads captured, hours saved, revenue influenced. If it is not performing, you will know before we do." },
             ].map((d, i) => (
@@ -626,46 +578,17 @@ export default function HomePage() {
 
       {/* CONTACT */}
       <section className="contact-section" id="contact">
-        <div className="contact-grid">
-          <div className="cl">
-            <div className="label lt">Free Consultation</div>
-            <h2>Let&apos;s find your biggest automation opportunity.</h2>
-            <p>Tell us what&apos;s eating your time and we&apos;ll show you exactly how to automate it. No sales pitch. Just a straight conversation about what&apos;s possible.</p>
-            <div className="promises">
-              {["Free 30-minute strategy call", "Custom automation roadmap", "No commitment required", "Response within 24 hours"].map((item, i) => (
-                <div key={i} className="promise"><div className="pdot">✓</div><span>{item}</span></div>
-              ))}
-            </div>
-          </div>
-          <div className="cform">
-            <h3 style={{ fontFamily: "'Fraunces',serif", fontSize: "1.35rem", fontWeight: 500, marginBottom: "0.25rem", color: "var(--charcoal)" }}>Request a Free Consult</h3>
-            <p style={{ color: "var(--warm-gray)", fontSize: "0.875rem", marginBottom: "0.5rem" }}>We&apos;ll respond within one business day.</p>
-            <div className="frow">
-              <div className="fg"><label>First &amp; Last Name *</label><input type="text" placeholder="Jane Smith" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} /></div>
-              <div className="fg"><label>Email Address *</label><input type="email" placeholder="jane@business.com" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} /></div>
-            </div>
-            <div className="frow">
-              <div className="fg"><label>Phone Number</label><input type="tel" placeholder="(555) 000-0000" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} /></div>
-              <div className="fg">
-                <label>Business Type</label>
-                <select value={form.business} onChange={e => setForm(f => ({ ...f, business: e.target.value }))}>
-                  <option value="">Select your industry</option>
-                  <option>Real Estate / Property Management</option>
-                  <option>E-commerce / Retail</option>
-                  <option>Marketing Agency</option>
-                  <option>Local Service / Contractor</option>
-                  <option>Professional Services</option>
-                  <option>Other</option>
-                </select>
-              </div>
-            </div>
-            <div className="fg">
-              <label>Describe Your Biggest Bottleneck</label>
-              <textarea placeholder="What's the one thing eating the most time in your business right now?" value={form.bottleneck} onChange={e => setForm(f => ({ ...f, bottleneck: e.target.value }))} />
-            </div>
-            <button className="fsub" onClick={submit} disabled={submitting || submitted}>
-              {submitting ? "Sending..." : submitted ? "✓ Request Sent!" : "Request My Free Consult →"}
-            </button>
+        <div className="contact-simple-inner">
+          <div className="label lt">Free Consultation</div>
+          <h2>Not sure what to automate? Start here.</h2>
+          <p>We will do a free 30-minute audit of your business and tell you exactly where automation will have the biggest impact. No pitch. No commitment.</p>
+          <a href="https://calendly.com/smbautomation" className="btn-book" target="_blank" rel="noopener noreferrer">
+            Book a Free Audit Call →
+          </a>
+          <div className="contact-trust">
+            <span>✓ Free 30-minute call</span>
+            <span>✓ No commitment</span>
+            <span>✓ Response within 24 hours</span>
           </div>
         </div>
       </section>

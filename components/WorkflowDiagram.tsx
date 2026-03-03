@@ -15,10 +15,10 @@ const ROW2 = [
 ];
 
 const OUTCOMES = [
-  { icon: "✅", title: "Every lead touched in under 60 seconds", sub: "No manual intervention required" },
-  { icon: "📈", title: "30-50% more leads convert to meetings", sub: "Speed-to-lead is the biggest variable" },
-  { icon: "🔁", title: "Warm leads nurtured automatically", sub: "60-90 day sequences, not one-and-done" },
-  { icon: "🎯", title: "You only talk to qualified prospects", sub: "Your time goes to closing, not chasing" },
+  { icon: "⚡", title: "Every lead gets a response in under 60 seconds", sub: "While you're on the job, in a meeting, or asleep" },
+  { icon: "📅", title: "Qualified leads book directly onto your calendar", sub: "No back and forth. No dropped balls." },
+  { icon: "🔁", title: "Unready leads stay warm automatically", sub: "Follow-up sequences run for weeks without you" },
+  { icon: "✅", title: "You only talk to people who are ready to buy", sub: "Your time goes to closing, not chasing" },
 ];
 
 function WFRow({ steps }: { steps: typeof ROW1 }) {
@@ -60,9 +60,9 @@ export default function WorkflowDiagram() {
         <div className="wf-header">
           <div>
             <div className="label lt">See It In Action</div>
-            <h2 className="h2 lt" style={{ marginBottom: "0.4rem" }}>From First Touch to Closed Deal — Automated</h2>
-            <p style={{ color: "rgba(255,255,255,0.38)", fontSize: "0.85rem", letterSpacing: "0.01em" }}>
-              Lead-to-Revenue Pipeline &nbsp;·&nbsp; Multi-System Automation
+            <h2 className="h2 lt" style={{ marginBottom: "0.4rem" }}>What Happens When a Lead Comes In</h2>
+            <p style={{ color: "rgba(255,255,255,0.38)", fontSize: "0.85rem", letterSpacing: "0.01em", maxWidth: 520, lineHeight: 1.55 }}>
+              Here is what your business looks like when the follow-up never falls through the cracks. Every step runs automatically.
             </p>
           </div>
           <a href="#contact" className="btn-primary" style={{ flexShrink: 0 }}>Build This For Me</a>

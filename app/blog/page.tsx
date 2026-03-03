@@ -8,12 +8,12 @@ export const metadata: Metadata = {
 };
 
 const BLOG_STYLE = `
-  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Plus Jakarta Sans', sans-serif; background: #FAF7F2; color: #1E1A16; }
-  :root { --cream: #FAF7F2; --copper: #B5622A; --copper-light: #D4844A; --charcoal: #1E1A16; --warm-gray: #6B6358; --clay: #E8DDD0; }
+  body { font-family: 'Instrument Sans', sans-serif; background: #FFFFFF; color: #0D0D0C; }
+  :root { --cream: #F7F6F3; --copper: #C85A18; --copper-light: #D97A3C; --charcoal: #0D0D0C; --warm-gray: #888480; --clay: #E3E0D8; }
   a { text-decoration: none; color: inherit; }
-  .blog-nav { background: rgba(250,247,242,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--clay); padding: 0 5vw; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+  .blog-nav { background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--clay); padding: 0 5vw; height: 64px; display: flex; align-items: center; justify-content: space-between; }
   .nav-logo { font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 500; color: var(--charcoal); }
   .nav-logo span { color: var(--copper); }
   .breadcrumb { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--warm-gray); }
