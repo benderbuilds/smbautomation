@@ -430,7 +430,7 @@ export default function HomePage() {
           </div>
           <div className="hero-proof">
             {[
-              "Leads followed up within 60 seconds, automatically",
+              "Leads followed up within 60 seconds — automatically",
               "Appointments booked without anyone touching a calendar",
               "Clients recover setup cost within 30 days on average",
             ].map((t, i) => (
