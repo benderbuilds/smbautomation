@@ -190,11 +190,29 @@ const STYLE = `
 
   /* CONTACT */
   .contact-section { background: var(--dark); padding: 7rem 5vw; }
-  .contact-inner { max-width: 560px; margin: 0 auto; text-align: center; }
-  .contact-inner h2 { font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 400; color: #FFFFFF; line-height: 1.1; margin-bottom: 1.25rem; letter-spacing: -0.02em; }
-  .contact-inner p { color: rgba(255,255,255,0.4); line-height: 1.7; margin-bottom: 2.5rem; }
-  .contact-trust { display: flex; justify-content: center; gap: 2.5rem; margin-top: 1.75rem; flex-wrap: wrap; }
+  .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 6vw; align-items: start; }
+  .contact-copy h2 { font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 400; color: #FFFFFF; line-height: 1.1; margin-bottom: 1.25rem; letter-spacing: -0.02em; }
+  .contact-copy p { color: rgba(255,255,255,0.4); line-height: 1.7; margin-bottom: 2.5rem; }
+  .contact-divider { display: flex; align-items: center; gap: 1rem; margin: 2rem 0; }
+  .contact-divider::before, .contact-divider::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+  .contact-divider span { font-size: 0.7rem; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+  .contact-trust { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.75rem; }
   .contact-trust span { font-size: 0.75rem; color: rgba(255,255,255,0.28); letter-spacing: 0.06em; }
+  .contact-form .cform { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); }
+  .contact-form .fg label { color: rgba(255,255,255,0.45); }
+  .contact-form .fg input,
+  .contact-form .fg select,
+  .contact-form .fg textarea { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: #FFFFFF; }
+  .contact-form .fg input::placeholder,
+  .contact-form .fg textarea::placeholder { color: rgba(255,255,255,0.25); }
+  .contact-form .fg select option { background: #1A2040; color: #FFFFFF; }
+  .contact-form .fg input:focus,
+  .contact-form .fg select:focus,
+  .contact-form .fg textarea:focus { border-color: var(--blue); background: rgba(37,64,217,0.1); }
+  @media (max-width: 960px) {
+    .contact-inner { grid-template-columns: 1fr; }
+    .contact-trust { flex-direction: row; flex-wrap: wrap; gap: 1.25rem; }
+  }
 
   /* FORM */
   .cform { background: var(--bg-white); border: 1px solid var(--border); padding: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem; border-radius: 0; }
@@ -599,21 +617,68 @@ export default function HomePage() {
       {/* CONTACT */}
       <section className="contact-section" id="contact">
         <div className="contact-inner">
-          <span className="label-tag lt">Free Consultation</span>
-          <h2>Not sure what to automate? Start here.</h2>
-          <p>We will do a free 30-minute audit of your business and tell you exactly where automation will have the biggest impact. No pitch. No commitment.</p>
-          <a
-            href="https://calendly.com/jesse-curvebase/30min"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-orange"
-          >
-            Book a Free Audit Call →
-          </a>
-          <div className="contact-trust">
-            <span>✓ Free 30-minute call</span>
-            <span>✓ No commitment</span>
-            <span>✓ Response within 24 hours</span>
+          {/* Left: copy + Calendly */}
+          <div className="contact-copy">
+            <span className="label-tag lt">Free Consultation</span>
+            <h2>Not sure what to automate? Start here.</h2>
+            <p>We will do a free 30-minute audit of your business and tell you exactly where automation will have the biggest impact. No pitch. No commitment.</p>
+            <a
+              href="https://calendly.com/jesse-curvebase/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-orange"
+            >
+              Book a Free Audit Call →
+            </a>
+            <div className="contact-trust">
+              <span>✓ Free 30-minute call</span>
+              <span>✓ No hard sell — ever</span>
+              <span>✓ Response within 24 hours</span>
+            </div>
+          </div>
+
+          {/* Right: form */}
+          <div className="contact-form">
+            <div className="cform">
+              <div className="frow">
+                <div className="fg">
+                  <label>Name</label>
+                  <input type="text" placeholder="Your name" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
+                </div>
+                <div className="fg">
+                  <label>Email</label>
+                  <input type="email" placeholder="your@email.com" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} />
+                </div>
+              </div>
+              <div className="fg">
+                <label>Phone (optional)</label>
+                <input type="tel" placeholder="(555) 000-0000" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} />
+              </div>
+              <div className="fg">
+                <label>Business Type</label>
+                <select value={form.business} onChange={e => setForm(f => ({ ...f, business: e.target.value }))}>
+                  <option value="">Select your industry</option>
+                  <option>Real Estate / Property Management</option>
+                  <option>E-commerce / Retail</option>
+                  <option>Marketing Agency</option>
+                  <option>Local Service / Contractor</option>
+                  <option>Professional Services</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div className="fg">
+                <label>Biggest Time Drain</label>
+                <textarea
+                  rows={3}
+                  placeholder="What task eats the most time in your business right now?"
+                  value={form.bottleneck}
+                  onChange={e => setForm(f => ({ ...f, bottleneck: e.target.value }))}
+                />
+              </div>
+              <button className="fsub" onClick={submit} disabled={submitting || submitted}>
+                {submitting ? "Sending..." : submitted ? "✓ Request Sent" : "Send Audit Request →"}
+              </button>
+            </div>
           </div>
         </div>
       </section>

@@ -13,43 +13,76 @@ export async function POST(req: NextRequest) {
 
     const to = process.env.CONTACT_EMAIL || 'hello@smbautomation.io';
 
+    // Notify the team
     await resend.emails.send({
       from: 'SMB Automation <noreply@smbautomation.io>',
       to,
-      subject: `New Consult Request — ${name}${business ? ` (${business})` : ''}`,
+      replyTo: email,
+      subject: `New Audit Request — ${name}${business ? ` (${business})` : ''}`,
       html: `
-        <div style="font-family: 'Plus Jakarta Sans', sans-serif; max-width: 600px; margin: 0 auto; background: #FAF7F2; padding: 2rem; border-radius: 12px;">
-          <h2 style="font-family: Georgia, serif; color: #1E1A16; margin-bottom: 1.5rem;">
-            New Consult Request
-          </h2>
-          <table style="width: 100%; border-collapse: collapse;">
-            <tr style="border-bottom: 1px solid #E8DDD0;">
-              <td style="padding: 0.75rem 0; font-weight: 600; color: #6B6358; font-size: 0.85rem; width: 140px;">Name</td>
-              <td style="padding: 0.75rem 0; color: #1E1A16;">${name}</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #E8DDD0;">
-              <td style="padding: 0.75rem 0; font-weight: 600; color: #6B6358; font-size: 0.85rem;">Email</td>
-              <td style="padding: 0.75rem 0; color: #1E1A16;"><a href="mailto:${email}" style="color: #B5622A;">${email}</a></td>
-            </tr>
-            <tr style="border-bottom: 1px solid #E8DDD0;">
-              <td style="padding: 0.75rem 0; font-weight: 600; color: #6B6358; font-size: 0.85rem;">Phone</td>
-              <td style="padding: 0.75rem 0; color: #1E1A16;">${phone || '—'}</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #E8DDD0;">
-              <td style="padding: 0.75rem 0; font-weight: 600; color: #6B6358; font-size: 0.85rem;">Business Type</td>
-              <td style="padding: 0.75rem 0; color: #1E1A16;">${business || '—'}</td>
-            </tr>
-            <tr>
-              <td style="padding: 0.75rem 0; font-weight: 600; color: #6B6358; font-size: 0.85rem; vertical-align: top;">Bottleneck</td>
-              <td style="padding: 0.75rem 0; color: #1E1A16; line-height: 1.6;">${bottleneck || '—'}</td>
-            </tr>
-          </table>
-          <div style="margin-top: 2rem; padding: 1rem; background: #F5E8DC; border-radius: 8px; font-size: 0.85rem; color: #6B6358;">
-            Reply directly to this email to reach the lead at ${email}.
+        <div style="font-family: 'Barlow', 'Helvetica Neue', Helvetica, sans-serif; max-width: 600px; margin: 0 auto; background: #EDF1F7; padding: 2rem;">
+          <div style="background: #2540D9; padding: 1.5rem 2rem; margin-bottom: 0;">
+            <span style="font-size: 0.9rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #FFFFFF;">SMB Automation</span>
+          </div>
+          <div style="background: #FFFFFF; border: 1px solid #D4DAE8; border-top: none; padding: 2rem;">
+            <h2 style="font-size: 1.3rem; font-weight: 500; color: #0A0E1A; margin: 0 0 1.5rem; letter-spacing: -0.01em;">New Audit Request</h2>
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr style="border-bottom: 1px solid #D4DAE8;">
+                <td style="padding: 0.75rem 0; font-weight: 600; color: #5A6580; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; width: 140px;">Name</td>
+                <td style="padding: 0.75rem 0; color: #0A0E1A; font-size: 0.95rem;">${name}</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #D4DAE8;">
+                <td style="padding: 0.75rem 0; font-weight: 600; color: #5A6580; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase;">Email</td>
+                <td style="padding: 0.75rem 0; font-size: 0.95rem;"><a href="mailto:${email}" style="color: #2540D9; text-decoration: none;">${email}</a></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #D4DAE8;">
+                <td style="padding: 0.75rem 0; font-weight: 600; color: #5A6580; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase;">Phone</td>
+                <td style="padding: 0.75rem 0; color: #0A0E1A; font-size: 0.95rem;">${phone || '—'}</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #D4DAE8;">
+                <td style="padding: 0.75rem 0; font-weight: 600; color: #5A6580; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase;">Business</td>
+                <td style="padding: 0.75rem 0; color: #0A0E1A; font-size: 0.95rem;">${business || '—'}</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem 0; font-weight: 600; color: #5A6580; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; vertical-align: top;">Bottleneck</td>
+                <td style="padding: 0.75rem 0; color: #0A0E1A; font-size: 0.95rem; line-height: 1.6;">${bottleneck || '—'}</td>
+              </tr>
+            </table>
+            <div style="margin-top: 1.75rem; padding: 1rem 1.25rem; background: #EBF0FF; border-left: 3px solid #2540D9; font-size: 0.83rem; color: #5A6580; line-height: 1.6;">
+              Reply directly to this email to reach <strong style="color: #0A0E1A;">${name}</strong> at ${email}.
+            </div>
           </div>
         </div>
       `,
-      replyTo: email,
+    });
+
+    // Auto-reply to the submitter
+    await resend.emails.send({
+      from: 'Jesse at SMB Automation <noreply@smbautomation.io>',
+      to: email,
+      subject: `Got it, ${name.split(' ')[0]} — we'll be in touch shortly`,
+      html: `
+        <div style="font-family: 'Barlow', 'Helvetica Neue', Helvetica, sans-serif; max-width: 600px; margin: 0 auto; background: #EDF1F7; padding: 2rem;">
+          <div style="background: #2540D9; padding: 1.5rem 2rem; margin-bottom: 0;">
+            <span style="font-size: 0.9rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #FFFFFF;">SMB Automation</span>
+          </div>
+          <div style="background: #FFFFFF; border: 1px solid #D4DAE8; border-top: none; padding: 2rem 2rem 2.5rem;">
+            <h2 style="font-size: 1.3rem; font-weight: 500; color: #0A0E1A; margin: 0 0 1rem; letter-spacing: -0.01em;">We received your request.</h2>
+            <p style="color: #5A6580; line-height: 1.7; margin: 0 0 1.25rem; font-size: 0.95rem;">
+              Hi ${name.split(' ')[0]}, thanks for reaching out. We typically respond within a few hours during business days.
+            </p>
+            <p style="color: #5A6580; line-height: 1.7; margin: 0 0 2rem; font-size: 0.95rem;">
+              In the meantime, if you'd like to skip the back-and-forth and get on a call right away, you can book a free 30-minute slot below.
+            </p>
+            <a href="https://calendly.com/jesse-curvebase/30min" style="display: inline-block; background: #E84E1A; color: #FFFFFF; padding: 0.85rem 2rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;">
+              Book a Free Audit Call →
+            </a>
+          </div>
+          <div style="padding: 1.25rem 0 0; font-size: 0.75rem; color: #9AA0B2; letter-spacing: 0.04em;">
+            SMB Automation · smbautomation.io
+          </div>
+        </div>
+      `,
     });
 
     return NextResponse.json({ success: true });
