@@ -6,7 +6,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, phone, businessType, bottleneck } = body;
+    const { name, email, phone, business, bottleneck } = body;
 
     // Basic validation
     if (!name || !email || !bottleneck) {
@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
       from: 'SMBautomation Contact Form <noreply@smbautomation.io>',
       to: [toEmail],
       replyTo: email,
-      subject: `New Lead: ${name} — ${businessType ?? 'Unknown Business Type'}`,
+      subject: `New Lead: ${name} — ${business ?? 'Unknown Business Type'}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #0a0a0a; color: #f0f0f0; border-radius: 8px;">
           <h2 style="color: #22c55e; margin-top: 0;">New Contact Form Submission</h2>
@@ -40,10 +40,10 @@ export async function POST(req: NextRequest) {
               <td style="padding: 8px 0; color: #999;">Phone</td>
               <td style="padding: 8px 0;">${phone}</td>
             </tr>` : ''}
-            ${businessType ? `
+            ${business ? `
             <tr>
               <td style="padding: 8px 0; color: #999;">Business Type</td>
-              <td style="padding: 8px 0;">${businessType}</td>
+              <td style="padding: 8px 0;">${business}</td>
             </tr>` : ''}
           </table>
           <div style="margin-top: 24px; padding: 16px; background: #1a1a1a; border-radius: 6px; border-left: 3px solid #22c55e;">
