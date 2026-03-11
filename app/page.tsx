@@ -623,7 +623,7 @@ export default function HomePage() {
             <h2>Not sure what to automate? Start here.</h2>
             <p>We will do a free 30-minute audit of your business and tell you exactly where automation will have the biggest impact. No pitch. No commitment.</p>
             <a
-              href="https://calendly.com/jesse-curvebase/30min"
+              href="https://calendly.com/jesse-smbautomation/30min"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-orange"
