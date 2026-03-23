@@ -16,8 +16,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const post = getPostBySlug(params.slug);
   if (!post) return {};
+  const titleTag = post.seoTitle ?? post.title;
   return {
-    title: `${post.title} — SMB Automation Blog`,
+    title: `${titleTag} — SMB Automation Blog`,
     description: post.excerpt,
     openGraph: {
       title: post.title,
