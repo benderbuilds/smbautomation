@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import WorkflowDiagram from "@/components/WorkflowDiagram";
 
 const STYLE = `
@@ -48,6 +48,21 @@ const STYLE = `
   .nav-links a { text-decoration: none; color: var(--ink-mid); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
   .nav-links a:hover { color: var(--ink); }
 
+  /* MOBILE NAV */
+  .nav-burger { display: none; background: none; border: 1px solid var(--border); width: 40px; height: 40px; cursor: pointer; font-size: 1.25rem; color: var(--ink); align-items: center; justify-content: center; border-radius: 0; font-family: 'Barlow', sans-serif; transition: border-color 0.2s; }
+  .nav-burger:hover { border-color: var(--blue); }
+  .mobile-overlay { position: fixed; inset: 0; z-index: 150; background: rgba(237,241,247,0.98); backdrop-filter: blur(16px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+  .mobile-overlay.open { opacity: 1; pointer-events: auto; }
+  .mobile-overlay-x { position: absolute; top: 1rem; right: 5vw; background: none; border: 1px solid var(--border); width: 40px; height: 40px; cursor: pointer; font-size: 1rem; color: var(--ink-mid); display: flex; align-items: center; justify-content: center; border-radius: 0; transition: border-color 0.2s; }
+  .mobile-overlay-x:hover { border-color: var(--blue); }
+  .mobile-nav-list { list-style: none; display: flex; flex-direction: column; align-items: center; gap: 0; width: 100%; max-width: 320px; }
+  .mobile-nav-list li { width: 100%; border-bottom: 1px solid var(--border); }
+  .mobile-nav-list li:first-child { border-top: 1px solid var(--border); }
+  .mobile-nav-list a { display: block; padding: 1.25rem 1rem; text-align: center; text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mid); transition: color 0.15s, background 0.15s; }
+  .mobile-nav-list a:hover, .mobile-nav-list a:focus-visible { color: var(--blue); background: var(--blue-lt); }
+  .mobile-nav-list .mobile-cta { background: var(--blue); color: #FFFFFF; font-weight: 600; letter-spacing: 0.1em; border-bottom: none; }
+  .mobile-nav-list .mobile-cta:hover { background: var(--blue-deep); }
+
   /* BUTTONS */
   .btn-primary {
     background: var(--blue); color: #FFFFFF; padding: 0.65rem 1.75rem;
@@ -91,9 +106,12 @@ const STYLE = `
     max-width: 480px; margin-bottom: 2.5rem; font-weight: 400;
   }
   .hero-actions { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
-  .hero-proof { display: flex; flex-direction: column; gap: 0.85rem; margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
-  .proof-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem; color: var(--ink-mid); }
-  .proof-dot { width: 6px; height: 6px; background: var(--orange); flex-shrink: 0; }
+  .hero-proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 3rem; border: 1px solid var(--border); }
+  .proof-item { padding: 1.5rem 1.25rem; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.35rem; background: var(--bg-white); }
+  .proof-item:last-child { border-right: none; }
+  .proof-num { font-size: 2rem; font-weight: 300; color: var(--ink); line-height: 1; letter-spacing: -0.02em; }
+  .proof-label { font-size: 0.72rem; color: var(--ink-mid); letter-spacing: 0.04em; line-height: 1.4; }
+  .proof-accent { color: var(--orange); }
 
   /* HERO FORM */
   .hero-form-card { background: var(--bg-white); border: 1px solid var(--border); padding: 2.5rem; border-radius: 0; }
@@ -225,6 +243,14 @@ const STYLE = `
   .fsub { background: var(--blue); color: #FFFFFF; padding: 1rem 2rem; width: 100%; font-family: 'Barlow', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid var(--blue); cursor: pointer; transition: background 0.2s; margin-top: 0.5rem; border-radius: 0; }
   .fsub:hover { background: var(--blue-deep); }
   .fsub:disabled { opacity: 0.5; cursor: not-allowed; }
+  .form-success { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; padding: 3rem 2rem; text-align: center; min-height: 280px; }
+  .form-success-icon { width: 48px; height: 48px; border: 2px solid var(--blue); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; color: var(--blue); }
+  .form-success-t { font-size: 1.15rem; font-weight: 500; color: var(--ink); letter-spacing: -0.01em; }
+  .form-success-d { font-size: 0.875rem; color: var(--ink-mid); line-height: 1.6; max-width: 320px; }
+  .contact-form .form-success-t { color: #FFFFFF; }
+  .contact-form .form-success-d { color: rgba(255,255,255,0.45); }
+  .contact-form .form-success-icon { border-color: var(--blue); color: var(--blue); }
+  .form-error { font-size: 0.78rem; color: var(--orange); padding: 0.75rem 1rem; border: 1px solid var(--orange); background: var(--orange-pale); }
 
   /* BLOG */
   .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--border); }
@@ -261,11 +287,18 @@ const STYLE = `
     .stats-bar { grid-template-columns: repeat(2, 1fr); }
     .wf-outcomes { grid-template-columns: repeat(2, 1fr); }
   }
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     .nav-links { display: none; }
+    .nav-burger { display: flex; }
+  }
+  @media (max-width: 640px) {
     .frow { grid-template-columns: 1fr; }
     .diff-grid { grid-template-columns: 1fr; }
     .stats-bar { grid-template-columns: 1fr 1fr; }
+    .hero-proof { grid-template-columns: repeat(3, 1fr); }
+    .proof-item { padding: 1rem 0.75rem; }
+    .proof-num { font-size: 1.5rem; }
+    .proof-label { font-size: 0.65rem; }
   }
 `;
 
@@ -275,76 +308,76 @@ const NICHES = [
   {
     id: "real-estate", label: "Real Estate", color: "#2540D9", emoji: "🏠",
     automations: [
-      { title: "Instant Lead Response Bot", desc: "Capture and respond to prospective tenant inquiries 24/7, qualifying leads before they go cold and cutting vacancy periods by weeks." },
-      { title: "Automated Tenant Screening Pipeline", desc: "Collect applications, run background checks, and compile reports automatically. Screening time drops from hours to minutes per applicant." },
-      { title: "Smart Maintenance Request Router", desc: "Instantly categorize tenant repair requests and dispatch to the appropriate vendor. No more phone-tag delays that frustrate residents." },
-      { title: "Rent Payment Reminder and Collection", desc: "Send escalating payment reminders and late notices automatically, reducing delinquency rates without uncomfortable conversations." },
-      { title: "Move-In / Move-Out Inspection Scheduler", desc: "Coordinate inspections between tenants, cleaners, and maintenance crews automatically to prevent scheduling conflicts and calendar gaps." },
-      { title: "Security Deposit Calculator and Return", desc: "Automatically calculate deductions, generate itemized statements, and process returns to eliminate disputes and legal exposure." },
-      { title: "Vendor Performance Tracker", desc: "Log response times, completion rates, and tenant feedback to identify your best and worst contractors at a glance." },
-      { title: "Lease Renewal Automation", desc: "Trigger renewal offers 90 days before expiration with dynamic pricing suggestions, reducing tenant turnover and vacancy costs." },
-      { title: "Tenant Communication Hub", desc: "Centralize texts, emails, and calls into one auto-tagged thread so nothing falls through the cracks during busy periods." },
-      { title: "Automated Financial Reporting", desc: "Generate owner statements, track expenses by property, and sync with accounting software to give investors real-time portfolio visibility." },
+      { title: "Instant Lead Response Bot", desc: "Capture and respond to prospective tenant inquiries 24/7, qualifying leads before they go cold and cutting vacancy periods by weeks.", solves: "Property managers lose 30-40% of leads because they can't respond fast enough. This bot replies within 60 seconds to every inquiry — nights, weekends, holidays — so you never lose a prospect to a competitor who answered first." },
+      { title: "Automated Tenant Screening Pipeline", desc: "Collect applications, run background checks, and compile reports automatically. Screening time drops from hours to minutes per applicant.", solves: "Manual screening eats 3-5 hours per applicant when you factor in data entry, background check coordination, and report compilation. This pipeline handles the entire process end-to-end, giving you a decision-ready report in under 10 minutes." },
+      { title: "Smart Maintenance Request Router", desc: "Instantly categorize tenant repair requests and dispatch to the appropriate vendor. No more phone-tag delays that frustrate residents.", solves: "Slow maintenance response is the number one driver of tenant turnover. This system categorizes requests by urgency and trade, dispatches the right vendor instantly, and keeps the tenant updated — cutting average resolution time by 60%." },
+      { title: "Rent Payment Reminder and Collection", desc: "Send escalating payment reminders and late notices automatically, reducing delinquency rates without uncomfortable conversations.", solves: "Late rent creates cash flow problems and awkward conversations. Automated escalation sequences — friendly reminder, formal notice, late fee notification — reduce delinquency rates by 25-35% without your team making a single phone call." },
+      { title: "Move-In / Move-Out Inspection Scheduler", desc: "Coordinate inspections between tenants, cleaners, and maintenance crews automatically to prevent scheduling conflicts and calendar gaps.", solves: "Turnover coordination involves 4-6 parties and dozens of messages. This automation handles scheduling, confirmations, and reminders for every step, compressing your turnover window and eliminating double-bookings." },
+      { title: "Security Deposit Calculator and Return", desc: "Automatically calculate deductions, generate itemized statements, and process returns to eliminate disputes and legal exposure.", solves: "Deposit disputes are the most common source of landlord-tenant legal action. Automated itemized statements with photo documentation and calculation transparency protect you legally and cut dispute rates dramatically." },
+      { title: "Vendor Performance Tracker", desc: "Log response times, completion rates, and tenant feedback to identify your best and worst contractors at a glance.", solves: "Without data, you're guessing which vendors deserve your business. This tracker logs every job — response time, completion rate, cost, tenant rating — so you can negotiate from a position of strength and fire underperformers with evidence." },
+      { title: "Lease Renewal Automation", desc: "Trigger renewal offers 90 days before expiration with dynamic pricing suggestions, reducing tenant turnover and vacancy costs.", solves: "Every vacant unit costs you $1,500-3,000 in lost rent and turnover expenses. Starting renewal conversations 90 days out with market-adjusted pricing increases retention rates by 20-30% and eliminates last-minute scrambles." },
+      { title: "Tenant Communication Hub", desc: "Centralize texts, emails, and calls into one auto-tagged thread so nothing falls through the cracks during busy periods.", solves: "When tenant messages are scattered across text, email, voicemail, and portal messages, things get missed. A single auto-tagged thread per tenant means anyone on your team can see the full history and respond in context." },
+      { title: "Automated Financial Reporting", desc: "Generate owner statements, track expenses by property, and sync with accounting software to give investors real-time portfolio visibility.", solves: "Monthly owner reporting takes 4-8 hours for a mid-size portfolio. Automated statements pull from your actual transaction data, categorize expenses correctly, and deliver polished reports to owners without your team touching a spreadsheet." },
     ]
   },
   {
     id: "ecommerce", label: "E-commerce", color: "#2540D9", emoji: "🛒",
     automations: [
-      { title: "Smart Inventory Reorder Alerts", desc: "Monitor stock levels across suppliers and auto-generate purchase orders before you hit zero, preventing lost sales from stockouts." },
-      { title: "Abandoned Cart Recovery Sequences", desc: "Trigger multi-channel follow-ups via email and SMS within hours of abandonment, recovering 15 to 20 percent of otherwise lost revenue." },
-      { title: "Dynamic Pricing Optimizer", desc: "Adjust prices based on competitor monitoring, demand signals, and inventory age to maximize margins without manual spreadsheet updates." },
-      { title: "Supplier Order Automation", desc: "Route orders to the right suppliers, transmit tracking numbers back to customers, and reconcile invoices. All hands-free." },
-      { title: "Review Generation Engine", desc: "Automatically request reviews from satisfied customers and escalate negative feedback to support before it becomes a public problem." },
-      { title: "Return and Exchange Auto-Processor", desc: "Generate return labels, approve exchanges based on your rules, and update inventory. Turns refunds into exchanges 40 percent of the time." },
-      { title: "Multi-Channel Inventory Sync", desc: "Keep stock levels accurate across Shopify, Amazon, eBay, and Etsy in real time, preventing overselling nightmares." },
-      { title: "VIP Customer Recognition System", desc: "Tag and notify your team when high-value customers order, enabling personalized service that drives repeat purchases." },
-      { title: "Back-in-Stock Notification Bot", desc: "Automatically notify waiting customers when products return to inventory, capturing demand that would otherwise evaporate." },
-      { title: "Profit Analytics Dashboard", desc: "Calculate true profit per SKU after ads, fees, and shipping to reveal which products actually make money versus just generating revenue." },
+      { title: "Smart Inventory Reorder Alerts", desc: "Monitor stock levels across suppliers and auto-generate purchase orders before you hit zero, preventing lost sales from stockouts.", solves: "Stockouts cost the average e-commerce business 4-8% of annual revenue. Automated reorder points based on sales velocity, lead times, and seasonal patterns ensure you never miss a sale because a product page shows 'out of stock.'" },
+      { title: "Abandoned Cart Recovery Sequences", desc: "Trigger multi-channel follow-ups via email and SMS within hours of abandonment, recovering 15 to 20 percent of otherwise lost revenue.", solves: "70% of carts are abandoned. A timed sequence — 1 hour email, 24 hour SMS, 72 hour final offer — recovers 15-20% of that revenue. The automation pays for itself within the first week for most stores." },
+      { title: "Dynamic Pricing Optimizer", desc: "Adjust prices based on competitor monitoring, demand signals, and inventory age to maximize margins without manual spreadsheet updates.", solves: "Static pricing leaves money on the table. This system monitors competitor prices, tracks demand patterns, and adjusts your prices within rules you set — protecting margins on hot items and moving slow inventory faster." },
+      { title: "Supplier Order Automation", desc: "Route orders to the right suppliers, transmit tracking numbers back to customers, and reconcile invoices. All hands-free.", solves: "Multi-supplier fulfillment means manual routing, copy-pasting tracking numbers, and reconciling invoices from 5+ vendors. This automation handles all of it, reducing fulfillment errors by 90% and saving 10-15 hours per week." },
+      { title: "Review Generation Engine", desc: "Automatically request reviews from satisfied customers and escalate negative feedback to support before it becomes a public problem.", solves: "Products with 10+ reviews convert 2-3x better than those without. Timed review requests after delivery — with negative-experience interception — build social proof while protecting your public rating." },
+      { title: "Return and Exchange Auto-Processor", desc: "Generate return labels, approve exchanges based on your rules, and update inventory. Turns refunds into exchanges 40 percent of the time.", solves: "Manual returns processing costs $10-15 per return in labor. Automated approval, label generation, and exchange suggestions reduce that cost to near zero and convert 40% of returns into exchanges — keeping the revenue." },
+      { title: "Multi-Channel Inventory Sync", desc: "Keep stock levels accurate across Shopify, Amazon, eBay, and Etsy in real time, preventing overselling nightmares.", solves: "Overselling triggers platform penalties and angry customers. Real-time inventory sync across all your channels means stock levels update within seconds of a sale, preventing the cascading fulfillment failures that damage your seller ratings." },
+      { title: "VIP Customer Recognition System", desc: "Tag and notify your team when high-value customers order, enabling personalized service that drives repeat purchases.", solves: "Your top 10% of customers typically generate 40% of revenue. Automated VIP detection flags their orders for priority handling, triggers personalized thank-you sequences, and ensures your best customers get the white-glove treatment." },
+      { title: "Back-in-Stock Notification Bot", desc: "Automatically notify waiting customers when products return to inventory, capturing demand that would otherwise evaporate.", solves: "Customers who sign up for back-in-stock alerts convert at 3-5x the rate of normal traffic. Automated notifications the moment inventory arrives capture demand that otherwise evaporates within 48 hours." },
+      { title: "Profit Analytics Dashboard", desc: "Calculate true profit per SKU after ads, fees, and shipping to reveal which products actually make money versus just generating revenue.", solves: "Most e-commerce operators know their revenue but not their true profit per product. This dashboard factors in ad spend, platform fees, shipping costs, and returns to show you which SKUs actually make money — and which ones are losing it." },
     ]
   },
   {
     id: "agency", label: "Marketing Agency", color: "#2540D9", emoji: "📊",
     automations: [
-      { title: "Instant Proposal Generator", desc: "Create branded, customized proposals from intake form data in minutes, accelerating your sales cycle by up to 50 percent." },
-      { title: "Client Onboarding Orchestrator", desc: "Auto-create project folders, schedule kickoff calls, send contracts, and assign team tasks the moment a deal closes." },
-      { title: "Campaign Performance Auto-Reporter", desc: "Pull data from ad platforms daily and send clients visual dashboards, eliminating the monthly reporting week scramble." },
-      { title: "Content Approval Pipeline", desc: "Route drafts through stakeholders automatically, track revision rounds, and flag delays to keep projects on deadline." },
-      { title: "Lead Scoring and Distribution System", desc: "Qualify inbound leads by budget, timeline, and fit, then auto-assign to the right account executive for the fastest possible response." },
-      { title: "Client Retention Alert System", desc: "Monitor engagement signals and flag at-risk accounts before they churn, triggering retention playbooks automatically." },
-      { title: "Competitive Intelligence Monitor", desc: "Track competitor ads, content, and pricing changes, alerting your team to opportunities and threats in real time." },
-      { title: "Timesheet and Billing Reconciliation", desc: "Log hours by project, generate invoices, and sync with accounting to ensure every billable minute gets captured." },
-      { title: "Testimonial and Case Study Collector", desc: "Automatically request feedback when projects complete, then generate case study drafts from successful client outcomes." },
-      { title: "Resource Allocation Optimizer", desc: "Track team capacity and project pipelines, suggesting optimal resource distribution to maximize utilization and margins." },
+      { title: "Instant Proposal Generator", desc: "Create branded, customized proposals from intake form data in minutes, accelerating your sales cycle by up to 50 percent.", solves: "Proposal creation typically takes 3-5 hours of a senior team member's time. This generator pulls intake data, applies your pricing model, and produces a branded PDF in minutes — cutting your sales cycle and letting you respond while the lead is still warm." },
+      { title: "Client Onboarding Orchestrator", desc: "Auto-create project folders, schedule kickoff calls, send contracts, and assign team tasks the moment a deal closes.", solves: "Onboarding involves 15-20 discrete tasks across 3-4 tools. Missing one step creates downstream problems that erode client confidence. This orchestrator triggers every task automatically at deal close — folder creation, contract send, kickoff scheduling, team briefing — so nothing gets missed." },
+      { title: "Campaign Performance Auto-Reporter", desc: "Pull data from ad platforms daily and send clients visual dashboards, eliminating the monthly reporting week scramble.", solves: "Monthly reporting week costs agencies 40+ hours across the team. Automated daily data pulls from Google Ads, Meta, and analytics platforms generate client-ready dashboards that update in real time — turning a week-long scramble into a 10-minute review." },
+      { title: "Content Approval Pipeline", desc: "Route drafts through stakeholders automatically, track revision rounds, and flag delays to keep projects on deadline.", solves: "Content bottlenecks happen when approvals sit in inboxes. Automated routing sends drafts to the right stakeholder, sends reminders on delays, tracks revision rounds, and escalates blockers — keeping your production calendar on track." },
+      { title: "Lead Scoring and Distribution System", desc: "Qualify inbound leads by budget, timeline, and fit, then auto-assign to the right account executive for the fastest possible response.", solves: "Not all leads are equal, but they all expect fast responses. Automated scoring by budget, timeline, and fit routes high-value leads to senior AEs instantly and nurtures lower-fit leads — so your closers spend time on deals that will actually close." },
+      { title: "Client Retention Alert System", desc: "Monitor engagement signals and flag at-risk accounts before they churn, triggering retention playbooks automatically.", solves: "Agencies lose 20-30% of clients annually, often without warning. This system monitors engagement signals — login frequency, response times, feedback sentiment — and flags at-risk accounts 30-60 days before they churn, giving you time to intervene." },
+      { title: "Competitive Intelligence Monitor", desc: "Track competitor ads, content, and pricing changes, alerting your team to opportunities and threats in real time.", solves: "Competitive landscape shifts happen weekly. Automated monitoring of competitor ad spend, new content, and positioning changes gives your strategy team an edge — and gives clients proof that you're watching the market for them." },
+      { title: "Timesheet and Billing Reconciliation", desc: "Log hours by project, generate invoices, and sync with accounting to ensure every billable minute gets captured.", solves: "Agencies lose 10-15% of billable revenue to untracked time. Automated time capture from calendar events, project tools, and document activity ensures every billable minute is logged and invoiced correctly." },
+      { title: "Testimonial and Case Study Collector", desc: "Automatically request feedback when projects complete, then generate case study drafts from successful client outcomes.", solves: "Case studies are the highest-converting sales asset, but nobody has time to write them. Automated feedback requests at project close, combined with performance data, generate draft case studies that your team only needs to polish — not write from scratch." },
+      { title: "Resource Allocation Optimizer", desc: "Track team capacity and project pipelines, suggesting optimal resource distribution to maximize utilization and margins.", solves: "Over-allocation burns out your team; under-allocation kills margins. This optimizer tracks capacity in real time and flags imbalances before they become problems, helping you maintain 75-85% utilization — the sweet spot for profitability and retention." },
     ]
   },
   {
     id: "local-services", label: "Local Services", color: "#2540D9", emoji: "🔧",
     automations: [
-      { title: "Lead-to-Booking Pipeline", desc: "Capture every inbound lead, qualify them automatically, and book appointments without anyone on your team touching it. Works 24/7." },
-      { title: "Automated Quote Generator", desc: "Calculate estimates from customer inputs and send professional proposals within minutes. You beat slower competitors before they even respond." },
-      { title: "Route Optimization Scheduler", desc: "Map jobs by location and technician availability, minimizing drive time and maximizing billable hours per day." },
-      { title: "Appointment Reminder Cascade", desc: "Send SMS and email reminders 24 hours and 1 hour before appointments, cutting no-shows by up to 70 percent and protecting your schedule." },
-      { title: "Field Tech Job Packet Creator", desc: "Auto-compile customer info, photos, job history, and materials lists for each technician before they arrive on site." },
-      { title: "Instant Invoice and Payment Collector", desc: "Generate invoices from completed work orders and enable one-click payment, reducing days-to-pay from weeks to hours." },
-      { title: "Follow-Up Review Request Engine", desc: "Automatically ask satisfied customers for Google reviews, building your online reputation while you focus on the next job." },
-      { title: "Maintenance Contract Renewal Bot", desc: "Track service agreements, send renewal notices, and process payments to secure recurring revenue before contracts lapse." },
-      { title: "Supply Reorder Alerts", desc: "Monitor truck inventory and auto-reorder materials when running low, preventing job delays from missing parts." },
-      { title: "Emergency After-Hours Dispatcher", desc: "Route urgent calls based on on-call schedules and job type, ensuring emergency clients reach help immediately." },
+      { title: "Lead-to-Booking Pipeline", desc: "Capture every inbound lead, qualify them automatically, and book appointments without anyone on your team touching it. Works 24/7.", solves: "The business that responds first wins 78% of the time. This pipeline captures leads from every channel — phone, web form, Google — qualifies them with automated questions, and books them directly on your calendar. Zero manual steps, 24/7 availability." },
+      { title: "Automated Quote Generator", desc: "Calculate estimates from customer inputs and send professional proposals within minutes. You beat slower competitors before they even respond.", solves: "Most service businesses take 24-48 hours to send a quote. This generator collects job details, applies your pricing rules, and delivers a professional estimate in minutes — before the customer has time to call your competitor." },
+      { title: "Route Optimization Scheduler", desc: "Map jobs by location and technician availability, minimizing drive time and maximizing billable hours per day.", solves: "Inefficient routing costs the average field service business 2-3 hours per tech per day in unnecessary drive time. Optimized scheduling groups jobs by geography and skill, adding 1-2 extra billable appointments per technician per day." },
+      { title: "Appointment Reminder Cascade", desc: "Send SMS and email reminders 24 hours and 1 hour before appointments, cutting no-shows by up to 70 percent and protecting your schedule.", solves: "No-shows cost you the appointment slot plus the revenue from the job you could have booked. A cascade of reminders — 24 hours, 2 hours, and 1 hour before — reduces no-shows by up to 70% and gives you time to fill cancellations." },
+      { title: "Field Tech Job Packet Creator", desc: "Auto-compile customer info, photos, job history, and materials lists for each technician before they arrive on site.", solves: "Techs waste 15-20 minutes per job gathering context — customer history, past work, required materials. Auto-compiled job packets delivered to their phone before arrival mean they show up prepared, work faster, and close more same-day." },
+      { title: "Instant Invoice and Payment Collector", desc: "Generate invoices from completed work orders and enable one-click payment, reducing days-to-pay from weeks to hours.", solves: "The longer you wait to invoice, the longer you wait to get paid. Invoices generated automatically from completed work orders with one-click payment links reduce average days-to-pay from 30+ days to under 48 hours." },
+      { title: "Follow-Up Review Request Engine", desc: "Automatically ask satisfied customers for Google reviews, building your online reputation while you focus on the next job.", solves: "Google reviews directly impact your local search ranking and conversion rate. Timed review requests sent 2 hours after job completion — when satisfaction is highest — build your reputation automatically without awkward in-person asks." },
+      { title: "Maintenance Contract Renewal Bot", desc: "Track service agreements, send renewal notices, and process payments to secure recurring revenue before contracts lapse.", solves: "Recurring maintenance contracts are your most predictable revenue. Automated renewal sequences starting 60 days before expiration, with easy one-click renewal, prevent lapses and lock in the recurring revenue that stabilizes your cash flow." },
+      { title: "Supply Reorder Alerts", desc: "Monitor truck inventory and auto-reorder materials when running low, preventing job delays from missing parts.", solves: "Running out of parts mid-job means a return trip, lost time, and a frustrated customer. Automated inventory tracking with reorder alerts ensures your trucks are always stocked with the materials your techs use most." },
+      { title: "Emergency After-Hours Dispatcher", desc: "Route urgent calls based on on-call schedules and job type, ensuring emergency clients reach help immediately.", solves: "After-hours emergencies are high-value jobs that go to whoever answers first. Automated routing by on-call schedule and job type ensures urgent calls reach the right technician in under 2 minutes — winning the job and earning premium rates." },
     ]
   },
   {
     id: "professional", label: "Professional Services", color: "#2540D9", emoji: "💼",
     automations: [
-      { title: "Client Discovery Auto-Compiler", desc: "Pull company data, news, and financials before discovery calls, giving you instant credibility without hours of manual research." },
-      { title: "Engagement Letter Generator", desc: "Create custom SOWs and contracts from scope templates, cutting proposal time from days to under an hour." },
-      { title: "Expense Receipt Auto-Capture", desc: "Scan, categorize, and reconcile receipts automatically, eliminating the monthly shoebox shuffle for you and your clients." },
-      { title: "Recurring Billing and Collections", desc: "Invoice retainer clients, follow up on overdue accounts, and process payments without touching a spreadsheet." },
-      { title: "Document Assembly Engine", desc: "Generate contracts, reports, and filings from templates and client data, reducing errors and accelerating delivery." },
-      { title: "Time Tracking and Billable Hours Optimizer", desc: "Capture billable time from calendar, email, and document activity to ensure no revenue slips through the cracks." },
-      { title: "Client Portal Auto-Updater", desc: "Push project updates, deliverables, and metrics to branded client dashboards, reducing status meeting requests by 50 percent." },
-      { title: "Regulatory Deadline Monitor", desc: "Track filing dates, send compliance alerts, and auto-generate submission documents to prevent costly penalties." },
-      { title: "Meeting Transcription and Action Items", desc: "Record calls, generate summaries, and create task lists automatically so nothing gets lost in conversation." },
-      { title: "Referral Trigger System", desc: "Identify delighted clients and automatically request introductions to similar businesses, fueling growth without cold outreach." },
+      { title: "Client Discovery Auto-Compiler", desc: "Pull company data, news, and financials before discovery calls, giving you instant credibility without hours of manual research.", solves: "Partners spend 1-2 hours researching before every discovery call. This compiler pulls company data, recent news, financial filings, and key contacts into a one-page brief automatically — so you walk in prepared without the prep time." },
+      { title: "Engagement Letter Generator", desc: "Create custom SOWs and contracts from scope templates, cutting proposal time from days to under an hour.", solves: "Custom engagement letters take 2-4 hours when written from scratch. Template-driven generation pulls scope details from your intake form, applies your standard terms, and produces a client-ready document in under 15 minutes." },
+      { title: "Expense Receipt Auto-Capture", desc: "Scan, categorize, and reconcile receipts automatically, eliminating the monthly shoebox shuffle for you and your clients.", solves: "Receipt management is universally hated and routinely neglected. Automated capture, categorization, and reconciliation eliminates the end-of-month scramble and ensures every deductible expense is captured accurately." },
+      { title: "Recurring Billing and Collections", desc: "Invoice retainer clients, follow up on overdue accounts, and process payments without touching a spreadsheet.", solves: "Chasing retainer payments is uncomfortable and time-consuming. Automated invoicing on the 1st, gentle reminders on the 8th, and escalation notices on the 15th maintain cash flow without awkward conversations — and reduce late payments by 40%." },
+      { title: "Document Assembly Engine", desc: "Generate contracts, reports, and filings from templates and client data, reducing errors and accelerating delivery.", solves: "Document preparation is where most professional services firms have the largest gap between time spent and value delivered. Template-driven assembly cuts production time by 70% and eliminates the manual errors that create liability." },
+      { title: "Time Tracking and Billable Hours Optimizer", desc: "Capture billable time from calendar, email, and document activity to ensure no revenue slips through the cracks.", solves: "Professionals under-report billable time by 15-25% because manual tracking is tedious. Automated capture from calendar events, email threads, and document activity ensures every billable minute is logged — recovering thousands in monthly revenue." },
+      { title: "Client Portal Auto-Updater", desc: "Push project updates, deliverables, and metrics to branded client dashboards, reducing status meeting requests by 50 percent.", solves: "Status update meetings consume 5-10 hours per week across your team. Auto-updated client portals with real-time project status, deliverable tracking, and next-step visibility reduce 'where are we?' requests by 50% or more." },
+      { title: "Regulatory Deadline Monitor", desc: "Track filing dates, send compliance alerts, and auto-generate submission documents to prevent costly penalties.", solves: "A missed regulatory deadline can cost your client thousands in penalties — and cost you the relationship. Automated tracking with escalating alerts at 30, 14, and 7 days ensures deadlines are never missed." },
+      { title: "Meeting Transcription and Action Items", desc: "Record calls, generate summaries, and create task lists automatically so nothing gets lost in conversation.", solves: "Important decisions and commitments made in meetings are routinely forgotten because nobody took good notes. Automated transcription, summary generation, and task extraction ensure every action item is captured and assigned within minutes of hanging up." },
+      { title: "Referral Trigger System", desc: "Identify delighted clients and automatically request introductions to similar businesses, fueling growth without cold outreach.", solves: "Referrals close at 4x the rate of cold outreach, but most firms never ask systematically. This system identifies clients at peak satisfaction — after a successful deliverable or positive feedback — and triggers a personalized referral request at exactly the right moment." },
     ]
   },
 ];
@@ -355,19 +388,23 @@ const BLOG_POSTS = [
   { tag: "Strategy", title: "The Bottleneck Audit: Find What's Costing Your Business the Most", excerpt: "Before you automate anything, run this 20-minute exercise to identify your highest-leverage opportunity.", bg: "#FDEEE8", emoji: "🔍", slug: "bottleneck-audit" },
 ];
 
-interface AutoItem { title: string; desc: string; nicheLabel?: string; }
+interface AutoItem { title: string; desc: string; solves: string; nicheLabel?: string; }
 interface FormState { name: string; email: string; phone: string; business: string; bottleneck: string; }
 interface ToastState { msg: string; icon: string; }
 
 // ─── Page ──────────────────────────────────────────────────────────────────────
 export default function HomePage() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileNav, setMobileNav] = useState(false);
   const [activeNiche, setActiveNiche] = useState(3);
   const [activeAuto, setActiveAuto] = useState<AutoItem | null>(null);
   const [form, setForm] = useState<FormState>({ name: "", email: "", phone: "", business: "", bottleneck: "" });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [formError, setFormError] = useState("");
   const [toast, setToast] = useState<ToastState | null>(null);
+
+  const closeMobileNav = useCallback(() => setMobileNav(false), []);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 20);
@@ -375,7 +412,15 @@ export default function HomePage() {
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
-  const openAuto = (a: { title: string; desc: string }, nicheLabel: string) =>
+  useEffect(() => {
+    if (!mobileNav) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") closeMobileNav(); };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => { document.body.style.overflow = ""; window.removeEventListener("keydown", onKey); };
+  }, [mobileNav, closeMobileNav]);
+
+  const openAuto = (a: { title: string; desc: string; solves: string }, nicheLabel: string) =>
     setActiveAuto({ ...a, nicheLabel });
 
   const inquire = (a: AutoItem) => {
@@ -392,6 +437,7 @@ export default function HomePage() {
   const submit = async () => {
     if (!form.name || !form.email) { flash("Please fill in your name and email.", "⚠️"); return; }
     setSubmitting(true);
+    setFormError("");
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -402,9 +448,10 @@ export default function HomePage() {
       if (!res.ok) throw new Error(data.error || "Something went wrong");
       setSubmitted(true);
       flash("Message received. We will be in touch within 24 hours.", "✓");
-      setForm({ name: "", email: "", phone: "", business: "", bottleneck: "" });
     } catch (err) {
-      flash(err instanceof Error ? err.message : "Failed to send. Please try again.", "⚠️");
+      const msg = err instanceof Error ? err.message : "Failed to send. Please try again.";
+      setFormError(msg);
+      flash(msg, "⚠️");
     } finally {
       setSubmitting(false);
     }
@@ -429,7 +476,20 @@ export default function HomePage() {
           <li><a href="#blog">Blog</a></li>
           <li><a href="#contact" className="btn-primary" style={{ padding: "0.45rem 1.1rem" }}>Free Audit</a></li>
         </ul>
+        <button className="nav-burger" onClick={() => setMobileNav(true)} aria-label="Open menu">&#9776;</button>
       </nav>
+
+      {/* MOBILE NAV OVERLAY */}
+      <div className={`mobile-overlay${mobileNav ? " open" : ""}`} role="dialog" aria-modal="true" aria-label="Navigation menu">
+        <button className="mobile-overlay-x" onClick={closeMobileNav} aria-label="Close menu">&#10005;</button>
+        <ul className="mobile-nav-list">
+          <li><a href="#how-it-works" onClick={closeMobileNav}>How It Works</a></li>
+          <li><a href="#workflow" onClick={closeMobileNav}>See It Live</a></li>
+          <li><a href="#automations" onClick={closeMobileNav}>Automations</a></li>
+          <li><a href="#blog" onClick={closeMobileNav}>Blog</a></li>
+          <li><a href="#contact" onClick={closeMobileNav} className="mobile-cta">Free Audit</a></li>
+        </ul>
+      </div>
 
       {/* HERO */}
       <section className="hero">
@@ -448,13 +508,13 @@ export default function HomePage() {
           </div>
           <div className="hero-proof">
             {[
-              "Leads followed up within 60 seconds — automatically",
-              "Appointments booked without anyone touching a calendar",
-              "Clients recover setup cost within 30 days on average",
-            ].map((t, i) => (
+              { num: "< 60s", label: "Lead follow-up time", accent: true },
+              { num: "0", label: "Manual steps to book", accent: false },
+              { num: "30 days", label: "Average payback period", accent: false },
+            ].map((s, i) => (
               <div key={i} className="proof-item">
-                <div className="proof-dot" />
-                <span>{t}</span>
+                <span className={`proof-num${s.accent ? " proof-accent" : ""}`}>{s.num}</span>
+                <span className="proof-label">{s.label}</span>
               </div>
             ))}
           </div>
@@ -463,44 +523,56 @@ export default function HomePage() {
         {/* Right — embedded form */}
         <div>
           <div className="hero-form-card">
-            <div className="hero-form-title">Get a Free Automation Audit</div>
-            <p className="hero-form-sub">Tell us your biggest bottleneck. We will tell you exactly what to automate first.</p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "1.1rem" }}>
-              <div className="frow">
-                <div className="fg">
-                  <label>Name</label>
-                  <input type="text" placeholder="Your name" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
+            {submitted ? (
+              <div className="form-success">
+                <div className="form-success-icon">&#10003;</div>
+                <div className="form-success-t">Audit request received</div>
+                <p className="form-success-d">We&apos;ll review your business and get back to you within one business day with specific recommendations.</p>
+                <a href="#workflow" className="btn-secondary" style={{ marginTop: "0.5rem" }}>See How It Works</a>
+              </div>
+            ) : (
+              <>
+                <div className="hero-form-title">Get a Free Automation Audit</div>
+                <p className="hero-form-sub">Tell us your biggest bottleneck. We will tell you exactly what to automate first.</p>
+                <div style={{ display: "flex", flexDirection: "column", gap: "1.1rem" }}>
+                  <div className="frow">
+                    <div className="fg">
+                      <label>Name</label>
+                      <input type="text" placeholder="Your name" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
+                    </div>
+                    <div className="fg">
+                      <label>Email</label>
+                      <input type="email" placeholder="your@email.com" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} />
+                    </div>
+                  </div>
+                  <div className="fg">
+                    <label>Business Type</label>
+                    <select value={form.business} onChange={e => setForm(f => ({ ...f, business: e.target.value }))}>
+                      <option value="">Select your industry</option>
+                      <option>Real Estate / Property Management</option>
+                      <option>E-commerce / Retail</option>
+                      <option>Marketing Agency</option>
+                      <option>Local Service / Contractor</option>
+                      <option>Professional Services</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div className="fg">
+                    <label>Biggest Time Drain</label>
+                    <textarea
+                      rows={3}
+                      placeholder="What task eats the most time in your business right now?"
+                      value={form.bottleneck}
+                      onChange={e => setForm(f => ({ ...f, bottleneck: e.target.value }))}
+                    />
+                  </div>
+                  {formError && <div className="form-error">{formError}</div>}
+                  <button className="fsub" onClick={submit} disabled={submitting}>
+                    {submitting ? "Sending..." : "Show Me What to Automate →"}
+                  </button>
                 </div>
-                <div className="fg">
-                  <label>Email</label>
-                  <input type="email" placeholder="your@email.com" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} />
-                </div>
-              </div>
-              <div className="fg">
-                <label>Business Type</label>
-                <select value={form.business} onChange={e => setForm(f => ({ ...f, business: e.target.value }))}>
-                  <option value="">Select your industry</option>
-                  <option>Real Estate / Property Management</option>
-                  <option>E-commerce / Retail</option>
-                  <option>Marketing Agency</option>
-                  <option>Local Service / Contractor</option>
-                  <option>Professional Services</option>
-                  <option>Other</option>
-                </select>
-              </div>
-              <div className="fg">
-                <label>Biggest Time Drain</label>
-                <textarea
-                  rows={3}
-                  placeholder="What task eats the most time in your business right now?"
-                  value={form.bottleneck}
-                  onChange={e => setForm(f => ({ ...f, bottleneck: e.target.value }))}
-                />
-              </div>
-              <button className="fsub" onClick={submit} disabled={submitting || submitted}>
-                {submitting ? "Sending..." : submitted ? "✓ Request Sent" : "Show Me What to Automate →"}
-              </button>
-            </div>
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -639,46 +711,66 @@ export default function HomePage() {
 
           {/* Right: form */}
           <div className="contact-form">
-            <div className="cform">
-              <div className="frow">
-                <div className="fg">
-                  <label>Name</label>
-                  <input type="text" placeholder="Your name" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
+            {submitted ? (
+              <div className="cform">
+                <div className="form-success">
+                  <div className="form-success-icon">&#10003;</div>
+                  <div className="form-success-t">We&apos;ll be in touch</div>
+                  <p className="form-success-d">Your audit request is in. Expect a response within one business day with a specific plan for your business.</p>
+                  <a
+                    href="https://calendly.com/jesse-smbautomation/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary"
+                    style={{ marginTop: "0.5rem" }}
+                  >
+                    Or Book a Call Now →
+                  </a>
+                </div>
+              </div>
+            ) : (
+              <div className="cform">
+                <div className="frow">
+                  <div className="fg">
+                    <label>Name</label>
+                    <input type="text" placeholder="Your name" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
+                  </div>
+                  <div className="fg">
+                    <label>Email</label>
+                    <input type="email" placeholder="your@email.com" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} />
+                  </div>
                 </div>
                 <div className="fg">
-                  <label>Email</label>
-                  <input type="email" placeholder="your@email.com" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} />
+                  <label>Phone (optional)</label>
+                  <input type="tel" placeholder="(555) 000-0000" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} />
                 </div>
+                <div className="fg">
+                  <label>Business Type</label>
+                  <select value={form.business} onChange={e => setForm(f => ({ ...f, business: e.target.value }))}>
+                    <option value="">Select your industry</option>
+                    <option>Real Estate / Property Management</option>
+                    <option>E-commerce / Retail</option>
+                    <option>Marketing Agency</option>
+                    <option>Local Service / Contractor</option>
+                    <option>Professional Services</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div className="fg">
+                  <label>Biggest Time Drain</label>
+                  <textarea
+                    rows={3}
+                    placeholder="What task eats the most time in your business right now?"
+                    value={form.bottleneck}
+                    onChange={e => setForm(f => ({ ...f, bottleneck: e.target.value }))}
+                  />
+                </div>
+                {formError && <div className="form-error">{formError}</div>}
+                <button className="fsub" onClick={submit} disabled={submitting}>
+                  {submitting ? "Sending..." : "Send Audit Request →"}
+                </button>
               </div>
-              <div className="fg">
-                <label>Phone (optional)</label>
-                <input type="tel" placeholder="(555) 000-0000" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} />
-              </div>
-              <div className="fg">
-                <label>Business Type</label>
-                <select value={form.business} onChange={e => setForm(f => ({ ...f, business: e.target.value }))}>
-                  <option value="">Select your industry</option>
-                  <option>Real Estate / Property Management</option>
-                  <option>E-commerce / Retail</option>
-                  <option>Marketing Agency</option>
-                  <option>Local Service / Contractor</option>
-                  <option>Professional Services</option>
-                  <option>Other</option>
-                </select>
-              </div>
-              <div className="fg">
-                <label>Biggest Time Drain</label>
-                <textarea
-                  rows={3}
-                  placeholder="What task eats the most time in your business right now?"
-                  value={form.bottleneck}
-                  onChange={e => setForm(f => ({ ...f, bottleneck: e.target.value }))}
-                />
-              </div>
-              <button className="fsub" onClick={submit} disabled={submitting || submitted}>
-                {submitting ? "Sending..." : submitted ? "✓ Request Sent" : "Send Audit Request →"}
-              </button>
-            </div>
+            )}
           </div>
         </div>
       </section>
@@ -709,7 +801,7 @@ export default function HomePage() {
             <div style={{ background: "var(--blue-lt)", border: "1px solid var(--border)", padding: "1.25rem", marginBottom: "1.5rem" }}>
               <div style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--blue)", marginBottom: "0.5rem" }}>What this solves</div>
               <p style={{ fontSize: "0.875rem", color: "var(--ink)", lineHeight: 1.65 }}>
-                This automation removes manual, repetitive tasks from your team&apos;s plate, giving you back hours every week and ensuring nothing falls through the cracks. Every build is tailored to your existing tools and workflows.
+                {activeAuto.solves}
               </p>
             </div>
             <button className="btn-primary" style={{ width: "100%", textAlign: "center", padding: "0.85rem" }} onClick={() => inquire(activeAuto)}>
