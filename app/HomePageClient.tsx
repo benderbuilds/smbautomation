@@ -119,14 +119,16 @@ const STYLE = `
   .hero-form-title { font-size: 1.1rem; font-weight: 600; color: var(--ink); margin-bottom: 0.35rem; letter-spacing: -0.01em; }
   .hero-form-sub { font-size: 0.85rem; color: var(--ink-mid); margin-bottom: 2rem; line-height: 1.5; }
 
-  /* STATS */
-  .stats-bar {
-    background: var(--blue); display: grid; grid-template-columns: repeat(4, 1fr);
-  }
-  .stat { padding: 2.25rem 2rem; border-right: 1px solid rgba(255,255,255,0.15); display: flex; flex-direction: column; gap: 0.4rem; }
-  .stat:last-child { border-right: none; }
-  .stat-n { font-size: 2.2rem; font-weight: 300; color: #FFFFFF; line-height: 1; letter-spacing: -0.02em; }
-  .stat-l { font-size: 0.68rem; color: rgba(255,255,255,0.55); letter-spacing: 0.1em; text-transform: uppercase; }
+  /* TOOLS TICKER */
+  .tools-ticker { background: var(--blue); overflow: hidden; position: relative; }
+  .tools-ticker::before, .tools-ticker::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
+  .tools-ticker::before { left: 0; background: linear-gradient(to right, var(--blue), transparent); }
+  .tools-ticker::after { right: 0; background: linear-gradient(to left, var(--blue), transparent); }
+  .tools-track { display: flex; align-items: center; animation: ticker-scroll 50s linear infinite; width: max-content; padding: 1.1rem 0; }
+  .tools-track:hover { animation-play-state: paused; }
+  .tool-item { display: flex; align-items: center; white-space: nowrap; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.75); padding: 0 1.75rem; }
+  .tool-sep { color: rgba(255,255,255,0.22); margin-left: 1.75rem; font-size: 0.45rem; }
+  @keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
   /* SECTIONS */
   .section { padding: 7rem 5vw; }
@@ -146,9 +148,12 @@ const STYLE = `
   .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-left: 1px solid var(--border); }
   .step-card { padding: 3rem 2.5rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); transition: background 0.2s; }
   .step-card:hover { background: var(--bg-white); }
-  .step-n { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue); margin-bottom: 2rem; display: block; }
-  .step-t { font-size: 1.2rem; font-weight: 500; color: var(--ink); margin-bottom: 0.875rem; line-height: 1.25; letter-spacing: -0.01em; }
-  .step-d { color: var(--ink-mid); font-size: 0.9rem; line-height: 1.7; }
+  .step-n { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.5rem; display: block; }
+  .step-t { font-size: 1.2rem; font-weight: 500; color: var(--ink); margin-bottom: 0.4rem; line-height: 1.25; letter-spacing: -0.01em; }
+  .step-sub { font-size: 0.85rem; color: var(--ink-mid); font-style: italic; margin-bottom: 1.25rem; line-height: 1.5; }
+  .step-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+  .step-list li { color: var(--ink-mid); font-size: 0.875rem; line-height: 1.65; padding-left: 1rem; position: relative; }
+  .step-list li::before { content: '—'; position: absolute; left: 0; color: var(--blue); font-weight: 600; }
 
   /* WORKFLOW */
   .wf-section { padding: 7rem 5vw; background: var(--dark); }
@@ -285,7 +290,6 @@ const STYLE = `
     .steps-grid { grid-template-columns: 1fr; }
     .diff-grid { grid-template-columns: 1fr 1fr; }
     .blog-grid { grid-template-columns: 1fr; }
-    .stats-bar { grid-template-columns: repeat(2, 1fr); }
     .wf-outcomes { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 768px) {
@@ -295,7 +299,6 @@ const STYLE = `
   @media (max-width: 640px) {
     .frow { grid-template-columns: 1fr; }
     .diff-grid { grid-template-columns: 1fr; }
-    .stats-bar { grid-template-columns: 1fr 1fr; }
     .hero-proof { grid-template-columns: repeat(3, 1fr); }
     .proof-item { padding: 1rem 0.75rem; }
     .proof-num { font-size: 1.5rem; }
@@ -580,20 +583,23 @@ export default function HomePageClient({ posts }: { posts: PostMeta[] }) {
         </div>
       </section>
 
-      {/* STATS */}
-      <div className="stats-bar">
-        {[
-          { n: "< 60s",     l: "Lead response time" },
-          { n: "30 days",   l: "Average payback period" },
-          { n: "10–20 hrs", l: "Saved per client per week" },
-          { n: "100%",      l: "Custom — no templates" },
-        ].map((s, i) => (
-          <div key={i} className="stat">
-            <span className="stat-n">{s.n}</span>
-            <span className="stat-l">{s.l}</span>
+      {/* TOOLS TICKER */}
+      {(() => {
+        const TOOLS = ["Claude","n8n","Make","Zapier","OpenAI","GoHighLevel","HubSpot","ActiveCampaign","Twilio","Vapi","Retell AI","ElevenLabs","Airtable","Notion","Slack","Supabase","Calendly","Typeform","Stripe","Voiceflow","Perplexity","LangChain","Pipedrive","Google Sheets","Intercom","Anthropic","Gemini","Cursor","Loom","Zapier Interfaces"];
+        const items = [...TOOLS, ...TOOLS];
+        return (
+          <div className="tools-ticker">
+            <div className="tools-track">
+              {items.map((tool, i) => (
+                <span key={i} className="tool-item">
+                  {tool}
+                  <span className="tool-sep">◆</span>
+                </span>
+              ))}
+            </div>
           </div>
-        ))}
-      </div>
+        );
+      })()}
 
       {/* HOW IT WORKS */}
       <section className="section section-white" id="how-it-works">
@@ -603,14 +609,17 @@ export default function HomePageClient({ posts }: { posts: PostMeta[] }) {
           <p className="sub">Every engagement starts with a conversation about where your business is losing time and money. We build from that.</p>
           <div className="steps-grid">
             {[
-              { n: "01", t: "We find where you're losing money", d: "In a free 30-minute call, we identify the 2 to 3 places in your business where manual processes are costing you the most. We put a dollar figure on it before we propose anything." },
-              { n: "02", t: "We build around your existing tools", d: "No new software to learn. We connect your calendar, phone, and email and build a workflow that runs automatically in the background." },
-              { n: "03", t: "You get time back and results you can measure", d: "Most clients see the system live within 10 business days. Every month you get a simple report: leads captured, hours saved, revenue recovered." },
+              { n: "01", t: "Discover & Diagnose", sub: "Understand first, automate second.", items: ["We learn how your business actually works: goals, constraints, handoffs, and what a 'win' looks like.", "We map your tech stack and where data lives: CRMs, inboxes, spreadsheets, internal tools.", "We audit processes to find real bottlenecks and decide what should and shouldn't be automated."] },
+              { n: "02", t: "Design, Build & Validate", sub: "Custom solutions, tested before launch.", items: ["We prioritize high-impact opportunities and decide where AI helps, and where it doesn't.", "We design and build custom workflows, test different approaches on real data, and explain our choices in plain language.", "We run evaluations in a real-world environment before full rollout."] },
+              { n: "03", t: "Launch, Monitor & Optimize", sub: "Continuous improvement, not a one-off project.", items: ["We launch into production with clear success metrics and safeguards.", "We monitor performance, collect feedback from your team and customers, and fix issues quickly.", "We continuously refine prompts, logic, and models so the system improves as your business evolves."] },
             ].map((s, i) => (
               <div key={i} className="step-card">
                 <span className="step-n">{s.n}</span>
                 <div className="step-t">{s.t}</div>
-                <p className="step-d">{s.d}</p>
+                <p className="step-sub">{s.sub}</p>
+                <ul className="step-list">
+                  {s.items.map((item, j) => <li key={j}>{item}</li>)}
+                </ul>
               </div>
             ))}
           </div>
