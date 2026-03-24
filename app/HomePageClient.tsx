@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import WorkflowDiagram from "@/components/WorkflowDiagram";
 import type { PostMeta } from "@/lib/posts";
 
@@ -400,13 +401,13 @@ interface ToastState { msg: string; icon: string; }
 
 // ─── Page ──────────────────────────────────────────────────────────────────────
 export default function HomePageClient({ posts }: { posts: PostMeta[] }) {
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [mobileNav, setMobileNav] = useState(false);
   const [activeNiche, setActiveNiche] = useState(3);
   const [activeAuto, setActiveAuto] = useState<AutoItem | null>(null);
   const [form, setForm] = useState<FormState>({ name: "", email: "", phone: "", business: "", bottleneck: "" });
   const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [formError, setFormError] = useState("");
   const [toast, setToast] = useState<ToastState | null>(null);
 
@@ -452,8 +453,7 @@ export default function HomePageClient({ posts }: { posts: PostMeta[] }) {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Something went wrong");
-      setSubmitted(true);
-      flash("Message received. We will be in touch within 24 hours.", "✓");
+      router.push('/thank-you');
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Failed to send. Please try again.";
       setFormError(msg);
@@ -529,15 +529,6 @@ export default function HomePageClient({ posts }: { posts: PostMeta[] }) {
         {/* Right — embedded form */}
         <div>
           <div className="hero-form-card">
-            {submitted ? (
-              <div className="form-success">
-                <div className="form-success-icon">&#10003;</div>
-                <div className="form-success-t">Audit request received</div>
-                <p className="form-success-d">We&apos;ll review your business and get back to you within one business day with specific recommendations.</p>
-                <a href="#workflow" className="btn-secondary" style={{ marginTop: "0.5rem" }}>See How It Works</a>
-              </div>
-            ) : (
-              <>
                 <div className="hero-form-title">Get an Automation Audit</div>
                 <p className="hero-form-sub">Tell us your biggest bottleneck. We will tell you exactly what to automate first.</p>
                 <div style={{ display: "flex", flexDirection: "column", gap: "1.1rem" }}>
@@ -577,8 +568,6 @@ export default function HomePageClient({ posts }: { posts: PostMeta[] }) {
                     {submitting ? "Sending..." : "Show Me What to Automate →"}
                   </button>
                 </div>
-              </>
-            )}
           </div>
         </div>
       </section>
@@ -721,25 +710,7 @@ export default function HomePageClient({ posts }: { posts: PostMeta[] }) {
 
           {/* Right: form */}
           <div className="contact-form">
-            {submitted ? (
-              <div className="cform">
-                <div className="form-success">
-                  <div className="form-success-icon">&#10003;</div>
-                  <div className="form-success-t">We&apos;ll be in touch</div>
-                  <p className="form-success-d">Your audit request is in. Expect a response within one business day with a specific plan for your business.</p>
-                  <a
-                    href="https://calendly.com/jesse-smbautomation/30min"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-primary"
-                    style={{ marginTop: "0.5rem" }}
-                  >
-                    Or Book a Call Now →
-                  </a>
-                </div>
-              </div>
-            ) : (
-              <div className="cform">
+            <div className="cform">
                 <div className="frow">
                   <div className="fg">
                     <label>Name</label>
@@ -780,7 +751,6 @@ export default function HomePageClient({ posts }: { posts: PostMeta[] }) {
                   {submitting ? "Sending..." : "Send Audit Request →"}
                 </button>
               </div>
-            )}
           </div>
         </div>
       </section>
