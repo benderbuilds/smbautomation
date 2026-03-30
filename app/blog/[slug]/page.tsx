@@ -69,8 +69,30 @@ export default function BlogPostPage({ params }: PageProps) {
   const post = getPostBySlug(params.slug);
   if (!post) notFound();
 
+  const blogPostingSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    author: {
+      '@type': 'Organization',
+      name: 'SMB Automation',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'SMB Automation',
+      url: 'https://smbautomation.io',
+    },
+    url: `https://smbautomation.io/blog/${post.slug}`,
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
+      />
       <style>{POST_STYLE}</style>
       <nav className="blog-nav">
         <Link href="/" className="nav-logo"><span className="logo-smb">SMB</span><span className="logo-auto"> Automation</span></Link>
