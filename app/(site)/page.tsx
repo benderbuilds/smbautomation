@@ -71,7 +71,7 @@ export default function HomePage() {
           {[
             {
               title: 'Business Analysis & Growth Strategy',
-              desc: 'We start by understanding your business at the operational level. Competitor analysis, customer journey mapping, revenue leak identification, and a prioritized growth roadmap. You walk away with a clear picture of what to fix first and what it is worth.',
+              desc: 'We start by analyzing your online presence against your competitors. SEO, Google Business Profile, social media. In one hour, you get a clear picture of where you\'re invisible, where you\'re losing to competitors, and a prioritized action plan to fix it.',
               cta: 'Explore Strategy Services →',
               href: '/services/strategy',
             },
@@ -110,8 +110,8 @@ export default function HomePage() {
           {[
             {
               num: '01',
-              title: 'Deep Business Analysis',
-              desc: 'We audit your operations, competitors, and customer journey. No generic templates. We study your actual business until we understand it well enough to tell you things you do not already know.',
+              title: 'SEO, GBP & Competitor Analysis',
+              desc: 'We audit your search rankings, Google Business Profile, and social media against your top competitors. No generic templates. You get a specific, prioritized action plan in one session.',
             },
             {
               num: '02',

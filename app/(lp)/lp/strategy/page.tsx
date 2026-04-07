@@ -18,7 +18,7 @@ function IntakeForm() {
       name: (form.elements.namedItem('name') as HTMLInputElement).value,
       email: (form.elements.namedItem('email') as HTMLInputElement).value,
       company: (form.elements.namedItem('business_type') as HTMLInputElement).value,
-      revenue_range: (form.elements.namedItem('revenue') as HTMLSelectElement).value,
+      website: (form.elements.namedItem('website') as HTMLInputElement).value,
       how_can_we_help: 'strategy',
       message: (form.elements.namedItem('challenge') as HTMLTextAreaElement).value,
     };
@@ -59,15 +59,8 @@ function IntakeForm() {
         <input id="lp-business" name="business_type" type="text" placeholder="e.g. Med spa, property management..." />
       </div>
       <div className={s.field}>
-        <label htmlFor="lp-revenue">Estimated Annual Revenue</label>
-        <select id="lp-revenue" name="revenue">
-          <option value="">Select range</option>
-          <option value="under_500k">Under $500K</option>
-          <option value="500k_1m">$500K to $1M</option>
-          <option value="1m_5m">$1M to $5M</option>
-          <option value="5m_20m">$5M to $20M</option>
-          <option value="20m_plus">$20M+</option>
-        </select>
+        <label htmlFor="lp-website">Website URL</label>
+        <input id="lp-website" name="website" type="url" placeholder="https://yourbusiness.com" />
       </div>
       <div className={s.field}>
         <label htmlFor="lp-challenge">Biggest business challenge right now</label>
@@ -94,17 +87,17 @@ export default function LPStrategyPage() {
       <section className={s.hero}>
         <span className="eyebrow-light">Limited Availability</span>
         <h1 className={s.headline}>
-          We will find $50,000+ in hidden revenue in your business. Guaranteed.
+          We&apos;ll show you exactly where your business is invisible online.
         </h1>
         <p className={s.sub}>
-          A 2-week deep analysis of your operations, competitors, and customer journey. You get a prioritized growth roadmap with dollar values attached to every recommendation.
+          A 1-hour SEO, Google Business Profile, and social media analysis. You get a specific, prioritized action plan showing exactly where you&apos;re losing to competitors — and what to fix first.
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
           <ul className={s.proofPoints}>
             {[
-              'Full competitor landscape analysis',
-              'Revenue leak identification with dollar estimates',
-              'Prioritized roadmap you can execute immediately',
+              'SEO audit: where you rank, where you don\'t, and what\'s costing you traffic',
+              'Google Business Profile teardown with specific fixes',
+              'Social media gap analysis against your top 3 competitors',
             ].map(point => (
               <li key={point} className={s.proofPoint}>
                 <span className="proof-dot" style={{ marginTop: '0.45em' }} />
@@ -127,7 +120,7 @@ export default function LPStrategyPage() {
         <div className={s.formInner}>
           <h2 className={s.formTitle}>Claim your strategy session</h2>
           <p className={s.formSub}>
-            Fill out the form below. We review every application and follow up within one business day.
+            Fill out the form below. We review every submission and follow up within one business day to schedule your session.
           </p>
           <IntakeForm />
         </div>
@@ -142,20 +135,20 @@ export default function LPStrategyPage() {
           <h2 className={s.faqTitle}>Common questions</h2>
           {[
             {
-              q: 'What is included in the strategy engagement?',
-              a: 'Competitor landscape analysis, customer journey mapping, revenue leak identification, tech stack audit, and a prioritized growth roadmap with dollar values attached to every recommendation. Delivered as a recorded walkthrough and a written PDF.',
+              q: 'What exactly do you analyze?',
+              a: 'Your search engine rankings and keyword gaps, your Google Business Profile (completeness, reviews, visibility), and your social media presence compared to your top 3 competitors. You get a specific, prioritized action plan for each.',
             },
             {
-              q: 'How long does it take?',
-              a: 'Most strategy engagements are completed within 10 business days from your kickoff call.',
+              q: 'How long does the session take?',
+              a: 'The live session is 1 hour. You will receive a written summary of findings and action items within 48 hours.',
             },
             {
-              q: 'What does it cost?',
-              a: 'Strategy engagements start at $2,500. We will confirm the investment on our call based on your business complexity.',
+              q: 'Is this just a sales pitch?',
+              a: 'No. You will receive real analysis with specific findings about your business. Whether you hire us after or not is entirely up to you.',
             },
             {
-              q: 'What happens after the strategy engagement?',
-              a: 'You get the roadmap. Some clients execute it independently. Others work with us to build and scale. Either way, you own the analysis.',
+              q: 'What should I prepare?',
+              a: 'Nothing beyond your website URL and the names of 2-3 competitors. We do the research before the session so we can spend the hour on findings and action steps.',
             },
           ].map(item => (
             <div key={item.q} className={s.faqItem}>

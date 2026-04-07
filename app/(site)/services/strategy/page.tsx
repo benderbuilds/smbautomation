@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import s from '../detail.module.css';
 
 export const metadata: Metadata = {
-  title: 'Business Analysis & Growth Strategy',
-  description: 'A deep operational audit, competitor analysis, and prioritized growth roadmap with dollar values attached. Engagements start at $2,500.',
+  title: 'SEO, GBP & Competitor Analysis',
+  description: 'A 1-hour analysis of your search rankings, Google Business Profile, and social media presence against your top competitors. Walk away with a prioritized action plan.',
   alternates: { canonical: 'https://smbautomation.io/services/strategy' },
 };
 
@@ -15,9 +15,9 @@ export default function StrategyPage() {
       <section className={s.hero}>
         <div className={s.heroInner}>
           <span className="eyebrow-light">Service 01</span>
-          <h1 className={s.headline}>Business Analysis & Growth Strategy</h1>
+          <h1 className={s.headline}>SEO, GBP & Competitor Analysis</h1>
           <p className={s.heroSub}>
-            We study your business until we understand it well enough to tell you things you do not already know. You get a prioritized roadmap with dollar values attached to every recommendation.
+            In one hour, we show you exactly where your business is invisible online and where competitors are beating you. You leave with a specific, prioritized action plan you can start implementing the same week.
           </p>
           <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="btn-primary">
             Book a Strategy Call →
@@ -30,12 +30,12 @@ export default function StrategyPage() {
           <h2 className={s.sectionTitle}>What is included</h2>
           <div className={s.grid}>
             {[
-              { title: 'Competitor landscape analysis', desc: 'Understand exactly how you stack up and where competitors are weak.' },
-              { title: 'Customer journey mapping', desc: 'Map every touchpoint from awareness through repeat purchase.' },
-              { title: 'Revenue leak identification', desc: 'Find where money is being lost and estimate the dollar value of each leak.' },
-              { title: 'Tech stack audit', desc: 'Identify what you have, what is redundant, and what is missing.' },
-              { title: 'Prioritized growth roadmap', desc: 'Every recommendation ranked by estimated ROI and effort.' },
-              { title: 'Findings presentation', desc: 'Recorded walkthrough plus a written report you can act on immediately.' },
+              { title: 'SEO audit', desc: 'Where you rank, where you don\'t, and which keyword gaps are costing you the most traffic.' },
+              { title: 'Google Business Profile review', desc: 'Completeness score, review strategy, local pack visibility, and specific fixes to improve ranking.' },
+              { title: 'Social media presence analysis', desc: 'How your content, frequency, and engagement compare to your top 3 competitors.' },
+              { title: 'Competitor benchmarking', desc: 'A side-by-side view of where competitors are outperforming you and where you have an opening.' },
+              { title: 'Prioritized action plan', desc: 'Every recommendation ranked by impact and ease of implementation. You know exactly what to do first.' },
+              { title: 'Written summary', desc: 'Delivered within 48 hours of your session. You own it permanently.' },
             ].map(item => (
               <div key={item.title} className={s.gridItem}>
                 <h3>{item.title}</h3>
@@ -51,10 +51,9 @@ export default function StrategyPage() {
           <h2 className={s.sectionTitle}>How it works</h2>
           <div className={s.timeline}>
             {[
-              { step: 'Day 1-2', title: 'Intake and kickoff', desc: 'You complete a detailed intake form. We schedule a 60-minute kickoff call to go deeper on your business model, goals, and constraints.' },
-              { step: 'Day 3-7', title: 'Research and analysis', desc: 'We conduct the full audit independently. Competitor research, customer journey reconstruction, data review, and opportunity mapping.' },
-              { step: 'Day 8-10', title: 'Roadmap build', desc: 'We build your prioritized growth roadmap with estimated revenue impact and effort for each initiative.' },
-              { step: 'Day 10', title: 'Presentation and walkthrough', desc: 'We deliver a recorded video walkthrough and a written PDF report. You own both assets permanently.' },
+              { step: 'Before the session', title: 'We do the research', desc: 'You share your website URL and 2-3 competitors. We complete the SEO, GBP, and social media analysis before we get on the call.' },
+              { step: 'The session (1 hour)', title: 'We walk through the findings', desc: 'We present what we found, explain the gaps, and prioritize the action items with you. No slides, no pitch — just findings and recommendations.' },
+              { step: 'Within 48 hours', title: 'Written summary delivered', desc: 'You receive a written action plan with every recommendation from the session, ranked by priority. Yours to keep and implement.' },
             ].map(step => (
               <div key={step.step} className={s.timelineStep}>
                 <div className={s.timelineNum}>{step.step}</div>
@@ -67,14 +66,15 @@ export default function StrategyPage() {
           </div>
           <div className={s.investment}>
             <h3>Investment</h3>
-            <p>Strategy engagements start at $2,500. Most are completed within 10 business days.</p>
+            <p><span style={{ textDecoration: 'line-through', opacity: 0.5, marginRight: '0.4em' }}>$500</span><strong>$250</strong> — applied to your first project if you move forward.</p>
+            <p style={{ marginTop: '0.75rem', fontSize: '0.875rem' }}>Most clients see quick wins within a week of implementing the plan.</p>
           </div>
         </div>
       </div>
 
       <section className={s.ctaSection}>
-        <h2 className={s.ctaHeadline}>Ready to see where your business is leaking revenue?</h2>
-        <p className={s.ctaSub}>Book a free 30-minute call. We will walk through your situation and tell you whether the strategy engagement is the right starting point.</p>
+        <h2 className={s.ctaHeadline}>Ready to see where your business is invisible online?</h2>
+        <p className={s.ctaSub}>Book a strategy session. We will analyze your SEO, GBP, and social presence and give you a specific action plan in one hour.</p>
         <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="btn-primary">
           Book a Strategy Call →
         </a>
