@@ -3,9 +3,11 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://smbautomation.io'),
-  title: 'SMB Automation | Custom AI Workflows for Local Businesses',
-  description:
-    'We help local service businesses integrate AI automation to save time, respond faster, and make more money. Custom-built workflows for real estate, HVAC, dental, agencies, and more.',
+  title: {
+    template: '%s | SMB Automation',
+    default: 'SMB Automation | Business Analysis, Custom Builds & Growth Systems for SMBs',
+  },
+  description: 'We analyze your business, build what is missing, and scale it with you. Strategic growth partner for SMBs doing $500K to $20M.',
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
@@ -13,19 +15,10 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: 'SMB Automation | Custom AI Workflows for Local Businesses',
-    description:
-      'We help local service businesses integrate AI automation to save time, respond faster, and make more money.',
+    title: 'SMB Automation | Business Analysis, Custom Builds & Growth Systems for SMBs',
+    description: 'We analyze your business, build what is missing, and scale it with you.',
     url: 'https://smbautomation.io',
     siteName: 'SMB Automation',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'SMB Automation',
-      },
-    ],
     type: 'website',
   },
   alternates: {
@@ -33,16 +26,25 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'SMB Automation',
+  url: 'https://smbautomation.io',
+  email: 'jesse@smbautomation.io',
+  description: 'Business analysis, custom builds, and growth systems for SMBs doing $500K to $20M.',
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body>{children}</body>
     </html>

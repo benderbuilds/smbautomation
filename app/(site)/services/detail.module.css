@@ -1,0 +1,174 @@
+/* Shared styles for all three service detail pages */
+.hero {
+  background: var(--dark);
+  padding: 5rem 5vw 4rem;
+}
+
+.heroInner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.headline {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin: 0.5rem 0 1rem;
+}
+
+.heroSub {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 2rem;
+}
+
+.sectionBg {
+  padding: 4rem 5vw;
+}
+
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--border);
+}
+
+.gridItem {
+  background: var(--bg-white);
+  border-right: 1px solid var(--border);
+  padding: 1.5rem;
+}
+
+.gridItem:last-child {
+  border-right: none;
+}
+
+.gridItem h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+  border-left: 2px solid var(--blue);
+  padding-left: 0.6rem;
+}
+
+.gridItem p {
+  font-size: 0.82rem;
+  color: var(--ink-mid);
+  line-height: 1.6;
+}
+
+.timeline {
+  border: 1px solid var(--border);
+  background: var(--bg-white);
+}
+
+.timelineStep {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  align-items: start;
+  gap: 1rem;
+}
+
+.timelineStep:last-child {
+  border-bottom: none;
+}
+
+.timelineNum {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--blue);
+  text-transform: uppercase;
+  padding-top: 0.15rem;
+}
+
+.timelineText h3 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+}
+
+.timelineText p {
+  font-size: 0.82rem;
+  color: var(--ink-mid);
+  line-height: 1.6;
+}
+
+.investment {
+  background: var(--blue-lt);
+  border: 1px solid var(--blue-pale);
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.investment h3 {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 0.75rem;
+}
+
+.investment p {
+  font-size: 1rem;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.ctaSection {
+  background: var(--blue);
+  padding: 4rem 5vw;
+  text-align: center;
+}
+
+.ctaHeadline {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.ctaSub {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.65);
+  max-width: 440px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .gridItem {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .gridItem:last-child {
+    border-bottom: none;
+  }
+  .timelineStep {
+    grid-template-columns: 1fr;
+  }
+}

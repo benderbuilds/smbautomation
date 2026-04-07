@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SMB Automation — Orthodontic Practices</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2540D9;--blue-deep:#1A2EA8;--blue-pale:#D8E0FA;--blue-lt:#EBF0FF;
+  --orange:#E84E1A;--orange-pale:#FDEEE8;
+  --ink:#0A0E1A;--ink-mid:#5A6580;--ink-faint:#9AA0B2;
+  --bg:#EDF1F7;--bg-white:#FFFFFF;
+  --border:#D4DAE8;--border-strong:#B0BAD0;
+  --dark:#0A0E1A;--dark-surface:#12172A;
+}
+body{font-family:'Barlow',Calibri,sans-serif;background:#fff;color:var(--ink);font-size:13px;line-height:1.6}
+.page{width:794px;min-height:1123px;margin:0 auto;display:flex;flex-direction:column}
+/* Header */
+.hdr{display:flex;justify-content:space-between;align-items:center;padding:18px 36px;border-bottom:1px solid var(--border)}
+.logo{font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase}
+.logo span{color:var(--blue)}
+.logo em{color:var(--ink)}
+.niche-tag{font-size:0.62rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--blue);background:var(--blue-lt);padding:4px 10px;border:1px solid var(--blue-pale)}
+/* Hero */
+.hero{padding:32px 36px 24px;border-bottom:1px solid var(--border)}
+.eyebrow{font-size:0.62rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:10px}
+.hero h1{font-size:26px;font-weight:400;letter-spacing:-0.02em;line-height:1.25;color:var(--ink);max-width:560px}
+.hero h1 em{color:var(--blue);font-style:italic}
+.hero-sub{font-size:0.88rem;color:var(--ink-mid);margin-top:10px;max-width:520px;line-height:1.65}
+/* Stats bar */
+.stats-bar{display:grid;background:var(--blue);padding:0}
+.stat{padding:16px 24px;border-right:1px solid rgba(255,255,255,0.15);text-align:center}
+.stat:last-child{border-right:none}
+.stat-num{font-size:2rem;font-weight:300;color:#fff;letter-spacing:-0.02em;line-height:1}
+.stat-lbl{font-size:0.6rem;color:rgba(255,255,255,0.55);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px}
+/* Two-col body */
+.body-cols{display:grid;grid-template-columns:1fr 1fr;flex:1}
+.col{padding:24px 28px;border-right:1px solid var(--border)}
+.col:last-child{border-right:none}
+.col-label{font-size:0.6rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.col h2{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.col p{font-size:0.82rem;color:var(--ink-mid);line-height:1.65;margin-bottom:12px}
+/* Proof list */
+.proof-list{list-style:none;margin-bottom:14px}
+.proof-list li{font-size:0.82rem;color:var(--ink-mid);line-height:1.55;padding:4px 0 4px 14px;position:relative;border-bottom:1px solid var(--border)}
+.proof-list li:last-child{border-bottom:none}
+.proof-list li:before{content:'';position:absolute;left:0;top:10px;width:6px;height:6px;background:var(--orange)}
+.proof-list li strong{color:var(--ink);font-weight:500}
+/* Build list */
+.build-item{padding:10px 0;border-bottom:1px solid var(--border)}
+.build-item:last-child{border-bottom:none}
+.build-title{font-size:0.82rem;font-weight:600;color:var(--ink);margin-bottom:2px}
+.build-desc{font-size:0.78rem;color:var(--ink-mid);line-height:1.55}
+/* Callout box */
+.callout{background:var(--blue-lt);border-left:3px solid var(--blue);padding:12px 14px;margin:12px 0}
+.callout p{font-size:0.8rem;color:var(--ink);line-height:1.6;margin:0}
+.callout strong{color:var(--blue)}
+/* CTA strip */
+.cta-strip{background:var(--dark);padding:20px 36px;display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.cta-left{}
+.cta-eyebrow{font-size:0.6rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:4px}
+.cta-headline{font-size:15px;font-weight:400;color:#fff;letter-spacing:-0.01em}
+.cta-headline em{color:var(--blue);font-style:italic}
+.cta-btn{background:var(--orange);color:#fff;padding:12px 28px;font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;border:none;white-space:nowrap}
+.cta-contact{font-size:0.7rem;color:rgba(255,255,255,0.4);margin-top:4px}
+.cta-contact a{color:rgba(255,255,255,0.55);text-decoration:none}
+/* Footer */
+.footer{padding:10px 36px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border)}
+.footer-logo{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase}
+.footer-logo span{color:var(--blue)}
+.footer-url{font-size:0.68rem;color:var(--ink-faint);letter-spacing:0.06em}
+@media print{.page{width:100%;min-height:auto}}
+
+.stats-bar{grid-template-columns:1fr 1fr 1fr 1fr ;}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="hdr">
+    <div class="logo"><span>SMB</span> <em>AUTOMATION</em></div>
+    <div class="niche-tag">Orthodontic Practices</div>
+  </header>
+  <section class="hero">
+    <div class="eyebrow">The revenue sitting inside your existing patient base</div>
+    <h1>No-shows cost your practice<br><em>$80,000–$120,000</em> every year.</h1>
+    <p class="hero-sub">Orthodontic practices have some of the most predictable revenue in healthcare — and some of the most predictable losses. No-shows, unconverted consults, and lapsed patients represent recoverable revenue that requires no new marketing spend.</p>
+  </section>
+  <div class="stats-bar"><div class="stat"><div class="stat-num">$100K</div><div class="stat-lbl">Avg. annual no-show revenue loss</div></div><div class="stat"><div class="stat-num">40%</div><div class="stat-lbl">Consult-to-start conversion industry avg.</div></div><div class="stat"><div class="stat-num">$6,500</div><div class="stat-lbl">Avg. case value</div></div><div class="stat"><div class="stat-num">2–5×</div><div class="stat-lbl">ROI on retention vs. new patient acquisition</div></div></div>
+  <div class="body-cols">
+    <div class="col">
+      <div class="col-label">The three revenue gaps most practices ignore</div>
+      
+      <p>Orthodontic practices invest heavily in new patient marketing but rarely look at the revenue already in their system. Three gaps account for the majority of recoverable revenue in most practices.</p>
+      <ul class="proof-list">
+        <li><strong>No-shows.</strong> Each missed appointment slot costs $400–$800 in lost production time. A multi-touch reminder sequence — not just a single day-before text — typically cuts no-show rates by 30–40%.</li>
+        <li><strong>Unconverted consultations.</strong> The average practice converts 40–50% of consultations to starts. The other half aren't gone — they're undecided. A 4-week post-consult nurture sequence recovers a meaningful portion.</li>
+        <li><strong>Lapsed referral relationships.</strong> GPs who referred patients 12–18 months ago have since referred to someone else — not because they stopped liking you, but because they forgot about you. A quarterly check-in sequence fixes that.</li>
+        <li><strong>No reactivation program.</strong> Patients whose treatment plans stalled or who moved mid-treatment represent real recoverable revenue. Almost no practice follows up systematically.</li>
+      </ul>
+    
+    </div>
+    <div class="col">
+      <div class="col-label">What we build for your practice</div>
+      
+      <div class="build-item">
+        <div class="build-title">Multi-touch no-show prevention</div>
+        <div class="build-desc">A 4-message reminder sequence: 1 week out, 3 days out, morning of, plus a same-day recovery for confirmed no-shows. Works alongside your existing practice management software.</div>
+      </div>
+      <div class="build-item">
+        <div class="build-title">Post-consult nurture sequence</div>
+        <div class="build-desc">A 4-week automated follow-up for consultations that didn't convert to starts. Addresses cost concerns, financing options, and timing — in your practice's voice.</div>
+      </div>
+      <div class="build-item">
+        <div class="build-title">GP referral partner nurture</div>
+        <div class="build-desc">Quarterly automated touchpoints for your general dentist referral network. A case update, a thank-you, a clinical note — keeps your practice name present when they're recommending orthodontic care.</div>
+      </div>
+      <div class="build-item">
+        <div class="build-title">Review and referral collection</div>
+        <div class="build-desc">Post-debond messages that capture patient satisfaction, prompt Google reviews, and ask for referrals at the moment patients are most enthusiastic about their results.</div>
+      </div>
+    
+      <div class="callout"><p><strong>The math:</strong> Cutting no-shows by 35% in a 300-patient practice saves approximately $40,000–$50,000 annually. That's before any improvement in consult conversion or referral volume.</p></div>
+    </div>
+  </div>
+  <div class="cta-strip">
+    <div class="cta-left">
+      <div class="cta-eyebrow">Ready to see it in action?</div>
+      <div class="cta-headline">Recover the revenue <em>already inside your practice.</em></div>
+      <div class="cta-contact">jesse@smbautomation.io &nbsp;|&nbsp; <a href="https://smbautomation.io">smbautomation.io</a></div>
+    </div>
+    <a class="cta-btn" href="https://calendly.com/jesse-smbautomation/30min">Book a Free Audit Call &rarr;</a>
+  </div>
+  <footer class="footer">
+    <div class="footer-logo"><span>SMB</span> AUTOMATION</div>
+    <div class="footer-url">smbautomation.io &nbsp;&mdash;&nbsp; jesse@smbautomation.io</div>
+  </footer>
+</div>
+</body>
+</html>

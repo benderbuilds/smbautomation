@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SMB Automation — Commercial Cleaning Companies</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2540D9;--blue-deep:#1A2EA8;--blue-pale:#D8E0FA;--blue-lt:#EBF0FF;
+  --orange:#E84E1A;--orange-pale:#FDEEE8;
+  --ink:#0A0E1A;--ink-mid:#5A6580;--ink-faint:#9AA0B2;
+  --bg:#EDF1F7;--bg-white:#FFFFFF;
+  --border:#D4DAE8;--border-strong:#B0BAD0;
+  --dark:#0A0E1A;--dark-surface:#12172A;
+}
+body{font-family:'Barlow',Calibri,sans-serif;background:#fff;color:var(--ink);font-size:13px;line-height:1.6}
+.page{width:794px;min-height:1123px;margin:0 auto;display:flex;flex-direction:column}
+/* Header */
+.hdr{display:flex;justify-content:space-between;align-items:center;padding:18px 36px;border-bottom:1px solid var(--border)}
+.logo{font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase}
+.logo span{color:var(--blue)}
+.logo em{color:var(--ink)}
+.niche-tag{font-size:0.62rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--blue);background:var(--blue-lt);padding:4px 10px;border:1px solid var(--blue-pale)}
+/* Hero */
+.hero{padding:32px 36px 24px;border-bottom:1px solid var(--border)}
+.eyebrow{font-size:0.62rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:10px}
+.hero h1{font-size:26px;font-weight:400;letter-spacing:-0.02em;line-height:1.25;color:var(--ink);max-width:560px}
+.hero h1 em{color:var(--blue);font-style:italic}
+.hero-sub{font-size:0.88rem;color:var(--ink-mid);margin-top:10px;max-width:520px;line-height:1.65}
+/* Stats bar */
+.stats-bar{display:grid;background:var(--blue);padding:0}
+.stat{padding:16px 24px;border-right:1px solid rgba(255,255,255,0.15);text-align:center}
+.stat:last-child{border-right:none}
+.stat-num{font-size:2rem;font-weight:300;color:#fff;letter-spacing:-0.02em;line-height:1}
+.stat-lbl{font-size:0.6rem;color:rgba(255,255,255,0.55);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px}
+/* Two-col body */
+.body-cols{display:grid;grid-template-columns:1fr 1fr;flex:1}
+.col{padding:24px 28px;border-right:1px solid var(--border)}
+.col:last-child{border-right:none}
+.col-label{font-size:0.6rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.col h2{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.col p{font-size:0.82rem;color:var(--ink-mid);line-height:1.65;margin-bottom:12px}
+/* Proof list */
+.proof-list{list-style:none;margin-bottom:14px}
+.proof-list li{font-size:0.82rem;color:var(--ink-mid);line-height:1.55;padding:4px 0 4px 14px;position:relative;border-bottom:1px solid var(--border)}
+.proof-list li:last-child{border-bottom:none}
+.proof-list li:before{content:'';position:absolute;left:0;top:10px;width:6px;height:6px;background:var(--orange)}
+.proof-list li strong{color:var(--ink);font-weight:500}
+/* Build list */
+.build-item{padding:10px 0;border-bottom:1px solid var(--border)}
+.build-item:last-child{border-bottom:none}
+.build-title{font-size:0.82rem;font-weight:600;color:var(--ink);margin-bottom:2px}
+.build-desc{font-size:0.78rem;color:var(--ink-mid);line-height:1.55}
+/* Callout box */
+.callout{background:var(--blue-lt);border-left:3px solid var(--blue);padding:12px 14px;margin:12px 0}
+.callout p{font-size:0.8rem;color:var(--ink);line-height:1.6;margin:0}
+.callout strong{color:var(--blue)}
+/* CTA strip */
+.cta-strip{background:var(--dark);padding:20px 36px;display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.cta-left{}
+.cta-eyebrow{font-size:0.6rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:4px}
+.cta-headline{font-size:15px;font-weight:400;color:#fff;letter-spacing:-0.01em}
+.cta-headline em{color:var(--blue);font-style:italic}
+.cta-btn{background:var(--orange);color:#fff;padding:12px 28px;font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;border:none;white-space:nowrap}
+.cta-contact{font-size:0.7rem;color:rgba(255,255,255,0.4);margin-top:4px}
+.cta-contact a{color:rgba(255,255,255,0.55);text-decoration:none}
+/* Footer */
+.footer{padding:10px 36px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border)}
+.footer-logo{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase}
+.footer-logo span{color:var(--blue)}
+.footer-url{font-size:0.68rem;color:var(--ink-faint);letter-spacing:0.06em}
+@media print{.page{width:100%;min-height:auto}}
+
+.stats-bar{grid-template-columns:1fr 1fr 1fr 1fr ;}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="hdr">
+    <div class="logo"><span>SMB</span> <em>AUTOMATION</em></div>
+    <div class="niche-tag">Commercial Cleaning Companies</div>
+  </header>
+  <section class="hero">
+    <div class="eyebrow">The follow-up gap costing you six-figure contracts</div>
+    <h1>Most commercial contracts go to<br>the company that <em>followed up fifth.</em></h1>
+    <p class="hero-sub">B2B cleaning decisions don't happen on the first call. Research shows most deals close after the 5th touch — but the average commercial cleaning company follows up twice before moving on. We automate the persistence that wins contracts.</p>
+  </section>
+  <div class="stats-bar"><div class="stat"><div class="stat-num">$50K</div><div class="stat-lbl">Avg. annual contract value</div></div><div class="stat"><div class="stat-num">5th touch</div><div class="stat-lbl">When most B2B deals close</div></div><div class="stat"><div class="stat-num">2×</div><div class="stat-lbl">Avg. cleaning company follow-up attempts</div></div><div class="stat"><div class="stat-num">2–8 wks</div><div class="stat-lbl">Typical sales cycle</div></div></div>
+  <div class="body-cols">
+    <div class="col">
+      <div class="col-label">Where commercial cleaning revenue disappears</div>
+      
+      <p>Commercial cleaning companies have some of the highest-value recurring contracts in service businesses. The conversion problem isn't usually price or quality — it's follow-up discipline. Most owners simply don't have time to chase 20 open quotes simultaneously.</p>
+      <ul class="proof-list">
+        <li><strong>Quote follow-up is manual.</strong> The owner sends a quote and maybe follows up once. The company that follows up 5 times professionally — at days 3, 7, 14, 21, and 30 — wins the contract.</li>
+        <li><strong>Contract renewals slip quietly.</strong> Clients whose contracts are coming up for renewal often go back to market without telling you. A proactive renewal outreach 90 days out keeps the contract yours.</li>
+        <li><strong>Referral relationships go cold.</strong> Property managers, facility managers, and real estate agents who've referred business in the past stop referring when they don't hear from you. A quarterly check-in fixes that at zero cost.</li>
+        <li><strong>No system for large prospect nurture.</strong> A prospect managing 50,000 sq ft of office space won't make a quick decision. Most companies don't have a long-game nurture for high-value targets.</li>
+      </ul>
+    
+    </div>
+    <div class="col">
+      <div class="col-label">What we build for your company</div>
+      
+      <div class="build-item">
+        <div class="build-title">Quote follow-up automation</div>
+        <div class="build-desc">A 5-touch follow-up sequence triggered the moment a quote is sent. Each message adds value — a reference list, a case study, an availability reminder. Professional persistence without the manual effort.</div>
+      </div>
+      <div class="build-item">
+        <div class="build-title">Contract renewal alert system</div>
+        <div class="build-desc">90-day and 30-day alerts before each contract renewal. Automated outreach to the client that opens the renewal conversation proactively — before they think to go back to market.</div>
+      </div>
+      <div class="build-item">
+        <div class="build-title">Referral source nurture</div>
+        <div class="build-desc">Quarterly touchpoints for property managers, facility managers, and commercial real estate contacts who've referred or could refer. A brief check-in, a relevant tip, a reminder you're there.</div>
+      </div>
+      <div class="build-item">
+        <div class="build-title">Large prospect long-game sequence</div>
+        <div class="build-desc">A 6-month drip for high-value targets that aren't ready to switch providers yet. By the time their current contract is up for renewal, you've been in their inbox professionally for 6 months.</div>
+      </div>
+    
+      <div class="callout"><p><strong>The compounding effect:</strong> Winning one additional $30,000/year contract per quarter from improved follow-up adds $120,000 in annual recurring revenue — with no additional marketing spend.</p></div>
+    </div>
+  </div>
+  <div class="cta-strip">
+    <div class="cta-left">
+      <div class="cta-eyebrow">Ready to see it in action?</div>
+      <div class="cta-headline">Win the contracts your <em>follow-up is losing.</em></div>
+      <div class="cta-contact">jesse@smbautomation.io &nbsp;|&nbsp; <a href="https://smbautomation.io">smbautomation.io</a></div>
+    </div>
+    <a class="cta-btn" href="https://calendly.com/jesse-smbautomation/30min">Book a Free Audit Call &rarr;</a>
+  </div>
+  <footer class="footer">
+    <div class="footer-logo"><span>SMB</span> AUTOMATION</div>
+    <div class="footer-url">smbautomation.io &nbsp;&mdash;&nbsp; jesse@smbautomation.io</div>
+  </footer>
+</div>
+</body>
+</html>

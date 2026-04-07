@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SMB Automation — Immigration Attorneys</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#2540D9;--blue-deep:#1A2EA8;--blue-pale:#D8E0FA;--blue-lt:#EBF0FF;
+  --orange:#E84E1A;--orange-pale:#FDEEE8;
+  --ink:#0A0E1A;--ink-mid:#5A6580;--ink-faint:#9AA0B2;
+  --bg:#EDF1F7;--bg-white:#FFFFFF;
+  --border:#D4DAE8;--border-strong:#B0BAD0;
+  --dark:#0A0E1A;--dark-surface:#12172A;
+}
+body{font-family:'Barlow',Calibri,sans-serif;background:#fff;color:var(--ink);font-size:13px;line-height:1.6}
+.page{width:794px;min-height:1123px;margin:0 auto;display:flex;flex-direction:column}
+/* Header */
+.hdr{display:flex;justify-content:space-between;align-items:center;padding:18px 36px;border-bottom:1px solid var(--border)}
+.logo{font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase}
+.logo span{color:var(--blue)}
+.logo em{color:var(--ink)}
+.niche-tag{font-size:0.62rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--blue);background:var(--blue-lt);padding:4px 10px;border:1px solid var(--blue-pale)}
+/* Hero */
+.hero{padding:32px 36px 24px;border-bottom:1px solid var(--border)}
+.eyebrow{font-size:0.62rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:10px}
+.hero h1{font-size:26px;font-weight:400;letter-spacing:-0.02em;line-height:1.25;color:var(--ink);max-width:560px}
+.hero h1 em{color:var(--blue);font-style:italic}
+.hero-sub{font-size:0.88rem;color:var(--ink-mid);margin-top:10px;max-width:520px;line-height:1.65}
+/* Stats bar */
+.stats-bar{display:grid;background:var(--blue);padding:0}
+.stat{padding:16px 24px;border-right:1px solid rgba(255,255,255,0.15);text-align:center}
+.stat:last-child{border-right:none}
+.stat-num{font-size:2rem;font-weight:300;color:#fff;letter-spacing:-0.02em;line-height:1}
+.stat-lbl{font-size:0.6rem;color:rgba(255,255,255,0.55);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px}
+/* Two-col body */
+.body-cols{display:grid;grid-template-columns:1fr 1fr;flex:1}
+.col{padding:24px 28px;border-right:1px solid var(--border)}
+.col:last-child{border-right:none}
+.col-label{font-size:0.6rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.col h2{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.col p{font-size:0.82rem;color:var(--ink-mid);line-height:1.65;margin-bottom:12px}
+/* Proof list */
+.proof-list{list-style:none;margin-bottom:14px}
+.proof-list li{font-size:0.82rem;color:var(--ink-mid);line-height:1.55;padding:4px 0 4px 14px;position:relative;border-bottom:1px solid var(--border)}
+.proof-list li:last-child{border-bottom:none}
+.proof-list li:before{content:'';position:absolute;left:0;top:10px;width:6px;height:6px;background:var(--orange)}
+.proof-list li strong{color:var(--ink);font-weight:500}
+/* Build list */
+.build-item{padding:10px 0;border-bottom:1px solid var(--border)}
+.build-item:last-child{border-bottom:none}
+.build-title{font-size:0.82rem;font-weight:600;color:var(--ink);margin-bottom:2px}
+.build-desc{font-size:0.78rem;color:var(--ink-mid);line-height:1.55}
+/* Callout box */
+.callout{background:var(--blue-lt);border-left:3px solid var(--blue);padding:12px 14px;margin:12px 0}
+.callout p{font-size:0.8rem;color:var(--ink);line-height:1.6;margin:0}
+.callout strong{color:var(--blue)}
+/* CTA strip */
+.cta-strip{background:var(--dark);padding:20px 36px;display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.cta-left{}
+.cta-eyebrow{font-size:0.6rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:4px}
+.cta-headline{font-size:15px;font-weight:400;color:#fff;letter-spacing:-0.01em}
+.cta-headline em{color:var(--blue);font-style:italic}
+.cta-btn{background:var(--orange);color:#fff;padding:12px 28px;font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;border:none;white-space:nowrap}
+.cta-contact{font-size:0.7rem;color:rgba(255,255,255,0.4);margin-top:4px}
+.cta-contact a{color:rgba(255,255,255,0.55);text-decoration:none}
+/* Footer */
+.footer{padding:10px 36px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border)}
+.footer-logo{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase}
+.footer-logo span{color:var(--blue)}
+.footer-url{font-size:0.68rem;color:var(--ink-faint);letter-spacing:0.06em}
+@media print{.page{width:100%;min-height:auto}}
+
+.stats-bar{grid-template-columns:1fr 1fr 1fr 1fr ;}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="hdr">
+    <div class="logo"><span>SMB</span> <em>AUTOMATION</em></div>
+    <div class="niche-tag">Immigration Attorneys</div>
+  </header>
+  <section class="hero">
+    <div class="eyebrow">The lead problem immigration firms don't talk about</div>
+    <h1>You're not losing clients<br>to better attorneys. You're losing them to <em>faster ones.</em></h1>
+    <p class="hero-sub">Immigration prospects have options and they move fast. They're often comparing 3–5 firms in the same afternoon. The firm that responds with clarity and confidence in the first hour almost always books the consult. We build that system.</p>
+  </section>
+  <div class="stats-bar"><div class="stat"><div class="stat-num">1 hr</div><div class="stat-lbl">Response window to convert</div></div><div class="stat"><div class="stat-num">$12K</div><div class="stat-lbl">Avg. client value</div></div><div class="stat"><div class="stat-num">30–40%</div><div class="stat-lbl">Leads lost to slow response</div></div><div class="stat"><div class="stat-num">1–3 wks</div><div class="stat-lbl">Typical sales cycle</div></div></div>
+  <div class="body-cols">
+    <div class="col">
+      <div class="col-label">Where immigration practices lose revenue</div>
+      
+      <p>Immigration attorneys have one of the strongest demand profiles in legal services. High emotional urgency, clear need, and clients with real ability to pay. The conversion problem is almost always operational — not competitive.</p>
+      <ul class="proof-list">
+        <li><strong>Intake happens at inconvenient times.</strong> Prospects fill out forms during their lunch break, at night, or on weekends — when attorneys are in court or unavailable. Those leads go cold by morning.</li>
+        <li><strong>Case type triage is missing.</strong> An asylum case and a corporate H-1B have completely different urgency levels. Without a triage system, every lead gets the same delayed response.</li>
+        <li><strong>No consultation pipeline.</strong> Most firms either follow up once and give up, or have an admin manually chasing every inquiry. Neither scales.</li>
+        <li><strong>Referral partners aren't being nurtured.</strong> Notaries, real estate agents, and ethnic community organizations are your highest-quality referral sources. Almost no firm has a system to stay in front of them.</li>
+      </ul>
+    
+    </div>
+    <div class="col">
+      <div class="col-label">What we build for your practice</div>
+      
+      <div class="build-item">
+        <div class="build-title">24/7 intake and qualification system</div>
+        <div class="build-desc">Every inquiry gets an immediate response in English and Spanish (or your primary language pair), identifies the visa category, and books the consult — without your paralegal involved.</div>
+      </div>
+      <div class="build-item">
+        <div class="build-title">Case type routing and triage</div>
+        <div class="build-desc">Asylum, deportation defense, and family petitions get automatically flagged by urgency level. Time-sensitive cases surface to your calendar within minutes of inquiry.</div>
+      </div>
+      <div class="build-item">
+        <div class="build-title">Consultation no-show recovery</div>
+        <div class="build-desc">A reminder sequence before every scheduled consult plus a same-day recovery message for no-shows. Cuts ghost rates by 30–40% without admin follow-up.</div>
+      </div>
+      <div class="build-item">
+        <div class="build-title">Referral partner nurture</div>
+        <div class="build-desc">Quarterly check-in sequence for community partners and professional referrers. Stays present, shares relevant case outcomes, and keeps your firm top of mind when their clients need immigration help.</div>
+      </div>
+    
+      <div class="callout"><p><strong>The ROI is direct:</strong> One additional retained client per month at $8K–$15K pays for this system 8–15x over. Most practices recover that in the first 30 days.</p></div>
+    </div>
+  </div>
+  <div class="cta-strip">
+    <div class="cta-left">
+      <div class="cta-eyebrow">Ready to see it in action?</div>
+      <div class="cta-headline">Respond first. <em>Win the case.</em></div>
+      <div class="cta-contact">jesse@smbautomation.io &nbsp;|&nbsp; <a href="https://smbautomation.io">smbautomation.io</a></div>
+    </div>
+    <a class="cta-btn" href="https://calendly.com/jesse-smbautomation/30min">Book a Free Audit Call &rarr;</a>
+  </div>
+  <footer class="footer">
+    <div class="footer-logo"><span>SMB</span> AUTOMATION</div>
+    <div class="footer-url">smbautomation.io &nbsp;&mdash;&nbsp; jesse@smbautomation.io</div>
+  </footer>
+</div>
+</body>
+</html>

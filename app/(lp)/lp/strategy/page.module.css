@@ -1,0 +1,252 @@
+.lpWrap {
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+.lpNav {
+  background: var(--dark);
+  padding: 0 5vw;
+  height: 64px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.logoSmb { color: var(--blue); }
+.logoAuto { color: rgba(255,255,255,0.4); }
+
+.hero {
+  background: var(--dark);
+  padding: 5rem 5vw 4rem;
+  text-align: center;
+}
+
+.headline {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 1.25rem;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sub {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+}
+
+.proofPoints {
+  list-style: none;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: left;
+  margin-bottom: 2.5rem;
+}
+
+.proofPoint {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.65);
+}
+
+.socialProof {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  padding: 3rem 5vw;
+  text-align: center;
+}
+
+.proofQuote {
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink-mid);
+  max-width: 580px;
+  margin: 0 auto 1rem;
+  line-height: 1.6;
+}
+
+.proofAttrib {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.formSection {
+  background: var(--bg);
+  padding: 4rem 5vw;
+}
+
+.formInner {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.formTitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+
+.formSub {
+  font-size: 0.9rem;
+  color: var(--ink-mid);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.form {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.field label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+}
+
+.field input,
+.field select,
+.field textarea {
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 0.7rem 0.85rem;
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.15s;
+  width: 100%;
+  -webkit-appearance: none;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--blue);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.submitBtn {
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--orange);
+  padding: 1rem 2rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+  border-radius: 0;
+  width: 100%;
+}
+
+.submitBtn:hover { background: #cc3e12; }
+.submitBtn:disabled { background: var(--ink-faint); cursor: not-allowed; }
+
+.success {
+  padding: 1.5rem;
+  background: var(--blue-lt);
+  border: 1px solid var(--blue-pale);
+  font-size: 0.95rem;
+  color: var(--blue);
+  text-align: center;
+}
+
+.ctaBanner {
+  background: var(--orange);
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 1.25rem;
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.ctaBanner:hover { background: #cc3e12; color: #fff; }
+
+.faq {
+  background: var(--bg-white);
+  padding: 4rem 5vw;
+  border-top: 1px solid var(--border);
+}
+
+.faqInner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.faqTitle {
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 2rem;
+}
+
+.faqItem {
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 0;
+}
+
+.faqItem:first-of-type {
+  border-top: 1px solid var(--border);
+}
+
+.faqQ {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+
+.faqA {
+  font-size: 0.875rem;
+  color: var(--ink-mid);
+  line-height: 1.7;
+}
