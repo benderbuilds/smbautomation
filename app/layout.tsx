@@ -34,6 +34,17 @@ const jsonLd = {
   url: 'https://smbautomation.io',
   email: 'jesse@smbautomation.io',
   description: 'Business analysis, custom builds, and growth systems for SMBs doing $500K to $20M.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Des Moines',
+    addressRegion: 'IA',
+    addressCountry: 'US',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Des Moines', containedIn: 'Iowa' },
+    { '@type': 'State', name: 'Iowa' },
+    { '@type': 'Country', name: 'United States' },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

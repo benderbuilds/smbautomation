@@ -16,6 +16,7 @@ export default function Footer() {
           <p className={s.tagline}>
             Business analysis, custom builds, and growth systems for operators who are ready to scale.
           </p>
+          <p className={s.location}>Des Moines, Iowa &mdash; Serving SMBs nationwide.</p>
           <p className={s.copy}>© {year} SMB Automation. All rights reserved.</p>
         </div>
 

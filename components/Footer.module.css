@@ -38,6 +38,13 @@
   max-width: 300px;
 }
 
+.location {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4rem;
+}
+
 .copy {
   font-size: 0.72rem;
   color: rgba(255,255,255,0.2);
