@@ -29,6 +29,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# subdirectories that should not be tracked
+/smbautomation/
+/niches/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
