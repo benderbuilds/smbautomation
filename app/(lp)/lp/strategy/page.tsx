@@ -99,19 +99,21 @@ export default function LPStrategyPage() {
         <p className={s.sub}>
           A 2-week deep analysis of your operations, competitors, and customer journey. You get a prioritized growth roadmap with dollar values attached to every recommendation.
         </p>
-        <ul className={s.proofPoints}>
-          {[
-            'Full competitor landscape analysis',
-            'Revenue leak identification with dollar estimates',
-            'Prioritized roadmap you can execute immediately',
-          ].map(point => (
-            <li key={point} className={s.proofPoint}>
-              <span className="proof-dot" style={{ marginTop: '0.45em' }} />
-              {point}
-            </li>
-          ))}
-        </ul>
-        <a href="#intake" className="btn-primary">Claim Your Strategy Session →</a>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
+          <ul className={s.proofPoints}>
+            {[
+              'Full competitor landscape analysis',
+              'Revenue leak identification with dollar estimates',
+              'Prioritized roadmap you can execute immediately',
+            ].map(point => (
+              <li key={point} className={s.proofPoint}>
+                <span className="proof-dot" style={{ marginTop: '0.45em' }} />
+                {point}
+              </li>
+            ))}
+          </ul>
+          <a href="#intake" className="btn-primary">Claim Your Strategy Session →</a>
+        </div>
       </section>
 
       <section className={s.socialProof}>

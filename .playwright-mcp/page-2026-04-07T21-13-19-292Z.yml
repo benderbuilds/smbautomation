@@ -1,0 +1,65 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e3]:
+      - link "SMB AUTOMATION" [ref=e4] [cursor=pointer]:
+        - /url: /
+    - generic [ref=e5]:
+      - generic [ref=e6]: Limited Availability
+      - heading "We will find $50,000+ in hidden revenue in your business. Guaranteed." [level=1] [ref=e7]
+      - paragraph [ref=e8]: A 2-week deep analysis of your operations, competitors, and customer journey. You get a prioritized growth roadmap with dollar values attached to every recommendation.
+      - list [ref=e9]:
+        - listitem [ref=e10]: Full competitor landscape analysis
+        - listitem [ref=e12]: Revenue leak identification with dollar estimates
+        - listitem [ref=e14]: Prioritized roadmap you can execute immediately
+      - link "Claim Your Strategy Session →" [ref=e16] [cursor=pointer]:
+        - /url: "#intake"
+    - generic [ref=e17]:
+      - paragraph [ref=e18]: "\"The roadmap they delivered identified three revenue leaks we had no idea existed. We fixed the first one in two weeks and recovered $18,000 in the following month.\""
+      - paragraph [ref=e19]: Property Management Client
+    - generic [ref=e21]:
+      - heading "Claim your strategy session" [level=2] [ref=e22]
+      - paragraph [ref=e23]: Fill out the form below. We review every application and follow up within one business day.
+      - generic [ref=e24]:
+        - generic [ref=e25]:
+          - generic [ref=e26]: Full Name *
+          - textbox "Full Name *" [ref=e27]:
+            - /placeholder: Jane Smith
+        - generic [ref=e28]:
+          - generic [ref=e29]: Email *
+          - textbox "Email *" [ref=e30]:
+            - /placeholder: jane@company.com
+        - generic [ref=e31]:
+          - generic [ref=e32]: Business Type
+          - textbox "Business Type" [ref=e33]:
+            - /placeholder: e.g. Med spa, property management...
+        - generic [ref=e34]:
+          - generic [ref=e35]: Estimated Annual Revenue
+          - combobox "Estimated Annual Revenue" [ref=e36]:
+            - option "Select range" [selected]
+            - option "Under $500K"
+            - option "$500K to $1M"
+            - option "$1M to $5M"
+            - option "$5M to $20M"
+            - option "$20M+"
+        - generic [ref=e37]:
+          - generic [ref=e38]: Biggest business challenge right now
+          - textbox "Biggest business challenge right now" [ref=e39]:
+            - /placeholder: What is the one thing holding your business back most right now?
+        - button "Claim Your Strategy Session →" [ref=e40] [cursor=pointer]
+    - link "Claim Your Strategy Session →" [ref=e41] [cursor=pointer]:
+      - /url: "#intake"
+    - generic [ref=e43]:
+      - heading "Common questions" [level=2] [ref=e44]
+      - generic [ref=e45]:
+        - generic [ref=e46]: What is included in the strategy engagement?
+        - generic [ref=e47]: Competitor landscape analysis, customer journey mapping, revenue leak identification, tech stack audit, and a prioritized growth roadmap with dollar values attached to every recommendation. Delivered as a recorded walkthrough and a written PDF.
+      - generic [ref=e48]:
+        - generic [ref=e49]: How long does it take?
+        - generic [ref=e50]: Most strategy engagements are completed within 10 business days from your kickoff call.
+      - generic [ref=e51]:
+        - generic [ref=e52]: What does it cost?
+        - generic [ref=e53]: Strategy engagements start at $2,500. We will confirm the investment on our call based on your business complexity.
+      - generic [ref=e54]:
+        - generic [ref=e55]: What happens after the strategy engagement?
+        - generic [ref=e56]: You get the roadmap. Some clients execute it independently. Others work with us to build and scale. Either way, you own the analysis.
+  - alert [ref=e57]

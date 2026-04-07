@@ -49,11 +49,10 @@
 
 .proofPoints {
   list-style: none;
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   gap: 0.75rem;
   text-align: left;
-  margin-bottom: 2.5rem;
 }
 
 .proofPoint {

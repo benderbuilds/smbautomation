@@ -1,0 +1,190 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "SMB AUTOMATION" [ref=e3] [cursor=pointer]:
+      - /url: /
+    - list [ref=e4]:
+      - listitem [ref=e5]:
+        - link "Services" [ref=e6] [cursor=pointer]:
+          - /url: /services
+      - listitem [ref=e7]:
+        - link "Work" [ref=e8] [cursor=pointer]:
+          - /url: /work
+      - listitem [ref=e9]:
+        - link "Blog" [ref=e10] [cursor=pointer]:
+          - /url: /blog
+    - link "Book a Strategy Call →" [ref=e11] [cursor=pointer]:
+      - /url: https://calendly.com/jesse-smbautomation/30min
+    - button "Toggle menu" [ref=e12]
+  - generic [ref=e13]:
+    - list [ref=e14]:
+      - listitem [ref=e15]:
+        - link "Services" [ref=e16] [cursor=pointer]:
+          - /url: /services
+      - listitem [ref=e17]:
+        - link "Work" [ref=e18] [cursor=pointer]:
+          - /url: /work
+      - listitem [ref=e19]:
+        - link "Blog" [ref=e20] [cursor=pointer]:
+          - /url: /blog
+    - link "Book a Strategy Call →" [ref=e21] [cursor=pointer]:
+      - /url: https://calendly.com/jesse-smbautomation/30min
+  - main [ref=e22]:
+    - generic [ref=e24]:
+      - generic [ref=e25]:
+        - text: Growth Partner for Small Business
+        - heading "We analyze your business, build what's missing, and scale it with you." [level=1] [ref=e26]:
+          - text: We analyze your business, build what's missing, and
+          - emphasis [ref=e27]: scale it with you.
+        - paragraph [ref=e28]: Most agencies sell you tools. We study your business like we own a piece of it, then build and run the systems that drive growth.
+        - generic [ref=e29]:
+          - link "Book a Strategy Call →" [ref=e30] [cursor=pointer]:
+            - /url: https://calendly.com/jesse-smbautomation/30min
+          - link "See How We Work →" [ref=e31] [cursor=pointer]:
+            - /url: "#process"
+      - generic [ref=e33]:
+        - generic [ref=e37]:
+          - generic [ref=e38]: DATA IN
+          - generic [ref=e39]: Operations, competitors, customers
+        - generic [ref=e44]:
+          - generic [ref=e45]: INSIGHT
+          - generic [ref=e46]: Gaps, leaks, opportunities
+        - generic [ref=e51]:
+          - generic [ref=e52]: ACTION
+          - generic [ref=e53]: Prioritized builds
+        - generic [ref=e58]:
+          - generic [ref=e59]: REVENUE
+          - generic [ref=e60]: Measurable growth
+    - generic [ref=e62]:
+      - generic [ref=e63]:
+        - generic [ref=e64]: $2.4M+
+        - generic [ref=e65]: Revenue Influenced
+      - generic [ref=e66]:
+        - generic [ref=e67]: 40+
+        - generic [ref=e68]: Systems Deployed
+      - generic [ref=e69]:
+        - generic [ref=e70]: "18"
+        - generic [ref=e71]: Industries Served
+      - generic [ref=e72]:
+        - generic [ref=e73]: < 48 hrs
+        - generic [ref=e74]: Avg Time to First Insight
+    - generic [ref=e75]:
+      - generic [ref=e76]:
+        - text: What We Do
+        - heading "Strategy. Build. Scale." [level=2] [ref=e77]
+        - paragraph [ref=e78]: Three phases of working with us. Each one delivers standalone value, and together they compound.
+      - generic [ref=e79]:
+        - generic [ref=e80]:
+          - generic [ref=e81]: Business Analysis & Growth Strategy
+          - paragraph [ref=e82]: We start by understanding your business at the operational level. Competitor analysis, customer journey mapping, revenue leak identification, and a prioritized growth roadmap. You walk away with a clear picture of what to fix first and what it is worth.
+          - link "Explore Strategy Services →" [ref=e83] [cursor=pointer]:
+            - /url: /services/strategy
+        - generic [ref=e84]:
+          - generic [ref=e85]: 0-1 MVP Builds & Custom Development
+          - paragraph [ref=e86]: "We design and build the tools your business is missing. Custom automations, client-facing apps, internal dashboards, AI workflows. Every build is scoped around a measurable outcome: time saved, revenue recovered, or capacity unlocked."
+          - link "Explore Build Services →" [ref=e87] [cursor=pointer]:
+            - /url: /services/build
+        - generic [ref=e88]:
+          - generic [ref=e89]: Ongoing Optimization & Retainer
+          - paragraph [ref=e90]: We stay embedded in your business. Monthly performance reviews, system optimization, new builds as priorities shift. This is not a support contract. It is having a technical growth team on call.
+          - link "Explore Scale Services →" [ref=e91] [cursor=pointer]:
+            - /url: /services/scale
+    - generic [ref=e92]:
+      - generic [ref=e93]:
+        - text: How We Work
+        - heading "Analyze. Build. Scale." [level=2] [ref=e94]
+        - paragraph [ref=e95]: Every engagement follows this progression. Some clients start at step one, others jump straight to a build. We meet you where you are.
+      - generic [ref=e96]:
+        - generic [ref=e97]:
+          - generic [ref=e98]: "01"
+          - generic [ref=e99]: Deep Business Analysis
+          - paragraph [ref=e100]: We audit your operations, competitors, and customer journey. No generic templates. We study your actual business until we understand it well enough to tell you things you do not already know.
+        - generic [ref=e101]:
+          - generic [ref=e102]: "02"
+          - generic [ref=e103]: Build What Matters Most
+          - paragraph [ref=e104]: We prioritize by impact. The first build targets your highest-value bottleneck with a measurable ROI target attached. You see results before we move to the next one.
+        - generic [ref=e105]:
+          - generic [ref=e106]: "03"
+          - generic [ref=e107]: Scale With You Monthly
+          - paragraph [ref=e108]: We review performance data, optimize what is running, and build the next priority. Your business evolves. Your systems evolve with it.
+    - generic [ref=e110]:
+      - text: Who This Is For
+      - heading "Built for operators, not enterprises." [level=2] [ref=e111]
+      - paragraph [ref=e112]: We work best with small and mid-sized businesses that are past the startup phase and ready to invest in systems that scale.
+      - generic [ref=e113]:
+        - generic [ref=e114]:
+          - generic [ref=e115]: Good fit
+          - list [ref=e116]:
+            - listitem [ref=e117]: Revenue between $500K and $20M
+            - listitem [ref=e118]: Currently relying on manual processes that should be automated
+            - listitem [ref=e119]: Ready to invest $5,000+/mo in growth infrastructure
+            - listitem [ref=e120]: Want a strategic partner, not a vendor who disappears after delivery
+            - listitem [ref=e121]: Decision-maker is involved in the engagement
+        - generic [ref=e122]:
+          - generic [ref=e123]: Industries we know well
+          - generic [ref=e124]:
+            - generic [ref=e125]: Healthcare & Wellness
+            - generic [ref=e126]: Med spas, weight loss clinics, TRT/HRT clinics, hair restoration
+          - generic [ref=e127]:
+            - generic [ref=e128]: Professional Services
+            - generic [ref=e129]: Immigration attorneys, tax resolution firms, senior care advisors
+          - generic [ref=e130]:
+            - generic [ref=e131]: Home & Property
+            - generic [ref=e132]: Property management, custom home builders, commercial cleaning, landscaping
+          - generic [ref=e133]:
+            - generic [ref=e134]: Real Estate
+            - generic [ref=e135]: Agents, brokerages, property investors
+          - generic [ref=e136]: Do not see your industry? If your business runs on appointments, leads, and recurring revenue, we can probably help. Book a call and we will tell you honestly.
+    - generic [ref=e137]:
+      - generic [ref=e138]:
+        - text: Recent Work
+        - heading "What it looks like in practice." [level=2] [ref=e139]
+      - generic [ref=e140]:
+        - link "Real Estate Annual Client Engagement System 10-template automated email sequence keeping 200+ past clients engaged year-round. Read the Full Story →" [ref=e141] [cursor=pointer]:
+          - /url: /work
+          - generic [ref=e142]: Real Estate
+          - generic [ref=e143]: Annual Client Engagement System
+          - paragraph [ref=e144]: 10-template automated email sequence keeping 200+ past clients engaged year-round.
+          - generic [ref=e145]: Read the Full Story →
+        - link "Custom Home Building Growth Strategy & Online Presence Overhaul Comprehensive competitor analysis, website gap audit, and four-phase growth roadmap for a regional builder. Read the Full Story →" [ref=e146] [cursor=pointer]:
+          - /url: /work
+          - generic [ref=e147]: Custom Home Building
+          - generic [ref=e148]: Growth Strategy & Online Presence Overhaul
+          - paragraph [ref=e149]: Comprehensive competitor analysis, website gap audit, and four-phase growth roadmap for a regional builder.
+          - generic [ref=e150]: Read the Full Story →
+        - link "Local Services Video Content Automation Pipeline Automated before/after video production cutting content creation time by 80%. Read the Full Story →" [ref=e151] [cursor=pointer]:
+          - /url: /work
+          - generic [ref=e152]: Local Services
+          - generic [ref=e153]: Video Content Automation Pipeline
+          - paragraph [ref=e154]: Automated before/after video production cutting content creation time by 80%.
+          - generic [ref=e155]: Read the Full Story →
+    - generic [ref=e156]:
+      - heading "Ready to see what is possible?" [level=2] [ref=e157]
+      - paragraph [ref=e158]: Book a free 30-minute strategy call. We will walk through your business, identify the biggest opportunities, and tell you exactly what we would build first.
+      - link "Book Your Free Strategy Call →" [ref=e159] [cursor=pointer]:
+        - /url: https://calendly.com/jesse-smbautomation/30min
+  - contentinfo [ref=e160]:
+    - generic [ref=e161]:
+      - generic [ref=e162]:
+        - link "SMB AUTOMATION" [ref=e163] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=e164]: Business analysis, custom builds, and growth systems for operators who are ready to scale.
+        - paragraph [ref=e165]: © 2026 SMB Automation. All rights reserved.
+      - generic [ref=e166]:
+        - list [ref=e167]:
+          - listitem [ref=e168]:
+            - link "Services" [ref=e169] [cursor=pointer]:
+              - /url: /services
+          - listitem [ref=e170]:
+            - link "Work" [ref=e171] [cursor=pointer]:
+              - /url: /work
+          - listitem [ref=e172]:
+            - link "Blog" [ref=e173] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e174]:
+            - link "Contact" [ref=e175] [cursor=pointer]:
+              - /url: /contact
+        - generic [ref=e176]:
+          - link "jesse@smbautomation.io" [ref=e177] [cursor=pointer]:
+            - /url: mailto:jesse@smbautomation.io
+          - link "Book a Strategy Call →" [ref=e178] [cursor=pointer]:
+            - /url: https://calendly.com/jesse-smbautomation/30min

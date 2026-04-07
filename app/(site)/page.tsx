@@ -4,7 +4,7 @@ import HeroDiagram from '@/components/HeroDiagram';
 import s from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'SMB Automation | Business Analysis, Custom Builds & Growth Systems for SMBs',
+  title: { absolute: 'SMB Automation | Business Analysis, Custom Builds & Growth Systems for SMBs' },
   description: 'We analyze your business, build what is missing, and scale it with you. Strategic growth partner for SMBs doing $500K to $20M.',
   alternates: { canonical: 'https://smbautomation.io' },
 };

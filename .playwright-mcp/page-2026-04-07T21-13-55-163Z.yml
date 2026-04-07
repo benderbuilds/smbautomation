@@ -1,0 +1,79 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "SMB AUTOMATION" [ref=e3] [cursor=pointer]:
+      - /url: /
+    - list [ref=e4]:
+      - listitem [ref=e5]:
+        - link "Services" [ref=e6] [cursor=pointer]:
+          - /url: /services
+      - listitem [ref=e7]:
+        - link "Work" [ref=e8] [cursor=pointer]:
+          - /url: /work
+      - listitem [ref=e9]:
+        - link "Blog" [ref=e10] [cursor=pointer]:
+          - /url: /blog
+    - link "Book a Strategy Call →" [ref=e11] [cursor=pointer]:
+      - /url: https://calendly.com/jesse-smbautomation/30min
+  - main [ref=e12]:
+    - generic [ref=e14]:
+      - generic [ref=e15]: From the Blog
+      - heading "Automation insights for business owners" [level=1] [ref=e16]
+      - paragraph [ref=e17]: No fluff, no jargon. Practical advice on where automation moves the needle.
+    - generic [ref=e19]:
+      - link "Local Services Why the First Business to Respond Wins 78% of the Time Speed-to-lead is the single biggest lever most local businesses are not pulling. Here is what the data says and how to fix it. February 9, 2026 · 4 min read Read article →" [ref=e20] [cursor=pointer]:
+        - /url: /blog/speed-to-lead
+        - generic [ref=e21]: Local Services
+        - generic [ref=e22]: Why the First Business to Respond Wins 78% of the Time
+        - paragraph [ref=e23]: Speed-to-lead is the single biggest lever most local businesses are not pulling. Here is what the data says and how to fix it.
+        - generic [ref=e24]:
+          - generic [ref=e25]: February 9, 2026
+          - generic [ref=e26]: ·
+          - generic [ref=e27]: 4 min read
+        - generic [ref=e28]: Read article →
+      - link "Real Estate How Property Managers Are Reclaiming 15 Hours a Week with AI From maintenance routing to lease renewals, the automations reshaping property management operations right now. January 27, 2026 · 4 min read Read article →" [ref=e29] [cursor=pointer]:
+        - /url: /blog/property-manager-automation
+        - generic [ref=e30]: Real Estate
+        - generic [ref=e31]: How Property Managers Are Reclaiming 15 Hours a Week with AI
+        - paragraph [ref=e32]: From maintenance routing to lease renewals, the automations reshaping property management operations right now.
+        - generic [ref=e33]:
+          - generic [ref=e34]: January 27, 2026
+          - generic [ref=e35]: ·
+          - generic [ref=e36]: 4 min read
+        - generic [ref=e37]: Read article →
+      - 'link "Strategy The Bottleneck Audit: Find What''s Costing Your Business the Most Before you automate anything, run this 20-minute exercise to identify your highest-leverage automation opportunity. January 14, 2026 · 4 min read Read article →" [ref=e38] [cursor=pointer]':
+        - /url: /blog/bottleneck-audit
+        - generic [ref=e39]: Strategy
+        - generic [ref=e40]: "The Bottleneck Audit: Find What's Costing Your Business the Most"
+        - paragraph [ref=e41]: Before you automate anything, run this 20-minute exercise to identify your highest-leverage automation opportunity.
+        - generic [ref=e42]:
+          - generic [ref=e43]: January 14, 2026
+          - generic [ref=e44]: ·
+          - generic [ref=e45]: 4 min read
+        - generic [ref=e46]: Read article →
+  - contentinfo [ref=e47]:
+    - generic [ref=e48]:
+      - generic [ref=e49]:
+        - link "SMB AUTOMATION" [ref=e50] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=e51]: Business analysis, custom builds, and growth systems for operators who are ready to scale.
+        - paragraph [ref=e52]: © 2026 SMB Automation. All rights reserved.
+      - generic [ref=e53]:
+        - list [ref=e54]:
+          - listitem [ref=e55]:
+            - link "Services" [ref=e56] [cursor=pointer]:
+              - /url: /services
+          - listitem [ref=e57]:
+            - link "Work" [ref=e58] [cursor=pointer]:
+              - /url: /work
+          - listitem [ref=e59]:
+            - link "Blog" [ref=e60] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e61]:
+            - link "Contact" [ref=e62] [cursor=pointer]:
+              - /url: /contact
+        - generic [ref=e63]:
+          - link "jesse@smbautomation.io" [ref=e64] [cursor=pointer]:
+            - /url: mailto:jesse@smbautomation.io
+          - link "Book a Strategy Call →" [ref=e65] [cursor=pointer]:
+            - /url: https://calendly.com/jesse-smbautomation/30min
+  - alert [ref=e66]

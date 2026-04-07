@@ -1,0 +1,102 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "SMB AUTOMATION" [ref=e3] [cursor=pointer]:
+      - /url: /
+    - list [ref=e4]:
+      - listitem [ref=e5]:
+        - link "Services" [ref=e6] [cursor=pointer]:
+          - /url: /services
+      - listitem [ref=e7]:
+        - link "Work" [ref=e8] [cursor=pointer]:
+          - /url: /work
+      - listitem [ref=e9]:
+        - link "Blog" [ref=e10] [cursor=pointer]:
+          - /url: /blog
+    - link "Book a Strategy Call →" [ref=e11] [cursor=pointer]:
+      - /url: https://calendly.com/jesse-smbautomation/30min
+  - main [ref=e12]:
+    - generic [ref=e14]:
+      - generic [ref=e15]: Service 01
+      - heading "Business Analysis & Growth Strategy" [level=1] [ref=e16]
+      - paragraph [ref=e17]: We study your business until we understand it well enough to tell you things you do not already know. You get a prioritized roadmap with dollar values attached to every recommendation.
+      - link "Book a Strategy Call →" [ref=e18] [cursor=pointer]:
+        - /url: https://calendly.com/jesse-smbautomation/30min
+    - generic [ref=e20]:
+      - heading "What is included" [level=2] [ref=e21]
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - heading "Competitor landscape analysis" [level=3] [ref=e24]
+          - paragraph [ref=e25]: Understand exactly how you stack up and where competitors are weak.
+        - generic [ref=e26]:
+          - heading "Customer journey mapping" [level=3] [ref=e27]
+          - paragraph [ref=e28]: Map every touchpoint from awareness through repeat purchase.
+        - generic [ref=e29]:
+          - heading "Revenue leak identification" [level=3] [ref=e30]
+          - paragraph [ref=e31]: Find where money is being lost and estimate the dollar value of each leak.
+        - generic [ref=e32]:
+          - heading "Tech stack audit" [level=3] [ref=e33]
+          - paragraph [ref=e34]: Identify what you have, what is redundant, and what is missing.
+        - generic [ref=e35]:
+          - heading "Prioritized growth roadmap" [level=3] [ref=e36]
+          - paragraph [ref=e37]: Every recommendation ranked by estimated ROI and effort.
+        - generic [ref=e38]:
+          - heading "Findings presentation" [level=3] [ref=e39]
+          - paragraph [ref=e40]: Recorded walkthrough plus a written report you can act on immediately.
+    - generic [ref=e42]:
+      - heading "How it works" [level=2] [ref=e43]
+      - generic [ref=e44]:
+        - generic [ref=e45]:
+          - generic [ref=e46]: Day 1-2
+          - generic [ref=e47]:
+            - heading "Intake and kickoff" [level=3] [ref=e48]
+            - paragraph [ref=e49]: You complete a detailed intake form. We schedule a 60-minute kickoff call to go deeper on your business model, goals, and constraints.
+        - generic [ref=e50]:
+          - generic [ref=e51]: Day 3-7
+          - generic [ref=e52]:
+            - heading "Research and analysis" [level=3] [ref=e53]
+            - paragraph [ref=e54]: We conduct the full audit independently. Competitor research, customer journey reconstruction, data review, and opportunity mapping.
+        - generic [ref=e55]:
+          - generic [ref=e56]: Day 8-10
+          - generic [ref=e57]:
+            - heading "Roadmap build" [level=3] [ref=e58]
+            - paragraph [ref=e59]: We build your prioritized growth roadmap with estimated revenue impact and effort for each initiative.
+        - generic [ref=e60]:
+          - generic [ref=e61]: Day 10
+          - generic [ref=e62]:
+            - heading "Presentation and walkthrough" [level=3] [ref=e63]
+            - paragraph [ref=e64]: We deliver a recorded video walkthrough and a written PDF report. You own both assets permanently.
+      - generic [ref=e65]:
+        - heading "Investment" [level=3] [ref=e66]
+        - paragraph [ref=e67]: Strategy engagements start at $2,500. Most are completed within 10 business days.
+    - generic [ref=e68]:
+      - heading "Ready to see where your business is leaking revenue?" [level=2] [ref=e69]
+      - paragraph [ref=e70]: Book a free 30-minute call. We will walk through your situation and tell you whether the strategy engagement is the right starting point.
+      - link "Book a Strategy Call →" [ref=e71] [cursor=pointer]:
+        - /url: https://calendly.com/jesse-smbautomation/30min
+  - contentinfo [ref=e72]:
+    - generic [ref=e73]:
+      - generic [ref=e74]:
+        - link "SMB AUTOMATION" [ref=e75] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=e76]: Business analysis, custom builds, and growth systems for operators who are ready to scale.
+        - paragraph [ref=e77]: © 2026 SMB Automation. All rights reserved.
+      - generic [ref=e78]:
+        - list [ref=e79]:
+          - listitem [ref=e80]:
+            - link "Services" [ref=e81] [cursor=pointer]:
+              - /url: /services
+          - listitem [ref=e82]:
+            - link "Work" [ref=e83] [cursor=pointer]:
+              - /url: /work
+          - listitem [ref=e84]:
+            - link "Blog" [ref=e85] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e86]:
+            - link "Contact" [ref=e87] [cursor=pointer]:
+              - /url: /contact
+        - generic [ref=e88]:
+          - link "jesse@smbautomation.io" [ref=e89] [cursor=pointer]:
+            - /url: mailto:jesse@smbautomation.io
+          - link "Book a Strategy Call →" [ref=e90] [cursor=pointer]:
+            - /url: https://calendly.com/jesse-smbautomation/30min
+  - alert [ref=e91]
