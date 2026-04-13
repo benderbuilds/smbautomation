@@ -11,9 +11,21 @@ export const metadata: Metadata = {
 
 const CALENDLY = 'https://calendly.com/jesse-smbautomation/30min';
 
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'SMB Automation',
+  url: 'https://smbautomation.io',
+  description: 'We analyze your business, build what is missing, and scale it with you. Strategic growth partner for SMBs doing $500K to $20M.',
+};
+
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+      />
       {/* 1. Hero */}
       <section className={s.hero}>
         <div className={s.heroInner}>
