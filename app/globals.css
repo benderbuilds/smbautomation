@@ -106,6 +106,7 @@ img, svg {
   font-family: 'Barlow', sans-serif;
   cursor: pointer;
   border: none;
+  border-radius: 0;
   transition: background 0.15s;
   text-decoration: none;
 }
