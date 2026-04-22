@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import s from './FounderSection.module.css';
 
 export default function FounderSection() {
@@ -5,8 +6,13 @@ export default function FounderSection() {
     <section className={s.founder}>
       <div className={s.inner}>
         <div className={s.photoBlock}>
-          {/* TODO: replace with real photo at /public/jesse-bender.jpg when available */}
-          <span className={s.photoLabel}>FOUNDER PHOTO</span>
+          <Image
+            src="/assets/jesse-bender.png"
+            alt="Jesse Bender, Founder of SMB Automation"
+            fill
+            sizes="(max-width: 767px) 100vw, (max-width: 1099px) 50vw, 440px"
+            style={{ objectFit: 'cover', objectPosition: 'top' }}
+          />
         </div>
         <div className={s.copy}>
           <span className="eyebrow">THE FOUNDER</span>

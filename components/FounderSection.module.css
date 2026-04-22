@@ -17,21 +17,8 @@
 
 .photoBlock {
   aspect-ratio: 4 / 5;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.photoLabel {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  border: 1px dashed var(--border);
-  padding: 0.5rem 0.75rem;
+  position: relative;
+  overflow: hidden;
 }
 
 .copy {
