@@ -68,76 +68,38 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. Services Overview */}
-      <section className={s.services}>
+      {/* 3. Process */}
+      <section className={s.process} id="how-we-work">
         <div className={s.sectionHeader}>
-          <span className="eyebrow">What We Do</span>
-          <h2 className={s.sectionHeadline}>Strategy. Build. Scale.</h2>
-          <p className={s.sectionSub}>
-            Three phases of working with us. Each one delivers standalone value, and together they compound.
-          </p>
-        </div>
-        <div className={s.serviceGrid}>
-          {[
-            {
-              title: 'Business Analysis & Growth Strategy',
-              desc: 'We start by analyzing your online presence against your competitors. SEO, Google Business Profile, social media. In one hour, you get a clear picture of where you\'re invisible, where you\'re losing to competitors, and a prioritized action plan to fix it.',
-              cta: 'Explore Strategy Services →',
-              href: '/services/strategy',
-            },
-            {
-              title: '0-1 MVP Builds & Custom Development',
-              desc: 'We design and build the tools your business is missing. Custom automations, client-facing apps, internal dashboards, AI workflows. Every build is scoped around a measurable outcome: time saved, revenue recovered, or capacity unlocked.',
-              cta: 'Explore Build Services →',
-              href: '/services/build',
-            },
-            {
-              title: 'Ongoing Optimization & Retainer',
-              desc: 'We stay embedded in your business. Monthly performance reviews, system optimization, new builds as priorities shift. This is not a support contract. It is having a technical growth team on call.',
-              cta: 'Explore Scale Services →',
-              href: '/services/scale',
-            },
-          ].map(svc => (
-            <div key={svc.title} className={s.serviceCard}>
-              <div className={s.serviceTitle}>{svc.title}</div>
-              <p className={s.serviceDesc}>{svc.desc}</p>
-              <Link href={svc.href} className={s.serviceLink}>{svc.cta}</Link>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 4. Process */}
-      <section className={s.process} id="process">
-        <div className={s.sectionHeader}>
-          <span className="eyebrow">How We Work</span>
-          <h2 className={s.sectionHeadline}>Analyze. Build. Scale.</h2>
-          <p className={s.sectionSub}>
-            Every engagement follows this progression. Some clients start at step one, others jump straight to a build. We meet you where you are.
-          </p>
+          <span className="eyebrow">THE PROCESS</span>
+          <h2 className={s.sectionHeadline}>Three phases. No surprises.</h2>
         </div>
         <div className={s.processGrid}>
           {[
             {
               num: '01',
-              title: 'SEO, GBP & Competitor Analysis',
-              desc: 'We audit your search rankings, Google Business Profile, and social media against your top competitors. No generic templates. You get a specific, prioritized action plan in one session.',
+              title: 'Analyze',
+              desc: 'One working session. We audit your SEO, follow-up workflow, CRM, and top three competitors. You leave with a ranked action plan, not a 40-page report.',
+              time: '60 to 90 minutes. No homework.',
             },
             {
               num: '02',
-              title: 'Build What Matters Most',
-              desc: 'We prioritize by impact. The first build targets your highest-value bottleneck with a measurable ROI target attached. You see results before we move to the next one.',
+              title: 'Build',
+              desc: 'We build the first system inside your existing stack. Email, calendar, CRM, forms, phone. Nothing new to learn.',
+              time: 'Most first builds ship in 2 to 4 weeks.',
             },
             {
               num: '03',
-              title: 'Scale With You Monthly',
-              desc: 'We review performance data, optimize what is running, and build the next priority. Your business evolves. Your systems evolve with it.',
+              title: 'Scale',
+              desc: 'Monthly retainer. We measure what\'s working, fix what\'s not, and add the next system in the queue.',
+              time: 'Month to month. Pause anytime.',
             },
           ].map(step => (
             <div key={step.num} className={s.processStep}>
               <div className={s.processNum}>{step.num}</div>
               <div className={s.processTitle}>{step.title}</div>
               <p className={s.processDesc}>{step.desc}</p>
+              <p className={s.processTime}>{step.time}</p>
             </div>
           ))}
         </div>
