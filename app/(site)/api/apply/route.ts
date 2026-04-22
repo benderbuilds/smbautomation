@@ -15,16 +15,23 @@ export async function POST(req: NextRequest) {
       improvements, anythingElse,
     } = body;
 
-    if (!firstName || !lastName) {
+    if (typeof firstName !== 'string' || !firstName || typeof lastName !== 'string' || !lastName) {
       return NextResponse.json({ error: 'First and last name are required.' }, { status: 400 });
     }
     if (!isValidEmail(email)) {
       return NextResponse.json({ error: 'Valid email is required.' }, { status: 400 });
     }
-    if (!companyName || !role || !companySize || !revenue || !budget || !howWeCanHelp) {
+    if (
+      typeof companyName !== 'string' || !companyName ||
+      typeof role !== 'string' || !role ||
+      typeof companySize !== 'string' || !companySize ||
+      typeof revenue !== 'string' || !revenue ||
+      typeof budget !== 'string' || !budget ||
+      typeof howWeCanHelp !== 'string' || !howWeCanHelp
+    ) {
       return NextResponse.json({ error: 'All required fields must be filled.' }, { status: 400 });
     }
-    if (!Array.isArray(improvements) || improvements.length === 0) {
+    if (!Array.isArray(improvements) || improvements.length === 0 || !improvements.every((i: unknown) => typeof i === 'string')) {
       return NextResponse.json({ error: 'Select at least one improvement area.' }, { status: 400 });
     }
 
@@ -57,7 +64,7 @@ export async function POST(req: NextRequest) {
         to: adminEmail,
         replyTo: email,
         subject: `New application: ${firstName} ${lastName} from ${companyName}`,
-        html: `<pre style="font-family: monospace; font-size: 0.9rem; color: #0A0E1A; line-height: 1.7; white-space: pre-wrap;">${textBody}</pre>`,
+        text: textBody,
       });
     } else {
       console.log('[apply] RESEND_API_KEY not set — logging application:\n', textBody);
