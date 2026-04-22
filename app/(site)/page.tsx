@@ -211,7 +211,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. Case Studies Preview */}
+      {/* 6. Recent Work */}
       <section className={s.caseStudies}>
         <div className={s.sectionHeader}>
           <span className="eyebrow">Recent Work</span>
@@ -221,24 +221,32 @@ export default function HomePage() {
           {[
             {
               tag: 'Real Estate',
+              metric: '12 inbound referrals in 90 days', // TODO: confirm real metric with Jesse
               title: 'Annual Client Engagement System',
               result: '10-template automated email sequence keeping 200+ past clients engaged year-round.',
+              attrib: 'REALTOR, IOWA CITY, IA',
             },
             {
               tag: 'Custom Home Building',
+              metric: 'Saved 6 hrs/week in quote follow-up', // TODO: confirm real metric with Jesse
               title: 'Growth Strategy & Online Presence Overhaul',
               result: 'Comprehensive competitor analysis, website gap audit, and four-phase growth roadmap for a regional builder.',
+              attrib: 'CUSTOM BUILDER, LONE TREE, IA',
             },
             {
               tag: 'Local Services',
+              metric: 'Content creation time cut by 80%', // TODO: confirm real metric with Jesse
               title: 'Video Content Automation Pipeline',
               result: 'Automated before/after video production cutting content creation time by 80%.',
+              attrib: 'LOCAL SERVICES BUSINESS', // TODO: confirm INDUSTRY, CITY, STATE with Jesse
             },
           ].map(c => (
             <Link key={c.title} href="/work" className={s.caseCard}>
               <div className={s.caseTag}>{c.tag}</div>
+              <div className={s.caseMetric}>{c.metric}</div>
               <div className={s.caseTitle}>{c.title}</div>
               <p className={s.caseResult}>{c.result}</p>
+              <div className={s.caseAttrib}>{c.attrib}</div>
               <div className={s.caseCta}>Read the Full Story →</div>
             </Link>
           ))}
