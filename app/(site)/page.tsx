@@ -105,6 +105,49 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 4. What We Do */}
+      <section className={s.whatWeDo}>
+        <div className={s.sectionHeader}>
+          <span className="eyebrow">WHAT WE DO</span>
+          <h2 className={s.sectionHeadline}>Three ways we plug in.</h2>
+        </div>
+        <div className={s.whatWeDoGrid}>
+          {[
+            {
+              eyebrow: 'BUSINESS ANALYSIS',
+              pain: 'You don\'t know exactly where you\'re losing leads, revenue, or rankings.',
+              body: 'We audit your SEO, Google Business Profile, follow-up workflow, and your top three competitors. One session. Live, not async.',
+              result: 'A ranked action plan you can hand to your team on Monday.',
+            },
+            {
+              eyebrow: 'BUILDS & CUSTOM DEVELOPMENT',
+              pain: 'You\'ve been quoted $80K for an MVP, or you\'re stuck with an AI-built prototype that won\'t launch.',
+              body: 'We ship the system that should have shipped six months ago. Working software inside your existing stack. No platform lock-in.',
+              result: 'Most first builds go live in 2 to 4 weeks.',
+            },
+            {
+              eyebrow: 'RETAINER & OPTIMIZATION',
+              pain: 'The system you bought last year is already outdated and nobody is measuring it.',
+              body: 'Monthly retainer. We track what\'s working, kill what\'s not, and build the next automation in your queue.',
+              result: 'Your system gets measured, maintained, and extended every month. It compounds instead of decaying.',
+            },
+          ].map(card => (
+            <div key={card.eyebrow} className={s.whatWeDoCard}>
+              <div className={s.cardEyebrow}>
+                <span className={s.cardDot} />
+                {card.eyebrow}
+              </div>
+              <h3 className={s.cardPain}>{card.pain}</h3>
+              <p className={s.cardBody}>{card.body}</p>
+              <div className={s.cardResult}>
+                <div className={s.cardResultTag}>RESULT</div>
+                <div className={s.cardResultText}>{card.result}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* 5. Who We Work With */}
       <section className={s.who}>
         <div className={s.whoInner}>

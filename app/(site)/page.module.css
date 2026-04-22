@@ -172,6 +172,91 @@
   line-height: 1.5;
 }
 
+/* ── What We Do (v2 cards) ──────────── */
+.whatWeDo {
+  background: var(--bg);
+  padding: 5rem 5vw;
+}
+
+.whatWeDoGrid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--border);
+}
+
+.whatWeDoCard {
+  background: var(--bg-white);
+  border-right: 1px solid var(--border);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.whatWeDoCard:last-child {
+  border-right: none;
+}
+
+.cardEyebrow {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.25rem;
+}
+
+.cardDot {
+  width: 6px;
+  height: 6px;
+  background: var(--orange);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cardPain {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.45;
+  margin-bottom: 1rem;
+}
+
+.cardBody {
+  font-size: 0.9rem;
+  color: var(--ink-mid);
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 1.5rem;
+}
+
+.cardResult {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.cardResultTag {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 0.4rem;
+}
+
+.cardResultText {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
 /* ── Who We Work With ────────────────── */
 .who {
   background: var(--dark);
@@ -365,6 +450,13 @@
   .processGrid { grid-template-columns: 1fr; }
   .processStep { border-right: none; border-bottom: 1px solid var(--border); }
   .processStep:last-child { border-bottom: none; }
+  .whatWeDoGrid { grid-template-columns: 1fr 1fr; }
+  .whatWeDoCard:nth-child(2) { border-right: none; }
+  .whatWeDoCard:nth-child(3) {
+    border-top: 1px solid var(--border);
+    border-right: none;
+    grid-column: span 2;
+  }
   .whoGrid { grid-template-columns: 1fr; }
   .whoCol:first-child { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
   .caseGrid { grid-template-columns: 1fr 1fr; }
@@ -379,6 +471,10 @@
 @media (max-width: 767px) {
   .hero { padding: 4rem 5vw 3rem; }
   .proofInner { grid-template-columns: 1fr 1fr; }
+  .whatWeDoGrid { grid-template-columns: 1fr; }
+  .whatWeDoCard { border-right: none; border-bottom: 1px solid var(--border); }
+  .whatWeDoCard:nth-child(3) { grid-column: span 1; }
+  .whatWeDoCard:last-child { border-bottom: none; }
   .caseGrid { grid-template-columns: 1fr; }
   .caseCard { border-right: none; border-bottom: 1px solid var(--border); grid-column: span 1; }
   .caseCard:last-child { border-bottom: none; }
