@@ -71,7 +71,7 @@ export default function HomePage() {
         <div className={s.quoteRowInner}>
           {/* TODO: swap with real approved client quote before deploy */}
           <p className={s.quoteText}>&ldquo;They replaced our manual follow-up in three weeks. I got my Sundays back.&rdquo;</p>
-          <p className={s.quoteAttrib}>Custom Builder, Lone Tree, IA</p>
+          <p className={s.quoteAttrib}>CUSTOM BUILDER, LONE TREE, IA</p>
         </div>
       </div>
 
@@ -265,7 +265,7 @@ export default function HomePage() {
         <p className={s.finalCtaUrgency}>NOW BOOKING TWO WEEKS OUT. 3 STRATEGY CALL SPOTS OPEN THIS WEEK.</p>
         <h2 className={s.finalCtaHeadline}>The SMBs that automate first will own the lead flow in their market. Let&apos;s see where you&apos;re exposed.</h2>
         <p className={s.finalCtaSub}>
-          Book a 30-minute call. We&apos;ll walk through your follow-up workflow, your top three competitors, and the highest-leverage system you could build first. You leave with a ranked action plan whether or not we work together.
+          Book a 30-minute call. We&apos;ll walk through your follow-up workflow, your top three competitors, and the highest-impact system you could build first. You leave with a ranked action plan whether or not we work together.
         </p>
         <a href="#apply" className="btn-orange">
           APPLY FOR A STRATEGY CALL →
