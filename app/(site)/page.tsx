@@ -51,11 +51,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. Social Proof Bar */}
+      {/* 2. Stats Bar */}
       <section className={s.proofBar}>
         <div className={s.proofInner}>
           {[
-            { num: '$2.4M+', label: 'Revenue Influenced' },
+            { num: '$2.4M+', label: 'In Tracked Client Revenue' },
             { num: '40+', label: 'Systems Deployed' },
             { num: '18', label: 'Industries Served' },
             { num: '< 48 hrs', label: 'Avg Time to First Insight' },
@@ -67,6 +67,13 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+      <div className={s.quoteRow}>
+        <div className={s.quoteRowInner}>
+          {/* TODO: swap with real approved client quote before deploy */}
+          <p className={s.quoteText}>&ldquo;They replaced our manual follow-up in three weeks. I got my Sundays back.&rdquo;</p>
+          <p className={s.quoteAttrib}>Custom Builder, Lone Tree, IA</p>
+        </div>
+      </div>
 
       {/* 3. Process */}
       <section className={s.process} id="how-we-work">

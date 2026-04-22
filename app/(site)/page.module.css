@@ -98,6 +98,36 @@
   color: rgba(255,255,255,0.55);
 }
 
+/* ── Quote Row ───────────────────────── */
+.quoteRow {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-top: none;
+  padding: 1.5rem 5vw;
+  text-align: center;
+}
+
+.quoteRowInner {
+  max-width: 64ch;
+  margin: 0 auto;
+}
+
+.quoteText {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.6;
+  margin-bottom: 0.4rem;
+}
+
+.quoteAttrib {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+}
+
 /* ── Shared Section Styles ───────────── */
 .sectionHeader {
   max-width: 1100px;
