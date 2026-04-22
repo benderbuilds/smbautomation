@@ -260,15 +260,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. Final CTA */}
+      {/* 9. Final CTA */}
       <section className={s.finalCta}>
-        <h2 className={s.finalCtaHeadline}>Ready to see what is possible?</h2>
+        <p className={s.finalCtaUrgency}>NOW BOOKING TWO WEEKS OUT. 3 STRATEGY CALL SPOTS OPEN THIS WEEK.</p>
+        <h2 className={s.finalCtaHeadline}>The SMBs that automate first will own the lead flow in their market. Let&apos;s see where you&apos;re exposed.</h2>
         <p className={s.finalCtaSub}>
-          Book a free 30-minute strategy call. We will walk through your business, identify the biggest opportunities, and tell you exactly what we would build first.
+          Book a 30-minute call. We&apos;ll walk through your follow-up workflow, your top three competitors, and the highest-leverage system you could build first. You leave with a ranked action plan whether or not we work together.
         </p>
-        <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="btn-primary">
-          Book Your Free Strategy Call →
+        <a href="#apply" className="btn-orange">
+          APPLY FOR A STRATEGY CALL →
         </a>
+        <p className={s.finalCtaRiskReversal}>
+          The call is free. If we don&apos;t identify at least one automation worth $10,000 in recovered time or revenue, we&apos;ll tell you straight that we&apos;re not the right fit.
+        </p>
       </section>
     </>
   );

@@ -500,6 +500,24 @@
   margin: 0 auto 2.5rem;
 }
 
+.finalCtaUrgency {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 1.25rem;
+}
+
+.finalCtaRiskReversal {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+  max-width: 56ch;
+  margin: 1rem auto 0;
+}
+
 /* ── Responsive ──────────────────────── */
 @media (max-width: 1099px) {
   .heroInner { grid-template-columns: 1fr; }
