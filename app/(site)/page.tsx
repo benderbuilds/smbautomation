@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import HeroDiagram from '@/components/HeroDiagram';
 import s from './page.module.css';
+import FounderSection from '@/components/FounderSection';
+import LeadMagnetGate from '@/components/LeadMagnetGate';
+import ApplicationForm from '@/components/ApplicationForm';
 
 export const metadata: Metadata = {
   title: { absolute: 'SMB Automation | Business Analysis, Custom Builds & Growth Systems for SMBs' },
@@ -260,6 +263,12 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 7. Founder */}
+      <FounderSection />
+
+      {/* 8. Lead Magnet */}
+      <LeadMagnetGate />
+
       {/* 9. Final CTA */}
       <section className={s.finalCta}>
         <p className={s.finalCtaUrgency}>NOW BOOKING TWO WEEKS OUT. 3 STRATEGY CALL SPOTS OPEN THIS WEEK.</p>
@@ -274,6 +283,9 @@ export default function HomePage() {
           The call is free. If we don&apos;t identify at least one automation worth $10,000 in recovered time or revenue, we&apos;ll tell you straight that we&apos;re not the right fit.
         </p>
       </section>
+
+      {/* 10. Application Form */}
+      <ApplicationForm />
     </>
   );
 }
