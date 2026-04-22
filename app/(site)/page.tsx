@@ -148,24 +148,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. Who We Work With */}
+      {/* 5. Who This Is For */}
       <section className={s.who}>
         <div className={s.whoInner}>
-          <span className="eyebrow-light">Who This Is For</span>
+          <span className="eyebrow-light">WHO THIS IS FOR</span>
           <h2 className={s.whoHeadline}>Built for operators, not enterprises.</h2>
           <p className={s.whoSub}>
-            We work best with small and mid-sized businesses that are past the startup phase and ready to invest in systems that scale.
+            This is for the owner who&apos;s past the startup grind, knows what&apos;s working, and is ready to stop being the bottleneck in their own business. If that&apos;s you, keep reading.
           </p>
           <div className={s.whoGrid}>
             <div className={s.whoCol}>
-              <div className={s.whoColTitle}>Good fit</div>
+              <div className={s.whoColTitle}>You&apos;re exactly who we built this for if:</div>
               <ul className={s.fitList}>
                 {[
-                  'Revenue between $500K and $20M',
-                  'Currently relying on manual processes that should be automated',
-                  'Ready to invest $5,000+/mo in growth infrastructure',
-                  'Want a strategic partner, not a vendor who disappears after delivery',
-                  'Decision-maker is involved in the engagement',
+                  'You\'re doing $500K to $20M in annual revenue.',
+                  'You\'ve got a team but you\'re still the person everything routes through.',
+                  'You\'ve tried automations before. Some worked. Most didn\'t get maintained.',
+                  'You can invest $5,000 a month in systems that compound.',
+                  'You want a partner embedded for 12+ months, not a one-and-done project.',
                 ].map(item => (
                   <li key={item} className={s.fitItem}>
                     <span className="proof-dot" />
@@ -173,6 +173,22 @@ export default function HomePage() {
                   </li>
                 ))}
               </ul>
+              <div className={s.badFitBlock}>
+                <div className={s.badFitTitle}>We&apos;re probably not the right fit if:</div>
+                <ul className={s.fitList}>
+                  {[
+                    'You\'re pre-revenue or still validating your offer.',
+                    'You want a one-time project with no follow-through.',
+                    'You\'re looking for the cheapest option, not the right one.',
+                    'You need someone to decide your strategy for you. We implement. You lead.',
+                  ].map(item => (
+                    <li key={item} className={s.fitItem}>
+                      <span className="proof-dot" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
             <div className={s.whoCol}>
               <div className={s.whoColTitle}>Industries we know well</div>
