@@ -30,22 +30,20 @@ export default function HomePage() {
       <section className={s.hero}>
         <div className={s.heroInner}>
           <div>
-            <span className="eyebrow-light">Growth Partner for Small Business</span>
+            <span className="eyebrow-light">GROWTH SYSTEMS FOR SMBS DOING $500K TO $20M</span>
             <h1 className={s.heroHeadline}>
-              We analyze your business, build what&apos;s missing, and{' '}
-              <em>scale it with you.</em>
+              Your team is doing by hand what your competitors&apos; systems already handle automatically.{' '}
+              <em>We close that gap.</em>
             </h1>
             <p className={s.heroSub}>
-              Most agencies sell you tools. We study your business like we own a piece of it, then build and run the systems that drive growth.
+              We audit your operation, build the systems you&apos;re missing, and stay embedded to scale what works. Most first builds ship in 2 to 4 weeks.
             </p>
             <div className={s.heroCtas}>
-              <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="btn-primary">
-                Book a Strategy Call →
-              </a>
-              <a href="#process" className="btn-secondary">
-                See How We Work →
+              <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="btn-orange">
+                SHOW ME MY BIGGEST AUTOMATION GAP →
               </a>
             </div>
+            <a href="#how-we-work" className={s.heroTextLink}>Or see how we work →</a>
           </div>
           <div className={s.heroRight}>
             <HeroDiagram />

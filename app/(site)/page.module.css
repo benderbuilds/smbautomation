@@ -46,6 +46,19 @@
   justify-content: flex-end;
 }
 
+.heroTextLink {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: 0.78rem;
+  color: var(--ink-mid);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s;
+}
+.heroTextLink:hover {
+  color: rgba(255,255,255,0.65);
+}
+
 /* ── Proof Bar ───────────────────────── */
 .proofBar {
   background: var(--blue);
