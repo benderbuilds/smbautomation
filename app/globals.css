@@ -91,6 +91,30 @@ img, svg {
   color: #fff;
 }
 
+/* alias used in spec copy — identical to btn-primary */
+.btn-orange {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--orange);
+  color: #fff;
+  padding: 0.85rem 1.75rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-family: 'Barlow', sans-serif;
+  cursor: pointer;
+  border: none;
+  border-radius: 0;
+  transition: background 0.15s;
+  text-decoration: none;
+}
+
+.btn-orange:hover {
+  background: #cc3e12;
+}
+
 .btn-secondary {
   display: inline-flex;
   align-items: center;

@@ -46,6 +46,19 @@
   justify-content: flex-end;
 }
 
+.heroTextLink {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: 0.78rem;
+  color: var(--ink-mid);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s;
+}
+.heroTextLink:hover {
+  color: rgba(255,255,255,0.65);
+}
+
 /* ── Proof Bar ───────────────────────── */
 .proofBar {
   background: var(--blue);
@@ -85,12 +98,37 @@
   color: rgba(255,255,255,0.55);
 }
 
-/* ── Services ────────────────────────── */
-.services {
-  background: var(--bg);
-  padding: 5rem 5vw;
+/* ── Quote Row ───────────────────────── */
+.quoteRow {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-top: none;
+  padding: 1.5rem 5vw;
+  text-align: center;
 }
 
+.quoteRowInner {
+  max-width: 64ch;
+  margin: 0 auto;
+}
+
+.quoteText {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.6;
+  margin-bottom: 0.4rem;
+}
+
+.quoteAttrib {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+}
+
+/* ── Shared Section Styles ───────────── */
 .sectionHeader {
   max-width: 1100px;
   margin: 0 auto 3rem;
@@ -109,62 +147,6 @@
   color: var(--ink-mid);
   line-height: 1.7;
   max-width: 520px;
-}
-
-.serviceGrid {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border: 1px solid var(--border);
-}
-
-.serviceCard {
-  background: var(--bg-white);
-  border-right: 1px solid var(--border);
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  transition: background 0.15s;
-}
-
-.serviceCard:last-child {
-  border-right: none;
-}
-
-.serviceCard:hover {
-  background: var(--blue-lt);
-}
-
-.serviceTitle {
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: var(--ink);
-  padding-left: 1rem;
-  border-left: 3px solid var(--blue);
-  line-height: 1.3;
-}
-
-.serviceDesc {
-  font-size: 0.875rem;
-  color: var(--ink-mid);
-  line-height: 1.7;
-  flex: 1;
-}
-
-.serviceLink {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--blue);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-
-.serviceLink:hover {
-  color: var(--blue-deep);
 }
 
 /* ── Process ─────────────────────────── */
@@ -210,6 +192,99 @@
   font-size: 0.875rem;
   color: var(--ink-mid);
   line-height: 1.7;
+}
+
+.processTime {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--ink-mid);
+  margin-top: 0.75rem;
+  line-height: 1.5;
+}
+
+/* ── What We Do (v2 cards) ──────────── */
+.whatWeDo {
+  background: var(--bg);
+  padding: 5rem 5vw;
+}
+
+.whatWeDoGrid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--border);
+}
+
+.whatWeDoCard {
+  background: var(--bg-white);
+  border-right: 1px solid var(--border);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.whatWeDoCard:last-child {
+  border-right: none;
+}
+
+.cardEyebrow {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.25rem;
+}
+
+.cardDot {
+  width: 6px;
+  height: 6px;
+  background: var(--orange);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cardPain {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.45;
+  margin-bottom: 1rem;
+}
+
+.cardBody {
+  font-size: 0.9rem;
+  color: var(--ink-mid);
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 1.5rem;
+}
+
+.cardResult {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.cardResultTag {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 0.4rem;
+}
+
+.cardResultText {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.45;
 }
 
 /* ── Who We Work With ────────────────── */
@@ -307,6 +382,21 @@
   font-style: italic;
 }
 
+.badFitBlock {
+  margin-top: 2rem;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--ink-mid);
+}
+
+.badFitTitle {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 1.25rem;
+}
+
 /* ── Case Studies Preview ────────────── */
 .caseStudies {
   background: var(--bg);
@@ -346,6 +436,21 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--blue);
+}
+
+.caseMetric {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.caseAttrib {
+  font-size: 0.72rem;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  color: var(--ink-mid);
+  padding-top: 0.5rem;
 }
 
 .caseTitle {
@@ -395,6 +500,24 @@
   margin: 0 auto 2.5rem;
 }
 
+.finalCtaUrgency {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 1.25rem;
+}
+
+.finalCtaRiskReversal {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+  max-width: 56ch;
+  margin: 1rem auto 0;
+}
+
 /* ── Responsive ──────────────────────── */
 @media (max-width: 1099px) {
   .heroInner { grid-template-columns: 1fr; }
@@ -402,16 +525,16 @@
   .proofInner { grid-template-columns: repeat(2, 1fr); }
   .proofStat:nth-child(2) { border-right: none; }
   .proofStat:nth-child(3) { border-right: 1px solid rgba(255,255,255,0.15); }
-  .serviceGrid { grid-template-columns: 1fr 1fr; }
-  .serviceCard:nth-child(2) { border-right: none; }
-  .serviceCard:nth-child(3) {
+  .processGrid { grid-template-columns: 1fr; }
+  .processStep { border-right: none; border-bottom: 1px solid var(--border); }
+  .processStep:last-child { border-bottom: none; }
+  .whatWeDoGrid { grid-template-columns: 1fr 1fr; }
+  .whatWeDoCard:nth-child(2) { border-right: none; }
+  .whatWeDoCard:nth-child(3) {
     border-top: 1px solid var(--border);
     border-right: none;
     grid-column: span 2;
   }
-  .processGrid { grid-template-columns: 1fr; }
-  .processStep { border-right: none; border-bottom: 1px solid var(--border); }
-  .processStep:last-child { border-bottom: none; }
   .whoGrid { grid-template-columns: 1fr; }
   .whoCol:first-child { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
   .caseGrid { grid-template-columns: 1fr 1fr; }
@@ -425,10 +548,11 @@
 
 @media (max-width: 767px) {
   .hero { padding: 4rem 5vw 3rem; }
-  .serviceGrid { grid-template-columns: 1fr; }
-  .serviceCard { border-right: none; border-bottom: 1px solid var(--border); }
-  .serviceCard:nth-child(3) { grid-column: span 1; }
   .proofInner { grid-template-columns: 1fr 1fr; }
+  .whatWeDoGrid { grid-template-columns: 1fr; }
+  .whatWeDoCard { border-right: none; border-bottom: 1px solid var(--border); }
+  .whatWeDoCard:nth-child(3) { grid-column: span 1; }
+  .whatWeDoCard:last-child { border-bottom: none; }
   .caseGrid { grid-template-columns: 1fr; }
   .caseCard { border-right: none; border-bottom: 1px solid var(--border); grid-column: span 1; }
   .caseCard:last-child { border-bottom: none; }

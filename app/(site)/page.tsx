@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import HeroDiagram from '@/components/HeroDiagram';
 import s from './page.module.css';
+import FounderSection from '@/components/FounderSection';
+import LeadMagnetGate from '@/components/LeadMagnetGate';
+import ApplicationForm from '@/components/ApplicationForm';
 
 export const metadata: Metadata = {
   title: { absolute: 'SMB Automation | Business Analysis, Custom Builds & Growth Systems for SMBs' },
@@ -30,22 +33,20 @@ export default function HomePage() {
       <section className={s.hero}>
         <div className={s.heroInner}>
           <div>
-            <span className="eyebrow-light">Growth Partner for Small Business</span>
+            <span className="eyebrow-light">GROWTH SYSTEMS FOR SMBS DOING $500K TO $20M</span>
             <h1 className={s.heroHeadline}>
-              We analyze your business, build what&apos;s missing, and{' '}
-              <em>scale it with you.</em>
+              Your team is doing by hand what your competitors&apos; systems already handle automatically.{' '}
+              <em>We close that gap.</em>
             </h1>
             <p className={s.heroSub}>
-              Most agencies sell you tools. We study your business like we own a piece of it, then build and run the systems that drive growth.
+              We audit your operation, build the systems you&apos;re missing, and stay embedded to scale what works. Most first builds ship in 2 to 4 weeks.
             </p>
             <div className={s.heroCtas}>
-              <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="btn-primary">
-                Book a Strategy Call →
-              </a>
-              <a href="#process" className="btn-secondary">
-                See How We Work →
+              <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="btn-orange">
+                SHOW ME MY BIGGEST AUTOMATION GAP →
               </a>
             </div>
+            <a href="#how-we-work" className={s.heroTextLink}>Or see how we work →</a>
           </div>
           <div className={s.heroRight}>
             <HeroDiagram />
@@ -53,11 +54,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. Social Proof Bar */}
+      {/* 2. Stats Bar */}
       <section className={s.proofBar}>
         <div className={s.proofInner}>
           {[
-            { num: '$2.4M+', label: 'Revenue Influenced' },
+            { num: '$2.4M+', label: 'In Tracked Client Revenue' },
             { num: '40+', label: 'Systems Deployed' },
             { num: '18', label: 'Industries Served' },
             { num: '< 48 hrs', label: 'Avg Time to First Insight' },
@@ -69,100 +70,112 @@ export default function HomePage() {
           ))}
         </div>
       </section>
-
-      {/* 3. Services Overview */}
-      <section className={s.services}>
-        <div className={s.sectionHeader}>
-          <span className="eyebrow">What We Do</span>
-          <h2 className={s.sectionHeadline}>Strategy. Build. Scale.</h2>
-          <p className={s.sectionSub}>
-            Three phases of working with us. Each one delivers standalone value, and together they compound.
-          </p>
+      <div className={s.quoteRow}>
+        <div className={s.quoteRowInner}>
+          {/* TODO: swap with real approved client quote before deploy */}
+          <p className={s.quoteText}>&ldquo;They replaced our manual follow-up in three weeks. I got my Sundays back.&rdquo;</p>
+          <p className={s.quoteAttrib}>CUSTOM BUILDER, LONE TREE, IA</p>
         </div>
-        <div className={s.serviceGrid}>
-          {[
-            {
-              title: 'Business Analysis & Growth Strategy',
-              desc: 'We start by analyzing your online presence against your competitors. SEO, Google Business Profile, social media. In one hour, you get a clear picture of where you\'re invisible, where you\'re losing to competitors, and a prioritized action plan to fix it.',
-              cta: 'Explore Strategy Services →',
-              href: '/services/strategy',
-            },
-            {
-              title: '0-1 MVP Builds & Custom Development',
-              desc: 'We design and build the tools your business is missing. Custom automations, client-facing apps, internal dashboards, AI workflows. Every build is scoped around a measurable outcome: time saved, revenue recovered, or capacity unlocked.',
-              cta: 'Explore Build Services →',
-              href: '/services/build',
-            },
-            {
-              title: 'Ongoing Optimization & Retainer',
-              desc: 'We stay embedded in your business. Monthly performance reviews, system optimization, new builds as priorities shift. This is not a support contract. It is having a technical growth team on call.',
-              cta: 'Explore Scale Services →',
-              href: '/services/scale',
-            },
-          ].map(svc => (
-            <div key={svc.title} className={s.serviceCard}>
-              <div className={s.serviceTitle}>{svc.title}</div>
-              <p className={s.serviceDesc}>{svc.desc}</p>
-              <Link href={svc.href} className={s.serviceLink}>{svc.cta}</Link>
-            </div>
-          ))}
-        </div>
-      </section>
+      </div>
 
-      {/* 4. Process */}
-      <section className={s.process} id="process">
+      {/* 3. Process */}
+      <section className={s.process} id="how-we-work">
         <div className={s.sectionHeader}>
-          <span className="eyebrow">How We Work</span>
-          <h2 className={s.sectionHeadline}>Analyze. Build. Scale.</h2>
-          <p className={s.sectionSub}>
-            Every engagement follows this progression. Some clients start at step one, others jump straight to a build. We meet you where you are.
-          </p>
+          <span className="eyebrow">THE PROCESS</span>
+          <h2 className={s.sectionHeadline}>Three phases. No surprises.</h2>
         </div>
         <div className={s.processGrid}>
           {[
             {
               num: '01',
-              title: 'SEO, GBP & Competitor Analysis',
-              desc: 'We audit your search rankings, Google Business Profile, and social media against your top competitors. No generic templates. You get a specific, prioritized action plan in one session.',
+              title: 'Analyze',
+              desc: 'One working session. We audit your SEO, follow-up workflow, CRM, and top three competitors. You leave with a ranked action plan, not a 40-page report.',
+              time: '60 to 90 minutes. No homework.',
             },
             {
               num: '02',
-              title: 'Build What Matters Most',
-              desc: 'We prioritize by impact. The first build targets your highest-value bottleneck with a measurable ROI target attached. You see results before we move to the next one.',
+              title: 'Build',
+              desc: 'We build the first system inside your existing stack. Email, calendar, CRM, forms, phone. Nothing new to learn.',
+              time: 'Most first builds ship in 2 to 4 weeks.',
             },
             {
               num: '03',
-              title: 'Scale With You Monthly',
-              desc: 'We review performance data, optimize what is running, and build the next priority. Your business evolves. Your systems evolve with it.',
+              title: 'Scale',
+              desc: 'Monthly retainer. We measure what\'s working, fix what\'s not, and add the next system in the queue.',
+              time: 'Month to month. Pause anytime.',
             },
           ].map(step => (
             <div key={step.num} className={s.processStep}>
               <div className={s.processNum}>{step.num}</div>
               <div className={s.processTitle}>{step.title}</div>
               <p className={s.processDesc}>{step.desc}</p>
+              <p className={s.processTime}>{step.time}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 5. Who We Work With */}
+      {/* 4. What We Do */}
+      <section className={s.whatWeDo}>
+        <div className={s.sectionHeader}>
+          <span className="eyebrow">WHAT WE DO</span>
+          <h2 className={s.sectionHeadline}>Three ways we plug in.</h2>
+        </div>
+        <div className={s.whatWeDoGrid}>
+          {[
+            {
+              eyebrow: 'BUSINESS ANALYSIS',
+              pain: 'You don\'t know exactly where you\'re losing leads, revenue, or rankings.',
+              body: 'We audit your SEO, Google Business Profile, follow-up workflow, and your top three competitors. One session. Live, not async.',
+              result: 'A ranked action plan you can hand to your team on Monday.',
+            },
+            {
+              eyebrow: 'BUILDS & CUSTOM DEVELOPMENT',
+              pain: 'You\'ve been quoted $80K for an MVP, or you\'re stuck with an AI-built prototype that won\'t launch.',
+              body: 'We ship the system that should have shipped six months ago. Working software inside your existing stack. No platform lock-in.',
+              result: 'Most first builds go live in 2 to 4 weeks.',
+            },
+            {
+              eyebrow: 'RETAINER & OPTIMIZATION',
+              pain: 'The system you bought last year is already outdated and nobody is measuring it.',
+              body: 'Monthly retainer. We track what\'s working, kill what\'s not, and build the next automation in your queue.',
+              result: 'Your system gets measured, maintained, and extended every month. It compounds instead of decaying.',
+            },
+          ].map(card => (
+            <div key={card.eyebrow} className={s.whatWeDoCard}>
+              <div className={s.cardEyebrow}>
+                <span className={s.cardDot} />
+                {card.eyebrow}
+              </div>
+              <h3 className={s.cardPain}>{card.pain}</h3>
+              <p className={s.cardBody}>{card.body}</p>
+              <div className={s.cardResult}>
+                <div className={s.cardResultTag}>RESULT</div>
+                <div className={s.cardResultText}>{card.result}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. Who This Is For */}
       <section className={s.who}>
         <div className={s.whoInner}>
-          <span className="eyebrow-light">Who This Is For</span>
+          <span className="eyebrow-light">WHO THIS IS FOR</span>
           <h2 className={s.whoHeadline}>Built for operators, not enterprises.</h2>
           <p className={s.whoSub}>
-            We work best with small and mid-sized businesses that are past the startup phase and ready to invest in systems that scale.
+            This is for the owner who&apos;s past the startup grind, knows what&apos;s working, and is ready to stop being the bottleneck in their own business. If that&apos;s you, keep reading.
           </p>
           <div className={s.whoGrid}>
             <div className={s.whoCol}>
-              <div className={s.whoColTitle}>Good fit</div>
+              <div className={s.whoColTitle}>You&apos;re exactly who we built this for if:</div>
               <ul className={s.fitList}>
                 {[
-                  'Revenue between $500K and $20M',
-                  'Currently relying on manual processes that should be automated',
-                  'Ready to invest $5,000+/mo in growth infrastructure',
-                  'Want a strategic partner, not a vendor who disappears after delivery',
-                  'Decision-maker is involved in the engagement',
+                  'You\'re doing $500K to $20M in annual revenue.',
+                  'You\'ve got a team but you\'re still the person everything routes through.',
+                  'You\'ve tried automations before. Some worked. Most didn\'t get maintained.',
+                  'You can invest $5,000 a month in systems that compound.',
+                  'You want a partner embedded for 12+ months, not a one-and-done project.',
                 ].map(item => (
                   <li key={item} className={s.fitItem}>
                     <span className="proof-dot" />
@@ -170,6 +183,22 @@ export default function HomePage() {
                   </li>
                 ))}
               </ul>
+              <div className={s.badFitBlock}>
+                <div className={s.badFitTitle}>We&apos;re probably not the right fit if:</div>
+                <ul className={s.fitList}>
+                  {[
+                    'You\'re pre-revenue or still validating your offer.',
+                    'You want a one-time project with no follow-through.',
+                    'You\'re looking for the cheapest option, not the right one.',
+                    'You need someone to decide your strategy for you. We implement. You lead.',
+                  ].map(item => (
+                    <li key={item} className={s.fitItem}>
+                      <span className="proof-dot" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
             <div className={s.whoCol}>
               <div className={s.whoColTitle}>Industries we know well</div>
@@ -192,7 +221,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. Case Studies Preview */}
+      {/* 6. Recent Work */}
       <section className={s.caseStudies}>
         <div className={s.sectionHeader}>
           <span className="eyebrow">Recent Work</span>
@@ -202,40 +231,61 @@ export default function HomePage() {
           {[
             {
               tag: 'Real Estate',
+              metric: '12 inbound referrals in 90 days', // TODO: confirm real metric with Jesse
               title: 'Annual Client Engagement System',
               result: '10-template automated email sequence keeping 200+ past clients engaged year-round.',
+              attrib: 'REALTOR, IOWA CITY, IA',
             },
             {
               tag: 'Custom Home Building',
+              metric: 'Saved 6 hrs/week in quote follow-up', // TODO: confirm real metric with Jesse
               title: 'Growth Strategy & Online Presence Overhaul',
               result: 'Comprehensive competitor analysis, website gap audit, and four-phase growth roadmap for a regional builder.',
+              attrib: 'CUSTOM BUILDER, LONE TREE, IA',
             },
             {
               tag: 'Local Services',
+              metric: 'Content creation time cut by 80%', // TODO: confirm real metric with Jesse
               title: 'Video Content Automation Pipeline',
               result: 'Automated before/after video production cutting content creation time by 80%.',
+              attrib: 'LOCAL SERVICES BUSINESS', // TODO: confirm INDUSTRY, CITY, STATE with Jesse
             },
           ].map(c => (
             <Link key={c.title} href="/work" className={s.caseCard}>
               <div className={s.caseTag}>{c.tag}</div>
+              <div className={s.caseMetric}>{c.metric}</div>
               <div className={s.caseTitle}>{c.title}</div>
               <p className={s.caseResult}>{c.result}</p>
+              <div className={s.caseAttrib}>{c.attrib}</div>
               <div className={s.caseCta}>Read the Full Story →</div>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* 7. Final CTA */}
+      {/* 7. Founder */}
+      <FounderSection />
+
+      {/* 8. Lead Magnet */}
+      <LeadMagnetGate />
+
+      {/* 9. Final CTA */}
       <section className={s.finalCta}>
-        <h2 className={s.finalCtaHeadline}>Ready to see what is possible?</h2>
+        <p className={s.finalCtaUrgency}>NOW BOOKING TWO WEEKS OUT. 3 STRATEGY CALL SPOTS OPEN THIS WEEK.</p>
+        <h2 className={s.finalCtaHeadline}>The SMBs that automate first will own the lead flow in their market. Let&apos;s see where you&apos;re exposed.</h2>
         <p className={s.finalCtaSub}>
-          Book a free 30-minute strategy call. We will walk through your business, identify the biggest opportunities, and tell you exactly what we would build first.
+          Book a 30-minute call. We&apos;ll walk through your follow-up workflow, your top three competitors, and the highest-impact system you could build first. You leave with a ranked action plan whether or not we work together.
         </p>
-        <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="btn-primary">
-          Book Your Free Strategy Call →
+        <a href="#apply" className="btn-orange">
+          APPLY FOR A STRATEGY CALL →
         </a>
+        <p className={s.finalCtaRiskReversal}>
+          The call is free. If we don&apos;t identify at least one automation worth $10,000 in recovered time or revenue, we&apos;ll tell you straight that we&apos;re not the right fit.
+        </p>
       </section>
+
+      {/* 10. Application Form */}
+      <ApplicationForm />
     </>
   );
 }
