@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { promises as fs } from 'fs';
 import path from 'path';
 
 export async function POST(req: NextRequest) {
@@ -45,21 +44,19 @@ export async function POST(req: NextRequest) {
       console.log('[lead-magnet] RESEND_API_KEY not set — logging lead:', email);
     }
 
-    const dataDir = path.join(process.cwd(), 'data');
-    const leadsFile = path.join(dataDir, 'leads.json');
-    try {
-      await fs.mkdir(dataDir, { recursive: true });
-      let leads: { email: string; ts: string }[] = [];
+    const sheetsWebhook = process.env.GOOGLE_SHEETS_WEBHOOK;
+    if (sheetsWebhook) {
       try {
-        const raw = await fs.readFile(leadsFile, 'utf8');
-        leads = JSON.parse(raw);
-      } catch {
-        // file doesn't exist yet
+        await fetch(sheetsWebhook, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ tab: 'Leads', row: { email, submitted: new Date().toISOString() } }),
+        });
+      } catch (err) {
+        console.error('[lead-magnet] Failed to write to Google Sheets:', err);
       }
-      leads.push({ email, ts: new Date().toISOString() });
-      await fs.writeFile(leadsFile, JSON.stringify(leads, null, 2));
-    } catch (err) {
-      console.error('[lead-magnet] Failed to write leads.json:', err);
+    } else {
+      console.log('[lead-magnet] GOOGLE_SHEETS_WEBHOOK not set — skipping sheet write');
     }
 
     return NextResponse.json({ ok: true });

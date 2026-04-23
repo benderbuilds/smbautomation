@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { promises as fs } from 'fs';
-import path from 'path';
 
 function isValidEmail(email: string) {
   return typeof email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -70,21 +68,29 @@ export async function POST(req: NextRequest) {
       console.log('[apply] RESEND_API_KEY not set — logging application:\n', textBody);
     }
 
-    const dataDir = path.join(process.cwd(), 'data');
-    const appsFile = path.join(dataDir, 'applications.json');
-    try {
-      await fs.mkdir(dataDir, { recursive: true });
-      let apps: object[] = [];
+    const sheetsWebhook = process.env.GOOGLE_SHEETS_WEBHOOK;
+    if (sheetsWebhook) {
       try {
-        const raw = await fs.readFile(appsFile, 'utf8');
-        apps = JSON.parse(raw);
-      } catch {
-        // file doesn't exist yet
+        await fetch(sheetsWebhook, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            tab: 'Applications',
+            row: {
+              firstName, lastName, email, companyName,
+              companyWebsite: companyWebsite || '',
+              role, companySize, revenue, budget, howWeCanHelp,
+              improvements: improvements.join(', '),
+              anythingElse: anythingElse || '',
+              submitted: ts,
+            },
+          }),
+        });
+      } catch (err) {
+        console.error('[apply] Failed to write to Google Sheets:', err);
       }
-      apps.push({ ...body, ts });
-      await fs.writeFile(appsFile, JSON.stringify(apps, null, 2));
-    } catch (err) {
-      console.error('[apply] Failed to write applications.json:', err);
+    } else {
+      console.log('[apply] GOOGLE_SHEETS_WEBHOOK not set — skipping sheet write');
     }
 
     return NextResponse.json({ ok: true });
