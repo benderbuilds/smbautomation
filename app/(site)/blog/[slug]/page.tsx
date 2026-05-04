@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: titleTag,
     description: post.excerpt,
     openGraph: {
-      title: post.title,
+      title: post.seoTitle ?? post.title,
       description: post.excerpt,
       type: 'article',
       publishedTime: post.date,
