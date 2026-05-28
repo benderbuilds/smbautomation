@@ -35,6 +35,33 @@
   margin-bottom: 2rem;
 }
 
+.heroSupport {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.6;
+  max-width: 480px;
+  margin-bottom: 2rem;
+}
+
+.heroCtaOutlined {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+  border-radius: 0;
+}
+.heroCtaOutlined:hover {
+  border-color: rgba(255,255,255,0.75);
+  color: #fff;
+}
+
 .heroCtas {
   display: flex;
   gap: 1rem;

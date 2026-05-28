@@ -33,20 +33,24 @@ export default function HomePage() {
       <section className={s.hero}>
         <div className={s.heroInner}>
           <div>
-            <span className="eyebrow-light">GROWTH SYSTEMS FOR SMBS DOING $500K TO $20M</span>
+            <span className="eyebrow-light">STRATEGIC GROWTH PARTNER FOR SMBS</span>
             <h1 className={s.heroHeadline}>
-              Your team is doing by hand what your competitors&apos; systems already handle automatically.{' '}
-              <em>We close that gap.</em>
+              We find where your business is <em>losing time and money.</em> Then we build the fix.
             </h1>
             <p className={s.heroSub}>
-              We audit your operation, build the systems you&apos;re missing, and stay embedded to scale what works. Most first builds ship in 2 to 4 weeks.
+              It starts with the Operations Opportunity Map: a diagnostic that pinpoints your highest-ROI automations and proves the dollar impact before we build a thing. The same process we run on operations up to $200M.
+            </p>
+            <p className={s.heroSupport}>
+              For owners doing $500K to $20M who are done being the bottleneck in their own business.
             </p>
             <div className={s.heroCtas}>
-              <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="btn-orange">
-                SHOW ME MY BIGGEST AUTOMATION GAP →
+              <a href="#apply" className="btn-orange">
+                GET YOUR OPERATIONS OPPORTUNITY MAP →
+              </a>
+              <a href="#free-audit" className={s.heroCtaOutlined}>
+                START WITH A FREE AUDIT →
               </a>
             </div>
-            <a href="#how-we-work" className={s.heroTextLink}>Or see how we work →</a>
           </div>
           <div className={s.heroRight}>
             <HeroDiagram />
