@@ -1,0 +1,25 @@
+.section {
+  background: var(--bg-white);
+  padding: 5rem 5vw;
+  border-bottom: 1px solid var(--border);
+}
+
+.inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.headline {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0.5rem 0 1.25rem;
+  line-height: 1.15;
+}
+
+.body {
+  font-size: 1rem;
+  color: var(--ink-mid);
+  line-height: 1.75;
+}

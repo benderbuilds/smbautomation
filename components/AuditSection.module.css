@@ -1,0 +1,62 @@
+.section {
+  background: var(--bg);
+  padding: 5rem 5vw;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.headline {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0.5rem 0 1.25rem;
+  line-height: 1.15;
+}
+
+.body {
+  font-size: 1rem;
+  color: var(--ink-mid);
+  line-height: 1.75;
+  margin-bottom: 2.5rem;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 500;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.itemText {
+  font-size: 0.95rem;
+  color: var(--ink);
+  line-height: 1.6;
+}

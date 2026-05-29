@@ -5,10 +5,10 @@ import './globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL('https://smbautomation.io'),
   title: {
-    template: '%s | SMB Automation',
-    default: 'SMB Automation | Operations Opportunity Map and AI Builds for SMBs Doing $500K to $20M',
+    template: '%s | SMBautomation',
+    default: 'SMBautomation - Business Audits and AI Builds for Small and Mid-Size Businesses | Jesse Bender, Founder',
   },
-  description: 'We find your highest-ROI automations and prove the dollar impact before building a thing. Strategic growth partner for SMBs doing $500K to $20M.',
+  description: 'Get a business audit from Jesse Bender: 13 years scaling companies, $200M portfolio managed, Fortune 500 exit. We find where time and money are leaking, then build only what pays back.',
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
@@ -16,10 +16,10 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: 'SMB Automation | Operations Opportunity Map and AI Builds for SMBs Doing $500K to $20M',
-    description: 'We find your highest-ROI automations and prove the dollar impact before building a thing.',
+    title: 'SMBautomation - Business Audits and AI Builds for Small and Mid-Size Businesses | Jesse Bender, Founder',
+    description: 'Get a business audit from Jesse Bender: 13 years scaling companies, $200M portfolio managed, Fortune 500 exit.',
     url: 'https://smbautomation.io',
-    siteName: 'SMB Automation',
+    siteName: 'SMBautomation',
     type: 'website',
   },
   alternates: {
@@ -30,10 +30,10 @@ export const metadata: Metadata = {
 const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'SMB Automation',
+  name: 'SMBautomation',
   url: 'https://smbautomation.io',
   email: 'jesse@smbautomation.io',
-  description: 'We find your highest-ROI automations and prove the dollar impact before building a thing. Strategic growth partner for SMBs doing $500K to $20M.',
+  description: 'Business audits and AI builds for small and mid-size businesses. We find where time and money are leaking, then build only what pays back.',
   logo: 'https://smbautomation.io/favicon.svg',
   foundingLocation: {
     '@type': 'Place',
@@ -49,7 +49,7 @@ const orgSchema = {
     '@id': 'https://smbautomation.io/#jesse-bender',
     name: 'Jesse Bender',
     jobTitle: 'Founder',
-    worksFor: { '@type': 'Organization', name: 'SMB Automation' },
+    worksFor: { '@type': 'Organization', name: 'SMBautomation' },
     alumniOf: [
       { '@type': 'Organization', name: 'TelePharm' },
       { '@type': 'Organization', name: 'Cardinal Health' },

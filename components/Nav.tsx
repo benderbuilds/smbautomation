@@ -4,8 +4,6 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import s from './Nav.module.css';
 
-const CALENDLY = 'https://calendly.com/jesse-smbautomation/30min';
-
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -21,23 +19,18 @@ export default function Nav() {
       <nav className={`${s.nav} ${scrolled ? s.navScrolled : ''}`}>
         <Link href="/" className={s.logo}>
           <span className={s.logoSmb}>SMB</span>
-          <span className={s.logoAuto}> AUTOMATION</span>
+          <span className={s.logoAuto}>automation</span>
         </Link>
 
-        <ul className={s.links}>
-          <li><Link href="/services">Services</Link></li>
-          <li><Link href="/work">Work</Link></li>
-          <li><Link href="/blog">Blog</Link></li>
-        </ul>
-
-        <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className={s.cta}>
-          Book a Strategy Call →
+        <a href="/#apply" className={s.cta}>
+          Get audit →
         </a>
 
         <button
           className={s.hamburger}
           onClick={() => setOpen(v => !v)}
           aria-label="Toggle menu"
+          aria-expanded={open}
         >
           <span />
           <span />
@@ -46,13 +39,8 @@ export default function Nav() {
       </nav>
 
       <div className={`${s.drawer} ${open ? s.drawerOpen : ''}`}>
-        <ul className={s.drawerLinks}>
-          <li><Link href="/services" onClick={() => setOpen(false)}>Services</Link></li>
-          <li><Link href="/work" onClick={() => setOpen(false)}>Work</Link></li>
-          <li><Link href="/blog" onClick={() => setOpen(false)}>Blog</Link></li>
-        </ul>
-        <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className={s.drawerCta}>
-          Book a Strategy Call →
+        <a href="/#apply" className={s.drawerCta} onClick={() => setOpen(false)}>
+          Get audit →
         </a>
       </div>
     </>

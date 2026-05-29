@@ -6,32 +6,24 @@ import s from './HomeFaq.module.css';
 
 const FAQS = [
   {
-    q: 'What kind of businesses do you build for?',
-    a: 'We work with owners doing $500K to $20M in annual revenue who have a team but are still the person everything routes through. Our deepest experience is in property management, healthcare, hospitality, home building, and local service businesses. If your operation runs on appointments, leads, and recurring revenue, we can most likely help. If you are pre-revenue or still validating your offer, we are probably not the right fit yet.',
+    q: 'What kind of businesses do you work with?',
+    a: 'Owners in property management, healthcare, hospitality, home building, and local service businesses. The pattern is the same: real revenue, real customers, ops held together by spreadsheets and the owner\'s memory.',
   },
   {
-    q: 'What is the Operations Opportunity Map?',
-    a: 'It is a paid diagnostic engagement where we map your workflows, score every bottleneck by ROI, and hand you a prioritized plan with the dollar impact of each fix. You own the map whether or not we build anything. Most clients use it to decide exactly what to automate first, in what order, and what it is worth to them. It is the same process we apply to operations up to $200M in revenue.',
+    q: 'How is this different from hiring a developer?',
+    a: 'Developers build what you tell them to build. We figure out what to build first. The audit proves the ROI before any code gets written.',
   },
   {
-    q: 'How is this different from hiring a developer or an agency?',
-    a: 'Developers build what you spec. Agencies sell retainers. We start by finding what will actually move your numbers before we build anything. The Operations Opportunity Map proves the dollar impact first. You are not guessing at ROI after the fact. We also stay embedded after the build, which means the systems get maintained and improved instead of decaying the moment the project closes.',
-  },
-  {
-    q: 'What does the free audit include?',
-    a: 'The free automated audit is a fast, system-generated look at your online presence and lead intake: Google Business Profile gaps, website conversion friction, missed follow-up points, and basic SEO signals. It is not a deep operational diagnostic. It is a quick read on where you are leaking obvious opportunities. Delivered to your inbox in 24 hours. No call required.',
+    q: 'What does the audit cost?',
+    a: 'Scoped to your operation. We send specifics after a 30-minute conversation. If we build, the audit fee applies to the first build.',
   },
   {
     q: 'How fast do you ship?',
-    a: 'Most first builds go live in 2 to 4 weeks after scoping is complete. Turnaround depends on the complexity of your existing stack and how quickly we can get access to your tools. The Operations Opportunity Map itself typically takes 5 to 7 business days. We do not drag out engagements. We ship, measure, and iterate.',
+    a: 'First audit deliverable in 2 weeks. Most builds ship in 4 to 8 weeks after that.',
   },
   {
-    q: 'What tools do you build with?',
-    a: 'We build inside your existing stack whenever possible. Common tools include Make, n8n, GoHighLevel, HubSpot, Airtable, Supabase, Vapi, Twilio, and custom-coded applications when off-the-shelf tools are not the right fit. We do not resell software or lock you into platforms. You own everything we build: credentials, logic, and documentation.',
-  },
-  {
-    q: 'What happens if it does not work?',
-    a: 'Every build comes with a defined success metric agreed on before we start. If we cannot identify at least one automation worth $10,000 in recovered time or revenue during the diagnostic phase, we will tell you straight that we are not the right fit. After launch, we watch for failures and edge cases and fix them fast. The retainer model exists specifically so systems stay working and keep improving rather than being abandoned.',
+    q: 'What if it doesn\'t work?',
+    a: 'Every build is scoped from a proven ROI number in the audit. If we can\'t show the math, we don\'t take the work.',
   },
 ];
 
@@ -60,8 +52,8 @@ export default function HomeFaq() {
       />
       <div className={s.inner}>
         <div className={s.header}>
-          <span className="eyebrow">COMMON QUESTIONS</span>
-          <h2 className={s.headline}>What owners ask before they reach out.</h2>
+          <span className="eyebrow">QUESTIONS</span>
+          <h2 className={s.headline}>What owners ask first.</h2>
         </div>
         <div className={s.list}>
           {FAQS.map((faq, i) => (

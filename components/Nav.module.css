@@ -9,7 +9,7 @@
   justify-content: space-between;
   padding: 0 5vw;
   height: 64px;
-  background: rgba(237,241,247,0.96);
+  background: color-mix(in srgb, var(--bg) 96%, transparent);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid transparent;
   transition: border-color 0.3s;
@@ -23,55 +23,30 @@
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.07em;
-  text-transform: uppercase;
   text-decoration: none;
 }
 
 .logoSmb {
-  color: var(--blue);
+  color: var(--ink);
+  text-transform: uppercase;
 }
 
 .logoAuto {
-  color: var(--ink);
-}
-
-.links {
-  display: flex;
-  gap: 2.5rem;
-  list-style: none;
-  align-items: center;
-}
-
-.links a {
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-mid);
-  transition: color 0.15s;
-  text-decoration: none;
-}
-
-.links a:hover {
-  color: var(--ink);
+  color: var(--blue);
+  text-transform: none;
 }
 
 .cta {
   font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #fff;
-  background: var(--orange);
-  padding: 0.6rem 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--orange);
   text-decoration: none;
-  transition: background 0.15s;
-  border-radius: 0;
+  transition: opacity 0.15s;
 }
 
 .cta:hover {
-  background: #cc3e12;
-  color: #fff;
+  opacity: 0.75;
 }
 
 .hamburger {
@@ -100,55 +75,28 @@
   right: 0;
   background: var(--bg-white);
   border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border);
   padding: 1.5rem 5vw 2rem;
   z-index: 99;
   flex-direction: column;
-  gap: 0;
 }
 
 .drawerOpen {
   display: flex;
 }
 
-.drawerLinks {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-}
-
-.drawerLinks li {
-  border-bottom: 1px solid var(--border);
-}
-
-.drawerLinks a {
-  display: block;
-  padding: 0.9rem 0;
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-mid);
-  text-decoration: none;
-}
-
 .drawerCta {
   display: block;
-  margin-top: 1.25rem;
   text-align: center;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #fff;
-  background: var(--orange);
-  padding: 0.85rem 1.5rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--orange);
+  padding: 1rem 0;
   text-decoration: none;
 }
 
 @media (max-width: 767px) {
-  .links {
-    display: none;
-  }
   .cta {
     display: none;
   }
