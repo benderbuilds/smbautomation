@@ -34,35 +34,21 @@
   margin: 0;
 }
 
-.hook {
-  font-size: 1.35rem;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-  line-height: 1.35;
-  margin: 0;
-}
-
-.hook em {
-  font-style: italic;
-}
-
 .body {
   font-size: 0.95rem;
   color: var(--ink-mid);
-  line-height: 1.65;
+  line-height: 1.7;
   margin: 0;
 }
 
-.pullQuote {
-  border-top: 1px solid var(--border);
-  padding-top: 1.25rem;
-  font-size: 1rem;
-  font-style: italic;
-  color: var(--ink);
-  line-height: 1.6;
-  max-width: 48ch;
-  margin: 0;
+.ctaLink {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s;
+}
+.ctaLink:hover {
+  color: var(--blue-deep);
 }
 
 .signature {
