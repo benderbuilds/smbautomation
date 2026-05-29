@@ -9,7 +9,7 @@
   justify-content: space-between;
   padding: 0 5vw;
   height: 64px;
-  background: rgba(237,241,247,0.96);
+  background: color-mix(in srgb, var(--bg) 96%, transparent);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid transparent;
   transition: border-color 0.3s;
@@ -75,10 +75,10 @@
   right: 0;
   background: var(--bg-white);
   border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border);
   padding: 1.5rem 5vw 2rem;
   z-index: 99;
   flex-direction: column;
-  gap: 0;
 }
 
 .drawerOpen {
@@ -94,7 +94,6 @@
   color: var(--orange);
   padding: 1rem 0;
   text-decoration: none;
-  border-top: 1px solid var(--border);
 }
 
 @media (max-width: 767px) {

@@ -30,6 +30,7 @@ export default function Nav() {
           className={s.hamburger}
           onClick={() => setOpen(v => !v)}
           aria-label="Toggle menu"
+          aria-expanded={open}
         >
           <span />
           <span />
