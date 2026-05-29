@@ -14,8 +14,6 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://smbautomation.io' },
 };
 
-const CALENDLY = 'https://calendly.com/jesse-smbautomation/30min';
-
 const orgJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
