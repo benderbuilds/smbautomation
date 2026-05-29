@@ -5,14 +5,14 @@ import s from './page.module.css';
 import FounderSection from '@/components/FounderSection';
 import LeadMagnetGate from '@/components/LeadMagnetGate';
 import ApplicationForm from '@/components/ApplicationForm';
+import EngagementLadder from '@/components/EngagementLadder';
+import HomeFaq from '@/components/HomeFaq';
 
 export const metadata: Metadata = {
   title: { absolute: 'SMB Automation | Business Analysis, Custom Builds & Growth Systems for SMBs' },
   description: 'We analyze your business, build what is missing, and scale it with you. Strategic growth partner for SMBs doing $500K to $20M.',
   alternates: { canonical: 'https://smbautomation.io' },
 };
-
-const CALENDLY = 'https://calendly.com/jesse-smbautomation/30min';
 
 const orgJsonLd = {
   '@context': 'https://schema.org',
@@ -33,20 +33,24 @@ export default function HomePage() {
       <section className={s.hero}>
         <div className={s.heroInner}>
           <div>
-            <span className="eyebrow-light">GROWTH SYSTEMS FOR SMBS DOING $500K TO $20M</span>
+            <span className="eyebrow-light">STRATEGIC GROWTH PARTNER FOR SMBS</span>
             <h1 className={s.heroHeadline}>
-              Your team is doing by hand what your competitors&apos; systems already handle automatically.{' '}
-              <em>We close that gap.</em>
+              We find where your business is <em>losing time and money.</em> Then we build the fix.
             </h1>
             <p className={s.heroSub}>
-              We audit your operation, build the systems you&apos;re missing, and stay embedded to scale what works. Most first builds ship in 2 to 4 weeks.
+              It starts with the Operations Opportunity Map: a diagnostic that pinpoints your highest-ROI automations and proves the dollar impact before we build a thing. The same process we run on operations up to $200M.
+            </p>
+            <p className={s.heroSupport}>
+              For owners doing $500K to $20M who are done being the bottleneck in their own business.
             </p>
             <div className={s.heroCtas}>
-              <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="btn-orange">
-                SHOW ME MY BIGGEST AUTOMATION GAP →
+              <a href="#apply" className="btn-orange">
+                GET YOUR OPERATIONS OPPORTUNITY MAP →
+              </a>
+              <a href="#free-audit" className={s.heroCtaOutlined}>
+                START WITH A FREE AUDIT →
               </a>
             </div>
-            <a href="#how-we-work" className={s.heroTextLink}>Or see how we work →</a>
           </div>
           <div className={s.heroRight}>
             <HeroDiagram />
@@ -115,48 +119,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. What We Do */}
-      <section className={s.whatWeDo}>
-        <div className={s.sectionHeader}>
-          <span className="eyebrow">WHAT WE DO</span>
-          <h2 className={s.sectionHeadline}>Three ways we plug in.</h2>
-        </div>
-        <div className={s.whatWeDoGrid}>
-          {[
-            {
-              eyebrow: 'BUSINESS ANALYSIS',
-              pain: 'You don\'t know exactly where you\'re losing leads, revenue, or rankings.',
-              body: 'We audit your SEO, Google Business Profile, follow-up workflow, and your top three competitors. One session. Live, not async.',
-              result: 'A ranked action plan you can hand to your team on Monday.',
-            },
-            {
-              eyebrow: 'BUILDS & CUSTOM DEVELOPMENT',
-              pain: 'You\'ve been quoted $80K for an MVP, or you\'re stuck with an AI-built prototype that won\'t launch.',
-              body: 'We ship the system that should have shipped six months ago. Working software inside your existing stack. No platform lock-in.',
-              result: 'Most first builds go live in 2 to 4 weeks.',
-            },
-            {
-              eyebrow: 'RETAINER & OPTIMIZATION',
-              pain: 'The system you bought last year is already outdated and nobody is measuring it.',
-              body: 'Monthly retainer. We track what\'s working, kill what\'s not, and build the next automation in your queue.',
-              result: 'Your system gets measured, maintained, and extended every month. It compounds instead of decaying.',
-            },
-          ].map(card => (
-            <div key={card.eyebrow} className={s.whatWeDoCard}>
-              <div className={s.cardEyebrow}>
-                <span className={s.cardDot} />
-                {card.eyebrow}
-              </div>
-              <h3 className={s.cardPain}>{card.pain}</h3>
-              <p className={s.cardBody}>{card.body}</p>
-              <div className={s.cardResult}>
-                <div className={s.cardResultTag}>RESULT</div>
-                <div className={s.cardResultText}>{card.result}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* 4. Engagement Ladder */}
+      <EngagementLadder />
 
       {/* 5. Who This Is For */}
       <section className={s.who}>
@@ -265,6 +229,9 @@ export default function HomePage() {
 
       {/* 7. Founder */}
       <FounderSection />
+
+      {/* 7.5. FAQ */}
+      <HomeFaq />
 
       {/* 8. Lead Magnet */}
       <LeadMagnetGate />

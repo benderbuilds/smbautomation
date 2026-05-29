@@ -17,20 +17,12 @@ export default function FounderSection() {
         <div className={s.copy}>
           <span className="eyebrow">THE FOUNDER</span>
           <p className={s.name}>Jesse Bender</p>
-          <h2 className={s.hook}>
-            I&apos;ve been on both sides of the machine. <em>I build for the side that needs it.</em>
-          </h2>
           <p className={s.body}>
-            On one side: VP-level operations at a 1,400-unit property management company. Years inside enterprise health tech at TelePharm, where we used machine learning to build an AI pill-counting system for enterprise pharmacies, back when &ldquo;AI&rdquo; still meant a grant application. I know how big systems get built, sold, and measured.
+            I&apos;m Jesse. I have 13 years of experience starting and scaling companies, with an exit via Fortune 500 acquisition. My recent wins include scaling a health tech startup from $24K ARR to over $25M ARR. I&apos;ve scaled teams from 1 to 11, implemented CRMs and operations tools across multiple companies, owned a restaurant during the pandemic, and managed a $200M real estate portfolio. Through it all, my focus has stayed on efficiency and customer experience. I bring both into SMBautomation, where I help businesses scale without adding headcount.
           </p>
           <p className={s.body}>
-            On the other side: I grew up on a farm. Four years as a painting contractor. Five years in construction. I opened a restaurant in 2020 and watched the pandemic close it eighteen months later. I know what it costs when a $400 vendor invoice hits in a week you only did $2,800 in revenue.
-          </p>
-          <p className={s.body}>
-            I left corporate health tech because I was tired of lining the pockets of executives who didn&apos;t put the customer first. PE-backed companies treat employees as a number and use questionable tactics to retain customers who are trying to leave. I built SMB Automation to do the opposite: help owners grow, keep their team employed, and give their customers a reason to come back.
-          </p>
-          <p className={s.pullQuote}>
-            The through-line from the farm to the restaurant to this agency is the same. Customer experience is everything. You have to stand behind the product. The people who win are the ones who learn fast and stretch every dollar. That&apos;s who I build for.
+            SMBautomation specializes in system building, implementing new technology, AI workflows, and custom application builds to scale operations. We primarily work in property management, healthcare, hospitality, home building, and local service businesses to grow without bloating overhead. AI just collapsed the cost of building real software. The owners who move now keep the gains.{' '}
+            <a href="#apply" className={s.ctaLink}>Get in touch today</a> to see how we can streamline your business, help you make more money, and save you time.
           </p>
           <p className={s.signature}>Jesse Bender, Founder</p>
         </div>

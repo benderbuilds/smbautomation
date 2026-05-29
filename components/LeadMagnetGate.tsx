@@ -28,7 +28,7 @@ export default function LeadMagnetGate() {
   }
 
   return (
-    <section className={s.gate}>
+    <section className={s.gate} id="free-audit">
       <div className={s.inner}>
         <span className="eyebrow">FREE CHECKLIST</span>
         <h2 className={s.headline}>Not ready for a call? Start here.</h2>
