@@ -6,6 +6,7 @@ import FounderSection from '@/components/FounderSection';
 import LeadMagnetGate from '@/components/LeadMagnetGate';
 import ApplicationForm from '@/components/ApplicationForm';
 import EngagementLadder from '@/components/EngagementLadder';
+import HomeFaq from '@/components/HomeFaq';
 
 export const metadata: Metadata = {
   title: { absolute: 'SMB Automation | Business Analysis, Custom Builds & Growth Systems for SMBs' },
@@ -230,6 +231,9 @@ export default function HomePage() {
 
       {/* 7. Founder */}
       <FounderSection />
+
+      {/* 7.5. FAQ */}
+      <HomeFaq />
 
       {/* 8. Lead Magnet */}
       <LeadMagnetGate />
