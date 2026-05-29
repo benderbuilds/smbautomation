@@ -40,7 +40,6 @@
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--orange);
   text-decoration: none;
   transition: opacity 0.15s;
@@ -92,7 +91,6 @@
   font-size: 0.78rem;
   font-weight: 500;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--orange);
   padding: 1rem 0;
   text-decoration: none;
