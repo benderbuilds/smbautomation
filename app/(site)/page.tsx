@@ -12,9 +12,21 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://smbautomation.io' },
 };
 
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'SMB Automation',
+  url: 'https://smbautomation.io',
+  description: 'SMB Automation builds custom AI automation systems for small and mid-size businesses — finding where time and money leak, then building the workflows that fix it.',
+};
+
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+      />
       {/* 1. Hero */}
       <section className={s.hero}>
         <div className={s.heroInner}>
