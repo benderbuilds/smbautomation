@@ -158,7 +158,7 @@ PDF: a realistic anonymized Business Efficiency Audit deliverable (~10–14 page
 
 Gate: name + email → `appendRow('SampleAudit', ...)` + `sendSampleAuditEmail` → reveal download link + fire `sample_audit_view`. All homepage `See a sample audit →` links → `/sample-audit`.
 
-- [ ] Generate PDF, build gate + API, wire links. Commit.
+- [x] Generate PDF, build gate + API, wire links. Commit.
 
 ### Task 11: Content pages — /about, /how-it-works, /implementation, /results, /contact, /privacy, /terms
 
