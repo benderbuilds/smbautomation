@@ -174,7 +174,7 @@ Copy drafted from the update doc sections (about ⇐ Founder L355–371 + busine
 
 Structure per template L579–604 (10 blocks, one CTA). Vertical copy drafted from Industry Section L305–334 + business plan verticals; PM page leads on portfolio numbers in the credibility bar. Service JSON-LD + BreadcrumbList each.
 
-- [ ] Implement + commit.
+- [x] Implement + commit.
 
 ### Task 13: Redirects, 404, sitemap, robots
 
