@@ -22,10 +22,11 @@
   font-size: 1rem;
   color: var(--ink-mid);
   line-height: 1.75;
+  margin-bottom: 1rem;
 }
 
 .lead {
-  margin-top: 2.5rem;
+  margin-top: 1.5rem;
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--ink);
@@ -48,31 +49,15 @@
   line-height: 1.5;
 }
 
-.recognized {
-  list-style: none;
-  margin: 1.25rem 0 0;
-  padding: 0;
-  border: 1px solid var(--border);
-}
-
-.recognizedItem {
-  padding: 0.9rem 1.25rem;
-  font-size: 0.9rem;
-  color: var(--ink);
-  border-bottom: 1px solid var(--border);
-  line-height: 1.5;
-}
-
-.recognizedItem:last-child {
-  border-bottom: none;
-}
-
 .closing {
-  margin-top: 2.5rem;
-  font-size: 1rem;
+  margin-top: 2rem;
+  font-size: 0.95rem;
   color: var(--ink);
   line-height: 1.7;
-  font-weight: 500;
+}
+
+.cta {
+  margin-top: 2rem;
 }
 
 @media (max-width: 767px) {

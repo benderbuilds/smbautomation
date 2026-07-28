@@ -1,0 +1,73 @@
+.section {
+  background: var(--bg-white);
+  padding: 5rem 5vw;
+  border-bottom: 1px solid var(--border);
+}
+
+.inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.headline {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0.5rem 0 2.5rem;
+  line-height: 1.15;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+
+.card {
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 1.75rem 1.5rem;
+}
+
+.title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.35;
+}
+
+.body {
+  margin-top: 0.65rem;
+  font-size: 0.85rem;
+  color: var(--ink-mid);
+  line-height: 1.65;
+}
+
+.sampleLink {
+  margin-top: 2rem;
+}
+
+.sampleLink a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.sampleLink a:hover {
+  color: var(--blue-deep);
+}
+
+@media (max-width: 1023px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

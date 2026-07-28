@@ -28,14 +28,36 @@
   font-size: 1rem;
   color: var(--ink-mid);
   line-height: 1.75;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+.heroCtas {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.sampleLink {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.sampleLink:hover {
+  color: var(--blue-deep);
 }
 
 .heroSupport {
   font-size: 0.82rem;
   color: var(--ink-faint);
-  margin-top: 1rem;
-  line-height: 1.5;
+  margin-top: 1.25rem;
+  line-height: 1.6;
 }
 
 /* ── Final CTA ───────────────────────── */
@@ -63,6 +85,13 @@
   color: rgba(255,255,255,0.5);
   line-height: 1.7;
   margin-bottom: 2rem;
+}
+
+.finalCtaTrust {
+  margin-top: 1.25rem;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.6;
 }
 
 /* ── Responsive ──────────────────────── */

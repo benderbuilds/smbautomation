@@ -139,7 +139,7 @@
 .field input,
 .field select,
 .field textarea {
-  font-family: 'Barlow', sans-serif;
+  font-family: var(--font-barlow), 'Barlow', sans-serif;
   font-size: 0.9rem;
   color: var(--ink);
   background: var(--bg);
@@ -164,7 +164,7 @@
 }
 
 .submitBtn {
-  font-family: 'Barlow', sans-serif;
+  font-family: var(--font-barlow), 'Barlow', sans-serif;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -197,7 +197,7 @@
   width: 100%;
   text-align: center;
   padding: 1.25rem;
-  font-family: 'Barlow', sans-serif;
+  font-family: var(--font-barlow), 'Barlow', sans-serif;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.12em;

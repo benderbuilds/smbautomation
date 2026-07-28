@@ -7,6 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1.5rem;
   padding: 0 5vw;
   height: 64px;
   background: color-mix(in srgb, var(--bg) 96%, transparent);
@@ -20,43 +21,68 @@
 }
 
 .logo {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.07em;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .logoSmb {
   color: var(--ink);
-  text-transform: uppercase;
 }
 
 .logoAuto {
   color: var(--blue);
-  text-transform: none;
+}
+
+.links {
+  list-style: none;
+  display: flex;
+  gap: 1.75rem;
+  margin: 0;
+  padding: 0;
+}
+
+.links a {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  text-decoration: none;
+  transition: color 0.15s;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.links a:hover {
+  color: var(--blue);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .cta {
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  color: var(--orange);
-  text-decoration: none;
-  transition: opacity 0.15s;
-}
-
-.cta:hover {
-  opacity: 0.75;
+  white-space: nowrap;
 }
 
 .hamburger {
   display: none;
   flex-direction: column;
+  justify-content: center;
   gap: 5px;
   cursor: pointer;
   background: none;
   border: none;
   padding: 4px;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
 }
 
 .hamburger span {
@@ -76,7 +102,7 @@
   background: var(--bg-white);
   border-bottom: 1px solid var(--border);
   border-top: 1px solid var(--border);
-  padding: 1.5rem 5vw 2rem;
+  padding: 1rem 5vw 1.5rem;
   z-index: 99;
   flex-direction: column;
 }
@@ -85,22 +111,36 @@
   display: flex;
 }
 
-.drawerCta {
-  display: block;
-  text-align: center;
-  font-size: 0.78rem;
+.drawerLink {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 0.85rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  color: var(--orange);
-  padding: 1rem 0;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
   text-decoration: none;
+  border-bottom: 1px solid var(--border);
 }
 
-@media (max-width: 767px) {
-  .cta {
+.drawerCta {
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+@media (max-width: 1023px) {
+  .links {
     display: none;
   }
   .hamburger {
     display: flex;
+  }
+}
+
+@media (max-width: 479px) {
+  .cta {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.68rem;
   }
 }

@@ -43,7 +43,7 @@
   border: none;
   padding: 1.5rem 2rem;
   text-align: left;
-  font-family: 'Barlow', sans-serif;
+  font-family: var(--font-barlow), 'Barlow', sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--ink);
@@ -77,4 +77,14 @@
   color: var(--ink-mid);
   line-height: 1.7;
   max-width: 64ch;
+}
+
+.answerLink {
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.answerLink:hover {
+  color: var(--blue-deep);
 }

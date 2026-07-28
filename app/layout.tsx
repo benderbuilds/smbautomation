@@ -16,10 +16,10 @@ const barlow = Barlow({
 export const metadata: Metadata = {
   metadataBase: new URL('https://smbautomation.io'),
   title: {
-    template: '%s | SMBautomation',
-    default: 'SMBautomation - Business Audits and AI Builds for Small and Mid-Size Businesses | Jesse Bender, Founder',
+    template: '%s | SMB Automation',
+    default: 'Business Efficiency Audit and Automation Consulting | SMB Automation',
   },
-  description: 'Get a business audit from Jesse Bender: 13 years scaling companies, $200M portfolio managed, Fortune 500 exit. We find where time and money are leaking, then build only what pays back.',
+  description: 'Find the manual work costing your business time and money. Get a prioritized automation roadmap, ROI estimates, recommended tools, and a 90-day implementation plan. Fixed fee, $1,500.',
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
@@ -27,10 +27,10 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: 'SMBautomation - Business Audits and AI Builds for Small and Mid-Size Businesses | Jesse Bender, Founder',
-    description: 'Get a business audit from Jesse Bender: 13 years scaling companies, $200M portfolio managed, Fortune 500 exit.',
+    title: 'Business Efficiency Audit and Automation Consulting | SMB Automation',
+    description: 'Find the manual work costing your business time and money. Get a prioritized automation roadmap, ROI estimates, recommended tools, and a 90-day implementation plan.',
     url: 'https://smbautomation.io',
-    siteName: 'SMBautomation',
+    siteName: 'SMB Automation',
     type: 'website',
   },
   alternates: {
@@ -41,10 +41,10 @@ export const metadata: Metadata = {
 const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'SMBautomation',
+  name: 'SMB Automation',
   url: 'https://smbautomation.io',
   email: 'jesse@smbautomation.io',
-  description: 'Business audits and AI builds for small and mid-size businesses. We find where time and money are leaking, then build only what pays back.',
+  description: 'Business efficiency audits, workflow automation, and implementation for established small and midsize businesses.',
   logo: 'https://smbautomation.io/favicon.svg',
   foundingLocation: {
     '@type': 'Place',
@@ -81,48 +81,6 @@ const orgSchema = {
   sameAs: [
     'https://www.linkedin.com/company/smbautomation',
   ],
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'SMB Automation Services',
-    itemListElement: [
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Free Automated Audit',
-          serviceType: 'Automated business audit',
-          description: 'A fast, automated look at where your online presence and lead intake are leaking opportunities. Delivered in 24 hours.',
-        },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Operations Opportunity Map',
-          serviceType: 'Business operations diagnostic',
-          description: 'Deep diagnostic that maps workflows, scores every bottleneck by ROI, and delivers a prioritized plan with the dollar impact of each fix.',
-        },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Custom Build',
-          serviceType: 'Custom automation development',
-          description: 'Custom automation builds integrated with existing tools, scoped from proven ROI.',
-        },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Embedded Partner',
-          serviceType: 'Ongoing automation retainer',
-          description: 'Ongoing embedded partnership: maintain existing automations and work down the Operations Opportunity Map quarter by quarter.',
-        },
-      },
-    ],
-  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

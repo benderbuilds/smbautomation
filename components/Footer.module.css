@@ -1,66 +1,138 @@
 .footer {
   background: var(--dark);
   border-top: 1px solid rgba(255,255,255,0.06);
-  padding: 2rem 5vw;
+  padding: 4rem 5vw 0;
 }
 
 .inner {
   max-width: 1100px;
   margin: 0 auto;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 3rem;
+  padding-bottom: 3rem;
+}
+
+.brand {
+  max-width: 300px;
 }
 
 .logo {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.07em;
   text-decoration: none;
 }
 
 .logoSmb {
-  color: rgba(255,255,255,0.6);
-  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
 }
 
 .logoAuto {
-  color: var(--blue);
-  text-transform: none;
+  color: var(--blue-pale);
+}
+
+.blurb {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.45);
+}
+
+.contactLine {
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.45);
+}
+
+.contactLine a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+}
+
+.contactLine a:hover {
+  color: #fff;
+}
+
+.columns {
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.columnTitle {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 1rem;
 }
 
 .links {
   list-style: none;
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
 }
 
 .links a {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
   text-decoration: none;
   transition: color 0.15s;
 }
 
 .links a:hover {
-  color: rgba(255,255,255,0.75);
+  color: #fff;
+}
+
+.bottom {
+  max-width: 1100px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .copy {
   font-size: 0.72rem;
-  color: rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.3);
   letter-spacing: 0.04em;
 }
 
-@media (max-width: 580px) {
+.legal {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.legal a {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.3);
+  text-decoration: none;
+}
+
+.legal a:hover {
+  color: rgba(255,255,255,0.7);
+}
+
+@media (max-width: 767px) {
   .inner {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
+    gap: 2.5rem;
+  }
+  .columns {
+    gap: 2.5rem;
   }
 }

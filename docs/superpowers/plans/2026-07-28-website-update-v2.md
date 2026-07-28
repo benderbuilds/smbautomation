@@ -124,7 +124,7 @@ Nav: How It Works → `/how-it-works`, What You Get → `/#deliverables`, Result
 
 Metadata: SEO title `Business Efficiency Audit and Automation Consulting | SMB Automation`, meta description per L46–47. JSON-LD: update Organization (remove stale offer catalog, keep sameAs LinkedIn), add Service (Business Efficiency Audit, price 1500 USD) and FAQPage built from the FAQ copy.
 
-- [ ] Build sections, wire nav/footer, update metadata/schema. `npm run build`. Visual check via `npm run dev`. Commit per logical chunk (nav/footer, hero+stats, mid sections, faq+final).
+- [x] Build sections, wire nav/footer, update metadata/schema. `npm run build`. Visual check via `npm run dev`. Commit per logical chunk (nav/footer, hero+stats, mid sections, faq+final).
 
 ### Task 8: /apply flow
 
