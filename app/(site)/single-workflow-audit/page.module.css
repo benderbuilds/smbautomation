@@ -1,0 +1,136 @@
+.section {
+  background: var(--bg);
+  padding: 6rem 5vw 5rem;
+}
+
+.inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.headline {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.15;
+}
+
+.sub {
+  margin: 1rem 0 0;
+  font-size: 1rem;
+  color: var(--ink-mid);
+  line-height: 1.75;
+}
+
+.workflows {
+  margin-top: 2.5rem;
+}
+
+.lead {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.workflowList {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem 2rem;
+}
+
+.workflowItem {
+  display: flex;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--ink-mid);
+  line-height: 1.5;
+}
+
+.offerBox {
+  margin-top: 2.5rem;
+  background: var(--bg-white);
+  border: 1px solid var(--border-strong);
+  padding: 2.5rem;
+}
+
+.price {
+  font-size: clamp(1.5rem, 2.5vw, 1.9rem);
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+
+.includesList {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.includesItem {
+  display: flex;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--ink-mid);
+  line-height: 1.5;
+}
+
+.creditNote {
+  margin: 1.5rem 0 2rem;
+  font-size: 0.85rem;
+  color: var(--ink-mid);
+  line-height: 1.6;
+  background: var(--blue-lt);
+  border-left: 3px solid var(--blue);
+  padding: 1rem 1.25rem;
+}
+
+.checkoutNote {
+  margin-top: 0.85rem;
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+}
+
+.checkoutError {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: #B4231F;
+  line-height: 1.5;
+}
+
+.scopeNote {
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+  font-size: 0.92rem;
+  color: var(--ink-mid);
+  line-height: 1.7;
+}
+
+.scopeLink {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.scopeLink:hover {
+  color: var(--blue-deep);
+}
+
+@media (max-width: 767px) {
+  .workflowList {
+    grid-template-columns: 1fr;
+  }
+  .offerBox {
+    padding: 1.5rem;
+  }
+}

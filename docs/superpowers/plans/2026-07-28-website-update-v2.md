@@ -148,7 +148,7 @@ Page copy L511–556. Button `Buy the Workflow Audit →` → POST `/api/checkou
 
 Webhook (`app/api/stripe-webhook` — outside (site) group, `export const dynamic = 'force-dynamic'`): verify signature with `STRIPE_WEBHOOK_SECRET` on `checkout.session.completed` → `appendRow('Purchases', ...)`, `sendPurchaseEmails`, `sendCapiEvent('Purchase', ...)`. Intake form: ties `session_id`, asks workflow description/software/volume; POSTs to `/api/intake` → sheet + email to jesse@ → redirect `/single-workflow-audit/thank-you`. JSON-LD Service with `offers` price 495 USD on the offer page.
 
-- [ ] Implement all; test checkout API with Stripe test key if available, else verify 503 path; `stripe listen` note added to README section of the plan-notes. Build. Commit.
+- [x] Implement all; test checkout API with Stripe test key if available, else verify 503 path; `stripe listen` note added to README section of the plan-notes. Build. Commit.
 
 ### Task 10: /sample-audit — gated PDF
 
