@@ -78,8 +78,8 @@ META_CAPI_TOKEN=
 
 Auto-qualifies when BOTH: (1) employees ∈ {5 to 10, 11 to 25, 26 to 50, 51 to 100, More than 100}; (2) revenue index ≥ index of "$1 million to $2 million" OR volume index ≥ index of "400 to 999".
 
-- [ ] Write failing tests: qualified (5 to 10 + $1M–$2M), qualified via volume only (5 to 10 + Under $500,000 + 400 to 999), not qualified (1 to 4 + $25M+), not qualified (11 to 25 + Under $500,000 + 100 to 399), unknown strings → false.
-- [ ] `npx vitest run` → fail. Implement by index lookup against the option arrays. → pass. Commit.
+- [x] Write failing tests: qualified (5 to 10 + $1M–$2M), qualified via volume only (5 to 10 + Under $500,000 + 400 to 999), not qualified (1 to 4 + $25M+), not qualified (11 to 25 + Under $500,000 + 100 to 399), unknown strings → false.
+- [x] `npx vitest run` → fail. Implement by index lookup against the option arrays. → pass. Commit.
 
 ### Task 3: lib/attribution.ts + UTM capture (TDD)
 
