@@ -192,10 +192,10 @@ Structure per template L579–604 (10 blocks, one CTA). Vertical copy drafted fr
 
 ### Task 15: Verification sweep
 
-- [ ] `scripts/check-copy.js`: scan `app/`, `components/` for em dashes (—, —) in JSX string literals and for `border-radius` values ≠ 0 in css modules → exit 1 on hit. Add `"check:copy"` script. Run + fix.
-- [ ] `npm run test` (all vitest green), `npm run lint`, `npm run build` (all routes compile).
-- [ ] `npm run dev` + curl every route in the route map → 200; confirm both /apply paths and checkout 503 fallback.
-- [ ] Update `.env.example` complete; README note listing required env + Stripe webhook setup + Sheets service-account setup + Calendly URL + Turnstile keys.
-- [ ] Commit; open PR to main per repo convention.
+- [x] `scripts/check-copy.js`: scan `app/`, `components/` for em dashes (—, —) in JSX string literals and for `border-radius` values ≠ 0 in css modules → exit 1 on hit. Add `"check:copy"` script. Run + fix.
+- [x] `npm run test` (all vitest green), `npm run lint`, `npm run build` (all routes compile).
+- [x] `npm run dev` + curl every route in the route map → 200; confirm both /apply paths and checkout 503 fallback.
+- [x] Update `.env.example` complete; README note listing required env + Stripe webhook setup + Sheets service-account setup + Calendly URL + Turnstile keys.
+- [x] Commit; open PR to main per repo convention.
 
 **Deferred to launch (needs user/keys, listed for the launch checklist, not this build):** live Stripe end-to-end, Resend domain SPF/DKIM/DMARC verification, GA4/Ads/Meta property setup + DebugView, Search Console, Lighthouse run on deployed host, real sample-audit PDF review, redirect-map sign-off.
