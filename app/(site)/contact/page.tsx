@@ -1,24 +1,24 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import ContactForm from './ContactForm';
 import s from './page.module.css';
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Book a free strategy call or send us a message. We respond within one business day.',
+  description:
+    'Questions about the Business Efficiency Audit or an existing engagement? Send a message and we respond within one business day.',
   alternates: { canonical: 'https://smbautomation.io/contact' },
 };
-
-const CALENDLY = 'https://calendly.com/jesse-smbautomation/30min';
 
 export default function ContactPage() {
   return (
     <>
       <section className={s.hero}>
         <div className={s.heroInner}>
-          <span className="eyebrow-light">Get in Touch</span>
-          <h1 className={s.headline}>Let&apos;s talk about your business.</h1>
+          <span className="eyebrow-light">GET IN TOUCH</span>
+          <h1 className={s.headline}>Questions? Send a message.</h1>
           <p className={s.heroSub}>
-            Tell us where you are and what you are trying to build. We will tell you honestly whether we can help and what that looks like.
+            If you are ready to find out what is worth automating in your business, the fastest path is the audit application. For everything else, use the form.
           </p>
         </div>
       </section>
@@ -27,10 +27,10 @@ export default function ContactPage() {
         <div className={s.inner}>
           <div className={s.leftInfo}>
             <h2>Reach us directly</h2>
-            <p>We respond to all inquiries within one business day. For faster scheduling, book a call directly.</p>
+            <p>We respond to all inquiries within one business day.</p>
             <div className={s.contactLinks}>
               <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a>
-              <a href={CALENDLY} target="_blank" rel="noopener noreferrer">Book a 30-min strategy call →</a>
+              <Link href="/apply">Apply for the Audit →</Link>
             </div>
           </div>
           <ContactForm />

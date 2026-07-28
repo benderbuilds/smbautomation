@@ -1,0 +1,161 @@
+/* Shared layout for text-led content pages (about, how-it-works, implementation,
+   results, privacy, terms). */
+
+.hero {
+  background: var(--bg-white);
+  padding: 6rem 5vw 3.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.heroInner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.headline {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0.5rem 0 0;
+  line-height: 1.15;
+}
+
+.heroSub {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: var(--ink-mid);
+  line-height: 1.75;
+}
+
+.section {
+  background: var(--bg);
+  padding: 4rem 5vw;
+  border-bottom: 1px solid var(--border);
+}
+
+.sectionAlt {
+  background: var(--bg-white);
+  padding: 4rem 5vw;
+  border-bottom: 1px solid var(--border);
+}
+
+.inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.h2 {
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 1rem;
+  line-height: 1.2;
+}
+
+.h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 1.75rem 0 0.5rem;
+}
+
+.body {
+  font-size: 0.95rem;
+  color: var(--ink-mid);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.list {
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.listItem {
+  display: flex;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--ink-mid);
+  line-height: 1.55;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  padding: 1.75rem;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.35;
+}
+
+.cardBody {
+  margin-top: 0.65rem;
+  font-size: 0.88rem;
+  color: var(--ink-mid);
+  line-height: 1.65;
+}
+
+.stepNumber {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--blue);
+  line-height: 1;
+}
+
+.cta {
+  background: var(--dark);
+  padding: 4rem 5vw;
+}
+
+.ctaInner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.ctaHeadline {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin: 0.5rem 0 1rem;
+  line-height: 1.2;
+}
+
+.ctaSub {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.legalMeta {
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 767px) {
+  .hero {
+    padding: 4.5rem 5vw 2.5rem;
+  }
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
+}

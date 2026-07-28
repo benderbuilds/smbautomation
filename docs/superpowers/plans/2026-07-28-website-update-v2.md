@@ -166,7 +166,7 @@ Gate: name + email → `appendRow('SampleAudit', ...)` + `sendSampleAuditEmail` 
 
 Copy drafted from the update doc sections (about ⇐ Founder L355–371 + business plan §founder; how-it-works ⇐ L285–301 expanded; implementation ⇐ L243–281 expanded + `#ongoing` anchor for Ongoing Optimization; results ⇐ L337–351). Privacy/terms: standard plain-language policies naming SMB Automation, smbautomation.io, jesse@smbautomation.io, cookies/analytics/Stripe/Calendly disclosure. Person JSON-LD on /about. One CTA per page: `Apply for the Audit →`.
 
-- [ ] Build all seven, one commit per page or logical pair.
+- [x] Build all seven, one commit per page or logical pair.
 
 ### Task 12: Industry pages ×3
 
