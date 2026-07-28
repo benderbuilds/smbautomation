@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
-
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -30,7 +28,7 @@ html {
 }
 
 body {
-  font-family: 'Barlow', sans-serif;
+  font-family: var(--font-barlow), 'Barlow', sans-serif;
   background: var(--bg);
   color: var(--ink);
   overflow-x: hidden;
@@ -71,48 +69,50 @@ img, svg {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: var(--orange);
+  background: var(--blue);
   color: #fff;
-  padding: 0.85rem 1.75rem;
-  font-size: 0.72rem;
+  padding: 0.65rem 1.75rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  border: none;
+  border: 1px solid var(--blue);
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background 0.15s, border-color 0.15s;
   border-radius: 0;
   text-decoration: none;
-  font-family: 'Barlow', sans-serif;
+  font-family: var(--font-barlow), 'Barlow', sans-serif;
 }
 
 .btn-primary:hover {
-  background: #cc3e12;
+  background: var(--blue-deep);
+  border-color: var(--blue-deep);
   color: #fff;
 }
 
-/* alias used in spec copy — identical to btn-primary */
+/* orange is reserved for the final CTA block only */
 .btn-orange {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   background: var(--orange);
   color: #fff;
-  padding: 0.85rem 1.75rem;
-  font-size: 0.72rem;
+  padding: 0.65rem 1.75rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  font-family: 'Barlow', sans-serif;
+  font-family: var(--font-barlow), 'Barlow', sans-serif;
   cursor: pointer;
-  border: none;
+  border: 1px solid var(--orange);
   border-radius: 0;
-  transition: background 0.15s;
+  transition: background 0.15s, border-color 0.15s;
   text-decoration: none;
 }
 
 .btn-orange:hover {
   background: #cc3e12;
+  border-color: #cc3e12;
 }
 
 .btn-secondary {
@@ -120,46 +120,48 @@ img, svg {
   align-items: center;
   gap: 0.4rem;
   background: transparent;
-  color: #fff;
-  padding: 0.85rem 1.75rem;
-  font-size: 0.72rem;
+  color: var(--ink);
+  padding: 0.65rem 1.75rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--border-strong);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+  border-radius: 0;
+  text-decoration: none;
+  font-family: var(--font-barlow), 'Barlow', sans-serif;
+}
+
+.btn-secondary:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+/* on-dark variant for dark surfaces (final CTA block, dark hero) */
+.btn-secondary-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  color: #fff;
+  padding: 0.65rem 1.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   border: 1px solid rgba(255,255,255,0.35);
   cursor: pointer;
   transition: border-color 0.15s, color 0.15s;
   border-radius: 0;
   text-decoration: none;
-  font-family: 'Barlow', sans-serif;
+  font-family: var(--font-barlow), 'Barlow', sans-serif;
 }
 
-.btn-secondary:hover {
+.btn-secondary-dark:hover {
   border-color: rgba(255,255,255,0.7);
   color: rgba(255,255,255,0.9);
-}
-
-.btn-blue {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: var(--blue);
-  color: #fff;
-  padding: 0.85rem 1.75rem;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-  transition: background 0.15s;
-  border-radius: 0;
-  text-decoration: none;
-  font-family: 'Barlow', sans-serif;
-}
-
-.btn-blue:hover {
-  background: var(--blue-deep);
 }
 
 .section-inner {

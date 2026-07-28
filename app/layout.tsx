@@ -1,6 +1,15 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
+import { Barlow } from 'next/font/google';
 import './globals.css';
+
+const barlow = Barlow({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  variable: '--font-barlow',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://smbautomation.io'),
@@ -116,11 +125,7 @@ const orgSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
+    <html lang="en" className={barlow.variable}>
       <body>
         {children}
         <Script

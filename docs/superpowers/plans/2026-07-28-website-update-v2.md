@@ -28,7 +28,7 @@
 
 ### Task 0: Branch
 
-- [ ] `git checkout -b website-update-v2` from `main`.
+- [x] `git checkout -b website-update-v2` from `main`.
 
 ### Task 1: Foundation — font, buttons, test harness, env
 
@@ -38,9 +38,9 @@
 - Modify: `package.json` (add `stripe` dep; `vitest` devDep; `test` script)
 
 **Steps:**
-- [ ] `npm i stripe && npm i -D vitest`
-- [ ] Add `"test": "vitest run"` script.
-- [ ] Replace the `@import url('https://fonts.googleapis.com...')` line in `globals.css` with nothing; in `app/layout.tsx` add:
+- [x] `npm i stripe && npm i -D vitest`
+- [x] Add `"test": "vitest run"` script.
+- [x] Replace the `@import url('https://fonts.googleapis.com...')` line in `globals.css` with nothing; in `app/layout.tsx` add:
 
 ```tsx
 import { Barlow } from 'next/font/google';
@@ -49,8 +49,8 @@ const barlow = Barlow({ subsets: ['latin'], weight: ['300','400','500','600','70
 ```
 
 and set `body { font-family: var(--font-barlow), sans-serif; }` in globals.css.
-- [ ] Update `.btn-primary` in globals.css to the spec primary (blue fill per Global Constraints), add `.btn-secondary` per spec, keep `.btn-orange` for the final CTA block only. All `border-radius: 0`.
-- [ ] Extend `.env.example`:
+- [x] Update `.btn-primary` in globals.css to the spec primary (blue fill per Global Constraints), add `.btn-secondary` per spec, keep `.btn-orange` for the final CTA block only. All `border-radius: 0`.
+- [x] Extend `.env.example`:
 
 ```
 RESEND_API_KEY=
@@ -68,7 +68,7 @@ NEXT_PUBLIC_GADS_ID=
 NEXT_PUBLIC_META_PIXEL_ID=
 META_CAPI_TOKEN=
 ```
-- [ ] `npm run build` passes. Commit.
+- [x] `npm run build` passes. Commit.
 
 ### Task 2: lib/qualify.ts (TDD — the most important mechanic)
 
