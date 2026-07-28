@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Barlow } from 'next/font/google';
 import AttributionCapture from '../components/AttributionCapture';
+import AnalyticsScripts from '../components/AnalyticsScripts';
 import './globals.css';
 
 const barlow = Barlow({
@@ -135,13 +136,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
         />
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-K96TVT9ZZD" strategy="afterInteractive" />
-        <Script id="gtag-init" strategy="afterInteractive">{`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-K96TVT9ZZD');
-        `}</Script>
+        <AnalyticsScripts />
       </body>
     </html>
   );

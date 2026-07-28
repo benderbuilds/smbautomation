@@ -112,7 +112,7 @@ Auto-qualifies when BOTH: (1) employees ∈ {5 to 10, 11 to 25, 26 to 50, 51 to 
 
 **Produces:** `track(event: string, params?: Record<string, unknown>)` firing gtag + fbq when present; `AnalyticsScripts` injects GA4 (`NEXT_PUBLIC_GA4_ID`), Google Ads (`NEXT_PUBLIC_GADS_ID`), Meta Pixel (`NEXT_PUBLIC_META_PIXEL_ID`) — each only when its env exists. Server: `lib/metaCapi.ts` `sendCapiEvent(name, data)` no-op without `META_CAPI_TOKEN`. Event names (exact): `application_start`, `application_submit`, `application_qualified`, `application_unqualified`, `fit_call_booked`, `sample_audit_view`, `workflow_audit_checkout_start`, `workflow_audit_purchase`, `contact_submit`, `blog_cta_click` (param `article_slug`).
 
-- [ ] Implement + commit.
+- [x] Implement + commit.
 
 ### Task 7: Homepage rewrite
 
