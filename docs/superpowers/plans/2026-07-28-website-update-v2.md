@@ -104,7 +104,7 @@ Auto-qualifies when BOTH: (1) employees ∈ {5 to 10, 11 to 25, 26 to 50, 51 to 
 
 **Produces:** typed senders used by API routes: `sendApplicationEmails({ submission, qualified })` (applicant confirmation w/ Calendly link OR w/ Single Workflow Audit offer, plus internal email to jesse@ with subject `New application: {company} — {QUALIFIED|NOT QUALIFIED}` → use a hyphen, not an em dash), `sendPurchaseEmails({ buyer })` (receipt + intake link to buyer; notification to jesse@), `sendContactEmails({ name, email, message })` (full submission to jesse@; acknowledgment to sender), `sendSampleAuditEmail({ name, email })` (download link). All from `SMB Automation <notifications@smbautomation.io>` (env-overridable), reply-to jesse@. Plain, Barlow-free HTML (email-safe inline styles, no rounded corners). No em dashes.
 
-- [ ] Implement + commit.
+- [x] Implement + commit.
 
 ### Task 6: lib/analytics.ts + Analytics scripts
 
