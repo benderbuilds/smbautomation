@@ -1,0 +1,43 @@
+.section {
+  background: var(--bg);
+  padding: 6rem 5vw 5rem;
+}
+
+.inner {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.headline {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.15;
+}
+
+.sub {
+  margin: 1rem 0 2rem;
+  font-size: 1rem;
+  color: var(--ink-mid);
+  line-height: 1.75;
+}
+
+.calendly {
+  border: 1px solid var(--border);
+  background: var(--bg-white);
+}
+
+.fallback {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  font-size: 0.95rem;
+  color: var(--ink-mid);
+  line-height: 1.7;
+}
+
+.fallback a {
+  color: var(--blue);
+  font-weight: 600;
+}

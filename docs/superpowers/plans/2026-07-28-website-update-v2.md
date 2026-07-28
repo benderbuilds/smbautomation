@@ -138,7 +138,7 @@ API: validate all fields; verify Turnstile server-side when secret present; hone
 
 `/apply/qualified`: copy L493–499, Calendly inline embed (script `https://assets.calendly.com/assets/external/widget.js`, URL from `NEXT_PUBLIC_CALENDLY_URL`, prefill name/email via query params + utm passthrough). Listen for `calendly.event_scheduled` postMessage → `track('fit_call_booked')`. If no Calendly URL configured, show booking-link fallback text. `/apply/received`: copy L501–507 with `See the Single Workflow Audit →` button.
 
-- [ ] freemail test → implement. Form + pages + API. Manual test both paths locally (env-less: sheets/emails warn + skip). `npm run build`. Commit.
+- [x] freemail test → implement. Form + pages + API. Manual test both paths locally (env-less: sheets/emails warn + skip). `npm run build`. Commit.
 
 ### Task 9: Stripe flow — /single-workflow-audit
 
