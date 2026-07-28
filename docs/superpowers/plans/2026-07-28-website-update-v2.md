@@ -182,7 +182,7 @@ Structure per template L579–604 (10 blocks, one CTA). Vertical copy drafted fr
 
 301s: `/services` → `/implementation`, `/services/build` → `/implementation`, `/services/scale` → `/implementation`, `/services/strategy` → `/how-it-works`, `/work` → `/results`, `/thank-you` → `/apply/received`, `/lp/strategy` → `/`. Blog URLs unchanged. Remove the old route files after redirects are in. `docs/redirect-map.csv` lists old URL, new URL, status — **flag for user sign-off before deploy**. 404: not-found.tsx with primary CTA + links home/blog/apply; log via console + a lightweight `/api/log-404` beacon. robots.ts: explicitly allow GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot; reference sitemap. sitemap.ts: all new routes + blog posts; drop removed routes.
 
-- [ ] Implement + commit.
+- [x] Implement + commit.
 
 ### Task 14: Blog CTAs
 
