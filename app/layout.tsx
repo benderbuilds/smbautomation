@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Barlow } from 'next/font/google';
+import AttributionCapture from '../components/AttributionCapture';
 import './globals.css';
 
 const barlow = Barlow({
@@ -127,6 +128,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={barlow.variable}>
       <body>
+        <AttributionCapture />
         {children}
         <Script
           id="org-schema"

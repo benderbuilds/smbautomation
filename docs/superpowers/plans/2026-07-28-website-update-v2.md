@@ -87,8 +87,8 @@ Auto-qualifies when BOTH: (1) employees ∈ {5 to 10, 11 to 25, 26 to 50, 51 to 
 
 **Produces:** cookie `sa_attr` (JSON: `{ utm_source, utm_medium, utm_campaign, utm_term, utm_content, landing_page, first_touch_at }`), max-age 90 days, first-touch only (never overwritten if present). `parseAttribution(cookieValue: string | undefined): Attr | null` and `buildAttr(search: string, pathname: string, now: string): Attr | null` are pure and tested. Server routes read the cookie via `req.cookies`.
 
-- [ ] Tests for `buildAttr` (utm params → object; no utms but always capture landing page on first touch) and `parseAttribution` (bad JSON → null). Implement. Commit.
-- [ ] `AttributionCapture` (client, `useEffect`): if no `sa_attr` cookie, set it from `location.search` + `location.pathname`. Mount in `app/layout.tsx`. Commit.
+- [x] Tests for `buildAttr` (utm params → object; no utms but always capture landing page on first touch) and `parseAttribution` (bad JSON → null). Implement. Commit.
+- [x] `AttributionCapture` (client, `useEffect`): if no `sa_attr` cookie, set it from `location.search` + `location.pathname`. Mount in `app/layout.tsx`. Commit.
 
 ### Task 4: lib/sheets.ts — Google Sheets CRM
 
