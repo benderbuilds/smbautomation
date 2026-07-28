@@ -188,7 +188,7 @@ Structure per template L579–604 (10 blocks, one CTA). Vertical copy drafted fr
 
 **Files:** Create `components/BlogCta.tsx` (two variants: `workflow` inline → `Get a Workflow Audit for $495 →` → `/single-workflow-audit`; `broad` end-of-article → `Apply for the Audit →` → `/apply`), copy L559–576; Modify `app/(site)/blog/[slug]/page.tsx` to render variant by frontmatter flag (`ctaType: workflow | broad`, default broad). Fire `blog_cta_click` with slug param.
 
-- [ ] Implement + commit.
+- [x] Implement + commit.
 
 ### Task 15: Verification sweep
 

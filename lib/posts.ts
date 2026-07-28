@@ -7,6 +7,7 @@ const POSTS_DIR = path.join(process.cwd(), 'content', 'blog');
 
 export interface PostMeta {
   slug: string;
+  ctaType: 'workflow' | 'broad';
   title: string;
   seoTitle?: string;
   date: string;
@@ -35,6 +36,7 @@ export function getAllPosts(): PostMeta[] {
       date: data.date as string,
       tag: data.tag as string,
       excerpt: data.excerpt as string,
+      ctaType: data.ctaType === 'workflow' ? ('workflow' as const) : ('broad' as const),
       readTime,
     };
   });
@@ -57,6 +59,7 @@ export function getPostBySlug(slug: string): Post | null {
     date: data.date as string,
     tag: data.tag as string,
     excerpt: data.excerpt as string,
+    ctaType: data.ctaType === 'workflow' ? ('workflow' as const) : ('broad' as const),
     readTime,
     content,
   };

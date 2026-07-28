@@ -3,9 +3,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getAllPosts, getPostBySlug } from '@/lib/posts';
+import BlogCta from '@/components/BlogCta';
 import s from './page.module.css';
-
-const CALENDLY = 'https://calendly.com/jesse-smbautomation/30min';
 
 interface PageProps {
   params: { slug: string };
@@ -72,13 +71,7 @@ export default function BlogPostPage({ params }: PageProps) {
           <div className={s.body}>
             <MDXRemote source={post.content} />
           </div>
-          <div className={s.ctaBox}>
-            <h3>Ready to put this into practice?</h3>
-            <p>Book a free 30-minute strategy call. We will walk through your business and tell you exactly what to build first.</p>
-            <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="btn-primary">
-              Book a Strategy Call →
-            </a>
-          </div>
+          <BlogCta variant={post.ctaType} slug={post.slug} />
           <Link href="/blog" className={s.backLink}>← Back to all articles</Link>
         </div>
       </div>
