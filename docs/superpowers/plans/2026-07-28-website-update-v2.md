@@ -96,7 +96,7 @@ Auto-qualifies when BOTH: (1) employees ∈ {5 to 10, 11 to 25, 26 to 50, 51 to 
 
 **Produces:** `appendRow(tab: 'Applications' | 'Purchases' | 'SampleAudit' | 'Contact', values: (string|number)[]): Promise<void>`. Builds a JWT (RS256 via `crypto.createSign`) from `GOOGLE_SERVICE_ACCOUNT_EMAIL`/`GOOGLE_PRIVATE_KEY`, exchanges for an access token at `https://oauth2.googleapis.com/token`, POSTs to `https://sheets.googleapis.com/v4/spreadsheets/{GOOGLE_SHEETS_ID}/values/{tab}!A1:append?valueInputOption=RAW`. If env missing: `console.warn` and return. Never throw to the caller (catch + log) — CRM failure must not fail a submission.
 
-- [ ] Implement + commit. (Verified live later in launch checklist; unit test only the JWT header/claims construction if extracted as a pure helper.)
+- [x] Implement + commit. (Verified live later in launch checklist; unit test only the JWT header/claims construction if extracted as a pure helper.)
 
 ### Task 5: lib/emails.ts — the seven Resend templates
 
