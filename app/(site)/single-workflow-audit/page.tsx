@@ -57,6 +57,7 @@ const INCLUDES = [
 ];
 
 export default function SingleWorkflowAuditPage() {
+  const stripeEnabled = Boolean(process.env.STRIPE_SECRET_KEY);
   return (
     <>
       <Script
@@ -97,8 +98,19 @@ export default function SingleWorkflowAuditPage() {
             <p className={s.creditNote}>
               The $495 fee may be applied toward a Business Efficiency Audit or implementation project started within 30 days.
             </p>
-            <BuyButton />
-            <p className={s.checkoutNote}>Direct Stripe checkout. No sales call required.</p>
+            {stripeEnabled ? (
+              <>
+                <BuyButton />
+                <p className={s.checkoutNote}>Direct Stripe checkout. No sales call required.</p>
+              </>
+            ) : (
+              <>
+                <Link href="/contact" className="btn-primary">Contact us to get started →</Link>
+                <p className={s.checkoutNote}>
+                  Send a message with the workflow you want analyzed and we will invoice you directly.
+                </p>
+              </>
+            )}
           </div>
 
           <div className={s.scopeNote}>

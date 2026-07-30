@@ -7,7 +7,10 @@ import { track } from '@/lib/analytics';
 import { ATTR_COOKIE, parseAttribution } from '@/lib/attribution';
 import s from './page.module.css';
 
-const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL;
+/* Falls back to the existing booking event until the dedicated 20-minute
+   fit-call event is configured via NEXT_PUBLIC_CALENDLY_URL. */
+const CALENDLY_URL =
+  process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/jesse-smbautomation/30min';
 
 export default function CalendlyEmbed() {
   const params = useSearchParams();
@@ -21,15 +24,6 @@ export default function CalendlyEmbed() {
     window.addEventListener('message', onMessage);
     return () => window.removeEventListener('message', onMessage);
   }, []);
-
-  if (!CALENDLY_URL) {
-    return (
-      <p className={s.fallback}>
-        Your booking link is on its way. Check your email for an invitation to schedule the 20-minute fit call, or write to{' '}
-        <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a> to pick a time directly.
-      </p>
-    );
-  }
 
   const cookieValue =
     typeof document !== 'undefined'

@@ -88,7 +88,8 @@ export async function sendApplicationEmails({
   qualified: boolean;
 }): Promise<void> {
   const s = submission;
-  const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL;
+  const calendlyUrl =
+    process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/jesse-smbautomation/30min';
 
   const rows = [
     ['Name', `${s.firstName} ${s.lastName}`],
