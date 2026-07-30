@@ -9,6 +9,7 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'ClaudeBot', allow: '/' },
       { userAgent: 'PerplexityBot', allow: '/' },
       { userAgent: 'Google-Extended', allow: '/' },
+      { userAgent: 'CCBot', allow: '/' },
     ],
     sitemap: 'https://smbautomation.io/sitemap.xml',
   };

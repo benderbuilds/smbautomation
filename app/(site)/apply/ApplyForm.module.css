@@ -1,0 +1,90 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.field input,
+.field select,
+.field textarea {
+  font-family: var(--font-barlow), 'Barlow', sans-serif;
+  font-size: 16px;
+  color: var(--ink);
+  background: var(--bg-white);
+  border: 1px solid var(--border-strong);
+  border-radius: 0;
+  padding: 0.7rem 0.9rem;
+  min-height: 44px;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: 2px solid var(--blue);
+  outline-offset: -1px;
+}
+
+.warning {
+  font-size: 0.8rem;
+  color: var(--ink-mid);
+  background: var(--orange-pale);
+  border-left: 3px solid var(--orange);
+  padding: 0.6rem 0.9rem;
+  line-height: 1.5;
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.error {
+  font-size: 0.85rem;
+  color: #B4231F;
+  border: 1px solid #B4231F;
+  padding: 0.75rem 1rem;
+  line-height: 1.5;
+}
+
+.form button[type='submit'] {
+  align-self: flex-start;
+}
+
+@media (max-width: 767px) {
+  .form {
+    padding: 1.5rem;
+  }
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

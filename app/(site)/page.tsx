@@ -1,71 +1,106 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
+import Script from 'next/script';
+import CredibilityBar from '@/components/CredibilityBar';
 import ProblemSection from '@/components/ProblemSection';
-import AuditSection from '@/components/AuditSection';
+import OutcomeSection from '@/components/OutcomeSection';
+import DeliverablesSection from '@/components/DeliverablesSection';
+import OfferSection from '@/components/OfferSection';
+import ImplementationSection from '@/components/ImplementationSection';
+import HowItWorksSection from '@/components/HowItWorksSection';
+import IndustrySection from '@/components/IndustrySection';
+import ResultsSection from '@/components/ResultsSection';
 import FounderSection from '@/components/FounderSection';
+import PhilosophySection from '@/components/PhilosophySection';
 import HomeFaq from '@/components/HomeFaq';
-import ApplicationForm from '@/components/ApplicationForm';
 import s from './page.module.css';
 
 export const metadata: Metadata = {
-  title: { absolute: 'SMBautomation - Business Audits and AI Builds for Small and Mid-Size Businesses | Jesse Bender, Founder' },
-  description: 'Get a business audit from Jesse Bender: 13 years scaling companies, $200M portfolio managed, Fortune 500 exit. We find where time and money are leaking, then build only what pays back.',
+  title: { absolute: 'Business Efficiency Audit and Automation Consulting | SMB Automation' },
+  description:
+    'Find the manual work costing your business time and money. Get a prioritized automation roadmap, ROI estimates, recommended tools, and a 90-day implementation plan. Fixed fee, $1,500.',
   alternates: { canonical: 'https://smbautomation.io' },
 };
 
-const orgJsonLd = {
+const serviceSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'SMB Automation',
-  url: 'https://smbautomation.io',
-  description: 'SMB Automation builds custom AI automation systems for small and mid-size businesses — finding where time and money leak, then building the workflows that fix it.',
+  '@type': 'Service',
+  name: 'Business Efficiency Audit',
+  serviceType: 'Business efficiency audit and automation consulting',
+  description:
+    'A structured review of how work moves through your business: workflow inventory, ranked opportunity scorecard, ROI estimates, recommended tools, and a prioritized 90-day roadmap. Fixed fee, delivered in seven business days.',
+  provider: {
+    '@type': 'Organization',
+    name: 'SMB Automation',
+    url: 'https://smbautomation.io',
+  },
+  areaServed: 'US',
+  offers: {
+    '@type': 'Offer',
+    price: '1500',
+    priceCurrency: 'USD',
+  },
 };
 
 export default function HomePage() {
   return (
     <>
-      <script
+      <Script
+        id="service-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
-      {/* 1. Hero */}
+
+      {/* Hero */}
       <section className={s.hero}>
         <div className={s.heroInner}>
-          <span className="eyebrow">STRATEGIC GROWTH PARTNER FOR SMBS</span>
+          <span className="eyebrow">BUSINESS EFFICIENCY AUDITS FOR ESTABLISHED COMPANIES</span>
           <h1 className={s.heroHeadline}>
-            Stop guessing where automation <em>pays off.</em>
+            Find the work your business should stop doing <em>manually.</em>
           </h1>
           <p className={s.heroSub}>
-            It starts with a business audit. We find where time and money are leaking, then we build only what pays back.
+            We analyze how work moves through your business, identify where time and money are being lost, and give you a prioritized plan for fixing it with automation, AI, and practical off-the-shelf tools.
           </p>
-          <a href="#apply" className="btn-orange">Get your audit →</a>
-          <p className={s.heroSupport}>Tell us about your business. We respond within 1 business day.</p>
+          <p className={s.heroSub}>
+            Keep the playbook and implement it yourself, or have us build it for you.
+          </p>
+          <div className={s.heroCtas}>
+            <Link href="/apply" className="btn-primary">Apply for the Audit →</Link>
+            <Link href="/sample-audit" className={s.sampleLink}>See a sample audit →</Link>
+          </div>
+          <p className={s.heroSupport}>
+            Fixed fee: $1,500. Delivered in seven business days. The roadmap belongs to you whether or not you hire us to build it.
+          </p>
         </div>
       </section>
 
-      {/* 2. Problem */}
+      <CredibilityBar />
       <ProblemSection />
-
-      {/* 3. The Audit */}
-      <AuditSection />
-
-      {/* 4. Founder */}
+      <OutcomeSection />
+      <DeliverablesSection />
+      <OfferSection />
+      <ImplementationSection />
+      <HowItWorksSection />
+      <IndustrySection />
+      <ResultsSection />
       <FounderSection />
-
-      {/* 5. FAQ */}
+      <PhilosophySection />
       <HomeFaq />
 
-      {/* 6. Final CTA */}
+      {/* Final CTA */}
       <section className={s.finalCta}>
         <div className={s.finalCtaInner}>
-          <span className="eyebrow-light">READY</span>
-          <h2 className={s.finalCtaHeadline}>Find out what&apos;s actually worth automating.</h2>
-          <p className={s.finalCtaSub}>15-minute application. We respond within 1 business day.</p>
-          <a href="#apply" className="btn-orange">Get your audit →</a>
+          <span className="eyebrow-light">STOP GUESSING</span>
+          <h2 className={s.finalCtaHeadline}>Find out what is actually worth automating.</h2>
+          <p className={s.finalCtaSub}>
+            Get a clear view of where your business is losing time, what those problems are costing you, and which improvements should come first.
+          </p>
+          <Link href="/apply" className="btn-orange">Apply for the Audit →</Link>
+          <p className={s.finalCtaTrust}>
+            Fixed fee. Vendor-neutral recommendations. No implementation requirement. Findings guarantee.
+          </p>
         </div>
       </section>
-
-      {/* 7. Application Form */}
-      <ApplicationForm />
     </>
   );
 }

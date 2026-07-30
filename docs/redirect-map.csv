@@ -1,0 +1,8 @@
+old_url,new_url,status,notes
+/services,/implementation,301,Old services index replaced by implementation page
+/services/build,/implementation,301,Old build service page
+/services/scale,/implementation,301,Old scale service page
+/services/strategy,/how-it-works,301,Old strategy page maps to process detail
+/work,/results,301,Case studies renamed
+/thank-you,/apply/received,301,Old form confirmation replaced by application received screen
+/lp/strategy,/,301,Old landing page retired with no equivalent

@@ -1,0 +1,96 @@
+.section {
+  background: var(--bg);
+  padding: 6rem 5vw 5rem;
+}
+
+.inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.headline {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.15;
+}
+
+.sub {
+  margin: 1rem 0 2.5rem;
+  font-size: 1rem;
+  color: var(--ink-mid);
+  line-height: 1.75;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.field input,
+.field textarea {
+  font-family: var(--font-barlow), 'Barlow', sans-serif;
+  font-size: 16px;
+  color: var(--ink);
+  background: var(--bg-white);
+  border: 1px solid var(--border-strong);
+  border-radius: 0;
+  padding: 0.7rem 0.9rem;
+  min-height: 44px;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: 2px solid var(--blue);
+  outline-offset: -1px;
+}
+
+.error {
+  font-size: 0.85rem;
+  color: #B4231F;
+  border: 1px solid #B4231F;
+  padding: 0.75rem 1rem;
+  line-height: 1.5;
+}
+
+.form button[type='submit'] {
+  align-self: flex-start;
+}
+
+@media (max-width: 767px) {
+  .form {
+    padding: 1.5rem;
+  }
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
