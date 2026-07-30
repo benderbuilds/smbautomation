@@ -4,7 +4,7 @@ import { getAllPosts } from '@/lib/posts';
 import s from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Blog',
+  title: 'Business Automation Blog',
   description: 'Practical automation and growth insights for small business operators. No fluff.',
   alternates: { canonical: 'https://smbautomation.io/blog' },
 };
