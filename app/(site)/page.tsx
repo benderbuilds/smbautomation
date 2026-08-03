@@ -22,6 +22,15 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://smbautomation.io' },
 };
 
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'SMB Automation',
+  url: 'https://smbautomation.io',
+  description:
+    'Business efficiency audits and automation consulting for established small and mid-size businesses.',
+};
+
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
@@ -45,6 +54,11 @@ const serviceSchema = {
 export default function HomePage() {
   return (
     <>
+      <Script
+        id="organization-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
       <Script
         id="service-schema"
         type="application/ld+json"
