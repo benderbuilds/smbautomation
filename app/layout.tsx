@@ -46,14 +46,15 @@ const orgSchema = {
   email: 'jesse@smbautomation.io',
   description: 'Marketing and automation for small and midsize businesses: SEO, web design, Google Ads, and Meta Ads to generate leads, plus automated lead, invoice, accounts receivable, and review follow-up.',
   logo: 'https://smbautomation.io/favicon.svg',
-  foundingLocation: {
-    '@type': 'Place',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Des Moines',
-      addressRegion: 'IA',
-      addressCountry: 'US',
-    },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Iowa City',
+    addressRegion: 'IA',
+    addressCountry: 'US',
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'United States',
   },
   founder: {
     '@type': 'Person',
