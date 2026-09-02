@@ -17,9 +17,9 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://smbautomation.io'),
   title: {
     template: '%s | SMB Automation',
-    default: 'Business Efficiency Audit and Automation Consulting | SMB Automation',
+    default: 'Marketing and Automation for Small Businesses | SMB Automation',
   },
-  description: 'Find the manual work costing your business time and money. Get a prioritized automation roadmap, ROI estimates, recommended tools, and a 90-day implementation plan. Fixed fee, $1,500.',
+  description: 'SMB Automation helps small businesses grow with better websites, SEO, paid advertising, and automated follow-up systems that keep leads, customers, invoices, and reviews from falling through the cracks.',
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
@@ -27,8 +27,8 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: 'Business Efficiency Audit and Automation Consulting | SMB Automation',
-    description: 'Find the manual work costing your business time and money. Get a prioritized automation roadmap, ROI estimates, recommended tools, and a 90-day implementation plan.',
+    title: 'Get More Customers. Automate the Busywork. | SMB Automation',
+    description: 'Websites, SEO, Google Ads, and Meta Ads that bring in customers, plus automated lead, invoice, AR, and review follow-up. More leads. Faster follow-up. Less manual work.',
     url: 'https://smbautomation.io',
     siteName: 'SMB Automation',
     type: 'website',
@@ -44,7 +44,7 @@ const orgSchema = {
   name: 'SMB Automation',
   url: 'https://smbautomation.io',
   email: 'jesse@smbautomation.io',
-  description: 'Business efficiency audits, workflow automation, and implementation for established small and midsize businesses.',
+  description: 'Marketing and automation for small and midsize businesses: SEO, web design, Google Ads, and Meta Ads to generate leads, plus automated lead, invoice, accounts receivable, and review follow-up.',
   logo: 'https://smbautomation.io/favicon.svg',
   foundingLocation: {
     '@type': 'Place',
@@ -66,11 +66,13 @@ const orgSchema = {
       { '@type': 'Organization', name: 'Cardinal Health' },
     ],
     knowsAbout: [
-      'Business automation',
-      'AI workflows',
-      'Property management operations',
-      'Healthcare technology',
-      'SMB growth systems',
+      'Local SEO',
+      'Web design and conversion optimization',
+      'Google Ads',
+      'Meta Ads',
+      'Marketing automation',
+      'Lead follow-up and CRM workflows',
+      'Accounts receivable automation',
     ],
   },
   contactPoint: {

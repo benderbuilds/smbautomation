@@ -3,30 +3,29 @@ import s from './Footer.module.css';
 
 const COLUMNS = [
   {
-    title: 'Services',
+    title: 'Find customers',
     links: [
-      { href: '/apply', label: 'Business Efficiency Audit' },
-      { href: '/single-workflow-audit', label: 'Single Workflow Audit' },
-      { href: '/implementation', label: 'Implementation' },
-      { href: '/implementation#ongoing', label: 'Ongoing Optimization' },
+      { href: '/#services', label: 'SEO' },
+      { href: '/#services', label: 'Web Design' },
+      { href: '/#services', label: 'Google Ads' },
+      { href: '/#services', label: 'Meta Ads' },
     ],
   },
   {
-    title: 'Industries',
+    title: 'Automate follow-up',
     links: [
-      { href: '/property-management-automation', label: 'Property Management' },
-      { href: '/healthcare-automation', label: 'Healthcare and Wellness' },
-      { href: '/home-services-automation', label: 'Home and Local Services' },
+      { href: '/#automation', label: 'Lead Follow-Up' },
+      { href: '/#automation', label: 'Invoice Follow-Up' },
+      { href: '/#automation', label: 'AR Follow-Up' },
+      { href: '/#automation', label: 'Review Requests' },
     ],
   },
   {
     title: 'Company',
     links: [
-      { href: '/how-it-works', label: 'How It Works' },
-      { href: '/results', label: 'Results' },
-      { href: '/about', label: 'About' },
+      { href: '/#fit', label: 'Who It Is For' },
       { href: '/blog', label: 'Blog' },
-      { href: '/contact', label: 'Contact' },
+      { href: '/#contact', label: 'Contact' },
     ],
   },
 ];
@@ -41,7 +40,8 @@ export default function Footer() {
             <span className={s.logoAuto}>AUTOMATION</span>
           </Link>
           <p className={s.blurb}>
-            Business efficiency audits, workflow automation, and implementation for established small and midsize businesses.
+            Websites, SEO, and paid advertising that bring in customers, plus automated follow-up
+            that keeps leads, invoices, and reviews from falling through the cracks.
           </p>
           <p className={s.contactLine}>
             <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a>
@@ -55,7 +55,7 @@ export default function Footer() {
               <p className={s.columnTitle}>{col.title}</p>
               <ul className={s.links}>
                 {col.links.map((l) => (
-                  <li key={l.href}>
+                  <li key={`${col.title}-${l.label}`}>
                     <Link href={l.href}>{l.label}</Link>
                   </li>
                 ))}

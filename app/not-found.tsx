@@ -50,10 +50,7 @@ export default function NotFound() {
           The page you are looking for may have moved. Here is where to go instead.
         </p>
         <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
-          <Link href="/apply" className="btn-primary">Apply for the Audit →</Link>
-          <Link href="/" style={{ color: 'var(--blue)', fontWeight: 600, fontSize: '0.85rem' }}>
-            Homepage
-          </Link>
+          <Link href="/" className="btn-primary">Back to the homepage →</Link>
           <Link href="/blog" style={{ color: 'var(--blue)', fontWeight: 600, fontSize: '0.85rem' }}>
             Blog
           </Link>

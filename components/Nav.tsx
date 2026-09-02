@@ -5,10 +5,9 @@ import { useState, useEffect } from 'react';
 import s from './Nav.module.css';
 
 const LINKS = [
-  { href: '/how-it-works', label: 'How It Works' },
-  { href: '/#deliverables', label: 'What You Get' },
-  { href: '/results', label: 'Results' },
-  { href: '/about', label: 'About' },
+  { href: '/#services', label: 'Marketing' },
+  { href: '/#automation', label: 'Automation' },
+  { href: '/#fit', label: 'Who It Is For' },
   { href: '/blog', label: 'Blog' },
 ];
 
@@ -39,8 +38,8 @@ export default function Nav() {
         </ul>
 
         <div className={s.right}>
-          <Link href="/apply" className={`btn-primary ${s.cta}`}>
-            Apply for the Audit →
+          <Link href="/#contact" className={`btn-primary ${s.cta}`}>
+            Talk to Us →
           </Link>
           <button
             className={s.hamburger}
@@ -61,8 +60,8 @@ export default function Nav() {
             {l.label}
           </Link>
         ))}
-        <Link href="/apply" className={`btn-primary ${s.drawerCta}`} onClick={() => setOpen(false)}>
-          Apply for the Audit →
+        <Link href="/#contact" className={`btn-primary ${s.drawerCta}`} onClick={() => setOpen(false)}>
+          Talk to Us →
         </Link>
       </div>
     </>
