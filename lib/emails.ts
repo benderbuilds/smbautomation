@@ -50,7 +50,7 @@ function shell(bodyHtml: string): string {
     <div style="background:#FFFFFF;border:1px solid #D4DAE8;padding:32px;">
       ${bodyHtml}
     </div>
-    <p style="color:#9AA0B2;font-size:12px;margin-top:16px;">SMB Automation, Des Moines, IA. Questions? Reply to this email.</p>
+    <p style="color:#9AA0B2;font-size:12px;margin-top:16px;">SMB Automation. Questions? Reply to this email.</p>
   </div>
 </body>
 </html>`;
