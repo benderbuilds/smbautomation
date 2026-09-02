@@ -16,12 +16,14 @@ export default function BlogCta({
   if (variant === 'workflow') {
     return (
       <div className={s.box}>
-        <h3 className={s.title}>What is this workflow costing your business?</h3>
+        <h3 className={s.title}>Want this workflow running on its own?</h3>
         <p className={s.body}>
-          A Single Workflow Audit examines your actual process, software, volume, and costs. You get a focused plan showing what to improve, which tools to use, and what the opportunity is worth.
+          We build the automated follow-up behind leads, invoices, accounts receivable, and review
+          requests, so the work happens without anyone remembering to do it. Tell us what is eating
+          your team&rsquo;s time and we will show you what to fix first.
         </p>
-        <Link href="/single-workflow-audit" className="btn-primary" onClick={onClick}>
-          Get a Workflow Audit for $495 →
+        <Link href="/#contact" className="btn-primary" onClick={onClick}>
+          Talk to Us →
         </Link>
       </div>
     );
@@ -29,12 +31,14 @@ export default function BlogCta({
 
   return (
     <div className={s.box}>
-      <h3 className={s.title}>Find the work your business should stop doing manually.</h3>
+      <h3 className={s.title}>Get more customers. Automate the busywork.</h3>
       <p className={s.body}>
-        The Business Efficiency Audit identifies your highest-value automation opportunities, estimates the financial impact, and gives you a prioritized 90-day roadmap. Fixed fee, $1,500.
+        SMB Automation helps small businesses grow with better websites, SEO, paid advertising, and
+        automated follow-up. Tell us about your business and we will tell you where the biggest
+        opportunities are.
       </p>
-      <Link href="/apply" className="btn-primary" onClick={onClick}>
-        Apply for the Audit →
+      <Link href="/#contact" className="btn-primary" onClick={onClick}>
+        Talk to Us →
       </Link>
     </div>
   );

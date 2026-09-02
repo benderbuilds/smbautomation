@@ -1,105 +1,654 @@
-/* ── Hero ─────────────────────────────── */
+/* ============================================================
+   Landing page
+   Bands alternate: white / --bg / white / dark / --bg / white / dark
+   Orange is reserved for signature accents and the final CTA.
+   ============================================================ */
+
+.section {
+  padding: clamp(4.5rem, 9vw, 7.5rem) 0;
+}
+
+.sectionAlt {
+  background: var(--bg);
+}
+
+.sectionWhite {
+  background: var(--bg-white);
+}
+
+.sectionDark {
+  background: var(--dark);
+  color: #fff;
+}
+
+.inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+/* ---------- shared heading rhythm ---------- */
+
+.sectionHead {
+  max-width: 720px;
+  margin-bottom: clamp(2.5rem, 5vw, 3.75rem);
+}
+
+.sectionTitle {
+  font-size: clamp(1.9rem, 4vw, 2.9rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.sectionLede {
+  margin-top: 1.25rem;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--ink-mid);
+  font-weight: 300;
+}
+
+.sectionDark .sectionLede {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
 .hero {
   background: var(--bg-white);
-  padding: 6rem 5vw 5rem;
+  padding: clamp(4rem, 8vw, 6.5rem) 0 0;
   border-bottom: 1px solid var(--border);
 }
 
 .heroInner {
-  max-width: 680px;
+  max-width: 1100px;
   margin: 0 auto;
+  padding: 0 5vw;
+}
+
+.heroCopy {
+  max-width: 860px;
 }
 
 .heroHeadline {
-  font-size: clamp(1.875rem, 4vw, 3rem);
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.4rem, 6.4vw, 4.35rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
   color: var(--ink);
-  margin: 0.5rem 0 1.25rem;
 }
 
-.heroHeadline em {
-  font-style: italic;
+.heroHeadline span {
+  display: block;
   color: var(--blue);
 }
 
 .heroSub {
-  font-size: 1rem;
+  margin-top: 1.75rem;
+  max-width: 660px;
+  font-size: clamp(1.0625rem, 1.6vw, 1.1875rem);
+  line-height: 1.7;
   color: var(--ink-mid);
-  line-height: 1.75;
-  margin-bottom: 1rem;
+  font-weight: 300;
 }
 
 .heroCtas {
-  margin-top: 2rem;
+  margin-top: 2.25rem;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.75rem;
   flex-wrap: wrap;
 }
 
-.sampleLink {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--blue);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-}
-
-.sampleLink:hover {
-  color: var(--blue-deep);
-}
-
-.heroSupport {
-  font-size: 0.82rem;
+.heroNote {
+  font-size: 0.8125rem;
   color: var(--ink-faint);
-  margin-top: 1.25rem;
-  line-height: 1.6;
+  letter-spacing: 0.01em;
 }
 
-/* ── Final CTA ───────────────────────── */
-.finalCta {
-  background: var(--dark);
-  padding: 5rem 5vw;
+/* signature: the three-beat promise bar under the hero */
+.beats {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--border);
 }
 
-.finalCtaInner {
-  max-width: 680px;
-  margin: 0 auto;
+.beat {
+  padding: 1.5rem 1.5rem 1.75rem 0;
+  border-right: 1px solid var(--border);
+  position: relative;
 }
 
-.finalCtaHeadline {
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+.beat + .beat {
+  padding-left: 1.75rem;
+}
+
+.beat + .beat::before {
+  left: 1.75rem;
+}
+
+.beat:last-child {
+  border-right: none;
+}
+
+.beat::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 34px;
+  height: 2px;
+  background: var(--orange);
+}
+
+.beatText {
+  font-size: clamp(1rem, 1.9vw, 1.3rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.beatMeta {
+  margin-top: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* ============================================================
+   PROBLEM
+   ============================================================ */
+
+.problemGrid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.problemStatement {
+  margin-top: 1.5rem;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--ink-mid);
+  font-weight: 300;
+}
+
+.problemStatement strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* the list of things nobody has time for, drawn as an unchecked list */
+.todo {
+  list-style: none;
+  border-top: 1px solid var(--border-strong);
+}
+
+.todoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.todoBox {
+  flex-shrink: 0;
+  width: 13px;
+  height: 13px;
+  margin-top: 0.3em;
+  border: 1.5px solid var(--border-strong);
+  background: transparent;
+}
+
+.problemClose {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-strong);
+  max-width: 720px;
+  font-size: clamp(1.0625rem, 1.8vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--ink);
   font-weight: 400;
+}
+
+/* ============================================================
+   SERVICES
+   ============================================================ */
+
+.serviceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.service {
+  background: var(--bg-white);
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.serviceTag {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.serviceName {
+  margin-top: 1rem;
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+  font-weight: 500;
   letter-spacing: -0.02em;
-  color: #fff;
-  margin: 0.5rem 0 1rem;
   line-height: 1.15;
+  color: var(--ink);
 }
 
-.finalCtaSub {
-  font-size: 0.95rem;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.7;
-  margin-bottom: 2rem;
+.servicePromise {
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ink);
 }
 
-.finalCtaTrust {
-  margin-top: 1.25rem;
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.35);
+.serviceBody {
+  margin-top: 0.85rem;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--ink-mid);
+  font-weight: 300;
+}
+
+/* ============================================================
+   AUTOMATION (dark, signature timeline)
+   ============================================================ */
+
+.sectionDark .sectionTitle {
+  color: #fff;
+}
+
+.timeline {
+  position: relative;
+  padding-left: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 0.55rem;
+  bottom: 0.55rem;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.stage {
+  position: relative;
+  padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+  display: grid;
+  grid-template-columns: minmax(150px, 200px) 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--dark-border);
+}
+
+.stage:first-child {
+  padding-top: 0;
+}
+
+.stage:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.stage::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * clamp(1.75rem, 4vw, 2.75rem));
+  top: clamp(1.75rem, 3.3vw, 2.5rem);
+  width: 11px;
+  height: 11px;
+  background: var(--orange);
+}
+
+.stage:first-child::before {
+  top: 0.3rem;
+}
+
+.stageTrigger {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
   line-height: 1.6;
+  padding-top: 0.35rem;
 }
 
-/* ── Responsive ──────────────────────── */
-@media (max-width: 767px) {
-  .hero {
-    padding: 4rem 5vw 3rem;
+.stageName {
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.stageBody {
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.62);
+  font-weight: 300;
+  max-width: 620px;
+}
+
+/* ============================================================
+   OUTCOMES
+   ============================================================ */
+
+.outcomeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.outcomeIntro {
+  margin-top: 1.25rem;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--ink-mid);
+  font-weight: 300;
+}
+
+.outcomeIntro p + p {
+  margin-top: 1rem;
+}
+
+.outcomeIntro strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.outcomeLabel {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-strong);
+  display: block;
+}
+
+.outcomeList {
+  list-style: none;
+}
+
+.outcomeItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.outcomeClose {
+  margin-top: clamp(2.25rem, 4vw, 3rem);
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border-strong);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.outcomeCloseItem {
+  font-size: 1rem;
+  color: var(--ink-mid);
+  font-weight: 300;
+}
+
+.outcomeCloseItem strong {
+  display: block;
+  color: var(--ink);
+  font-weight: 500;
+  font-size: 1.0625rem;
+  margin-bottom: 0.2rem;
+}
+
+/* ============================================================
+   FIT
+   ============================================================ */
+
+.fitGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+
+.fitItem {
+  background: var(--bg-white);
+  padding: clamp(1.5rem, 3vw, 2.1rem);
+  font-size: 0.9875rem;
+  line-height: 1.65;
+  color: var(--ink);
+  font-weight: 300;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin: 0 -1px -1px 0;
+}
+
+.fitMarker {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--orange);
+  margin-bottom: 1.1rem;
+}
+
+.fitClose {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.125rem, 2vw, 1.4rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* ============================================================
+   PHILOSOPHY (dark statement)
+   ============================================================ */
+
+.philosophy {
+  background: var(--dark-surface);
+  color: #fff;
+  padding: clamp(4.5rem, 9vw, 7rem) 0;
+}
+
+.philosophyInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 5vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.philosophyTitle {
+  font-size: clamp(1.9rem, 4vw, 2.9rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.philosophyTitle em {
+  font-style: normal;
+  color: var(--orange);
+}
+
+.philosophyBody {
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.66);
+  font-weight: 300;
+  padding-top: 0.4rem;
+}
+
+.philosophyBody p + p {
+  margin-top: 1.1rem;
+}
+
+.philosophyBody strong {
+  color: #fff;
+  font-weight: 500;
+}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+
+.contact {
+  background: var(--bg);
+  padding: clamp(4.5rem, 9vw, 7.5rem) 0;
+  scroll-margin-top: 64px;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+  align-items: start;
+}
+
+.contactAside {
+  position: sticky;
+  top: 96px;
+}
+
+.contactTitle {
+  font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.contactBody {
+  margin-top: 1.25rem;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--ink-mid);
+  font-weight: 300;
+}
+
+.contactBody p + p {
+  margin-top: 1rem;
+}
+
+.contactDirect {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-strong);
+  font-size: 0.9375rem;
+  color: var(--ink-mid);
+  line-height: 1.7;
+}
+
+.contactDirect a {
+  color: var(--blue);
+  font-weight: 500;
+}
+
+.contactDirect a:hover {
+  text-decoration: underline;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .problemGrid,
+  .outcomeGrid,
+  .philosophyInner,
+  .contactGrid {
+    grid-template-columns: 1fr;
   }
-  .finalCta {
-    padding: 3.5rem 5vw;
+
+  .fitGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contactAside {
+    position: static;
+  }
+
+  .stage {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .stageTrigger {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .serviceGrid,
+  .fitGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .beats {
+    grid-template-columns: 1fr;
+  }
+
+  .beat,
+  .beat + .beat {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 1.25rem 0 1.4rem;
+  }
+
+  .beat + .beat::before {
+    left: 0;
+  }
+
+  .beat:last-child {
+    border-bottom: none;
+  }
+
+  .beat::before {
+    top: 0;
+  }
+
+  .beat:first-child::before {
+    top: -1px;
+  }
+
+  .heroCtas {
+    gap: 1.25rem;
   }
 }

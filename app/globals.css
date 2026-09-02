@@ -27,6 +27,35 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Keyboard focus is always visible, and never on mouse click. */
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.btn-orange:focus-visible {
+  outline-color: var(--orange);
+}
+
+/* On dark surfaces the blue ring disappears, so switch to white. */
+footer a:focus-visible,
+footer button:focus-visible,
+.btn-secondary-dark:focus-visible {
+  outline-color: #fff;
+}
+
 body {
   font-family: var(--font-barlow), 'Barlow', sans-serif;
   background: var(--bg);
