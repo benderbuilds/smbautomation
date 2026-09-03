@@ -67,7 +67,7 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.58);
   margin-bottom: 1rem;
 }
 
@@ -75,14 +75,17 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.15rem;
   margin: 0;
   padding: 0;
 }
 
 .links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
   font-size: 0.85rem;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.72);
   text-decoration: none;
   transition: color 0.15s;
 }
@@ -105,7 +108,7 @@
 
 .copy {
   font-size: 0.72rem;
-  color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.55);
   letter-spacing: 0.04em;
 }
 
@@ -118,8 +121,11 @@
 }
 
 .legal a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
   font-size: 0.72rem;
-  color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.55);
   text-decoration: none;
 }
 

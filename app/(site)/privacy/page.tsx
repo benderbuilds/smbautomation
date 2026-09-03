@@ -28,7 +28,7 @@ export default function PrivacyPage() {
 
           <h2 className={s.h3}>Information we collect</h2>
           <p className={s.body}>
-            When you submit a form on this site (the audit application, the contact form, the sample audit download, or the workflow audit intake), we collect the information you provide: typically your name, email address, phone number, company details, and any answers you enter. When you purchase the Single Workflow Audit, payment is processed by Stripe; we never see or store your full card details.
+            When you submit a form on this site (the contact form or a resource download), we collect the information you provide: typically your name, email address, phone number, company details, and any answers you enter.
           </p>
           <p className={s.body}>
             We also collect standard analytics data about how the site is used, including pages visited, referring source, and campaign parameters. We store a first-party cookie for up to 90 days that records how you first found the site so we can attribute inquiries correctly.
@@ -47,7 +47,7 @@ export default function PrivacyPage() {
 
           <h2 className={s.h3}>Service providers</h2>
           <p className={s.body}>
-            We rely on a small set of service providers to run this site: Railway (hosting), Cloudflare (DNS and spam protection), Resend (transactional email), Stripe (payments), Calendly (scheduling), Google (analytics, advertising, and spreadsheets), and Meta (advertising measurement). Each receives only the information needed to perform its function and handles it under its own privacy policy.
+            We rely on a small set of service providers to run this site: Railway (hosting), Cloudflare (DNS and spam protection), Resend (transactional email), Calendly (scheduling), Google (analytics, advertising, and spreadsheets), and Meta (advertising measurement). Each receives only the information needed to perform its function and handles it under its own privacy policy.
           </p>
 
           <h2 className={s.h3}>Cookies</h2>

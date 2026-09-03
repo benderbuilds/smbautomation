@@ -1,21 +1,13 @@
-'use client';
-
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import NotFoundLogger from '../components/NotFoundLogger';
+
+export const metadata: Metadata = {
+  title: { absolute: 'Page not found | SMB Automation' },
+  description: 'The page you are looking for does not exist.',
+};
 
 export default function NotFound() {
-  useEffect(() => {
-    console.warn(`[404] ${window.location.pathname}${window.location.search}`);
-    fetch('/api/log-404', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        path: window.location.pathname + window.location.search,
-        referrer: document.referrer,
-      }),
-    }).catch(() => {});
-  }, []);
-
   return (
     <main
       style={{
@@ -26,6 +18,7 @@ export default function NotFound() {
         padding: '6rem 5vw',
       }}
     >
+      <NotFoundLogger />
       <div style={{ maxWidth: 680, margin: '0 auto' }}>
         <span className="eyebrow">404</span>
         <h1

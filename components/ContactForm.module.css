@@ -163,7 +163,7 @@
 
 .error {
   font-size: 0.9375rem;
-  color: var(--orange);
+  color: var(--orange-cta);
   font-weight: 500;
 }
 

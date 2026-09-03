@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import { Barlow } from 'next/font/google';
 import AttributionCapture from '../components/AttributionCapture';
 import AnalyticsScripts from '../components/AnalyticsScripts';
@@ -33,8 +32,11 @@ export const metadata: Metadata = {
     siteName: 'SMB Automation',
     type: 'website',
   },
-  alternates: {
-    canonical: 'https://smbautomation.io',
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Get More Customers. Automate the Busywork. | SMB Automation',
+    description:
+      'Websites, SEO, Google Ads, and Meta Ads that bring in customers, plus automated lead, invoice, AR, and review follow-up.',
   },
 };
 
@@ -92,8 +94,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <AttributionCapture />
         {children}
-        <Script
-          id="org-schema"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
         />

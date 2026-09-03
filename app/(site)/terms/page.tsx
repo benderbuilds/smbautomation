@@ -3,7 +3,7 @@ import s from '@/components/ContentPage.module.css';
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
-  description: 'The terms that govern use of smbautomation.io and purchases of SMB Automation services.',
+  description: 'The terms that govern use of smbautomation.io and SMB Automation services.',
   alternates: { canonical: 'https://smbautomation.io/terms' },
 };
 
@@ -27,17 +27,17 @@ export default function TermsPage() {
 
           <h2 className={s.h3}>Services</h2>
           <p className={s.body}>
-            SMB Automation provides business analysis and automation consulting services, including the Business Efficiency Audit ($1,500), the Single Workflow Audit ($495), and implementation projects scoped per engagement. Each service&apos;s scope, deliverables, and timeline are described on this site or in a written agreement.
+            SMB Automation provides marketing, business analysis, and automation services, including audits, implementation projects, and ongoing engagements. Each engagement&apos;s scope, deliverables, timeline, and fees are described in a written agreement.
           </p>
 
           <h2 className={s.h3}>Payments and refunds</h2>
           <p className={s.body}>
-            The Single Workflow Audit is paid through Stripe at checkout. The Business Efficiency Audit is invoiced after the fit call. The Business Efficiency Audit carries a findings guarantee: if the audit does not identify at least $15,000 in annualized time or revenue opportunity, we refund the full fee and you keep the roadmap. Audit fees may be credited toward larger engagements as described on the relevant service page. Implementation work is governed by its own written agreement.
+            Fees, payment schedule, and any refund terms are set out in the written agreement for each engagement. Implementation work is governed by its own written agreement.
           </p>
 
           <h2 className={s.h3}>Deliverables and ownership</h2>
           <p className={s.body}>
-            Audit deliverables belong to your business once the fee is paid. You may implement recommendations internally, with another provider, or with us. Recommendations are professional opinions based on the information you provide; estimates of time savings, cost, and revenue are good-faith projections, not guarantees of outcome.
+            Deliverables belong to your business once the applicable fee is paid. You may implement recommendations internally, with another provider, or with us. Recommendations are professional opinions based on the information you provide; estimates of time savings, cost, and revenue are good-faith projections, not guarantees of outcome.
           </p>
 
           <h2 className={s.h3}>Your responsibilities</h2>

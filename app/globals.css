@@ -9,11 +9,13 @@
   --blue-deep:     #1A2EA8;
   --blue-pale:     #D8E0FA;
   --blue-lt:       #EBF0FF;
-  --orange:        #E84E1A;
+  --orange:        #E84E1A;  /* decorative only: dots, rules, timeline markers */
+  --orange-cta:    #C43E12;  /* 5.19:1 on white - interactive: buttons, error text */
+  --orange-cta-h:  #A83310;  /* 6.67:1 on white - hover */
   --orange-pale:   #FDEEE8;
   --ink:           #0A0E1A;
   --ink-mid:       #5A6580;
-  --ink-faint:     #9AA0B2;
+  --ink-faint:     #626A85;  /* 5.36:1 on white, 4.72:1 on --bg */
   --bg:            #EDF1F7;
   --bg-white:      #FFFFFF;
   --border:        #D4DAE8;
@@ -89,7 +91,7 @@ img, svg {
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.62);
   display: block;
   margin-bottom: 1rem;
 }
@@ -100,8 +102,8 @@ img, svg {
   gap: 0.4rem;
   background: var(--blue);
   color: #fff;
-  padding: 0.65rem 1.75rem;
-  font-size: 0.75rem;
+  padding: 0.9rem 1.9rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -124,24 +126,24 @@ img, svg {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: var(--orange);
+  background: var(--orange-cta);
   color: #fff;
-  padding: 0.65rem 1.75rem;
-  font-size: 0.75rem;
+  padding: 0.9rem 1.9rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   font-family: var(--font-barlow), 'Barlow', sans-serif;
   cursor: pointer;
-  border: 1px solid var(--orange);
+  border: 1px solid var(--orange-cta);
   border-radius: 0;
   transition: background 0.15s, border-color 0.15s;
   text-decoration: none;
 }
 
 .btn-orange:hover {
-  background: #cc3e12;
-  border-color: #cc3e12;
+  background: var(--orange-cta-h);
+  border-color: var(--orange-cta-h);
 }
 
 .btn-secondary {
@@ -150,8 +152,8 @@ img, svg {
   gap: 0.4rem;
   background: transparent;
   color: var(--ink);
-  padding: 0.65rem 1.75rem;
-  font-size: 0.75rem;
+  padding: 0.9rem 1.9rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -175,8 +177,8 @@ img, svg {
   gap: 0.4rem;
   background: transparent;
   color: #fff;
-  padding: 0.65rem 1.75rem;
-  font-size: 0.75rem;
+  padding: 0.9rem 1.9rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;

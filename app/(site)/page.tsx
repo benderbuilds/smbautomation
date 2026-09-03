@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import Link from 'next/link';
 import ContactForm from '@/components/ContactForm';
 import s from './page.module.css';
@@ -117,8 +116,7 @@ const serviceSchema = {
 export default function HomePage() {
   return (
     <>
-      <Script
-        id="service-schema"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
@@ -129,7 +127,7 @@ export default function HomePage() {
           <div className={s.heroCopy}>
             <span className="eyebrow">MARKETING AND AUTOMATION FOR SMALL BUSINESSES</span>
             <h1 className={s.heroHeadline}>
-              Get more customers.
+              Get more customers.{' '}
               <span>Automate the busywork.</span>
             </h1>
             <p className={s.heroSub}>
