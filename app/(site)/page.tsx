@@ -90,6 +90,20 @@ const FIT = [
   'Wondering where AI and automation could actually save your team time.',
 ];
 
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'SMB Automation',
+  url: 'https://smbautomation.io',
+  description:
+    'SMB Automation helps small businesses grow with better websites, SEO, paid advertising, and automated follow-up systems that keep leads, customers, invoices, and reviews from falling through the cracks.',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: 'jesse@smbautomation.io',
+    contactType: 'customer support',
+  },
+};
+
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
