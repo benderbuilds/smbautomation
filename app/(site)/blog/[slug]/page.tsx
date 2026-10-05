@@ -41,9 +41,11 @@ export default function BlogPostPage({ params }: PageProps) {
     headline: post.seoTitle ?? post.title,
     description: post.excerpt,
     datePublished: post.date,
+    dateModified: post.date,
     author: {
       '@type': 'Organization',
       name: 'SMB Automation',
+      url: 'https://smbautomation.io',
     },
     publisher: {
       '@type': 'Organization',
