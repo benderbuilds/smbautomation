@@ -37,6 +37,8 @@ npm run check:copy  # fails on em dashes in tsx or non-zero border-radius in css
 | `/` | The landing page. Hero, the problem, four demand channels, the follow-up timeline, outcomes, fit, philosophy, contact form. |
 | `/blog` and `/blog/[slug]` | MDX blog, statically generated from `content/blog/`. |
 | `/privacy`, `/terms` | Legal pages. |
+| `/roofers`, `/roofers/thank-you` | Paid-traffic landing page for the roofer Meta campaign (noindex, no site nav, not in the sitemap). Audit form, then the thank-you page embeds Calendly prefilled with the lead's name and email. |
+| `/api/roofer-audit` | Roofer audit form handler: validates, writes a row to the `RooferAudit` sheet, emails both sides, and sends a server-side Meta `Lead` event that deduplicates against the browser pixel by `event_id`. |
 | `/api/contact` | Contact form handler: validates, writes a row to the `Contact` sheet, sends the internal notification and the visitor acknowledgement. |
 | `/api/log-404` | Client-side 404 logging. |
 
@@ -54,9 +56,12 @@ Every integration is optional in development: when its env vars are missing the 
 | `NEXT_PUBLIC_GA4_ID` | GA4 | Falls back to the existing hardcoded property until set. |
 | `NEXT_PUBLIC_GADS_ID` | Google Ads conversion tracking | Optional. |
 | `NEXT_PUBLIC_META_PIXEL_ID` / `META_CAPI_TOKEN` | Meta Pixel + Conversions API | Optional. |
+| `NEXT_PUBLIC_CALENDLY_URL` | Booking link on `/roofers/thank-you` and in the audit email | Defaults to the 30-minute event. Point it at the dedicated 20-minute audit event. |
 | `NEXT_PUBLIC_SITE_URL` | Absolute URLs in emails | Defaults to https://smbautomation.io |
 
 The `Contact` sheet row is written in this column order: timestamp, name, business, email, phone, interests, message, utm_source, utm_medium, utm_campaign, landing_page.
+
+The `RooferAudit` sheet row is written in this column order: timestamp, name, company, phone, email, monthly_leads, utm_source, utm_medium, utm_campaign, utm_content, landing_page.
 
 ## Key Flows
 

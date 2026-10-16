@@ -20,3 +20,31 @@ export function track(event: string, params?: Record<string, unknown>): void {
     console.warn('[analytics] track failed:', err);
   }
 }
+
+/** A unique id shared by the browser pixel and the server CAPI event for one conversion. */
+export function newEventId(): string {
+  try {
+    return crypto.randomUUID();
+  } catch {
+    return `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  }
+}
+
+/**
+ * Fires a Meta standard event (Lead, Schedule) rather than trackCustom, because
+ * campaigns can only optimize on standard events. Pass the same eventId to CAPI.
+ */
+export function trackStandard(
+  metaEvent: 'Lead' | 'Schedule',
+  gaEvent: string,
+  params: Record<string, unknown> = {},
+  eventId?: string
+): void {
+  if (typeof window === 'undefined') return;
+  try {
+    window.gtag?.('event', gaEvent, params);
+    window.fbq?.('track', metaEvent, params, eventId ? { eventID: eventId } : undefined);
+  } catch (err) {
+    console.warn('[analytics] trackStandard failed:', err);
+  }
+}

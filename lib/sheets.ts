@@ -1,6 +1,6 @@
 import { createSign } from 'crypto';
 
-export type SheetTab = 'Applications' | 'Purchases' | 'SampleAudit' | 'Contact';
+export type SheetTab = 'Applications' | 'Purchases' | 'SampleAudit' | 'Contact' | 'RooferAudit';
 
 const TOKEN_URL = 'https://oauth2.googleapis.com/token';
 const SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
