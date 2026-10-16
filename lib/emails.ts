@@ -1,3 +1,5 @@
+import { calendlyUrl } from './calendly';
+
 function fromAddress(): string {
   return process.env.EMAIL_FROM || 'SMB Automation <notifications@smbautomation.io>';
 }
@@ -116,6 +118,60 @@ export async function sendContactEmails(sub: ContactSubmission): Promise<void> {
 <p style="margin:0;">In the meantime, if anything else comes to mind about where your marketing or follow-up is falling short, just reply to this email.</p>`
     ),
     text: `Thanks, ${firstName}.\n\nWe received your message and will reply within one business day.\n\nIn the meantime, if anything else comes to mind about where your marketing or follow-up is falling short, just reply to this email.`,
+  });
+
+  await Promise.all([internal, ack]);
+}
+
+export interface RooferAuditSubmission {
+  name: string;
+  company: string;
+  email: string;
+  phone: string;
+  monthlyLeads: string;
+  source: string;
+}
+
+export async function sendRooferAuditEmails(sub: RooferAuditSubmission): Promise<void> {
+  const rows: [string, string][] = [
+    ['Name', sub.name],
+    ['Company', sub.company],
+    ['Phone', sub.phone],
+    ['Email', sub.email],
+    ['Monthly leads', sub.monthlyLeads],
+    ['Source', sub.source || 'Direct'],
+  ];
+
+  const rowsHtml = rows
+    .map(
+      ([label, value]) =>
+        `<tr><td style="padding:4px 16px 4px 0;color:#5A6580;font-size:13px;vertical-align:top;">${label}</td><td style="padding:4px 0;font-size:14px;">${escapeHtml(value)}</td></tr>`
+    )
+    .join('');
+
+  const internal = send({
+    to: adminEmail(),
+    subject: `Roofer audit request: ${sub.company} (${sub.monthlyLeads} leads/mo)`,
+    replyTo: sub.email,
+    html: shell(
+      `<h2 style="margin:0 0 16px;font-size:18px;">New roofer audit request</h2>
+<p style="margin:0 0 16px;">Call them fast. Speed is the whole pitch.</p>
+<table style="width:100%;border-collapse:collapse;">${rowsHtml}</table>`
+    ),
+    text: `New roofer audit request\n\n${rows.map(([label, value]) => `${label}: ${value}`).join('\n')}`,
+  });
+
+  const firstName = sub.name.split(' ')[0] || 'there';
+  const ack = send({
+    to: sub.email,
+    subject: 'Your missed-revenue audit',
+    html: shell(
+      `<h2 style="margin:0 0 16px;font-size:18px;">Thanks, ${escapeHtml(firstName)}.</h2>
+<p style="margin:0 0 16px;">We got your audit request for ${escapeHtml(sub.company)}. If you haven&rsquo;t picked a time yet, grab one here: <a href="${calendlyUrl()}" style="color:#2540D9;">book your 20-minute audit</a>.</p>
+<p style="margin:0 0 16px;">On the call we&rsquo;ll walk through your call volume and lead flow, put a dollar number on what missed calls and slow follow-up cost you each month, and name the three fixes with the fastest payback.</p>
+<p style="margin:0;">Questions before then? Just reply to this email.</p>`
+    ),
+    text: `Thanks, ${firstName}.\n\nWe got your audit request for ${sub.company}. If you haven't picked a time yet, grab one here: ${calendlyUrl()}\n\nOn the call we'll walk through your call volume and lead flow, put a dollar number on what missed calls and slow follow-up cost you each month, and name the three fixes with the fastest payback.\n\nQuestions before then? Just reply to this email.`,
   });
 
   await Promise.all([internal, ack]);
