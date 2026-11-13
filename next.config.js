@@ -41,11 +41,21 @@ const REDIRECTS = [
 const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   async redirects() {
-    return REDIRECTS.map(([source, destination]) => ({
-      source,
-      destination,
-      permanent: true,
-    }));
+    return [
+      // www.smbautomation.io is attached to this Railway service only so it can be
+      // redirected; the canonical host is the bare domain.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.smbautomation.io' }],
+        destination: 'https://smbautomation.io/:path*',
+        permanent: true,
+      },
+      ...REDIRECTS.map(([source, destination]) => ({
+        source,
+        destination,
+        permanent: true,
+      })),
+    ];
   },
 };
 
