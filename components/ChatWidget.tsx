@@ -1,6 +1,7 @@
 import Script from 'next/script';
 
-/* GoHighLevel (LeadConnector) chat widget. Loaded lazily so it never competes
+/* GoHighLevel (LeadConnector) chat widget, on every page including paid landing
+   pages. Loaded lazily so it never competes
    with page content or analytics for first paint. */
 export default function ChatWidget() {
   return (
