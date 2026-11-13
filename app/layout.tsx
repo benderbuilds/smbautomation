@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Barlow } from 'next/font/google';
 import AttributionCapture from '../components/AttributionCapture';
 import AnalyticsScripts from '../components/AnalyticsScripts';
+import ChatWidget from '../components/ChatWidget';
 import './globals.css';
 
 const barlow = Barlow({
@@ -99,6 +100,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
         />
         <AnalyticsScripts />
+        <ChatWidget />
       </body>
     </html>
   );
