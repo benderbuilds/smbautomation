@@ -39,7 +39,6 @@ npm run check:copy  # fails on em dashes in tsx or non-zero border-radius in css
 | `/privacy`, `/terms` | Legal pages. |
 | `/roofers`, `/roofers/thank-you` | Paid-traffic landing page for the roofer Meta campaign (noindex, no site nav, not in the sitemap). Audit form, then the thank-you page embeds Calendly prefilled with the lead's name and email. |
 | `/api/roofer-audit` | Roofer audit form handler: validates, writes a row to the `RooferAudit` sheet, emails both sides, and sends a server-side Meta `Lead` event that deduplicates against the browser pixel by `event_id`. |
-| `/api/contact` | Contact form handler: validates, writes a row to the `Contact` sheet, sends the internal notification and the visitor acknowledgement. |
 | `/api/log-404` | Client-side 404 logging. |
 
 ## Environment Variables
@@ -59,15 +58,14 @@ Every integration is optional in development: when its env vars are missing the 
 | `NEXT_PUBLIC_CALENDLY_URL` | Booking link on `/roofers/thank-you` and in the audit email | Defaults to the 30-minute event. Point it at the dedicated 20-minute audit event. |
 | `NEXT_PUBLIC_SITE_URL` | Absolute URLs in emails | Defaults to https://smbautomation.io |
 
-The `Contact` sheet row is written in this column order: timestamp, name, business, email, phone, interests, message, utm_source, utm_medium, utm_campaign, landing_page.
 
 The `RooferAudit` sheet row is written in this column order: timestamp, name, company, phone, email, monthly_leads, utm_source, utm_medium, utm_campaign, utm_content, landing_page.
 
 ## Key Flows
 
-- **Contact form** (`components/ContactForm.tsx`) — name, business, email, phone, an interest checklist, and a message. Name, email, and message are required. Writes to the CRM and emails both sides.
+- **Contact form** (`components/HighLevelForm.tsx`) — a HighLevel form embedded at `/#contact`. Submissions, including the two optional SMS consent checkboxes (service texts and promotional texts), go straight to the contact in HighLevel, where texts are sent and STOP is enforced. Fields, checkbox wording, notifications, and the thank-you message are all configured in HighLevel's form builder, not in this repo. Set `HIGHLEVEL_FORM_ID` in that component.
 - **Attribution** — first-touch UTMs + landing page stored 90 days in the `sa_attr` cookie (`lib/attribution.ts`) and attached to every submission.
-- **Analytics events** — see `lib/analytics.ts`. The live events are `contact_submit` and `blog_cta_click`.
+- **Analytics events** — see `lib/analytics.ts`. The live event is `blog_cta_click`. `contact_submit` no longer fires from the site because the contact form is a HighLevel iframe; track form conversions in HighLevel.
 
 ## Adding Blog Posts
 

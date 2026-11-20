@@ -44,6 +44,12 @@ export default function Footer() {
             that keeps leads, invoices, and reviews from falling through the cracks.
           </p>
           <p className={s.contactLine}>
+            SMBAUTOMATION LLC
+            <br />
+            Iowa City, Iowa
+            <br />
+            <a href="tel:+13192552700">(319) 255-2700</a>
+            <br />
             <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a>
             <br />
             Serving clients nationwide.
@@ -65,10 +71,10 @@ export default function Footer() {
         </div>
       </div>
       <div className={s.bottom}>
-        <p className={s.copy}>© 2026 SMB Automation. All rights reserved.</p>
+        <p className={s.copy}>© 2026 SMBAUTOMATION LLC. All rights reserved.</p>
         <ul className={s.legal}>
-          <li><Link href="/privacy">Privacy</Link></li>
-          <li><Link href="/terms">Terms</Link></li>
+          <li><Link href="/privacy">Privacy Policy</Link></li>
+          <li><Link href="/terms">Terms of Service</Link></li>
         </ul>
       </div>
     </footer>

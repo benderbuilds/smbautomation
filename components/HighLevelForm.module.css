@@ -1,0 +1,24 @@
+.wrap {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  padding: clamp(0.5rem, 2vw, 1rem);
+}
+
+.frame {
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+}
+
+.fallback {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--ink-mid);
+}
+
+.fallback a {
+  color: var(--blue);
+  font-weight: 500;
+}

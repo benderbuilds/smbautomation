@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import ContactForm from '@/components/ContactForm';
+import HighLevelForm from '@/components/HighLevelForm';
 import s from './page.module.css';
 
 export const metadata: Metadata = {
@@ -100,6 +100,7 @@ const organizationSchema = {
   contactPoint: {
     '@type': 'ContactPoint',
     email: 'jesse@smbautomation.io',
+    telephone: '+1-319-255-2700',
     contactType: 'customer support',
   },
 };
@@ -384,11 +385,13 @@ export default function HomePage() {
                 Prefer email? Write to{' '}
                 <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a>.
                 <br />
+                Prefer to call? <a href="tel:+13192552700">(319) 255-2700</a>.
+                <br />
                 We reply within one business day.
               </p>
             </div>
 
-            <ContactForm />
+            <HighLevelForm />
           </div>
         </div>
       </section>
