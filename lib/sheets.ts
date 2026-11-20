@@ -42,23 +42,18 @@ async function getAccessToken(email: string, key: string): Promise<string> {
   return data.access_token;
 }
 
-/** Outcome of a write: saved, skipped (env not configured), or failed. */
-export type SaveResult = 'saved' | 'skipped' | 'failed';
-
 /**
  * Appends one row to the CRM spreadsheet. Never throws: CRM failure must not
  * fail a form submission. No-ops with a warning when env vars are missing.
- * Returns whether the row was actually saved, so callers that must not
- * confirm something unsaved (SMS consent) can check.
  */
-export async function appendRow(tab: SheetTab, values: (string | number)[]): Promise<SaveResult> {
+export async function appendRow(tab: SheetTab, values: (string | number)[]): Promise<void> {
   const sheetId = process.env.GOOGLE_SHEETS_ID;
   const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
   const key = process.env.GOOGLE_PRIVATE_KEY;
 
   if (!sheetId || !email || !key) {
     console.warn(`[sheets] env missing, skipping append to ${tab}`);
-    return 'skipped';
+    return;
   }
 
   try {
@@ -76,11 +71,8 @@ export async function appendRow(tab: SheetTab, values: (string | number)[]): Pro
     });
     if (!res.ok) {
       console.error(`[sheets] append to ${tab} failed: ${res.status} ${await res.text()}`);
-      return 'failed';
     }
-    return 'saved';
   } catch (err) {
     console.error(`[sheets] append to ${tab} errored:`, err);
-    return 'failed';
   }
 }

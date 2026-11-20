@@ -32,7 +32,7 @@ export default function PrivacyPage() {
             When you submit a form on this site (the contact form or a resource download), we collect the information you provide: typically your name, email address, phone number, company details, and any answers you enter.
           </p>
           <p className={s.body}>
-            If you choose to receive text messages, we also record which text message program or programs you selected, the phone number you agreed to receive texts at, the date and time of your choice, the page you submitted it from, and the version of the consent wording you saw. See <a href="#sms">Text messaging</a> below.
+            If you choose to receive text messages, we also record which text message program or programs you selected, the phone number you agreed to receive texts at, and when you made the choice. See <a href="#sms">Text messaging</a> below.
           </p>
           <p className={s.body}>
             We also collect standard analytics data about how the site is used, including pages visited, referring source, and campaign parameters. We store a first-party cookie for up to 90 days that records how you first found the site so we can attribute inquiries correctly.
@@ -51,7 +51,7 @@ export default function PrivacyPage() {
 
           <h2 className={s.h3}>Service providers</h2>
           <p className={s.body}>
-            We rely on a small set of service providers to run this site: Railway (hosting), Cloudflare (DNS and spam protection), Resend (transactional email), Calendly (scheduling), Google (analytics, advertising, business email, and spreadsheets), Meta (advertising measurement), and HighLevel, also known as LeadConnector (website chat and text message delivery). Each receives only the information needed to perform its function and handles it under its own privacy policy.
+            We rely on a small set of service providers to run this site: Railway (hosting), Cloudflare (DNS and spam protection), Resend (transactional email), Calendly (scheduling), Google (analytics, advertising, business email, and spreadsheets), Meta (advertising measurement), and HighLevel, also known as LeadConnector (our contact form, website chat, contact records, and text message delivery). Each receives only the information needed to perform its function and handles it under its own privacy policy.
           </p>
 
           <h2 className={s.h3} id="sms">Text messaging</h2>
@@ -71,11 +71,8 @@ export default function PrivacyPage() {
 
           <h2 className={s.h3}>How we protect phone numbers and text message consent records</h2>
           <ul className={s.list}>
-            <li className={s.listItem}><span className="proof-dot" aria-hidden="true" />This site is served only over encrypted HTTPS connections, and unencrypted HTTP requests are redirected to HTTPS, so the phone number and choices you submit are encrypted in transit.</li>
-            <li className={s.listItem}><span className="proof-dot" aria-hidden="true" />Your form is processed on our server, which records the date and time of your consent itself rather than relying on your browser.</li>
-            <li className={s.listItem}><span className="proof-dot" aria-hidden="true" />We record each text message program as a separate yes or no choice, together with the exact consent wording you saw. A record with no consent choice is treated as no consent.</li>
-            <li className={s.listItem}><span className="proof-dot" aria-hidden="true" />The keys our site uses to send email and store records are kept on our hosting provider as private server settings and are never included in the code sent to your browser.</li>
-            <li className={s.listItem}><span className="proof-dot" aria-hidden="true" />Submitting our website form again never removes an earlier STOP request. The form only adds new records and does not change your opt-out status.</li>
+            <li className={s.listItem}><span className="proof-dot" aria-hidden="true" />This site and our contact form are served only over encrypted HTTPS connections, and unencrypted HTTP requests to this site are redirected to HTTPS, so the phone number and choices you submit are encrypted in transit.</li>
+            <li className={s.listItem}><span className="proof-dot" aria-hidden="true" />Our contact form is hosted by HighLevel, the same provider that sends our text messages, so your phone number and text message choices are submitted directly to the system that sends our texts and records opt-outs.</li>
           </ul>
 
           <h2 className={s.h3}>Cookies</h2>

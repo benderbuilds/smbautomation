@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import ContactForm from '@/components/ContactForm';
+import HighLevelForm from '@/components/HighLevelForm';
 import s from './page.module.css';
 
 export const metadata: Metadata = {
@@ -391,7 +391,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <ContactForm />
+            <HighLevelForm />
           </div>
         </div>
       </section>

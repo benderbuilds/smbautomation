@@ -70,7 +70,7 @@ export default function TermsPage() {
             <strong>Help.</strong> Reply HELP to any text message for help, or contact us at <a href="tel:+13192552700">(319) 255-2700</a> or <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a>.
           </p>
           <p className={s.body}>
-            <strong>How to rejoin.</strong> If you opted out and want to receive text messages again, reply START to our text number, or contact us at <a href="tel:+13192552700">(319) 255-2700</a> or <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a> and tell us which program you want to rejoin. Submitting the contact form again does not override an earlier STOP request.
+            <strong>How to rejoin.</strong> If you opted out and want to receive text messages again, reply START to our text number, or contact us at <a href="tel:+13192552700">(319) 255-2700</a> or <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a> and tell us which program you want to rejoin.
           </p>
           <p className={s.body}>
             <strong>Delivery.</strong> Carriers are not liable for delayed or undelivered messages.
