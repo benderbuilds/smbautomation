@@ -35,6 +35,8 @@ export default function ContactForm() {
   const [smsService, setSmsService] = useState(false);
   const [smsMarketing, setSmsMarketing] = useState(false);
   const [phoneError, setPhoneError] = useState('');
+  // Set when SMS boxes were checked but the server could not save the consent.
+  const [smsNotSaved, setSmsNotSaved] = useState(false);
   const phoneRef = useRef<HTMLInputElement>(null);
   const smsSelected = smsService || smsMarketing;
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
@@ -80,6 +82,8 @@ export default function ContactForm() {
         }
         throw new Error(json.error || 'Something went wrong. Try again.');
       }
+      const json = await res.json().catch(() => ({}));
+      setSmsNotSaved(smsSelected && json.smsConsentSaved !== true);
       track('contact_submit', { interests: interests.join(', ') });
       setStatus('success');
     } catch (err) {
@@ -98,6 +102,13 @@ export default function ContactForm() {
             biggest opportunities are. If something else comes to mind before then, email{' '}
             <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a>.
           </p>
+          {smsNotSaved && (
+            <p className={s.smsNotice} role="status">
+              Your message was sent, but we could not save your text message choices, so you are
+              not signed up for text messages. If you still want texts from us, submit the form
+              again later with the boxes checked.
+            </p>
+          )}
         </div>
       </div>
     );

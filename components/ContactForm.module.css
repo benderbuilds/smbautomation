@@ -278,6 +278,16 @@
   font-weight: 300;
 }
 
+.smsNotice {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border-left: 3px solid var(--orange-cta);
+  background: var(--bg);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
 .successBody a {
   color: var(--blue);
   font-weight: 500;

@@ -10,13 +10,14 @@ import {
   rowAllowsSms,
   toE164,
 } from './smsConsent';
+import type { SaveResult } from './sheets';
 
 const NOW = new Date('2026-11-20T18:30:00.000Z');
 const FORM_URL = 'https://smbautomation.io/#contact';
 const EXISTING_COLUMNS = 11; // timestamp ... landing_page
 
-function deps() {
-  const appendRow = vi.fn<ContactDeps['appendRow']>(async () => {});
+function deps(saveResult: SaveResult = 'saved') {
+  const appendRow = vi.fn<ContactDeps['appendRow']>(async () => saveResult);
   const sendContactEmails = vi.fn<ContactDeps['sendContactEmails']>(async () => {});
   return { appendRow, sendContactEmails };
 }
@@ -60,7 +61,10 @@ describe('handleContact: the four consent combinations', () => {
         ctx,
         d
       );
-      expect(res).toEqual({ status: 200, body: { ok: true } });
+      expect(res).toEqual({
+        status: 200,
+        body: { ok: true, smsConsentSaved: c.smsService || c.smsMarketing },
+      });
 
       // Sheet row: existing columns untouched, consent appended separately.
       const row = d.appendRow.mock.calls[0][1];
@@ -90,6 +94,38 @@ describe('handleContact: the four consent combinations', () => {
     await handleContact({ ...base, phone: '3195550142', smsService: true }, ctx, d);
     expect(smsCells(d.appendRow.mock.calls[0][1]).sms_marketing_consent).toBe('no');
     expect(d.sendContactEmails.mock.calls[0][0].sms.marketingConsent).toBe(false);
+  });
+});
+
+describe('handleContact: SMS consent is only confirmed once saved', () => {
+  for (const result of ['failed', 'skipped'] as const) {
+    test(`Sheets write ${result}: inquiry still succeeds, consent is not confirmed`, async () => {
+      const d = deps(result);
+      const res = await handleContact(
+        { ...base, phone: '(319) 555-0142', smsService: true, smsMarketing: true },
+        ctx,
+        d
+      );
+      // The ordinary inquiry is preserved...
+      expect(res).toEqual({ status: 200, body: { ok: true, smsConsentSaved: false } });
+      expect(d.appendRow).toHaveBeenCalledTimes(1);
+      expect(d.sendContactEmails).toHaveBeenCalledTimes(1);
+      // ...but the emails are told consent was not saved.
+      expect(d.sendContactEmails.mock.calls[0][0].smsSaved).toBe(false);
+    });
+  }
+
+  test('no SMS boxes checked: a failed write never reports consent saved', async () => {
+    const d = deps('failed');
+    const res = await handleContact({ ...base, phone: '' }, ctx, d);
+    expect(res).toEqual({ status: 200, body: { ok: true, smsConsentSaved: false } });
+  });
+
+  test('successful save confirms consent', async () => {
+    const d = deps('saved');
+    const res = await handleContact({ ...base, phone: '3195550142', smsMarketing: true }, ctx, d);
+    expect(res.body).toEqual({ ok: true, smsConsentSaved: true });
+    expect(d.sendContactEmails.mock.calls[0][0].smsSaved).toBe(true);
   });
 });
 

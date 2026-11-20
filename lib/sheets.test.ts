@@ -1,6 +1,6 @@
 import { generateKeyPairSync, createVerify } from 'crypto';
-import { describe, expect, test } from 'vitest';
-import { buildJwt } from './sheets';
+import { afterEach, describe, expect, test, vi } from 'vitest';
+import { appendRow, buildJwt } from './sheets';
 
 const { publicKey, privateKey } = generateKeyPairSync('rsa', {
   modulusLength: 2048,
@@ -46,5 +46,46 @@ describe('buildJwt', () => {
     const verifier = createVerify('RSA-SHA256');
     verifier.update(`${h}.${p}`);
     expect(verifier.verify(publicKey, Buffer.from(sig, 'base64url'))).toBe(true);
+  });
+});
+
+describe('appendRow save result', () => {
+  const env = {
+    GOOGLE_SHEETS_ID: 'sheet',
+    GOOGLE_SERVICE_ACCOUNT_EMAIL: 'svc@project.iam.gserviceaccount.com',
+    GOOGLE_PRIVATE_KEY: privateKey,
+  };
+  const tokenOk = () => new Response(JSON.stringify({ access_token: 't' }), { status: 200 });
+
+  afterEach(() => {
+    vi.unstubAllEnvs();
+    vi.unstubAllGlobals();
+  });
+
+  test('skipped when env is missing', async () => {
+    vi.stubEnv('GOOGLE_SHEETS_ID', '');
+    expect(await appendRow('Contact', ['x'])).toBe('skipped');
+  });
+
+  test('failed when the Sheets API rejects the write', async () => {
+    for (const [k, v] of Object.entries(env)) vi.stubEnv(k, v);
+    vi.stubGlobal('fetch', vi.fn()
+      .mockResolvedValueOnce(tokenOk())
+      .mockResolvedValueOnce(new Response('quota', { status: 429 })));
+    expect(await appendRow('Contact', ['x'])).toBe('failed');
+  });
+
+  test('failed when the request throws', async () => {
+    for (const [k, v] of Object.entries(env)) vi.stubEnv(k, v);
+    vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new Error('network down')));
+    expect(await appendRow('Contact', ['x'])).toBe('failed');
+  });
+
+  test('saved when the write succeeds', async () => {
+    for (const [k, v] of Object.entries(env)) vi.stubEnv(k, v);
+    vi.stubGlobal('fetch', vi.fn()
+      .mockResolvedValueOnce(tokenOk())
+      .mockResolvedValueOnce(new Response('{}', { status: 200 })));
+    expect(await appendRow('Contact', ['x'])).toBe('saved');
   });
 });

@@ -76,17 +76,26 @@ export interface ContactSubmission {
   message: string;
   /** Absent only for callers that predate SMS consent; treated as no consent. */
   sms?: SmsConsentRecord;
+  /** True only when the consent record was saved to the records sheet. */
+  smsSaved?: boolean;
 }
 
 /** Internal record of both SMS choices. Each program is listed separately. */
-function smsConsentRows(sms: SmsConsentRecord | undefined): [string, string][] {
+function smsConsentRows(sms: SmsConsentRecord | undefined, saved: boolean): [string, string][] {
   if (!sms) {
     return [
       ['SMS: service texts', 'No (no consent data)'],
       ['SMS: promotional texts', 'No (no consent data)'],
     ];
   }
+  const requested = sms.serviceConsent || sms.marketingConsent;
   return [
+    ...(requested && !saved
+      ? ([[
+          'WARNING',
+          'Consent was checked on the form but the record was NOT saved to the Contact sheet. The visitor was told they are not signed up. Do not text this number.',
+        ]] as [string, string][])
+      : []),
     ['SMS: service texts', sms.serviceConsent ? 'YES, opted in' : 'No'],
     ['SMS: promotional texts', sms.marketingConsent ? 'YES, opted in' : 'No'],
     ['SMS phone (E.164)', sms.phoneE164 || 'None (no SMS consent)'],
@@ -116,7 +125,7 @@ export async function sendContactEmails(sub: ContactSubmission): Promise<void> {
     )
     .join('');
 
-  const smsRows = smsConsentRows(sub.sms);
+  const smsRows = smsConsentRows(sub.sms, sub.smsSaved === true);
   const smsRowsHtml = smsRows
     .map(
       ([label, value]) =>
@@ -143,7 +152,8 @@ export async function sendContactEmails(sub: ContactSubmission): Promise<void> {
       .join('\n')}`,
   });
 
-  const optedIn = [
+  // Only confirm opt-ins the server actually saved.
+  const optedIn = sub.smsSaved !== true ? [] : [
     sub.sms?.serviceConsent ? 'texts about your demo appointments, onboarding reminders, and support questions' : '',
     sub.sms?.marketingConsent ? 'promotional texts about our AI front desk services, free trial, and special offers' : '',
   ].filter(Boolean);
