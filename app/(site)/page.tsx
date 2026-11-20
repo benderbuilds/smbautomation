@@ -391,7 +391,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <HighLevelForm />
+            <HighLevelForm form="homepageContact" title="Contact SMB Automation" />
           </div>
         </div>
       </section>

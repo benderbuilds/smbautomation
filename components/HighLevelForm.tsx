@@ -1,18 +1,25 @@
 import Script from 'next/script';
 import s from './HighLevelForm.module.css';
 
-/* The homepage contact form is a HighLevel (LeadConnector) form, so every
-   submission, and its SMS consent, lands on the contact in HighLevel, where
-   texts are sent and STOP is enforced. The two SMS consent checkboxes, their
-   wording, and the Privacy/Terms links are configured in HighLevel's form builder.
+/* HighLevel (LeadConnector) forms. Submissions, and their SMS consent, land on
+   the contact in HighLevel, where texts are sent and STOP is enforced. Fields,
+   the two SMS consent checkboxes, their wording, the Privacy/Terms links, and
+   what happens on submit are all configured in HighLevel's form builder.
 
-   Set HIGHLEVEL_FORM_ID (and FORM_HEIGHT to match the embed code's data-height). */
-const HIGHLEVEL_FORM_ID = '';
-const FORM_HEIGHT = 1100;
-const FORM_NAME = 'Website Contact Form';
+   Each form's id and height come from its embed code (Forms > Integrate):
+   the id is the last segment of the iframe src, the height is data-height. */
+export const HIGHLEVEL_FORMS = {
+  homepageContact: { id: '', height: 1100, name: 'Website Contact Form' },
+  rooferAudit: { id: '', height: 900, name: 'Roofer Audit Form' },
+} as const;
 
-export default function HighLevelForm() {
-  if (!HIGHLEVEL_FORM_ID) {
+type FormKey = keyof typeof HIGHLEVEL_FORMS;
+
+export default function HighLevelForm({ form, title }: { form: FormKey; title: string }) {
+  const { id, height, name } = HIGHLEVEL_FORMS[form];
+
+  if (!id) {
+    // Not configured yet: never show a dead form, offer direct contact instead.
     return (
       <div className={s.wrap}>
         <p className={s.fallback}>
@@ -26,10 +33,10 @@ export default function HighLevelForm() {
   return (
     <div className={s.wrap}>
       <iframe
-        src={`https://api.leadconnectorhq.com/widget/form/${HIGHLEVEL_FORM_ID}`}
+        src={`https://api.leadconnectorhq.com/widget/form/${id}`}
         className={s.frame}
-        style={{ height: FORM_HEIGHT }}
-        id={`inline-${HIGHLEVEL_FORM_ID}`}
+        style={{ height }}
+        id={`inline-${id}`}
         data-layout="{'id':'INLINE'}"
         data-trigger-type="alwaysShow"
         data-trigger-value=""
@@ -37,11 +44,11 @@ export default function HighLevelForm() {
         data-activation-value=""
         data-deactivation-type="neverDeactivate"
         data-deactivation-value=""
-        data-form-name={FORM_NAME}
-        data-height={FORM_HEIGHT}
-        data-layout-iframe-id={`inline-${HIGHLEVEL_FORM_ID}`}
-        data-form-id={HIGHLEVEL_FORM_ID}
-        title="Contact SMB Automation"
+        data-form-name={name}
+        data-height={height}
+        data-layout-iframe-id={`inline-${id}`}
+        data-form-id={id}
+        title={title}
       />
       <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="afterInteractive" />
     </div>

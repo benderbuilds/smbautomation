@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import { calendlyUrl } from '@/lib/calendly';
+import HighLevelCalendar from '@/components/HighLevelCalendar';
 import { LandingHeader, LandingFooter } from '../LandingChrome';
-import CalendlyEmbed from './CalendlyEmbed';
+import LeadConversion from './LeadConversion';
 import s from '../roofers.module.css';
 
 export const metadata: Metadata = {
@@ -25,7 +25,8 @@ export default function RoofersThankYouPage() {
               in dollars, what missed calls cost you every month.
             </p>
           </div>
-          <CalendlyEmbed url={calendlyUrl()} />
+          <LeadConversion />
+          <HighLevelCalendar calendar="rooferAudit" title="Book your free missed-revenue audit" />
         </div>
       </section>
       <LandingFooter />
