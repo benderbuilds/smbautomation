@@ -24,11 +24,12 @@ export function LandingFooter({ children }: { children?: React.ReactNode }) {
       <div className={s.inner}>
         {children}
         <div className={s.footerBar}>
-          <span>© {new Date().getFullYear()} SMB Automation · Iowa City, IA</span>
+          <span>© {new Date().getFullYear()} SMBAUTOMATION LLC · Iowa City, IA</span>
           <nav className={s.footerLinks} aria-label="Legal">
+            <a href="tel:+13192552700">(319) 255-2700</a>
             <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a>
-            <Link href="/privacy">Privacy</Link>
-            <Link href="/terms">Terms</Link>
+            <Link href="/privacy">Privacy Policy</Link>
+            <Link href="/terms">Terms of Service</Link>
           </nav>
         </div>
       </div>

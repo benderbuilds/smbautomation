@@ -9,8 +9,7 @@ The site is a single landing page plus a blog. Everything the visitor needs is o
 - **Next.js 14** with App Router, CSS Modules, and `next/font` (Barlow)
 - **TypeScript**, **vitest** for lib unit tests
 - **MDX** for blog posts (`next-mdx-remote`)
-- **Resend** for transactional email
-- **Google Sheets** as the CRM (service-account JWT, no extra dependency)
+- **HighLevel (LeadConnector)** for every lead touchpoint: the homepage contact form, the roofer audit form, the roofer booking calendar, and the chat widget. Contacts, SMS consent, notifications, and follow-up all live there; the site stores no lead data.
 - **Railway** for deployment
 
 ## Local Development
@@ -37,8 +36,7 @@ npm run check:copy  # fails on em dashes in tsx or non-zero border-radius in css
 | `/` | The landing page. Hero, the problem, four demand channels, the follow-up timeline, outcomes, fit, philosophy, contact form. |
 | `/blog` and `/blog/[slug]` | MDX blog, statically generated from `content/blog/`. |
 | `/privacy`, `/terms` | Legal pages. |
-| `/roofers`, `/roofers/thank-you` | Paid-traffic landing page for the roofer Meta campaign (noindex, no site nav, not in the sitemap). Audit form, then the thank-you page embeds Calendly prefilled with the lead's name and email. |
-| `/api/roofer-audit` | Roofer audit form handler: validates, writes a row to the `RooferAudit` sheet, emails both sides, and sends a server-side Meta `Lead` event that deduplicates against the browser pixel by `event_id`. |
+| `/roofers`, `/roofers/thank-you` | Paid-traffic landing page for the roofer Meta campaign (noindex, no site nav, not in the sitemap). HighLevel audit form that redirects to the thank-you page, which fires the Meta `Lead` / GA4 `generate_lead` event once per session and embeds the HighLevel audit calendar. |
 | `/api/log-404` | Client-side 404 logging. |
 
 ## Environment Variables
@@ -47,19 +45,12 @@ Every integration is optional in development: when its env vars are missing the 
 
 | Variable | Used for | Setup |
 | --- | --- | --- |
-| `RESEND_API_KEY` | Transactional email | [resend.com](https://resend.com). Verify smbautomation.io (SPF, DKIM, DMARC) before launch. Without it, submissions still succeed and the email is logged instead of sent. |
-| `EMAIL_FROM` | Sender address | Defaults to `SMB Automation <notifications@smbautomation.io>` |
-| `CONTACT_EMAIL` | Internal notification recipient | Defaults to jesse@smbautomation.io |
-| `GOOGLE_SHEETS_ID` | CRM spreadsheet | Create a spreadsheet with a `Contact` tab. |
-| `GOOGLE_SERVICE_ACCOUNT_EMAIL` / `GOOGLE_PRIVATE_KEY` | Sheets auth | Google Cloud service account with Sheets API enabled; share the spreadsheet with the service account email. Paste the private key with `\n` escapes. |
 | `NEXT_PUBLIC_GA4_ID` | GA4 | Falls back to the existing hardcoded property until set. |
 | `NEXT_PUBLIC_GADS_ID` | Google Ads conversion tracking | Optional. |
-| `NEXT_PUBLIC_META_PIXEL_ID` / `META_CAPI_TOKEN` | Meta Pixel + Conversions API | Optional. |
-| `NEXT_PUBLIC_CALENDLY_URL` | Booking link on `/roofers/thank-you` and in the audit email | Defaults to the 30-minute event. Point it at the dedicated 20-minute audit event. |
-| `NEXT_PUBLIC_SITE_URL` | Absolute URLs in emails | Defaults to https://smbautomation.io |
+| `NEXT_PUBLIC_META_PIXEL_ID` | Meta Pixel | Optional. |
 
 
-The `RooferAudit` sheet row is written in this column order: timestamp, name, company, phone, email, monthly_leads, utm_source, utm_medium, utm_campaign, utm_content, landing_page.
+HighLevel form and calendar IDs are not env vars: set them in `HIGHLEVEL_FORMS` (`components/HighLevelForm.tsx`) and `HIGHLEVEL_CALENDARS` (`components/HighLevelCalendar.tsx`) from each embed code. An empty ID renders a call/email fallback instead of a broken form.
 
 ## Key Flows
 
