@@ -1,7 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import Link from 'next/link';
 import { track } from '@/lib/analytics';
+import {
+  SMS_MARKETING_DISCLOSURE,
+  SMS_PHONE_ERROR,
+  SMS_SERVICE_DISCLOSURE,
+  toE164,
+} from '@/lib/smsConsent';
 import s from './ContactForm.module.css';
 
 const INTERESTS = [
@@ -24,6 +31,12 @@ export default function ContactForm() {
     message: '',
   });
   const [interests, setInterests] = useState<string[]>([]);
+  // Both start unchecked and are independent of each other.
+  const [smsService, setSmsService] = useState(false);
+  const [smsMarketing, setSmsMarketing] = useState(false);
+  const [phoneError, setPhoneError] = useState('');
+  const phoneRef = useRef<HTMLInputElement>(null);
+  const smsSelected = smsService || smsMarketing;
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
 
@@ -37,16 +50,34 @@ export default function ContactForm() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus('loading');
     setErrorMsg('');
+    setPhoneError('');
+    if (smsSelected && !toE164(fields.phone)) {
+      setPhoneError(SMS_PHONE_ERROR);
+      phoneRef.current?.focus();
+      return;
+    }
+    setStatus('loading');
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...fields, interests }),
+        body: JSON.stringify({
+          ...fields,
+          interests,
+          smsService,
+          smsMarketing,
+          sourceUrl: window.location.href,
+        }),
       });
       if (!res.ok) {
         const json = await res.json().catch(() => ({}));
+        if (json.field === 'phone') {
+          setStatus('idle');
+          setPhoneError(json.error || SMS_PHONE_ERROR);
+          phoneRef.current?.focus();
+          return;
+        }
         throw new Error(json.error || 'Something went wrong. Try again.');
       }
       track('contact_submit', { interests: interests.join(', ') });
@@ -118,19 +149,72 @@ export default function ContactForm() {
         </div>
         <div className={s.field}>
           <label htmlFor="phone">
-            Phone <span className={s.optional}>(optional)</span>
+            Phone{' '}
+            <span className={s.optional}>
+              {smsSelected ? '(required for text messages)' : '(optional)'}
+            </span>
           </label>
           <input
+            ref={phoneRef}
             id="phone"
             name="phone"
             type="tel"
             autoComplete="tel"
             placeholder="Phone number"
             value={fields.phone}
-            onChange={set('phone')}
+            onChange={(e) => {
+              set('phone')(e);
+              if (phoneError) setPhoneError('');
+            }}
+            aria-required={smsSelected}
+            aria-invalid={phoneError ? true : undefined}
+            aria-describedby={phoneError ? 'phone-error' : undefined}
+            className={phoneError ? s.inputInvalid : undefined}
           />
+          {phoneError && (
+            <p id="phone-error" className={s.fieldError} role="alert">
+              {phoneError}
+            </p>
+          )}
         </div>
       </div>
+
+      <fieldset className={s.consent}>
+        <legend className={s.legend}>
+          Text messages <span className={s.optional}>(optional, choose either, both, or neither)</span>
+        </legend>
+        <label className={s.consentOption}>
+          <input
+            type="checkbox"
+            name="smsService"
+            checked={smsService}
+            onChange={(e) => {
+              setSmsService(e.target.checked);
+              if (phoneError) setPhoneError('');
+            }}
+          />
+          <span className={s.box} aria-hidden="true" />
+          <span>{SMS_SERVICE_DISCLOSURE}</span>
+        </label>
+        <label className={s.consentOption}>
+          <input
+            type="checkbox"
+            name="smsMarketing"
+            checked={smsMarketing}
+            onChange={(e) => {
+              setSmsMarketing(e.target.checked);
+              if (phoneError) setPhoneError('');
+            }}
+          />
+          <span className={s.box} aria-hidden="true" />
+          <span>{SMS_MARKETING_DISCLOSURE}</span>
+        </label>
+        <p className={s.consentLinks}>
+          <Link href="/privacy">Privacy Policy</Link>
+          <span aria-hidden="true"> | </span>
+          <Link href="/terms">Terms of Service</Link>
+        </p>
+      </fieldset>
 
       <fieldset className={s.fieldset}>
         <legend className={s.legend}>What would you like help with?</legend>

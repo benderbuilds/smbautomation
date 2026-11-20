@@ -1,4 +1,5 @@
 import { calendlyUrl } from './calendly';
+import type { SmsConsentRecord } from './smsConsent';
 
 function fromAddress(): string {
   return process.env.EMAIL_FROM || 'SMB Automation <notifications@smbautomation.io>';
@@ -73,6 +74,28 @@ export interface ContactSubmission {
   phone: string;
   interests: string[];
   message: string;
+  /** Absent only for callers that predate SMS consent; treated as no consent. */
+  sms?: SmsConsentRecord;
+}
+
+/** Internal record of both SMS choices. Each program is listed separately. */
+function smsConsentRows(sms: SmsConsentRecord | undefined): [string, string][] {
+  if (!sms) {
+    return [
+      ['SMS: service texts', 'No (no consent data)'],
+      ['SMS: promotional texts', 'No (no consent data)'],
+    ];
+  }
+  return [
+    ['SMS: service texts', sms.serviceConsent ? 'YES, opted in' : 'No'],
+    ['SMS: promotional texts', sms.marketingConsent ? 'YES, opted in' : 'No'],
+    ['SMS phone (E.164)', sms.phoneE164 || 'None (no SMS consent)'],
+    ['Consent timestamp (server, UTC)', sms.timestamp],
+    ['Source form URL', sms.sourceUrl || 'Unknown'],
+    ['Disclosure version', sms.disclosureVersion],
+    ['Service disclosure shown', sms.serviceDisclosure],
+    ['Promotional disclosure shown', sms.marketingDisclosure],
+  ];
 }
 
 export async function sendContactEmails(sub: ContactSubmission): Promise<void> {
@@ -93,6 +116,14 @@ export async function sendContactEmails(sub: ContactSubmission): Promise<void> {
     )
     .join('');
 
+  const smsRows = smsConsentRows(sub.sms);
+  const smsRowsHtml = smsRows
+    .map(
+      ([label, value]) =>
+        `<tr><td style="padding:4px 16px 4px 0;color:#5A6580;font-size:13px;vertical-align:top;">${label}</td><td style="padding:4px 0;font-size:13px;">${escapeHtml(value)}</td></tr>`
+    )
+    .join('');
+
   const internal = send({
     to: adminEmail(),
     subject: `New inquiry: ${sub.name}${sub.business ? ` (${sub.business})` : ''}`,
@@ -101,12 +132,24 @@ export async function sendContactEmails(sub: ContactSubmission): Promise<void> {
       `<h2 style="margin:0 0 16px;font-size:18px;">New inquiry from the website</h2>
 <table style="width:100%;border-collapse:collapse;margin:0 0 20px;">${rowsHtml}</table>
 <p style="margin:0 0 6px;color:#5A6580;font-size:13px;">About the business</p>
-<p style="margin:0;white-space:pre-wrap;">${escapeHtml(sub.message)}</p>`
+<p style="margin:0 0 20px;white-space:pre-wrap;">${escapeHtml(sub.message)}</p>
+<p style="margin:0 0 6px;color:#5A6580;font-size:13px;">SMS consent record (each program is separate; a phone number alone is not consent)</p>
+<table style="width:100%;border-collapse:collapse;">${smsRowsHtml}</table>`
     ),
     text: `New inquiry from the website\n\n${rows
       .map(([label, value]) => `${label}: ${value}`)
-      .join('\n')}\n\nAbout the business:\n${sub.message}`,
+      .join('\n')}\n\nAbout the business:\n${sub.message}\n\nSMS consent record (each program is separate; a phone number alone is not consent):\n${smsRows
+      .map(([label, value]) => `${label}: ${value}`)
+      .join('\n')}`,
   });
+
+  const optedIn = [
+    sub.sms?.serviceConsent ? 'texts about your demo appointments, onboarding reminders, and support questions' : '',
+    sub.sms?.marketingConsent ? 'promotional texts about our AI front desk services, free trial, and special offers' : '',
+  ].filter(Boolean);
+  const smsNote = optedIn.length
+    ? `You also opted in to ${optedIn.join(' and ')} from SMBAUTOMATION LLC at ${sub.sms?.phoneE164}. Message frequency varies. Message and data rates may apply. Reply STOP to any text to opt out or HELP for help.`
+    : '';
 
   const firstName = sub.name.split(' ')[0] || 'there';
   const ack = send({
@@ -115,9 +158,13 @@ export async function sendContactEmails(sub: ContactSubmission): Promise<void> {
     html: shell(
       `<h2 style="margin:0 0 16px;font-size:18px;">Thanks, ${escapeHtml(firstName)}.</h2>
 <p style="margin:0 0 16px;">We received your message and will reply within one business day.</p>
-<p style="margin:0;">In the meantime, if anything else comes to mind about where your marketing or follow-up is falling short, just reply to this email.</p>`
+<p style="margin:0;">In the meantime, if anything else comes to mind about where your marketing or follow-up is falling short, just reply to this email.</p>${
+        smsNote ? `\n<p style="margin:16px 0 0;color:#5A6580;font-size:13px;">${escapeHtml(smsNote)}</p>` : ''
+      }`
     ),
-    text: `Thanks, ${firstName}.\n\nWe received your message and will reply within one business day.\n\nIn the meantime, if anything else comes to mind about where your marketing or follow-up is falling short, just reply to this email.`,
+    text: `Thanks, ${firstName}.\n\nWe received your message and will reply within one business day.\n\nIn the meantime, if anything else comes to mind about where your marketing or follow-up is falling short, just reply to this email.${
+      smsNote ? `\n\n${smsNote}` : ''
+    }`,
   });
 
   await Promise.all([internal, ack]);

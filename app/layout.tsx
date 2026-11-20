@@ -45,8 +45,10 @@ const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'SMB Automation',
+  legalName: 'SMBAUTOMATION LLC',
   url: 'https://smbautomation.io',
   email: 'jesse@smbautomation.io',
+  telephone: '+1-319-255-2700',
   description: 'Marketing and automation for small and midsize businesses: SEO, web design, Google Ads, and Meta Ads to generate leads, plus automated lead, invoice, accounts receivable, and review follow-up.',
   logo: 'https://smbautomation.io/favicon.svg',
   address: {
@@ -82,6 +84,7 @@ const orgSchema = {
   contactPoint: {
     '@type': 'ContactPoint',
     email: 'jesse@smbautomation.io',
+    telephone: '+1-319-255-2700',
     contactType: 'sales',
   },
   sameAs: [

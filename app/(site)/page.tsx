@@ -100,6 +100,7 @@ const organizationSchema = {
   contactPoint: {
     '@type': 'ContactPoint',
     email: 'jesse@smbautomation.io',
+    telephone: '+1-319-255-2700',
     contactType: 'customer support',
   },
 };
@@ -383,6 +384,8 @@ export default function HomePage() {
               <p className={s.contactDirect}>
                 Prefer email? Write to{' '}
                 <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a>.
+                <br />
+                Prefer to call? <a href="tel:+13192552700">(319) 255-2700</a>.
                 <br />
                 We reply within one business day.
               </p>

@@ -59,7 +59,9 @@ Every integration is optional in development: when its env vars are missing the 
 | `NEXT_PUBLIC_CALENDLY_URL` | Booking link on `/roofers/thank-you` and in the audit email | Defaults to the 30-minute event. Point it at the dedicated 20-minute audit event. |
 | `NEXT_PUBLIC_SITE_URL` | Absolute URLs in emails | Defaults to https://smbautomation.io |
 
-The `Contact` sheet row is written in this column order: timestamp, name, business, email, phone, interests, message, utm_source, utm_medium, utm_campaign, landing_page.
+The `Contact` sheet row is written in this column order: timestamp, name, business, email, phone, interests, message, utm_source, utm_medium, utm_campaign, landing_page, sms_service_consent, sms_marketing_consent, sms_phone_e164, sms_consent_timestamp, sms_source_url, sms_disclosure_version, sms_service_disclosure, sms_marketing_disclosure.
+
+SMS consent (`lib/smsConsent.ts`): the contact form has two independent, unchecked SMS boxes (service texts, promotional texts). Each is stored as its own `yes`/`no`; only an explicit `yes` grants permission, so older rows with blank cells grant nothing, and a phone number alone grants nothing. The same record is included in the internal notification email. Bump `SMS_DISCLOSURE_VERSION` whenever the checkbox wording changes. The site never writes opt-out state, so a repeat inquiry cannot clear a STOP held in HighLevel.
 
 The `RooferAudit` sheet row is written in this column order: timestamp, name, company, phone, email, monthly_leads, utm_source, utm_medium, utm_campaign, utm_content, landing_page.
 
