@@ -55,7 +55,7 @@ export default function TermsPage() {
             <li className={s.listItem}><span className="proof-dot" aria-hidden="true" /><span><strong>Promotional texts:</strong> messages about our AI front desk services, free trial, and special offers.</span></li>
           </ul>
           <p className={s.body}>
-            <strong>Eligibility.</strong> You must be at least 18 years old to enroll in SMB Automation text messages.
+            <strong>Eligibility.</strong> You must be at least 18 years old to enroll in SMBAUTOMATION LLC text messages.
           </p>
           <p className={s.body}>
             <strong>How to join.</strong> Check the box for either program, or both, on the contact form on our homepage and enter your mobile number. The boxes are optional and unchecked by default. Consent is not a condition of purchase. Giving us a phone number without checking a box does not sign you up, and joining the demo, onboarding, and support program does not sign you up for promotional texts.
