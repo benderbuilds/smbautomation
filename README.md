@@ -1,8 +1,8 @@
 # smbautomation.io
 
-Marketing site for SMB Automation: websites, SEO, and paid advertising that bring in customers, plus automated lead, invoice, AR, and review follow-up for small and midsize businesses.
+Marketing site for SMB Automation: AI phone answering and website chat (the Front Desk Assistant) for small and midsize businesses.
 
-The site is a single landing page plus a blog. Everything the visitor needs is on `/`, and the only conversion point is the contact form at `/#contact`.
+The site has two goals: start a 30-day free trial or book a demo. Both are GoHighLevel (GHL) booking calendars with their signup forms attached inside GHL. GHL owns contact details, SMS consent, appointments, and trial dates; the site explains the offer and links into the right calendar. The GHL chat widget on every page also demos the product.
 
 ## Tech Stack
 
@@ -11,6 +11,7 @@ The site is a single landing page plus a blog. Everything the visitor needs is o
 - **MDX** for blog posts (`next-mdx-remote`)
 - **Resend** for transactional email
 - **Google Sheets** as the CRM (service-account JWT, no extra dependency)
+- **GoHighLevel (LeadConnector)** for the trial and demo booking calendars and the chat widget
 - **Railway** for deployment
 
 ## Local Development
@@ -34,12 +35,15 @@ npm run check:copy  # fails on em dashes in tsx or non-zero border-radius in css
 
 | Route | What it is |
 | --- | --- |
-| `/` | The landing page. Hero, the problem, four demand channels, the follow-up timeline, outcomes, fit, philosophy, contact form. |
+| `/` | Homepage: hero with both CTAs and the example roofing chat, the problem, how it works (`#how-it-works`), pricing (`#pricing`), closing CTA (`#contact`). |
+| `/industries/property-management` | Property Management landing page, built to stand alone for ad traffic. Includes the interactive missed-leasing-call calculator (`lib/rentAtRisk.ts`). |
+| `/start-trial` | Embeds the GHL free trial calendar (signup form, optional SMS consent, onboarding call). Booking the onboarding call starts the 30-day trial. noindex. |
+| `/book-demo` | Embeds the GHL demo calendar. A demo booking does not start a trial. noindex. |
 | `/blog` and `/blog/[slug]` | MDX blog, statically generated from `content/blog/`. |
 | `/privacy`, `/terms` | Legal pages. |
 | `/roofers`, `/roofers/thank-you` | Paid-traffic landing page for the roofer Meta campaign (noindex, no site nav, not in the sitemap). Audit form, then the thank-you page embeds Calendly prefilled with the lead's name and email. |
 | `/api/roofer-audit` | Roofer audit form handler: validates, writes a row to the `RooferAudit` sheet, emails both sides, and sends a server-side Meta `Lead` event that deduplicates against the browser pixel by `event_id`. |
-| `/api/contact` | Contact form handler: validates, writes a row to the `Contact` sheet, sends the internal notification and the visitor acknowledgement. |
+| `/api/contact` | Legacy contact form handler, no longer linked from the site (cleanup scoped separately): validates, writes a row to the `Contact` sheet, sends the internal notification and the visitor acknowledgement. |
 | `/api/log-404` | Client-side 404 logging. |
 
 ## Environment Variables
@@ -65,9 +69,10 @@ The `RooferAudit` sheet row is written in this column order: timestamp, name, co
 
 ## Key Flows
 
-- **Contact form** (`components/ContactForm.tsx`) — name, business, email, phone, an interest checklist, and a message. Name, email, and message are required. Writes to the CRM and emails both sides.
+- **Booking flows** (`lib/booking.ts`, `components/BookingLink.tsx`, `components/BookingCalendar.tsx`) — every trial CTA links to `/start-trial` and every demo CTA to `/book-demo`. Each page embeds its GHL calendar with `form_embed.js` (which resizes the iframe) and a direct booking link as a fallback. Calendar and form IDs live in `lib/booking.ts`. Trial timing copy always uses `TRIAL_START_COPY`.
+- **Chat** (`components/ChatWidget.tsx`) — GHL widget `6b04c0d3e6cd500e966e2168`, rendered once from the root layout. Opening straight to Live Chat is a GHL setting.
 - **Attribution** — first-touch UTMs + landing page stored 90 days in the `sa_attr` cookie (`lib/attribution.ts`) and attached to every submission.
-- **Analytics events** — see `lib/analytics.ts`. The live events are `contact_submit` and `blog_cta_click`.
+- **Analytics events** — see `lib/analytics.ts`. The live events are `booking_cta_click` (`flow`, `location`) and `blog_cta_click`. A CTA click or a booking page visit is never counted as a booking: the GHL calendar does not report completed bookings to the site, so track bookings in GHL.
 
 ## Adding Blog Posts
 
@@ -86,7 +91,7 @@ ctaType: "workflow"   # optional; "workflow" leads with the follow-up automation
 
 ## Copy and Design Conventions
 
-- One primary CTA sitewide: `Talk to Us →`, pointing at `/#contact`. Orange is reserved for the hero beat markers, the timeline nodes, the fit markers, and the final `Let's Talk` submit button.
+- Two CTAs sitewide: start a free trial (orange) and book a demo (outlined or text link). The design source is the Paper file "SMB Automation Site Rebuild".
 - No em dashes in rendered copy. Zero border radius everywhere. `npm run check:copy` enforces both.
 - Bands alternate white / `--bg` / dark. The follow-up timeline on `/` is the page's signature element: it is ordered by the customer lifecycle, which is why the sequential treatment is used there and nowhere else.
 

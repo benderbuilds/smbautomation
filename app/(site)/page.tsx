@@ -1,130 +1,116 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import ContactForm from '@/components/ContactForm';
+import BookingLink from '@/components/BookingLink';
+import { TRIAL_START_COPY } from '@/lib/booking';
+import m from '@/components/Marketing.module.css';
 import s from './page.module.css';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Marketing and Automation for Small Businesses | SMB Automation' },
+  title: { absolute: 'AI Phone Answering and Website Chat for Small Businesses | SMB Automation' },
   description:
-    'SMB Automation helps small businesses grow with better websites, SEO, paid advertising, and automated follow-up systems that keep leads, customers, invoices, and reviews from falling through the cracks.',
+    'AI phone answering and website chat that books jobs while you work. Plans from $397/month. Start a 30-day free trial or book a demo.',
   alternates: { canonical: 'https://smbautomation.io' },
   openGraph: {
-    title: 'Get More Customers. Automate the Busywork. | SMB Automation',
+    title: 'Are you the reason you aren’t booking more jobs? | SMB Automation',
     description:
-      'Websites, SEO, Google Ads, Meta Ads, and automated follow-up for lead, invoice, AR, and review workflows. More leads. Faster follow-up. Less manual work.',
+      'AI phone answering and website chat that turns your existing traffic into booked customers. 30-day free trial, no setup fee.',
     url: 'https://smbautomation.io',
     siteName: 'SMB Automation',
     type: 'website',
   },
 };
 
-const SERVICES = [
+const CHAT = [
+  { from: 'visitor', text: 'We had hail last night. Can someone look at our roof?' },
+  { from: 'agent', text: 'We can schedule an inspection. What ZIP code is the property in?' },
+  { from: 'visitor', text: '52240. Friday works best.' },
+  { from: 'agent', text: 'I have Friday at 10:00 a.m. or 2:30 p.m. Which works for you?' },
+  { from: 'visitor', text: 'Let’s do 10. Thank you!' },
+] as const;
+
+const TRIAL_STEPS = [
+  { label: 'Your details', value: 'Name, email, phone number, and business website' },
+  { label: 'Trial terms', value: 'Review what the 30-day trial includes' },
+  { label: 'Onboarding call', value: 'Pick a time. Booking it starts your trial' },
+];
+
+const PROBLEMS = [
   {
-    tag: 'Search',
-    name: 'SEO',
-    promise: 'Show up when customers search for the services you provide.',
-    body: 'We help improve your visibility on Google through local SEO, website optimization, content, and search strategies designed to generate actual leads, not just traffic.',
+    title: 'Voicemail',
+    body: 'A caller who reaches voicemail can try the next shop before you get back to them.',
   },
   {
-    tag: 'Website',
-    name: 'Web Design',
-    promise: 'Your website should do more than look good.',
-    body: 'We build fast, simple, conversion-focused websites that clearly explain what you do and make it easy for potential customers to take the next step.',
+    title: 'The callback',
+    body: 'You call back after the job wraps. By then they’ve already booked someone who picked up.',
   },
   {
-    tag: 'Paid search',
-    name: 'Google Ads',
-    promise: 'Reach people already searching for what you sell.',
-    body: 'We build and manage Google Ads campaigns focused on high-intent searches, qualified leads, and measurable ROI.',
-  },
-  {
-    tag: 'Paid social',
-    name: 'Meta Ads',
-    promise: 'Create demand and stay in front of the right customers.',
-    body: 'We use Facebook and Instagram ads to generate leads, promote offers, retarget website visitors, and help local businesses reach more of their market.',
+    title: 'The front desk hire',
+    body: 'A full-time receptionist covers 40 hours a week. Your phone rings for the other 128.',
   },
 ];
 
-/* Ordered by where each one sits in the customer lifecycle, which is why the
-   timeline treatment is earned here and nowhere else on the page. */
-const STAGES = [
+const STEPS = [
+  { plan: 'All plans', title: 'Answer', body: 'Answer by phone, website chat, or both, depending on your plan.' },
+  { plan: 'All plans', title: 'Book', body: 'Collect the job details and book an open time on your calendar.' },
+  { plan: 'Front Desk', title: 'Remind', body: 'Send customers a text before their appointment.' },
+  { plan: 'Front Desk', title: 'Ask for a review', body: 'Invite customers to leave a Google review after the job.' },
+];
+
+const PLANS = [
   {
-    trigger: 'When a new lead comes in',
-    name: 'Automated Lead Follow-Up',
-    body: 'A new lead comes in and automatically receives the right text messages, emails, reminders, and follow-ups until your team takes over.',
+    name: 'Answer',
+    who: 'Solo operators and small teams',
+    price: '$397',
+    features: [
+      'Voice Agent or Chat Agent',
+      '24/7 answering and booking',
+      'Voice option includes urgent-call routing',
+      'Voice option includes text summaries',
+      'Keep your existing business number for voice',
+    ],
+    cta: { flow: 'trial' as const, label: 'Start free trial' },
   },
   {
-    trigger: 'When an invoice goes out',
-    name: 'Automated Invoice Follow-Up',
-    body: 'Automatically remind customers about upcoming, due, and overdue invoices without someone on your team chasing them manually.',
+    name: 'Front Desk',
+    badge: 'Voice + chat',
+    who: 'Teams with steady inbound volume',
+    price: '$797',
+    featured: true,
+    features: [
+      'Voice + Chat Agent',
+      'Call transcripts and recordings',
+      'Appointment reminders',
+      'Missed-call text-back',
+      'Google review requests',
+      'Monthly results report',
+    ],
+    cta: { flow: 'trial' as const, label: 'Start free trial' },
   },
   {
-    trigger: 'When a balance starts aging',
-    name: 'Automated AR Follow-Up',
-    body: 'Create consistent accounts receivable workflows that reduce outstanding balances and help your business get paid faster.',
-  },
-  {
-    trigger: 'When the job is done',
-    name: 'Automated Review Requests',
-    body: 'Automatically ask happy customers for Google reviews at the right moment so you can build your reputation without remembering to ask every time.',
+    name: 'Multi-Location',
+    who: 'Two or more locations or lines',
+    price: 'Custom',
+    features: [
+      'Everything in Front Desk',
+      'Call flows per location',
+      'Invoice and AR follow-up',
+      'CRM and API integrations',
+      'Dedicated tuning',
+    ],
+    cta: { flow: 'demo' as const, label: 'Talk to us' },
   },
 ];
 
-const OUTCOMES = [
-  'Generate more qualified leads',
-  'Respond to new leads faster',
-  'Convert more inquiries into customers',
-  'Reduce repetitive administrative work',
-  'Collect invoices faster',
-  'Generate more customer reviews',
-  'Improve visibility on Google',
-  'Understand where your marketing dollars are actually working',
-];
-
-const FIT = [
-  'Growing primarily through referrals and ready for a more predictable source of leads.',
-  'Getting leads but struggling to follow up consistently.',
-  'Spending money on marketing without knowing what is actually working.',
-  'Manually sending the same emails, texts, reminders, and invoices every week.',
-  'Trying to get more Google reviews but rarely remembering to ask.',
-  'Wondering where AI and automation could actually save your team time.',
-];
-
-const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'SMB Automation',
-  url: 'https://smbautomation.io',
-  description:
-    'SMB Automation helps small businesses grow with better websites, SEO, paid advertising, and automated follow-up systems that keep leads, customers, invoices, and reviews from falling through the cracks.',
-  contactPoint: {
-    '@type': 'ContactPoint',
-    email: 'jesse@smbautomation.io',
-    contactType: 'customer support',
-  },
-};
-
-const serviceSchema = {
+const offerSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: 'Small business marketing and automation',
-  serviceType: 'Marketing, advertising, and workflow automation for small and midsize businesses',
-  description:
-    'SEO, web design, Google Ads, and Meta Ads to generate leads, plus automated lead, invoice, accounts receivable, and review follow-up so nothing falls through the cracks.',
-  provider: {
-    '@type': 'Organization',
-    name: 'SMB Automation',
-    url: 'https://smbautomation.io',
-  },
-  areaServed: 'US',
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'Services',
-    itemListElement: [...SERVICES, ...STAGES].map((item) => ({
-      '@type': 'Offer',
-      itemOffered: { '@type': 'Service', name: item.name },
-    })),
-  },
+  name: 'AI Front Desk Assistant',
+  serviceType: 'AI phone answering and website chat',
+  provider: { '@type': 'Organization', name: 'SMB Automation', url: 'https://smbautomation.io' },
+  areaServed: { '@type': 'Country', name: 'United States' },
+  offers: [
+    { '@type': 'Offer', name: 'Answer', price: '397', priceCurrency: 'USD', description: 'Voice Agent or Chat Agent, billed monthly' },
+    { '@type': 'Offer', name: 'Front Desk', price: '797', priceCurrency: 'USD', description: 'Voice and Chat Agent, billed monthly' },
+  ],
 };
 
 export default function HomePage() {
@@ -132,264 +118,173 @@ export default function HomePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(offerSchema) }}
       />
 
-      {/* ---------------- Hero ---------------- */}
-      <section className={s.hero}>
-        <div className={s.heroInner}>
-          <div className={s.heroCopy}>
-            <span className="eyebrow">MARKETING AND AUTOMATION FOR SMALL BUSINESSES</span>
-            <h1 className={s.heroHeadline}>
-              Get more customers.{' '}
-              <span>Automate the busywork.</span>
-            </h1>
-            <p className={s.heroSub}>
-              SMB Automation helps small businesses grow with better websites, SEO, paid advertising,
-              and automated follow-up systems that keep leads, customers, invoices, and reviews from
-              falling through the cracks.
-            </p>
-            <div className={s.heroCtas}>
-              <Link href="#contact" className="btn-primary">Talk to Us →</Link>
-              <span className={s.heroNote}>No hard sell. We start by understanding your business.</span>
-            </div>
-          </div>
+      {/* ---------- Hero ---------- */}
+      <section className={m.hero}>
+        <div className={m.heroCopy}>
+          <p className={m.eyebrow}>AI phone answering &amp; website chat</p>
+          <h1 className={m.h1}>Are you the reason you aren&apos;t booking more jobs?</h1>
+          <p className={m.sub}>
+            Sign up for a free trial of our Front Desk Assistant: convert your existing website
+            traffic to booked customers and never miss a phone call again.
+          </p>
 
-          <div className={s.beats}>
-            <div className={s.beat}>
-              <p className={s.beatText}>More leads.</p>
-              <p className={s.beatMeta}>SEO, ads, and a site that converts</p>
-            </div>
-            <div className={s.beat}>
-              <p className={s.beatText}>Faster follow-up.</p>
-              <p className={s.beatMeta}>Every lead answered automatically</p>
-            </div>
-            <div className={s.beat}>
-              <p className={s.beatText}>Less manual work.</p>
-              <p className={s.beatMeta}>Invoices, AR, and reviews handled</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ---------------- Problem ---------------- */}
-      <section className={`${s.section} ${s.sectionAlt}`}>
-        <div className={s.inner}>
-          <div className={s.problemGrid}>
-            <div>
-              <span className="eyebrow">THE REAL CONSTRAINT</span>
-              <h2 className={s.sectionTitle}>
-                Your business shouldn&rsquo;t depend on you remembering everything.
-              </h2>
-              <p className={s.problemStatement}>
-                Most businesses aren&rsquo;t short on things to do.
-                <br />
-                <strong>They&rsquo;re short on time.</strong>
-              </p>
-            </div>
-
-            <ul className={s.todo}>
-              {[
-                'Leads need to be followed up with.',
-                'Invoices need reminders.',
-                'Customers need to be asked for reviews.',
-                'Your website needs to generate business.',
-                'Google needs to know you exist.',
-                'Ads need to actually produce a return.',
-              ].map((item) => (
-                <li key={item} className={s.todoItem}>
-                  <span className={s.todoBox} aria-hidden="true" />
-                  {item}
+          <div className={s.start}>
+            <p className={s.startHead}>How the free trial starts</p>
+            <ol className={s.startSteps}>
+              {TRIAL_STEPS.map((step, i) => (
+                <li key={step.label}>
+                  <span className={s.startNum}>{i + 1}</span>
+                  <span className={s.startText}>
+                    <span className={s.startLabel}>{step.label}</span>
+                    {step.value}
+                  </span>
                 </li>
               ))}
-            </ul>
+            </ol>
           </div>
 
-          <p className={s.problemClose}>
-            We help you put the right marketing and automation systems in place so more of this
-            happens automatically.
+          <div className={s.heroActions}>
+            <BookingLink flow="trial" location="home_hero" className={m.btnBlock}>
+              I&apos;m ready to book more jobs
+            </BookingLink>
+            <BookingLink flow="demo" location="home_hero" className={s.demoLink}>
+              Book a demo
+            </BookingLink>
+            <p className={m.fine}>
+              {TRIAL_START_COPY} Add a card at onboarding. Monthly billing begins after the trial
+              unless you cancel.
+            </p>
+          </div>
+        </div>
+
+        <div className={m.heroAside}>
+          <figure className={s.chat} aria-label="Example website chat for a roofing company">
+            <div className={s.chatTop}>
+              <span className={s.chatName}>Hawkeye Roofing</span>
+              <span className={s.chatTag}>Example website chat</span>
+            </div>
+            <ol className={s.chatBody}>
+              {CHAT.map((msg) => (
+                <li key={msg.text} className={msg.from === 'visitor' ? s.visitor : s.agent}>
+                  <span className="sr-only">{msg.from === 'visitor' ? 'Visitor: ' : 'Assistant: '}</span>
+                  {msg.text}
+                </li>
+              ))}
+            </ol>
+            <figcaption className={s.chatFoot}>
+              <span className={s.chatFootLabel}>After the customer books</span>
+              <span className={s.chatFootTitle}>Roof inspection · Friday, 10:00 a.m.</span>
+              <span className={s.chatFootText}>The time and job details appear on the team’s calendar.</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      {/* ---------- Problem ---------- */}
+      <section className={m.section} aria-labelledby="problem-title">
+        <div className={m.sectionHead}>
+          <h2 id="problem-title" className={m.h2}>
+            Who answers when you’re already on a job?
+          </h2>
+          <p className={m.tag}>The problem</p>
+        </div>
+        <div className={m.cols3}>
+          {PROBLEMS.map((p, i) => (
+            <div key={p.title}>
+              <span className={m.num}>{String(i + 1).padStart(2, '0')}</span>
+              <h3 className={m.colTitle}>{p.title}</h3>
+              <p className={m.colBody}>{p.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ---------- How it works ---------- */}
+      <section id="how-it-works" className={`${m.band} ${s.anchor}`} aria-labelledby="how-title">
+        {/* Alias for older links to /#automation. */}
+        <span id="automation" className={s.alias} aria-hidden="true" />
+        <div className={m.bandHead}>
+          <h2 id="how-title" className={m.bandTitle}>
+            From the first question to the follow-up.
+          </h2>
+          <p className={m.bandIntro}>
+            Choose the follow-up your team needs. Front Desk adds reminders and review requests.
+            Custom plans can also follow up on open invoices.
           </p>
         </div>
-      </section>
-
-      {/* ---------------- Services ---------------- */}
-      <section className={`${s.section} ${s.sectionWhite}`} id="services">
-        <div className={s.inner}>
-          <div className={s.sectionHead}>
-            <span className="eyebrow">DEMAND</span>
-            <h2 className={s.sectionTitle}>We help you find more customers.</h2>
-            <p className={s.sectionLede}>
-              Four channels that put your business in front of people who are already looking for
-              what you sell, or who should be.
-            </p>
-          </div>
-
-          <div className={s.serviceGrid}>
-            {SERVICES.map((service) => (
-              <article key={service.name} className={s.service}>
-                <span className={s.serviceTag}>{service.tag}</span>
-                <h3 className={s.serviceName}>{service.name}</h3>
-                <p className={s.servicePromise}>{service.promise}</p>
-                <p className={s.serviceBody}>{service.body}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ---------------- Automation ---------------- */}
-      <section className={`${s.section} ${s.sectionDark}`} id="automation">
-        <div className={s.inner}>
-          <div className={s.sectionHead}>
-            <span className="eyebrow-light">FOLLOW-UP</span>
-            <h2 className={s.sectionTitle}>
-              Then we make sure nothing falls through the cracks.
-            </h2>
-            <p className={s.sectionLede}>
-              Getting the lead is only half the battle. We automate the repetitive follow-up that
-              most businesses know they should be doing but rarely have enough time to do
-              consistently.
-            </p>
-          </div>
-
-          <div className={s.timeline}>
-            {STAGES.map((stage) => (
-              <article key={stage.name} className={s.stage}>
-                <p className={s.stageTrigger}>{stage.trigger}</p>
-                <div>
-                  <h3 className={s.stageName}>{stage.name}</h3>
-                  <p className={s.stageBody}>{stage.body}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ---------------- Outcomes ---------------- */}
-      <section className={`${s.section} ${s.sectionAlt}`}>
-        <div className={s.inner}>
-          <div className={s.outcomeGrid}>
-            <div>
-              <span className="eyebrow">THE POINT OF ALL OF IT</span>
-              <h2 className={s.sectionTitle}>More growth without more admin.</h2>
-              <div className={s.outcomeIntro}>
-                <p>The goal isn&rsquo;t to automate your entire business.</p>
-                <p>
-                  <strong>
-                    It&rsquo;s to automate the repetitive work that wastes time, slows down sales,
-                    and costs you money.
-                  </strong>
-                </p>
-              </div>
-
-              <div className={s.outcomeClose}>
-                <p className={s.outcomeCloseItem}>
-                  <strong>No massive software overhaul.</strong>
-                  Your team keeps the tools it already knows.
-                </p>
-                <p className={s.outcomeCloseItem}>
-                  <strong>No complicated AI strategy deck.</strong>
-                  Just useful systems that make your business run better.
-                </p>
-              </div>
+        <div className={m.cols4}>
+          {STEPS.map((step) => (
+            <div key={step.title}>
+              <span className={m.bandLabel}>{step.plan}</span>
+              <h3 className={m.bandColTitle}>{step.title}</h3>
+              <p className={m.bandBody}>{step.body}</p>
             </div>
+          ))}
+        </div>
+      </section>
 
-            <div>
-              <span className={s.outcomeLabel}>We look for practical opportunities to help you</span>
-              <ul className={s.outcomeList}>
-                {OUTCOMES.map((item) => (
-                  <li key={item} className={s.outcomeItem}>
-                    <span className="proof-dot" aria-hidden="true" />
-                    {item}
-                  </li>
+      {/* ---------- Pricing ---------- */}
+      <section id="pricing" className={`${m.section} ${s.anchor}`} aria-labelledby="pricing-title">
+        {/* Alias for older links to /#services. */}
+        <span id="services" className={s.alias} aria-hidden="true" />
+        <div className={s.pricingHead}>
+          <h2 id="pricing-title" className={m.h2}>
+            Priced like software. Built for you.
+          </h2>
+          <p className={s.pricingTerms}>30-day free trial · No setup fee · Month to month</p>
+        </div>
+        <div className={s.plans}>
+          {PLANS.map((plan) => (
+            <article key={plan.name} className={plan.featured ? `${s.plan} ${s.planFeatured}` : s.plan}>
+              <div className={s.planHead}>
+                <div className={s.planNameRow}>
+                  <h3 className={s.planName}>{plan.name}</h3>
+                  {plan.badge && <span className={s.badge}>{plan.badge}</span>}
+                </div>
+                <p className={s.planWho}>{plan.who}</p>
+              </div>
+              <p className={s.price}>
+                <span className={s.priceValue}>{plan.price}</span>
+                {plan.price !== 'Custom' && <span className={s.per}>/month</span>}
+              </p>
+              <ul className={s.features}>
+                {plan.features.map((f) => (
+                  <li key={f}>{f}</li>
                 ))}
               </ul>
-            </div>
-          </div>
+              <BookingLink
+                flow={plan.cta.flow}
+                location={`pricing_${plan.name.toLowerCase().replace(/\s+/g, '_')}`}
+                className={plan.featured ? s.planCtaFeatured : s.planCta}
+              >
+                {plan.cta.label}
+              </BookingLink>
+            </article>
+          ))}
         </div>
       </section>
 
-      {/* ---------------- Fit ---------------- */}
-      <section className={`${s.section} ${s.sectionWhite}`} id="fit">
-        <div className={s.inner}>
-          <div className={s.sectionHead}>
-            <span className="eyebrow">WHO THIS IS FOR</span>
-            <h2 className={s.sectionTitle}>Built for small and midsize businesses.</h2>
-            <p className={s.sectionLede}>
-              SMB Automation works best with established businesses that already have customers,
-              employees, and a proven service, but know their marketing and internal systems could be
-              working harder. That might mean you are:
-            </p>
-          </div>
-
-          <div className={s.fitGrid}>
-            {FIT.map((item) => (
-              <p key={item} className={s.fitItem}>
-                <span className={s.fitMarker} aria-hidden="true" />
-                {item}
-              </p>
-            ))}
-          </div>
-
-          <p className={s.fitClose}>That&rsquo;s where we come in.</p>
-        </div>
-      </section>
-
-      {/* ---------------- Philosophy ---------------- */}
-      <section className={s.philosophy}>
-        <div className={s.philosophyInner}>
-          <h2 className={s.philosophyTitle}>
-            You don&rsquo;t need more software.
-            <br />
-            You need <em>better systems.</em>
+      {/* ---------- Closing CTA ---------- */}
+      <section id="contact" className={m.closing} aria-labelledby="closing-title">
+        <div className={m.closingCopy}>
+          <h2 id="closing-title" className={m.closingTitle}>
+            Try your own AI front desk for 30 days.
           </h2>
-          <div className={s.philosophyBody}>
-            <p>
-              There are thousands of marketing, CRM, AI, and automation tools available. The hard
-              part isn&rsquo;t finding another tool.
-            </p>
-            <p>
-              <strong>
-                It&rsquo;s knowing what to use, what to automate, and how to connect everything
-                together.
-              </strong>
-            </p>
-            <p>We help you figure that out and build it for you.</p>
-          </div>
+          <p className={m.closingText}>
+            Most clients go live within 48 hours. Custom setups can take longer. You approve the
+            sample conversations before launch. {TRIAL_START_COPY}
+          </p>
         </div>
-      </section>
-
-      {/* ---------------- Contact ---------------- */}
-      <section className={s.contact} id="contact">
-        <div className={s.inner}>
-          <div className={s.contactGrid}>
-            <div className={s.contactAside}>
-              <span className="eyebrow">CONTACT</span>
-              <h2 className={s.contactTitle}>
-                Let&rsquo;s find the biggest opportunities in your business.
-              </h2>
-              <div className={s.contactBody}>
-                <p>Tell us a little about your business and what you&rsquo;d like to improve.</p>
-                <p>
-                  We&rsquo;ll take a look and let you know where we think marketing, automation, or
-                  both could make the biggest difference.
-                </p>
-              </div>
-              <p className={s.contactDirect}>
-                Prefer email? Write to{' '}
-                <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a>.
-                <br />
-                We reply within one business day.
-              </p>
-            </div>
-
-            <ContactForm />
-          </div>
+        <div className={m.closingActions}>
+          <BookingLink flow="trial" location="home_closing" className={m.btnPrimary}>
+            I&apos;m ready to book more jobs
+          </BookingLink>
+          <BookingLink flow="demo" location="home_closing" className={m.closingLink}>
+            Book a demo
+          </BookingLink>
         </div>
       </section>
     </>

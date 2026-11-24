@@ -1,31 +1,26 @@
 import Link from 'next/link';
+import BookingLink from './BookingLink';
+import { EMAIL, PHONE_DISPLAY, PHONE_TEL } from '@/lib/booking';
+import { INDUSTRIES } from '@/lib/industries';
 import s from './Footer.module.css';
 
 const COLUMNS = [
   {
-    title: 'Find customers',
+    title: 'Products',
     links: [
-      { href: '/#services', label: 'SEO' },
-      { href: '/#services', label: 'Web Design' },
-      { href: '/#services', label: 'Google Ads' },
-      { href: '/#services', label: 'Meta Ads' },
+      { href: '/#pricing', label: 'AI Front Desk' },
+      { href: '/#pricing', label: 'Voice Agent' },
+      { href: '/#pricing', label: 'Chat Agent' },
+      { href: '/#how-it-works', label: 'Follow-Up' },
     ],
   },
-  {
-    title: 'Automate follow-up',
-    links: [
-      { href: '/#automation', label: 'Lead Follow-Up' },
-      { href: '/#automation', label: 'Invoice Follow-Up' },
-      { href: '/#automation', label: 'AR Follow-Up' },
-      { href: '/#automation', label: 'Review Requests' },
-    ],
-  },
+  { title: 'Industries', links: INDUSTRIES },
   {
     title: 'Company',
     links: [
-      { href: '/#fit', label: 'Who It Is For' },
+      { href: '/#how-it-works', label: 'How It Works' },
+      { href: '/#pricing', label: 'Pricing' },
       { href: '/blog', label: 'Blog' },
-      { href: '/#contact', label: 'Contact' },
     ],
   },
 ];
@@ -35,18 +30,12 @@ export default function Footer() {
     <footer className={s.footer}>
       <div className={s.inner}>
         <div className={s.brand}>
-          <Link href="/" className={s.logo}>
-            <span className={s.logoSmb}>SMB</span>{' '}
-            <span className={s.logoAuto}>AUTOMATION</span>
-          </Link>
-          <p className={s.blurb}>
-            Websites, SEO, and paid advertising that bring in customers, plus automated follow-up
-            that keeps leads, invoices, and reviews from falling through the cracks.
-          </p>
-          <p className={s.contactLine}>
-            <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a>
+          <p className={s.logo}>SMB AUTOMATION</p>
+          <p className={s.blurb}>Based in Iowa City. Serving independent businesses nationwide.</p>
+          <p className={s.contact}>
+            <a href={PHONE_TEL}>{PHONE_DISPLAY}</a>
             <br />
-            Serving clients nationwide.
+            <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
           </p>
         </div>
         <div className={s.columns}>
@@ -59,16 +48,34 @@ export default function Footer() {
                     <Link href={l.href}>{l.label}</Link>
                   </li>
                 ))}
+                {col.title === 'Company' && (
+                  <>
+                    <li>
+                      <BookingLink flow="demo" location="footer">
+                        Book a demo
+                      </BookingLink>
+                    </li>
+                    <li>
+                      <BookingLink flow="trial" location="footer">
+                        Start free trial
+                      </BookingLink>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
           ))}
         </div>
       </div>
       <div className={s.bottom}>
-        <p className={s.copy}>© 2026 SMB Automation. All rights reserved.</p>
+        <p>© 2026 SMBAUTOMATION LLC · Iowa City, Iowa</p>
         <ul className={s.legal}>
-          <li><Link href="/privacy">Privacy</Link></li>
-          <li><Link href="/terms">Terms</Link></li>
+          <li>
+            <Link href="/privacy">Privacy Policy</Link>
+          </li>
+          <li>
+            <Link href="/terms">Terms of Service</Link>
+          </li>
         </ul>
       </div>
     </footer>

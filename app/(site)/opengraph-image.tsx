@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'nodejs';
-export const alt = 'SMB Automation — marketing and automation for small businesses';
+export const alt = 'SMB Automation: AI phone answering and website chat. 30-day free trial.';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -35,11 +35,14 @@ export default async function Image() {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <div style={{ display: 'flex', fontSize: 82, color: '#FFFFFF', lineHeight: 1.08 }}>
-            Get more customers.
+          <div style={{ display: 'flex', fontSize: 76, color: '#FFFFFF', lineHeight: 1.08 }}>
+            Never miss a call.
           </div>
-          <div style={{ display: 'flex', fontSize: 82, color: '#7B8CF5', lineHeight: 1.08 }}>
-            Automate the busywork.
+          <div style={{ display: 'flex', fontSize: 76, color: '#7B8CF5', lineHeight: 1.08 }}>
+            Book more jobs.
+          </div>
+          <div style={{ display: 'flex', fontSize: 30, color: 'rgba(255,255,255,0.72)', marginTop: 28 }}>
+            AI phone answering and website chat. 30-day free trial.
           </div>
         </div>
 

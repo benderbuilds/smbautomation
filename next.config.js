@@ -17,8 +17,8 @@ const REDIRECTS = [
   ['/single-workflow-audit', '/#contact'],
   ['/single-workflow-audit/:path*', '/#contact'],
   ['/contact', '/#contact'],
-  ['/how-it-works', '/#automation'],
-  ['/implementation', '/#automation'],
+  ['/how-it-works', '/#how-it-works'],
+  ['/implementation', '/#how-it-works'],
   ['/results', '/'],
   ['/about', '/'],
 
@@ -28,9 +28,9 @@ const REDIRECTS = [
   ['/home-services-automation', '/'],
 
   // Older structure, kept from the previous rebuild
-  ['/services', '/#services'],
-  ['/services/build', '/#automation'],
-  ['/services/scale', '/#automation'],
+  ['/services', '/#pricing'],
+  ['/services/build', '/#how-it-works'],
+  ['/services/scale', '/#how-it-works'],
   ['/services/strategy', '/#contact'],
   ['/work', '/'],
   ['/thank-you', '/'],

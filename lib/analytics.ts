@@ -1,6 +1,10 @@
 'use client';
 
-/* Event names per spec: application_start, application_submit, application_qualified,
+/* booking_cta_click { flow: 'trial' | 'demo', location } fires when a visitor clicks into a
+   GHL booking flow. It is a click, not a booking: the GHL calendar iframe reports no
+   completed-booking event to this site, so track bookings in GHL.
+
+   Earlier event names per spec: application_start, application_submit, application_qualified,
    application_unqualified, fit_call_booked, sample_audit_view, workflow_audit_checkout_start,
    workflow_audit_purchase, contact_submit, blog_cta_click */
 

@@ -114,8 +114,8 @@ export default function RooferAuditForm() {
         {status === 'loading' ? 'Sending…' : 'Show me what I’m losing →'}
       </button>
       <p className={s.consent}>
-        Free. 20 minutes. No pitch. By submitting, you agree SMB Automation may contact you by phone,
-        text, or email about your audit. Message and data rates may apply. Reply STOP to opt out.
+        Free. 20 minutes. No pitch. By submitting, you agree SMB Automation may contact you by phone
+        or email about your audit.
       </p>
     </form>
   );
