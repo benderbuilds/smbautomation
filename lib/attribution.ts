@@ -51,3 +51,15 @@ export function campaignParams(
   }
   return out;
 }
+
+/** The allowlisted UTMs from a query string, for carrying a landing page's
+    campaign into the booking link. Empty when there are none. */
+export function utmQuery(search: string): string {
+  const params = new URLSearchParams(search);
+  const out = new URLSearchParams();
+  for (const key of UTM_KEYS) {
+    const value = params.get(key);
+    if (value) out.set(key, value);
+  }
+  return out.toString();
+}

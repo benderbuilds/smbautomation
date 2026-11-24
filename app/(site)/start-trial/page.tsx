@@ -43,8 +43,8 @@ export default function StartTrialPage({ searchParams }: { searchParams: SearchP
             <span>
               <strong>Review the trial terms</strong>
               After 30 days, your plan is billed monthly at its listed price:{' '}
-              <Link href="/#pricing">Answer $397/mo or Front Desk $797/mo</Link>. Cancel before day
-              30 by calling or emailing us and you won&apos;t be charged.{' '}
+              <Link href="/#pricing">Answer $397/mo or Front Desk $797/mo</Link>. Cancel before your
+              30-day trial ends by calling or emailing us and you won&apos;t be charged.{' '}
               <Link href="/terms#free-trial">Full trial terms</Link>. Text message updates are
               optional. Check a box only if you want them.
             </span>

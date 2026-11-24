@@ -18,8 +18,13 @@ export function toNumber(raw: string): number {
 /** A conversion share above 100% would mean more signed leases than missed callers. */
 export const MAX_PERCENT = 100;
 
-export function isPercentInRange(n: number): boolean {
-  return n >= 0 && n <= MAX_PERCENT;
+/** Checks the percent as typed, before toNumber flattens negatives and junk to 0.
+    Blank still counts as 0 and is valid; negative, over 100, or non-numeric is not. */
+export function isPercentInputValid(raw: string): boolean {
+  const cleaned = raw.replace(/[%,\s]/g, '');
+  if (cleaned === '') return true;
+  const n = Number(cleaned);
+  return Number.isFinite(n) && n >= 0 && n <= MAX_PERCENT;
 }
 
 /** Leases lost per month: calls per week x 4.3 weeks x conversion rate. */
