@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
+import { cookies } from 'next/headers';
+import Link from 'next/link';
 import BookingCalendar from '@/components/BookingCalendar';
 import { PHONE_DISPLAY, PHONE_TEL, TRIAL_START_COPY } from '@/lib/booking';
+import { ATTR_COOKIE, campaignParams, parseAttribution } from '@/lib/attribution';
 import m from '@/components/Marketing.module.css';
 import s from '@/components/BookingPage.module.css';
 
@@ -12,7 +15,12 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 };
 
-export default function StartTrialPage() {
+type SearchParams = Record<string, string | string[] | undefined>;
+
+export default function StartTrialPage({ searchParams }: { searchParams: SearchParams }) {
+  /* First-touch UTMs (or this page's own) ride along to GHL so the booking keeps its ad source. */
+  const params = campaignParams(parseAttribution(cookies().get(ATTR_COOKIE)?.value), searchParams);
+
   return (
     <section className={s.page}>
       <div className={s.intro}>
@@ -34,7 +42,11 @@ export default function StartTrialPage() {
             <span className={s.stepNum}>2</span>
             <span>
               <strong>Review the trial terms</strong>
-              Text message updates are optional. Check a box only if you want them.
+              After 30 days, your plan is billed monthly at its listed price:{' '}
+              <Link href="/#pricing">Answer $397/mo or Front Desk $797/mo</Link>. Cancel before day
+              30 by calling or emailing us and you won&apos;t be charged.{' '}
+              <Link href="/terms#free-trial">Full trial terms</Link>. Text message updates are
+              optional. Check a box only if you want them.
             </span>
           </li>
           <li>
@@ -50,7 +62,7 @@ export default function StartTrialPage() {
           Questions first? Call <a href={PHONE_TEL}>{PHONE_DISPLAY}</a>.
         </p>
       </div>
-      <BookingCalendar flow="trial" />
+      <BookingCalendar flow="trial" params={params} />
     </section>
   );
 }

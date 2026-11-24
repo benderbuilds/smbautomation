@@ -204,6 +204,8 @@ export default function HomePage() {
 
       {/* ---------- How it works ---------- */}
       <section id="how-it-works" className={`${m.band} ${s.anchor}`} aria-labelledby="how-title">
+        {/* Alias for older links to /#automation. */}
+        <span id="automation" className={s.alias} aria-hidden="true" />
         <div className={m.bandHead}>
           <h2 id="how-title" className={m.bandTitle}>
             From the first question to the follow-up.
@@ -226,6 +228,8 @@ export default function HomePage() {
 
       {/* ---------- Pricing ---------- */}
       <section id="pricing" className={`${m.section} ${s.anchor}`} aria-labelledby="pricing-title">
+        {/* Alias for older links to /#services. */}
+        <span id="services" className={s.alias} aria-hidden="true" />
         <div className={s.pricingHead}>
           <h2 id="pricing-title" className={m.h2}>
             Priced like software. Built for you.

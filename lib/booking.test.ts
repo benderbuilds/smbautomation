@@ -20,3 +20,17 @@ describe('booking flows', () => {
     expect(TRIAL_START_COPY).toBe('Your 30-day free trial starts when you book your onboarding call.');
   });
 });
+
+describe('bookingUrl with campaign params', () => {
+  it('appends UTMs to the calendar URL', () => {
+    expect(bookingUrl('demo', new URLSearchParams({ utm_source: 'meta' }))).toBe(
+      'https://api.leadconnectorhq.com/widget/booking/tMFbZUST3Qm4ah8ECwlY?utm_source=meta'
+    );
+  });
+
+  it('leaves the URL bare when there are no params', () => {
+    expect(bookingUrl('trial', new URLSearchParams())).toBe(
+      'https://api.leadconnectorhq.com/widget/booking/szR9kB8w2VuVUb6lauyR'
+    );
+  });
+});

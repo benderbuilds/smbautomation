@@ -7,8 +7,15 @@ import s from './BookingCalendar.module.css';
    visitor's details (and, for the trial, the optional SMS consent boxes), so the
    site never renders a form of its own. form_embed.js resizes the iframe to its
    content, which keeps the calendar from scrolling inside itself on a phone. */
-export default function BookingCalendar({ flow }: { flow: BookingFlow }) {
-  const url = bookingUrl(flow);
+export default function BookingCalendar({
+  flow,
+  params,
+}: {
+  flow: BookingFlow;
+  /** Campaign UTMs forwarded to GHL so the booking keeps its ad source. */
+  params?: URLSearchParams;
+}) {
+  const url = bookingUrl(flow, params);
   return (
     <div className={s.wrap}>
       <iframe
@@ -33,6 +40,8 @@ export default function BookingCalendar({ flow }: { flow: BookingFlow }) {
           <Link href="/terms">Terms of Service</Link>
           {flow === 'trial' && (
             <>
+              <span aria-hidden="true"> · </span>
+              <Link href="/terms#free-trial">Free trial terms</Link>
               <span aria-hidden="true"> · </span>
               <Link href="/terms#sms">Text message terms</Link>
             </>

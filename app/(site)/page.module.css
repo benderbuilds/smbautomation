@@ -1,6 +1,14 @@
 /* Homepage-only pieces. Shared sections live in components/Marketing.module.css. */
 
 .anchor {
+  position: relative;
+  scroll-margin-top: 90px;
+}
+
+/* Old fragment IDs kept so cached links to /#automation and /#services still land on their section. */
+.alias {
+  position: absolute;
+  top: 0;
   scroll-margin-top: 90px;
 }
 

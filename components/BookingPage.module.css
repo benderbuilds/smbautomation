@@ -46,6 +46,13 @@
   font-weight: 600;
 }
 
+.steps a {
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .stepNum {
   flex-shrink: 0;
   width: 18px;

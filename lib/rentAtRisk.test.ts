@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatDollars, leasesLost, rentAtRisk, toNumber } from './rentAtRisk';
+import { formatDollars, isPercentInRange, leasesLost, rentAtRisk, toNumber } from './rentAtRisk';
 
 const defaults = { missedCallsPerWeek: 8, conversionPercent: 5, monthlyRent: 1150 };
 
@@ -36,5 +36,13 @@ describe('toNumber', () => {
     expect(toNumber('')).toBe(0);
     expect(toNumber('-3')).toBe(0);
     expect(toNumber('abc')).toBe(0);
+  });
+});
+
+describe('isPercentInRange', () => {
+  it('accepts 0 through 100 and rejects more', () => {
+    expect(isPercentInRange(0)).toBe(true);
+    expect(isPercentInRange(100)).toBe(true);
+    expect(isPercentInRange(150)).toBe(false);
   });
 });

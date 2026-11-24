@@ -15,6 +15,13 @@ export function toNumber(raw: string): number {
   return Number.isFinite(n) && n > 0 ? n : 0;
 }
 
+/** A conversion share above 100% would mean more signed leases than missed callers. */
+export const MAX_PERCENT = 100;
+
+export function isPercentInRange(n: number): boolean {
+  return n >= 0 && n <= MAX_PERCENT;
+}
+
 /** Leases lost per month: calls per week x 4.3 weeks x conversion rate. */
 export function leasesLost({ missedCallsPerWeek, conversionPercent }: RentInputs): number {
   return missedCallsPerWeek * WEEKS_PER_MONTH * (conversionPercent / 100);

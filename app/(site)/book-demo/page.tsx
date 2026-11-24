@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
+import { cookies } from 'next/headers';
 import BookingCalendar from '@/components/BookingCalendar';
 import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/booking';
+import { ATTR_COOKIE, campaignParams, parseAttribution } from '@/lib/attribution';
 import m from '@/components/Marketing.module.css';
 import s from '@/components/BookingPage.module.css';
 
@@ -12,7 +14,12 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 };
 
-export default function BookDemoPage() {
+type SearchParams = Record<string, string | string[] | undefined>;
+
+export default function BookDemoPage({ searchParams }: { searchParams: SearchParams }) {
+  /* First-touch UTMs (or this page's own) ride along to GHL so the booking keeps its ad source. */
+  const params = campaignParams(parseAttribution(cookies().get(ATTR_COOKIE)?.value), searchParams);
+
   return (
     <section className={s.page}>
       <div className={s.intro}>
@@ -43,7 +50,7 @@ export default function BookDemoPage() {
           Prefer to call? <a href={PHONE_TEL}>{PHONE_DISPLAY}</a>.
         </p>
       </div>
-      <BookingCalendar flow="demo" />
+      <BookingCalendar flow="demo" params={params} />
     </section>
   );
 }

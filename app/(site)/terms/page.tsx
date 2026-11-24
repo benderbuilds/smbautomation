@@ -28,12 +28,12 @@ export default function TermsPage() {
 
           <h2 className={s.h3}>Services</h2>
           <p className={s.body}>
-            SMB Automation provides marketing, business analysis, and automation services, including audits, implementation projects, and ongoing engagements. Each engagement&apos;s scope, deliverables, timeline, and fees are described in a written agreement.
+            SMB Automation provides the Front Desk Assistant (AI phone answering and website chat) along with marketing, business analysis, and automation services, including audits, implementation projects, and ongoing engagements. Each engagement&apos;s scope, deliverables, timeline, and fees are described in a written agreement.
           </p>
 
           <h2 className={s.h3}>Payments and refunds</h2>
           <p className={s.body}>
-            Fees, payment schedule, and any refund terms are set out in the written agreement for each engagement. Implementation work is governed by its own written agreement.
+            Front Desk Assistant plans are billed monthly as described in the free trial and billing section below. For other engagements, fees, payment schedule, and any refund terms are set out in the written agreement for each engagement. Implementation work is governed by its own written agreement.
           </p>
 
           <h2 className={s.h3}>Deliverables and ownership</h2>
@@ -45,6 +45,13 @@ export default function TermsPage() {
           <p className={s.body}>
             Audits depend on accurate information about your business. You are responsible for the accuracy of what you share and for decisions made based on the deliverables. You remain responsible for compliance with laws and regulations applicable to your business.
           </p>
+
+          <h2 className={s.h3} id="free-trial">Front Desk Assistant free trial and billing</h2>
+          <ul className={s.list}>
+            <li className={s.listItem}><span className="proof-dot" aria-hidden="true" /><span><strong>When it starts.</strong> Your 30-day free trial starts when you book your onboarding call at <Link href="/start-trial">smbautomation.io/start-trial</Link>. You add a payment card during onboarding.</span></li>
+            <li className={s.listItem}><span className="proof-dot" aria-hidden="true" /><span><strong>After day 30.</strong> Unless you cancel, your plan is billed monthly at its listed price: Answer (voice or chat) $397 per month, or Front Desk (voice and chat) $797 per month. Current prices are listed in the <Link href="/#pricing">pricing section of our homepage</Link>. Multi-location and custom plans are priced in a written agreement.</span></li>
+            <li className={s.listItem}><span className="proof-dot" aria-hidden="true" /><span><strong>How to cancel.</strong> Call <a href="tel:+13192552700">(319) 255-2700</a> or email <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a>. If you cancel before your trial ends, you will not be charged. After that, you can cancel anytime.</span></li>
+          </ul>
 
           <h2 className={s.h3} id="sms">Text messaging terms</h2>
           <p className={s.body}>

@@ -1,27 +1,26 @@
-import Link from 'next/link';
-import { EMAIL, PHONE_DISPLAY, PHONE_TEL } from '@/lib/booking';
-import { INDUSTRIES } from '@/lib/industries';
-import s from './Footer.module.css';
+import Link from "next/link";
+import BookingLink from "./BookingLink";
+import { EMAIL, PHONE_DISPLAY, PHONE_TEL } from "@/lib/booking";
+import { INDUSTRIES } from "@/lib/industries";
+import s from "./Footer.module.css";
 
 const COLUMNS = [
   {
-    title: 'Products',
+    title: "Products",
     links: [
-      { href: '/#pricing', label: 'AI Front Desk' },
-      { href: '/#pricing', label: 'Voice Agent' },
-      { href: '/#pricing', label: 'Chat Agent' },
-      { href: '/#how-it-works', label: 'Follow-Up' },
+      { href: "/#pricing", label: "AI Front Desk" },
+      { href: "/#pricing", label: "Voice Agent" },
+      { href: "/#pricing", label: "Chat Agent" },
+      { href: "/#how-it-works", label: "Follow-Up" },
     ],
   },
-  { title: 'Industries', links: INDUSTRIES },
+  { title: "Industries", links: INDUSTRIES },
   {
-    title: 'Company',
+    title: "Company",
     links: [
-      { href: '/#how-it-works', label: 'How It Works' },
-      { href: '/#pricing', label: 'Pricing' },
-      { href: '/blog', label: 'Blog' },
-      { href: '/book-demo', label: 'Book a demo' },
-      { href: '/start-trial', label: 'Start free trial' },
+      { href: "/#how-it-works", label: "How It Works" },
+      { href: "/#pricing", label: "Pricing" },
+      { href: "/blog", label: "Blog" },
     ],
   },
 ];
@@ -32,7 +31,9 @@ export default function Footer() {
       <div className={s.inner}>
         <div className={s.brand}>
           <p className={s.logo}>SMB AUTOMATION</p>
-          <p className={s.blurb}>Based in Iowa City. Serving independent businesses nationwide.</p>
+          <p className={s.blurb}>
+            Based in Iowa City. Serving independent businesses nationwide.
+          </p>
           <p className={s.contact}>
             <a href={PHONE_TEL}>{PHONE_DISPLAY}</a>
             <br />
@@ -49,6 +50,20 @@ export default function Footer() {
                     <Link href={l.href}>{l.label}</Link>
                   </li>
                 ))}
+                {col.title === "Company" && (
+                  <>
+                    <li>
+                      <BookingLink flow="demo" location="footer">
+                        Book a demo
+                      </BookingLink>
+                    </li>
+                    <li>
+                      <BookingLink flow="trial" location="footer">
+                        Start free trial
+                      </BookingLink>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
           ))}

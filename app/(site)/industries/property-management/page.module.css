@@ -181,6 +181,20 @@
   border-bottom: 1px solid var(--line);
 }
 
+.calcLabelWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.calcError {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  color: #B3261E;
+}
+
 .calcLabel {
   font-size: 18px;
   font-weight: 500;

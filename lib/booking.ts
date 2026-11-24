@@ -23,8 +23,11 @@ export const BOOKING: Record<
   },
 };
 
-export function bookingUrl(flow: BookingFlow): string {
-  return `https://api.leadconnectorhq.com/widget/booking/${BOOKING[flow].calendarId}`;
+/** The GHL calendar URL, with campaign parameters appended when there are any. */
+export function bookingUrl(flow: BookingFlow, params?: URLSearchParams): string {
+  const base = `https://api.leadconnectorhq.com/widget/booking/${BOOKING[flow].calendarId}`;
+  const query = params?.toString();
+  return query ? `${base}?${query}` : base;
 }
 
 /** Approved wording for when the trial clock starts. Use it everywhere trial timing is explained. */
