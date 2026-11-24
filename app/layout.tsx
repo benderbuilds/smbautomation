@@ -7,7 +7,7 @@ import './globals.css';
 
 const barlow = Barlow({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['300', '400', '500', '600', '700', '800'],
   style: ['normal', 'italic'],
   display: 'swap',
   variable: '--font-barlow',
@@ -17,9 +17,9 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://smbautomation.io'),
   title: {
     template: '%s | SMB Automation',
-    default: 'Marketing and Automation for Small Businesses | SMB Automation',
+    default: 'AI Phone Answering and Website Chat for Small Businesses | SMB Automation',
   },
-  description: 'SMB Automation helps small businesses grow with better websites, SEO, paid advertising, and automated follow-up systems that keep leads, customers, invoices, and reviews from falling through the cracks.',
+  description: 'AI phone answering and website chat that books jobs for small and midsize businesses. Start a 30-day free trial or book a demo.',
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
@@ -27,17 +27,17 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: 'Get More Customers. Automate the Busywork. | SMB Automation',
-    description: 'Websites, SEO, Google Ads, and Meta Ads that bring in customers, plus automated lead, invoice, AR, and review follow-up. More leads. Faster follow-up. Less manual work.',
+    title: 'AI Phone Answering and Website Chat | SMB Automation',
+    description: 'AI phone answering and website chat that turns your existing traffic into booked customers. 30-day free trial, no setup fee.',
     url: 'https://smbautomation.io',
     siteName: 'SMB Automation',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Get More Customers. Automate the Busywork. | SMB Automation',
+    title: 'AI Phone Answering and Website Chat | SMB Automation',
     description:
-      'Websites, SEO, Google Ads, and Meta Ads that bring in customers, plus automated lead, invoice, AR, and review follow-up.',
+      'AI phone answering and website chat that turns your existing traffic into booked customers. 30-day free trial, no setup fee.',
   },
 };
 
@@ -45,9 +45,11 @@ const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'SMB Automation',
+  legalName: 'SMBAUTOMATION LLC',
   url: 'https://smbautomation.io',
   email: 'jesse@smbautomation.io',
-  description: 'Marketing and automation for small and midsize businesses: SEO, web design, Google Ads, and Meta Ads to generate leads, plus automated lead, invoice, accounts receivable, and review follow-up.',
+  telephone: '+1-319-255-2700',
+  description: 'AI phone answering and website chat for small and midsize businesses: 24/7 answering, booking, reminders, and review requests, with invoice and AR follow-up on custom plans.',
   logo: 'https://smbautomation.io/favicon.svg',
   address: {
     '@type': 'PostalAddress',
@@ -82,6 +84,7 @@ const orgSchema = {
   contactPoint: {
     '@type': 'ContactPoint',
     email: 'jesse@smbautomation.io',
+    telephone: '+1-319-255-2700',
     contactType: 'sales',
   },
   sameAs: [

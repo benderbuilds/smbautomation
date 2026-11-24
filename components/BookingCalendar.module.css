@@ -1,0 +1,37 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.frame {
+  display: block;
+  width: 100%;
+  min-height: 760px;
+  border: 1px solid var(--line);
+  background: #fff;
+  overflow: hidden;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--ink-2);
+}
+
+.meta a {
+  color: var(--blue);
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .frame {
+    min-height: 900px;
+  }
+}

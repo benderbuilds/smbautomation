@@ -22,8 +22,8 @@ export default function BlogCta({
           requests, so the work happens without anyone remembering to do it. Tell us what is eating
           your team&rsquo;s time and we will show you what to fix first.
         </p>
-        <Link href="/#contact" className="btn-primary" onClick={onClick}>
-          Talk to Us →
+        <Link href="/book-demo" className="btn-primary" onClick={onClick}>
+          Book a demo →
         </Link>
       </div>
     );
@@ -37,8 +37,8 @@ export default function BlogCta({
         automated follow-up. Tell us about your business and we will tell you where the biggest
         opportunities are.
       </p>
-      <Link href="/#contact" className="btn-primary" onClick={onClick}>
-        Talk to Us →
+      <Link href="/book-demo" className="btn-primary" onClick={onClick}>
+        Book a demo →
       </Link>
     </div>
   );
