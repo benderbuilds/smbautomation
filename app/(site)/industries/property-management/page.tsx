@@ -48,7 +48,7 @@ const HERO_CALL = [
   { from: 'customer', text: 'There’s water coming out from under my kitchen sink and it won’t stop.' },
   { from: 'agent', text: 'I’m sorry, let’s get this handled. Which building and unit are you in?' },
   { from: 'customer', text: 'Building B, unit 204.' },
-  { from: 'agent', text: 'Thank you. If you can, turn the valve under the sink to the right. I’m alerting the on-call team now.' },
+  { from: 'agent', text: 'Thank you. If you can, turn the valve under the sink to the right. I’ll send your request to the on-call maintenance team within a few minutes.' },
 ] as const;
 
 const PROBLEMS: Card[] = [
@@ -107,7 +107,7 @@ const SCENARIOS: Scenario[] = [
       { from: 'customer', text: 'There’s water coming out from under my kitchen sink and it won’t stop.' },
       { from: 'agent', text: 'I’m sorry, let’s get this handled. Which building and unit are you in?' },
       { from: 'customer', text: 'Building B, unit 204. It’s pooling on the floor.' },
-      { from: 'agent', text: 'Thank you. If you can, turn the valve under the sink to the right to shut off the water. I’m alerting the on-call team now, and they’ll call you back at this number.' },
+      { from: 'agent', text: 'Thank you. If you can, turn the valve under the sink to the right to shut off the water. I’ll send your request to the on-call maintenance team within a few minutes.' },
     ],
     outcome: {
       icon: 'bell',

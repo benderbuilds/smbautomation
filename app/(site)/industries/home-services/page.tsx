@@ -48,7 +48,7 @@ const HERO_CALL = [
   { from: 'customer', text: 'Our furnace stopped and it’s 8 degrees out. We have a newborn at home.' },
   { from: 'agent', text: 'I’m sorry, we’ll get someone to you. What’s the address?' },
   { from: 'customer', text: '2210 Linden Drive. The thermostat says 58 inside.' },
-  { from: 'agent', text: 'Thank you. I’m alerting the on-call technician now. They’ll call you back at this number within a few minutes.' },
+  { from: 'agent', text: 'Thank you. I’ll send your request to the on-call technician within a few minutes.' },
 ] as const;
 
 const PROBLEMS: Card[] = [
@@ -92,7 +92,7 @@ const STEPS: Step[] = [
     icon: 'star',
     plan: 'Front Desk',
     title: 'Ask for a review',
-    body: 'Invites happy customers to leave a Google review once the job is done.',
+    body: 'Invites customers to leave an honest Google review once the job is done.',
   },
 ];
 
@@ -107,7 +107,7 @@ const SCENARIOS: Scenario[] = [
       { from: 'customer', text: 'Our furnace stopped and it’s 8 degrees out. We have a newborn at home.' },
       { from: 'agent', text: 'I’m sorry, we’ll get someone to you. What’s the address, and is the furnace making any noise or showing a light?' },
       { from: 'customer', text: '2210 Linden Drive. No noise, and there’s a blinking red light.' },
-      { from: 'agent', text: 'Thank you. I’m alerting the on-call technician now with your address and the blinking light. They’ll call you back at this number within a few minutes.' },
+      { from: 'agent', text: 'Thank you. I’ll send your request to the on-call technician within a few minutes, with your address and the blinking light.' },
     ],
     outcome: {
       icon: 'bell',

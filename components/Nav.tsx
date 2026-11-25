@@ -104,7 +104,7 @@ export default function Nav() {
         </nav>
 
         <div className={s.right}>
-          {/* The number rings the Voice Agent demo line (AI only, no transfer). */}
+          {/* The number rings the Voice Agent demo line (the Voice Agent answers and can transfer the caller to Jesse). */}
           <a href={PHONE_TEL} className={s.phone} aria-label={`Call our Voice Agent demo at ${PHONE_DISPLAY}`}>
             <Icon name="phone" size={16} />
             <span className={s.phoneText}>

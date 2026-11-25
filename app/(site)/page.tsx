@@ -70,7 +70,7 @@ const STEPS: Step[] = [
   { icon: 'phone', plan: 'All plans', title: 'Answer', body: 'Picks up every call or website chat in your business name, day or night.' },
   { icon: 'calendar', plan: 'All plans', title: 'Book', body: 'Collects the job details and books an open time on your calendar.' },
   { icon: 'bell', plan: 'Front Desk', title: 'Remind', body: 'Texts customers before their appointment so fewer people forget.' },
-  { icon: 'star', plan: 'Front Desk', title: 'Ask for a review', body: 'Invites happy customers to leave a Google review after the job.' },
+  { icon: 'star', plan: 'Front Desk', title: 'Ask for a review', body: 'Invites customers to leave an honest Google review after the job.' },
 ];
 
 const AGENTS: Agent[] = [
