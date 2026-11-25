@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import BookingLink from '@/components/BookingLink';
-import { TRIAL_START_COPY } from '@/lib/booking';
 import { INDUSTRIES } from '@/lib/industries';
 import { industryContent } from '@/lib/industryContent';
 import HomeSample from '@/components/HomeSample';
@@ -29,7 +28,7 @@ export const metadata: Metadata = {
 const PLANS = [
   {
     name: 'Answer',
-    who: 'Solo operators and small teams',
+    who: 'Phone answering or website chat',
     price: '$397',
     features: [
       'Voice Agent or Chat Agent',
@@ -43,7 +42,7 @@ const PLANS = [
   {
     name: 'Front Desk',
     badge: 'Voice + chat',
-    who: 'Teams with steady inbound volume',
+    who: 'Phone answering and website chat',
     price: '$797',
     featured: true,
     features: [
@@ -87,20 +86,20 @@ const offerSchema = {
 
 export default function HomePage() {
   return (
-    <>
+    <div className={p.home}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(offerSchema) }} />
-      <section className={s.hero}>
-        <div className={s.heroCopy}>
-          <p className={s.productLabel}>AI phone answering &amp; website chat</p>
-          <h1>Are you the reason you aren&apos;t booking more jobs?</h1>
-          <p className={s.lede}>Sign up for a free trial of our Front Desk Assistant: convert your existing website traffic to booked customers and never miss a phone call again.</p>
+      <section className={p.hero}>
+        <div className={p.heroCopy}>
+          <p className={p.product}>AI phone answering &amp; website chat</p>
+          <h1>Are you the reason you aren&apos;t booking <span>more jobs?</span></h1>
+          <p className={p.lede}>Sign up for a free trial of our Front Desk Assistant: convert your existing website traffic to booked customers and never miss a phone call again.</p>
           <TrialActions location="home_hero" />
-          <p className={s.fine}>{TRIAL_START_COPY} Add a card at onboarding. Cancel before the trial ends to avoid monthly billing.</p>
+          <p className={s.fine}>Trial starts when you book onboarding. Card added at onboarding. Cancel before day 30 to avoid billing.</p>
         </div>
         <HomeSample chat={industryContent.roofers.example} phone={industryContent.hvac.example} />
       </section>
       <section id="how-it-works" className={s.section}><span id="automation" />
-        <h2>What your front desk handles</h2>
+        <h2>What your front desk handles</h2><p className={s.sectionIntro}>We set it up. You approve the answers before your customers reach the assistant.</p>
         <div className={s.services}>
           <article><h3>Answer incoming calls</h3><p>An AI voice assistant picks up, answers questions using your business information, and routes urgent calls to the person you choose.</p></article>
           <article><h3>Capture website leads</h3><p>A chat widget answers visitors while they’re on your site. It asks what they need and collects their contact details.</p></article>
@@ -127,6 +126,6 @@ export default function HomePage() {
       <section id="contact" className={s.closing}><div><h2>Try your own front desk for 30 days.</h2>
         <p>We set up your answers, calendar, and call routing. You review sample conversations before your customers reach the assistant.</p>
       </div><TrialActions location="home_closing" /></section>
-    </>
+    </div>
   );
 }

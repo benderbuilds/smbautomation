@@ -222,3 +222,10 @@
     padding-inline: 10px;
   }
 }
+.homeHeader { background: #103c36; color: #fff; border-color: #103c36; }
+.homeHeader .logo, .homeHeader .phone, .homeHeader .menuButton, .homeHeader .links > li > a { color: #fff; }
+.homeHeader .menu a { color: var(--ink); }
+.homeHeader .cta { background: #bcf586; color: #123c32; }
+.homeHeader .cta:hover { background: #d5ffac; }
+.homeHeader .hamburger { background: white; }
+.homeHeader :focus-visible { outline-color: #baf582; }

@@ -56,7 +56,7 @@ export default function Nav() {
 
   return (
     <>
-      <header className={s.header}>
+      <header className={pathname === '/' ? `${s.header} ${s.homeHeader}` : s.header}>
         <Logo />
 
         <nav aria-label="Main">
