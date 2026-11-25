@@ -24,7 +24,7 @@ export default function PrivacyPage() {
           <p className={s.legalMeta}>Last updated November 24, 2026</p>
 
           <p className={s.body}>
-            This policy describes how SMBAUTOMATION LLC, which operates SMB Automation and smbautomation.io (&quot;we,&quot; &quot;us&quot;), collects and uses information on smbautomation.io and through our text message programs. Questions about this policy can be sent to <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a> or (319) 255-2700.
+            This policy describes how SMBAUTOMATION LLC, which operates SMB Automation and smbautomation.io (&quot;we,&quot; &quot;us&quot;), collects and uses information on smbautomation.io and through our text message programs. Questions about this policy can be sent to <a href="mailto:hello@smbautomation.io">hello@smbautomation.io</a> or (319) 255-2700.
           </p>
 
           <h2 className={s.h3}>Information we collect</h2>
@@ -82,7 +82,7 @@ export default function PrivacyPage() {
 
           <h2 className={s.h3}>Data retention and your rights</h2>
           <p className={s.body}>
-            We keep submission records for as long as they are useful for serving clients and maintaining business records. You may request a copy of the information we hold about you, or ask us to correct or delete it, by emailing <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a> or calling <a href="tel:+13192552700">(319) 255-2700</a>. We respond within one business day.
+            We keep submission records for as long as they are useful for serving clients and maintaining business records. You may request a copy of the information we hold about you, or ask us to correct or delete it, by emailing <a href="mailto:hello@smbautomation.io">hello@smbautomation.io</a> or calling <a href="tel:+13192552700">(319) 255-2700</a>. We respond within one business day.
           </p>
 
           <h2 className={s.h3}>Changes</h2>
@@ -98,7 +98,7 @@ export default function PrivacyPage() {
             <br />
             Phone: <a href="tel:+13192552700">(319) 255-2700</a>
             <br />
-            Email: <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a>
+            Email: <a href="mailto:hello@smbautomation.io">hello@smbautomation.io</a>
           </p>
         </div>
       </section>

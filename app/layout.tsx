@@ -63,7 +63,7 @@ const orgSchema = {
   name: 'SMB Automation',
   legalName: 'SMBAUTOMATION LLC',
   url: 'https://smbautomation.io',
-  email: 'jesse@smbautomation.io',
+  email: 'hello@smbautomation.io',
   telephone: '+1-319-255-2700',
   description: 'AI phone answering and website chat for small and midsize businesses: 24/7 answering, booking, reminders, and review requests, with invoice and AR follow-up on custom plans.',
   logo: 'https://smbautomation.io/favicon.svg',
@@ -99,7 +99,7 @@ const orgSchema = {
   },
   contactPoint: {
     '@type': 'ContactPoint',
-    email: 'jesse@smbautomation.io',
+    email: 'hello@smbautomation.io',
     telephone: '+1-319-255-2700',
     contactType: 'sales',
   },
