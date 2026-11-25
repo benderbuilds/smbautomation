@@ -28,7 +28,7 @@ Useful scripts:
 npm run test        # vitest unit tests (lib/)
 npm run lint        # next lint
 npm run build       # production build
-npm run check:copy  # fails on em dashes in tsx or non-zero border-radius in css
+npm run check:copy  # fails on em dashes in tsx
 ```
 
 ## Routes
@@ -36,7 +36,9 @@ npm run check:copy  # fails on em dashes in tsx or non-zero border-radius in css
 | Route | What it is |
 | --- | --- |
 | `/` | Homepage: hero with both CTAs and the example roofing chat, the problem, how it works (`#how-it-works`), pricing (`#pricing`), closing CTA (`#contact`). |
-| `/industries/property-management` | Property Management landing page, built to stand alone for ad traffic. Includes the interactive missed-leasing-call calculator (`lib/rentAtRisk.ts`). |
+| `/` (structure) | The homepage sections are shared components in `components/sections/Sections.tsx`; every industry page reuses them in the same order, with its own copy plus a "See it work" block of example calls (`components/industry/ScenarioTabs.tsx`). |
+| `/industries/property-management` | Property Management landing page, built to stand alone for ad traffic. |
+| `/industries/home-services` | Home Services (HVAC, plumbing, electrical) landing page, same structure. New industry pages are registered in `lib/industries.ts` (nav and footer) and `app/sitemap.ts`. |
 | `/start-trial` | Embeds the GHL free trial calendar (signup form, optional SMS consent, onboarding call). Booking the onboarding call starts the 30-day trial. noindex. |
 | `/book-demo` | Embeds the GHL demo calendar. A demo booking does not start a trial. noindex. |
 | `/blog` and `/blog/[slug]` | MDX blog, statically generated from `content/blog/`. |
@@ -92,7 +94,7 @@ ctaType: "workflow"   # optional; "workflow" leads with the follow-up automation
 ## Copy and Design Conventions
 
 - Two CTAs sitewide: start a free trial (orange) and book a demo (outlined or text link). The design source is the Paper file "SMB Automation Site Rebuild".
-- No em dashes in rendered copy. Zero border radius everywhere. `npm run check:copy` enforces both.
+- No em dashes in rendered copy (`npm run check:copy` enforces it). Since the 2026-11 redesign the (site) pages use the rounded light-glass system in `app/globals.css` (`.site` tokens); /roofers keeps the original square Barlow look.
 - Bands alternate white / `--bg` / dark. The follow-up timeline on `/` is the page's signature element: it is ordered by the customer lifecycle, which is why the sequential treatment is used there and nowhere else.
 
 ## Railway Deployment

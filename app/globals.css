@@ -221,6 +221,75 @@ img, svg {
   margin-top: 0.35em;
 }
 
+/* ==========================================================================
+   2026-11 redesign (ui-ux-pro-max design system): light glassmorphism,
+   trust blue + orange CTA, Poppins headings, Open Sans body.
+   Scoped to .site so the /roofers ad page keeps its own look.
+   ========================================================================== */
+.site {
+  --color-primary:        #2563EB;
+  --color-primary-hover:  #1D4ED8;
+  --color-primary-soft:   #DBEAFE;
+  --color-secondary:      #3B82F6;
+  --color-accent:         #C2410C;  /* 5.18:1 with white text */
+  --color-accent-hover:   #9A3412;
+  --color-accent-soft:    #FFEDD5;
+  --color-bg:             #F8FAFC;
+  --color-fg:             #1E293B;
+  --color-fg-strong:      #0F172A;
+  --color-muted:          #E9EFF8;
+  --color-muted-fg:       #475569;  /* 7.6:1 on white */
+  --color-border:         #E2E8F0;
+  --color-success:        #15803D;
+  --color-card:           #FFFFFF;
+
+  --glass-bg:             rgba(255, 255, 255, 0.66);
+  --glass-bg-strong:      rgba(255, 255, 255, 0.82);
+  --glass-border:         rgba(255, 255, 255, 0.75);
+  --glass-blur:           blur(16px) saturate(160%);
+  --shadow-sm:            0 1px 2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.08);
+  --shadow-md:            0 8px 24px -8px rgba(15, 23, 42, 0.14), 0 2px 6px rgba(15, 23, 42, 0.05);
+  --shadow-lg:            0 24px 60px -20px rgba(30, 64, 175, 0.28), 0 8px 20px -12px rgba(15, 23, 42, 0.12);
+
+  --radius-sm:            10px;
+  --radius:               16px;
+  --radius-lg:            24px;
+  --radius-pill:          999px;
+
+  --font-heading:         var(--font-poppins), 'Poppins', system-ui, sans-serif;
+  --font-body:            var(--font-open-sans), 'Open Sans', system-ui, sans-serif;
+
+  --ease-out:             cubic-bezier(0.22, 1, 0.36, 1);
+  --container:            1200px;
+  --pad-x:                max(16px, calc((100% - var(--container)) / 2));
+
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-fg);
+  background: var(--color-bg);
+}
+
+.site h1,
+.site h2,
+.site h3,
+.site h4 {
+  font-family: var(--font-heading);
+  color: var(--color-fg-strong);
+  letter-spacing: -0.015em;
+}
+
+.site :focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.site footer a:focus-visible,
+.site footer button:focus-visible {
+  outline-color: #fff;
+}
+
 /* Visually hidden, still read by screen readers. */
 .sr-only {
   position: absolute;

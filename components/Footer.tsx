@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import BookingLink from './BookingLink';
-import { EMAIL, PHONE_DISPLAY, PHONE_TEL } from '@/lib/booking';
+import Icon from './Icon';
+import { HELLO_EMAIL, PHONE_DISPLAY, PHONE_TEL } from '@/lib/booking';
 import { INDUSTRIES } from '@/lib/industries';
 import s from './Footer.module.css';
 
@@ -8,10 +9,11 @@ const COLUMNS = [
   {
     title: 'Products',
     links: [
-      { href: '/#pricing', label: 'AI Front Desk' },
+      { href: '/#pricing', label: 'Front Desk Assistant' },
       { href: '/#pricing', label: 'Voice Agent' },
       { href: '/#pricing', label: 'Chat Agent' },
       { href: '/#how-it-works', label: 'Follow-Up' },
+      { href: '/#faq', label: 'FAQ' },
     ],
   },
   { title: 'Industries', links: INDUSTRIES },
@@ -30,12 +32,27 @@ export default function Footer() {
     <footer className={s.footer}>
       <div className={s.inner}>
         <div className={s.brand}>
-          <p className={s.logo}>SMB AUTOMATION</p>
-          <p className={s.blurb}>Based in Iowa City. Serving independent businesses nationwide.</p>
+          <p className={s.logo}>
+            <span className={s.logoMark} aria-hidden="true">
+              <svg width="13" height="16" viewBox="0 0 22 26">
+                <path d="M13 0L0 15h9l-2 11L22 10h-9l2-10z" fill="#fff" />
+              </svg>
+            </span>
+            SMB Automation
+          </p>
+          <p className={s.blurb}>
+            The Front Desk Assistant: a Chat Agent and Voice Agent that answer, book the job, and
+            follow up. Built in Iowa for independent businesses nationwide.
+          </p>
           <p className={s.contact}>
-            <a href={PHONE_TEL}>{PHONE_DISPLAY}</a>
-            <br />
-            <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+            <a href={PHONE_TEL}>
+              <Icon name="phone" size={16} />
+              Voice Agent demo: {PHONE_DISPLAY}
+            </a>
+            <a href={`mailto:${HELLO_EMAIL}`}>
+              <Icon name="chat" size={16} />
+              {HELLO_EMAIL}
+            </a>
           </p>
         </div>
         <div className={s.columns}>

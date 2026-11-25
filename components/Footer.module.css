@@ -1,49 +1,87 @@
+/* 2026-11 redesign: deep slate footer with a soft blue glow. */
+
 .footer {
-  background: #fff;
-  color: var(--ink);
-  border-top: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+  background: var(--color-fg-strong);
+  color: #CBD5E1;
 }
 
-.footer a:focus-visible {
-  outline-color: var(--blue);
+.footer::before {
+  content: '';
+  position: absolute;
+  top: -240px;
+  right: -120px;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.35), transparent 65%);
+  pointer-events: none;
 }
 
 .inner {
+  position: relative;
   display: flex;
   justify-content: space-between;
   gap: 48px;
-  padding: 56px var(--pad-x) 40px;
+  padding: 72px var(--pad-x) 48px;
 }
 
 .brand {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  width: 320px;
+  gap: 14px;
+  width: 340px;
   flex-shrink: 0;
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading);
   font-size: 18px;
-  font-weight: 800;
-  line-height: 22px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #fff;
+}
+
+.logoMark {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--color-primary), #60A5FA);
 }
 
 .blurb {
   font-size: 15px;
-  line-height: 23px;
-  color: var(--ink-3);
+  line-height: 24px;
+  color: #94A3B8;
 }
 
 .contact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   font-size: 15px;
   line-height: 24px;
+}
+
+.contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #E2E8F0;
 }
 
 .contact a:hover,
 .links a:hover,
 .legal a:hover {
-  color: var(--blue);
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .columns {
@@ -54,16 +92,15 @@
 .column {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
 }
 
 .columnTitle {
-  font-size: 13px;
+  font-family: var(--font-heading);
+  font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.1em;
-  line-height: 16px;
-  text-transform: uppercase;
-  color: var(--ink-3);
+  line-height: 18px;
+  color: #fff;
 }
 
 .links {
@@ -72,18 +109,24 @@
   flex-direction: column;
   gap: 10px;
   font-size: 15px;
-  line-height: 18px;
+  line-height: 20px;
+}
+
+.links a {
+  color: #CBD5E1;
+  transition: color 0.18s;
 }
 
 .bottom {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 12px 24px;
-  padding: 20px var(--pad-x) 28px;
-  border-top: 1px solid var(--line);
+  padding: 24px var(--pad-x) 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 14px;
-  color: var(--ink-3);
+  color: #94A3B8;
 }
 
 .legal {
@@ -93,18 +136,19 @@
 }
 
 .legal a {
-  text-decoration: underline;
+  color: #CBD5E1;
 }
 
 @media (max-width: 900px) {
   .inner {
     flex-direction: column;
+    padding-top: 56px;
   }
   .brand {
     width: auto;
   }
   .columns {
     flex-wrap: wrap;
-    gap: 32px 48px;
+    gap: 32px 56px;
   }
 }

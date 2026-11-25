@@ -36,3 +36,8 @@ export const TRIAL_START_COPY = 'Your 30-day free trial starts when you book you
 export const PHONE_DISPLAY = '(319) 255-2700';
 export const PHONE_TEL = 'tel:+13192552700';
 export const EMAIL = 'jesse@smbautomation.io';
+/** Public inbox for prospects (the founder section and other "talk to our team" spots). */
+export const HELLO_EMAIL = 'hello@smbautomation.io';
+/* PHONE_DISPLAY rings the Voice Agent demo line. The Voice Agent answers first and can
+   transfer the caller to Jesse, so label it as a Voice Agent demo where the point is to
+   show the product. */

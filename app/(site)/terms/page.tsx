@@ -23,7 +23,7 @@ export default function TermsPage() {
           <p className={s.legalMeta}>Last updated November 24, 2026</p>
 
           <p className={s.body}>
-            These terms govern your use of smbautomation.io and your purchase of services from SMBAUTOMATION LLC, which operates SMB Automation. By using the site or purchasing a service, you agree to them. Questions can be sent to <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a> or (319) 255-2700.
+            These terms govern your use of smbautomation.io and your purchase of services from SMBAUTOMATION LLC, which operates SMB Automation. By using the site or purchasing a service, you agree to them. Questions can be sent to <a href="mailto:hello@smbautomation.io">hello@smbautomation.io</a> or (319) 255-2700.
           </p>
 
           <h2 className={s.h3}>Services</h2>
@@ -50,7 +50,7 @@ export default function TermsPage() {
           <ul className={s.list}>
             <li className={s.listItem}><span className="proof-dot" aria-hidden="true" /><span><strong>When it starts.</strong> Your 30-day free trial starts when you book your onboarding call at <Link href="/start-trial">smbautomation.io/start-trial</Link>. You add a payment card during onboarding.</span></li>
             <li className={s.listItem}><span className="proof-dot" aria-hidden="true" /><span><strong>After day 30.</strong> Unless you cancel, your plan is billed monthly at its listed price: Answer (voice or chat) $397 per month, or Front Desk (voice and chat) $797 per month. Current prices are listed in the <Link href="/#pricing">pricing section of our homepage</Link>. Multi-location and custom plans are priced in a written agreement.</span></li>
-            <li className={s.listItem}><span className="proof-dot" aria-hidden="true" /><span><strong>How to cancel.</strong> Call <a href="tel:+13192552700">(319) 255-2700</a> or email <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a>. If you cancel before your trial ends, you will not be charged. After that, you can cancel anytime.</span></li>
+            <li className={s.listItem}><span className="proof-dot" aria-hidden="true" /><span><strong>How to cancel.</strong> Call <a href="tel:+13192552700">(319) 255-2700</a> or email <a href="mailto:hello@smbautomation.io">hello@smbautomation.io</a>. If you cancel before your trial ends, you will not be charged. After that, you can cancel anytime.</span></li>
           </ul>
 
           <h2 className={s.h3} id="sms">Text messaging terms</h2>
@@ -74,10 +74,10 @@ export default function TermsPage() {
             <strong>How to stop.</strong> You can cancel the SMS service at any time. Just reply STOP to any text message from us. After you opt out, you will no longer receive text messages from us. Replying STOP opts you out of both programs.
           </p>
           <p className={s.body}>
-            <strong>Help.</strong> Reply HELP to any text message for help, or contact us at <a href="tel:+13192552700">(319) 255-2700</a> or <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a>.
+            <strong>Help.</strong> Reply HELP to any text message for help, or contact us at <a href="tel:+13192552700">(319) 255-2700</a> or <a href="mailto:hello@smbautomation.io">hello@smbautomation.io</a>.
           </p>
           <p className={s.body}>
-            <strong>How to rejoin.</strong> If you opted out and want to receive text messages again, reply START to our text number, or contact us at <a href="tel:+13192552700">(319) 255-2700</a> or <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a> and tell us which program you want to rejoin.
+            <strong>How to rejoin.</strong> If you opted out and want to receive text messages again, reply START to our text number, or contact us at <a href="tel:+13192552700">(319) 255-2700</a> or <a href="mailto:hello@smbautomation.io">hello@smbautomation.io</a> and tell us which program you want to rejoin.
           </p>
           <p className={s.body}>
             <strong>Delivery.</strong> Carriers are not liable for delayed or undelivered messages.
@@ -109,7 +109,7 @@ export default function TermsPage() {
             <br />
             Phone: <a href="tel:+13192552700">(319) 255-2700</a>
             <br />
-            Email: <a href="mailto:jesse@smbautomation.io">jesse@smbautomation.io</a>
+            Email: <a href="mailto:hello@smbautomation.io">hello@smbautomation.io</a>
           </p>
         </div>
       </section>
