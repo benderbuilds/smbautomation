@@ -61,3 +61,26 @@
   .inquiry dl div { grid-template-columns: 1fr; gap: 2px; }
   .receipt strong { font-size: 20px; }
 }
+
+/* Keep the copy and the working example on the same desktop sightline. */
+@media(min-width: 960px) {
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr); align-items: center; gap: clamp(36px,5vw,80px); min-height: calc(100svh - 85px); padding: 64px max(var(--gutter),calc((100vw - 1312px)/2)); text-align: left; background: radial-gradient(ellipse at 86% 65%, #305f50, #103c36 67%); }
+  .heroCopy { margin: 0; }
+  .hero h1 { margin: 20px 0; font-size: clamp(54px,4.7vw,72px); text-wrap: initial; }
+  .heroCopy > div { justify-content: flex-start; }
+  .heroCopy p:last-child { margin-left: 0; }
+  .preview { width: 100%; margin: 0; padding: clamp(16px,2vw,32px); background: #acc7ac; border: 0; box-shadow: none; }
+  .previewHead, .workspace { background: white; }
+  .workspace { flex-direction: column; }
+  .inbox { display: flex; width: 100%; padding: 10px; }
+  .inbox button { width: 50%; }
+  .inquiry { padding: 20px; }
+}
+@media(prefers-reduced-motion: no-preference) {
+  .heroCopy, .preview { animation: enterFrontDesk 420ms ease-out both; }
+  .preview { animation-delay: 75ms; }
+  .home a, .inbox button { transition: transform 150ms ease-out, background-color 150ms ease-out; }
+  .heroCopy a:hover, .plan a:hover { transform: translateY(-2px); }
+  .heroCopy a:active, .inbox button:active { transform: translateY(1px); }
+}
+@keyframes enterFrontDesk { from { opacity: .65; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
