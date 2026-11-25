@@ -94,7 +94,7 @@ export default function HomePage() {
           <h1>Are you the reason you aren&apos;t booking <span>more jobs?</span></h1>
           <p className={p.lede}>Sign up for a free trial of our Front Desk Assistant: convert your existing website traffic to booked customers and never miss a phone call again.</p>
           <TrialActions location="home_hero" />
-          <p className={s.fine}>Trial starts when you book onboarding. Card added at onboarding. Cancel before day 30 to avoid billing.</p>
+          <p className={s.fine}>Trial starts when you book onboarding. Card added at onboarding. Cancel before the trial ends to avoid billing.</p>
         </div>
         <HomeSample chat={industryContent.roofers.example} phone={industryContent.hvac.example} />
       </section>

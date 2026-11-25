@@ -58,6 +58,6 @@
   .inbox svg { width: 18px; }
   .inbox small { display: none; }
   .inquiry { padding: 12px; }
-  .inquiry dl div { grid-template-columns: 64px 1fr; }
+  .inquiry dl div { grid-template-columns: 1fr; gap: 2px; }
   .receipt strong { font-size: 20px; }
 }

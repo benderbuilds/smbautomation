@@ -229,3 +229,7 @@
 .homeHeader .cta:hover { background: #d5ffac; }
 .homeHeader .hamburger { background: white; }
 .homeHeader :focus-visible { outline-color: #baf582; }
+@media(max-width:1080px) {
+  .homeHeader nav { display: none; }
+  .homeHeader .logo svg { flex-shrink: 0; }
+}
