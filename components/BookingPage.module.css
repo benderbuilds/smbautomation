@@ -57,7 +57,7 @@
   flex-shrink: 0;
   width: 18px;
   font-weight: 700;
-  color: var(--orange-cta);
+  color: var(--ink);
 }
 
 .note {

@@ -10,7 +10,7 @@ import s from './Nav.module.css';
 import { INDUSTRIES } from '@/lib/industries';
 
 const LINKS = [
-  { href: '/#how-it-works', label: 'How It Works' },
+  { href: '/#how-it-works', label: 'Services' },
   { href: '/#pricing', label: 'Pricing' },
   { href: '/blog', label: 'Blog' },
 ];
@@ -19,7 +19,7 @@ export function Logo() {
   return (
     <Link href="/" className={s.logo} aria-label="SMB Automation home">
       <svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true">
-        <path d="M13 0L0 15h9l-2 11L22 10h-9l2-10z" fill="#2540D9" />
+        <path d="M13 0L0 15h9l-2 11L22 10h-9l2-10z" fill="currentColor" />
       </svg>
       <span>SMB AUTOMATION</span>
     </Link>
@@ -56,14 +56,6 @@ export default function Nav() {
 
   return (
     <>
-      <div className={s.bar}>
-        <span>30-day free trial</span>
-        <span className={s.dot} aria-hidden="true" />
-        <span>No setup fee</span>
-        <span className={s.dot} aria-hidden="true" />
-        <span>Cancel anytime</span>
-      </div>
-
       <header className={s.header}>
         <Logo />
 

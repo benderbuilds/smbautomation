@@ -110,8 +110,8 @@ export default function RooferAuditForm() {
         </p>
       )}
 
-      <button type="submit" className={`btn-orange ${s.submit}`} disabled={status === 'loading'}>
-        {status === 'loading' ? 'Sending…' : 'Show me what I’m losing →'}
+      <button type="submit" className={s.submit} disabled={status === 'loading'}>
+        {status === 'loading' ? 'Sending…' : 'Request my free audit'}
       </button>
       <p className={s.consent}>
         Free. 20 minutes. No pitch. By submitting, you agree SMB Automation may contact you by phone

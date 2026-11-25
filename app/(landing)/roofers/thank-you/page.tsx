@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { calendlyUrl } from '@/lib/calendly';
-import { LandingHeader, LandingFooter } from '../LandingChrome';
 import CalendlyEmbed from './CalendlyEmbed';
 import s from '../roofers.module.css';
 
@@ -10,25 +9,9 @@ export const metadata: Metadata = {
 };
 
 export default function RoofersThankYouPage() {
-  return (
-    <>
-      <LandingHeader cta={false} />
-      <section className={s.booked}>
-        <div className={s.inner}>
-          <div className={s.bookedHead}>
-            <span className="eyebrow">Step 2 of 2</span>
-            <h1 className={s.sectionTitle}>
-              Got it. <em>Now pick a time for your audit.</em>
-            </h1>
-            <p className={s.bookedLede}>
-              20 minutes. We walk through your call volume and lead flow and show you,
-              in dollars, what missed calls cost you every month.
-            </p>
-          </div>
-          <CalendlyEmbed url={calendlyUrl()} />
-        </div>
-      </section>
-      <LandingFooter />
-    </>
-  );
+  return <section className={s.booked}>
+    <p>Step 2 of 2</p><h1>Pick a time for your roofing audit.</h1>
+    <p>We’ll review your call volume and lead follow-up together in 20 minutes.</p>
+    <CalendlyEmbed url={calendlyUrl()} />
+  </section>;
 }
