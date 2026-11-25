@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Barlow } from 'next/font/google';
+import { Barlow, Open_Sans, Poppins } from 'next/font/google';
 import AttributionCapture from '../components/AttributionCapture';
 import AnalyticsScripts from '../components/AnalyticsScripts';
 import ChatWidget from '../components/ChatWidget';
@@ -11,6 +11,22 @@ const barlow = Barlow({
   style: ['normal', 'italic'],
   display: 'swap',
   variable: '--font-barlow',
+});
+
+/* 2026-11 redesign: Poppins headings, Open Sans body, scoped to the (site) pages
+   through the .site wrapper. The /roofers landing page keeps Barlow. */
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['500', '600', '700'],
+  display: 'swap',
+  variable: '--font-poppins',
+});
+
+const openSans = Open_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-open-sans',
 });
 
 export const metadata: Metadata = {
@@ -94,7 +110,7 @@ const orgSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={barlow.variable}>
+    <html lang="en" className={`${barlow.variable} ${poppins.variable} ${openSans.variable}`}>
       <body>
         <AttributionCapture />
         {children}

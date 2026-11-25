@@ -1,231 +1,352 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
-import BookingLink from '@/components/BookingLink';
+import Icon from '@/components/Icon';
+import ScenarioTabs, { type Scenario } from '@/components/industry/ScenarioTabs';
+import {
+  Agents,
+  Closing,
+  Compare,
+  Examples,
+  FaqSection,
+  FloatCard,
+  Hero,
+  HowItWorks,
+  JsonLd,
+  Pricing,
+  Problem,
+  Team,
+  WorksWith,
+  faqSchema,
+  type Agent,
+  type Card,
+  type CompareRow,
+  type Faq,
+  type Step,
+} from '@/components/sections/Sections';
 import { TRIAL_START_COPY } from '@/lib/booking';
-import m from '@/components/Marketing.module.css';
-import RentCalculator from './RentCalculator';
-import s from './page.module.css';
+import ind from '@/components/industry/Industry.module.css';
 
 const URL = 'https://smbautomation.io/industries/property-management';
 
 export const metadata: Metadata = {
   title: { absolute: 'AI Receptionist for Property Management | SMB Automation' },
   description:
-    'After-hours maintenance calls, leasing inquiries, showing bookings, and resident questions answered 24/7, with urgent issues routed to your on-call team. 30-day free trial.',
+    'The Front Desk Assistant answers maintenance calls, leasing inquiries, and resident questions 24/7, routes emergencies to your on-call team, and books showings. 30-day free trial.',
   alternates: { canonical: URL },
   openGraph: {
     title: 'Tenant calls at 11 PM. We handle it. | SMB Automation',
     description:
-      'An AI receptionist for property managers: maintenance intake, leasing calls, and resident questions, routed under your rules.',
+      'The Front Desk Assistant for property managers: a Voice Agent and Chat Agent for maintenance intake, leasing calls, and resident questions, routed under your rules.',
     url: URL,
     siteName: 'SMB Automation',
     type: 'website',
   },
 };
 
-const CALL = [
-  { who: 'Caller', text: 'There’s water coming out from under my kitchen sink and it won’t stop.' },
-  { who: 'AI', text: 'I can take the details for the on-call team. Which building and unit are you in?' },
-  { who: 'Caller', text: 'Building B, unit 204. It’s still leaking.' },
-  { who: 'AI', text: 'I’ve passed the leak details and your unit number to the on-call team.' },
+/* ---------- Content ---------- */
+
+const HERO_CALL = [
+  { from: 'customer', text: 'There’s water coming out from under my kitchen sink and it won’t stop.' },
+  { from: 'agent', text: 'I’m sorry, let’s get this handled. Which building and unit are you in?' },
+  { from: 'customer', text: 'Building B, unit 204.' },
+  { from: 'agent', text: 'Thank you. If you can, turn the valve under the sink to the right. I’m alerting the on-call team now.' },
 ] as const;
 
-const PROBLEMS = [
+const PROBLEMS: Card[] = [
   {
-    title: 'After-hours maintenance',
-    body: 'Give residents a clear path to the on-call team when a repair needs attention tonight.',
+    icon: 'clock',
+    title: 'Emergencies don’t wait for 9 a.m.',
+    body: 'A leak at midnight becomes drywall, flooring, and an insurance claim by morning if nobody picks up.',
   },
   {
-    title: 'Leasing leads',
-    body: 'Prospects browse listings at night. The first property that answers gets the showing.',
+    icon: 'building',
+    title: 'Leasing leads shop at night',
+    body: 'Prospects browse listings after work. The first property that answers usually gets the showing.',
   },
   {
-    title: 'Repeat questions',
-    body: 'Rent portal, parking, pet policy. Your team answers the same ten questions every day.',
+    icon: 'chat',
+    title: 'The same ten questions, every day',
+    body: 'Rent portal, guest parking, pet policy, move-out steps. Your team answers them on repeat.',
   },
 ];
 
-const COVERAGE = [
-  { who: 'Tenants', title: 'Maintenance', body: 'Collect the unit and issue, then route urgent reports to your on-call contact.' },
-  { who: 'Prospects', title: 'Leasing', body: 'Availability, pricing, pet policy, and showings booked on your calendar.' },
-  { who: 'Residents', title: 'Questions', body: 'Rent portal, parking, amenities, move-out steps. Answered from your policies.' },
-  { who: 'Owners + vendors', title: 'Routing', body: 'Route owner and vendor inquiries to the people you choose.' },
+const STEPS: Step[] = [
+  {
+    icon: 'phone',
+    plan: 'All plans',
+    title: 'Answer',
+    body: 'Picks up every resident, prospect, and vendor call or chat in your company name, day or night.',
+  },
+  {
+    icon: 'calendar',
+    plan: 'All plans',
+    title: 'Route and book',
+    body: 'Sends emergencies to your on-call contact and books showings on your leasing calendar.',
+  },
+  {
+    icon: 'bell',
+    plan: 'Front Desk',
+    title: 'Remind',
+    body: 'Texts prospects before their showing so fewer people forget to come.',
+  },
+  {
+    icon: 'star',
+    plan: 'Front Desk',
+    title: 'Ask for a review',
+    body: 'Invites residents to leave a Google review after a move-in or a finished repair.',
+  },
 ];
 
-const STATS = [
-  { value: '93%', label: 'client retention at TelePharm' },
-  { value: '300+', label: 'accounts onboarded at TelePharm' },
-  { value: '13 yrs', label: 'in customer success' },
+const SCENARIOS: Scenario[] = [
+  {
+    id: 'leak',
+    tab: 'Emergency maintenance',
+    channel: 'Voice Agent',
+    time: '11:12 p.m.',
+    place: 'Ridgeview Apartments',
+    lines: [
+      { from: 'customer', text: 'There’s water coming out from under my kitchen sink and it won’t stop.' },
+      { from: 'agent', text: 'I’m sorry, let’s get this handled. Which building and unit are you in?' },
+      { from: 'customer', text: 'Building B, unit 204. It’s pooling on the floor.' },
+      { from: 'agent', text: 'Thank you. If you can, turn the valve under the sink to the right to shut off the water. I’m alerting the on-call team now, and they’ll call you back at this number.' },
+    ],
+    outcome: {
+      icon: 'bell',
+      tone: 'urgent',
+      label: 'Urgent: routed to on-call',
+      title: 'Active leak · Building B, unit 204',
+      text: 'The on-call contact gets the unit, issue, and callback number by call and text.',
+    },
+  },
+  {
+    id: 'showing',
+    tab: 'Leasing inquiry',
+    channel: 'Chat Agent',
+    time: '9:40 p.m.',
+    place: 'Website chat · Maple Court',
+    lines: [
+      { from: 'customer', text: 'Do you have any 2 bedrooms open for March? I have a dog.' },
+      { from: 'agent', text: 'Yes. We have a 2 bedroom available March 1. Dogs under 50 lbs are welcome with a pet deposit. Would you like to tour it?' },
+      { from: 'customer', text: 'Yes, Saturday morning if possible.' },
+      { from: 'agent', text: 'Saturday at 11:00 a.m. is open. Can I get your name and phone number to confirm?' },
+    ],
+    outcome: {
+      icon: 'calendar',
+      tone: 'booked',
+      label: 'Showing booked',
+      title: 'Saturday 11:00 a.m. · 2 bedroom, Maple Court',
+      text: 'The showing lands on your leasing calendar with the prospect’s contact info and pet details.',
+    },
+  },
+  {
+    id: 'dishwasher',
+    tab: 'Routine repair',
+    channel: 'Voice Agent',
+    time: '8:05 p.m.',
+    place: 'Oak Street Townhomes',
+    lines: [
+      { from: 'customer', text: 'My dishwasher isn’t draining. It’s not an emergency, I just want it looked at.' },
+      { from: 'agent', text: 'Got it. What’s your address and unit number?' },
+      { from: 'customer', text: '1418 Oak Street, unit 3. Mornings are best for me.' },
+      { from: 'agent', text: 'Thanks. I’ve passed this to maintenance with your note about mornings. The office will follow up tomorrow to schedule it.' },
+    ],
+    outcome: {
+      icon: 'text',
+      tone: 'info',
+      label: 'Logged for the morning',
+      title: 'Dishwasher not draining · 1418 Oak St, unit 3',
+      text: 'No overnight page. Your office gets a text summary to schedule during business hours.',
+    },
+  },
+  {
+    id: 'question',
+    tab: 'Resident question',
+    channel: 'Chat Agent',
+    time: '6:30 p.m.',
+    place: 'Website chat · Ridgeview Apartments',
+    lines: [
+      { from: 'customer', text: 'Where do my guests park this weekend?' },
+      { from: 'agent', text: 'Guests can park in any spot marked Visitor along the north lot for up to 48 hours. No permit is needed.' },
+      { from: 'customer', text: 'Perfect, and how do I pay rent online?' },
+      { from: 'agent', text: 'You can pay through the resident portal. Here’s the link to sign in.' },
+    ],
+    outcome: {
+      icon: 'check',
+      tone: 'info',
+      label: 'Answered from your policies',
+      title: 'Parking and rent portal questions',
+      text: 'Answered on the spot from the policies you give us. No staff time needed.',
+    },
+  },
+  {
+    id: 'vendor',
+    tab: 'Owner or vendor call',
+    channel: 'Voice Agent',
+    time: '2:15 p.m.',
+    place: 'Main office line',
+    lines: [
+      { from: 'customer', text: 'Hi, this is Mike from Precision Plumbing about an invoice for the Elm Street job.' },
+      { from: 'agent', text: 'Thanks, Mike. Invoices go to our accounting contact. Let me connect you.' },
+    ],
+    outcome: {
+      icon: 'phone',
+      tone: 'info',
+      label: 'Transferred',
+      title: 'Vendor invoice · routed to accounting',
+      text: 'Owner and vendor calls go to the people you choose, not the leasing line.',
+    },
+  },
+];
+
+const AGENTS: Agent[] = [
+  {
+    icon: 'phone',
+    name: 'Voice Agent',
+    lead: 'Answers your office line for residents, prospects, owners, and vendors, any hour.',
+    points: [
+      'Answers in your company name, 24/7',
+      'Collects the unit, issue, and callback number',
+      'Routes emergencies to your on-call contact',
+      'Texts your office a summary after every call',
+      'Works with your existing office number',
+    ],
+  },
+  {
+    icon: 'chat',
+    name: 'Chat Agent',
+    lead: 'Turns the renters browsing your listings tonight into booked showings.',
+    points: [
+      'Answers availability, pricing, and pet questions',
+      'Books showings on your leasing calendar',
+      'Answers parking, portal, and move-out questions',
+      'Takes maintenance requests from residents',
+      'Installs with one snippet on your site',
+    ],
+  },
+];
+
+const COMPARE: CompareRow[] = [
+  { row: 'Answers maintenance calls after hours', voicemail: false, hire: false, us: true },
+  { row: 'Sends emergencies to your on-call contact', voicemail: false, hire: 'Office hours only', us: true },
+  { row: 'Books showings on your calendar', voicemail: false, hire: true, us: true },
+  { row: 'Answers leasing questions on your website', voicemail: false, hire: 'Sometimes', us: 'Chat Agent' },
+  { row: 'Monthly cost', voicemail: 'Free', hire: 'Salary, taxes, and benefits', us: 'From $397' },
+];
+
+const FAQS: Faq[] = [
+  {
+    q: 'Does this replace our on-call maintenance team?',
+    a: 'No. The Front Desk Assistant answers the call, collects the details, and routes real emergencies to your on-call contact. Your team still does the repair. They just stop fielding every call to find the urgent ones.',
+  },
+  {
+    q: 'Who decides what counts as an emergency?',
+    a: 'You do. Before launch we set your routing rules together: which issues reach the on-call contact, which wait for the morning, and who handles owner and vendor calls. You approve them before anything goes live.',
+  },
+  {
+    q: 'Can it answer leasing questions about availability and pricing?',
+    a: 'Yes, from the listing details and policies you provide during setup. It books showings on your calendar so prospects can pick a time without waiting for a callback.',
+  },
+  {
+    q: 'We manage several properties. Can each one be handled differently?',
+    a: 'Yes. Each property can have its own details, policies, and on-call contact. The Multi-Location plan adds separate call flows per location for larger portfolios.',
+  },
+  {
+    q: 'Can residents keep calling our current office number?',
+    a: 'Yes. The Voice Agent works with your existing business number, so nothing changes for residents or prospects.',
+  },
+  {
+    q: 'How does the free trial work?',
+    a: `${TRIAL_START_COPY} No credit card required to start. Monthly billing begins after the 30 days unless you cancel.`,
+  },
 ];
 
 export default function PropertyManagementPage() {
   return (
     <>
-      {/* ---------- Hero ---------- */}
-      <section className={m.hero}>
-        <div className={`${m.heroCopy} ${s.heroCopy}`}>
-          <p className={m.eyebrow}>AI receptionist for property management</p>
-          <h1 className={`${m.h1} ${s.h1}`}>Tenant calls at 11&nbsp;PM. We handle it.</h1>
-          <p className={m.sub}>
-            Give residents a way to report maintenance after hours and prospects a way to book a
-            showing. You decide which calls reach your on-call team.
-          </p>
-          <div className={m.btnRow}>
-            <BookingLink flow="trial" location="pm_hero" className={m.btnPrimary}>
-              Start my 30-day free trial
-            </BookingLink>
-            <BookingLink flow="demo" location="pm_hero" className={m.btnSecondary}>
-              Book a demo
-            </BookingLink>
-          </div>
-          <ul className={s.facts}>
-            <li>Typical setup within 48 hours</li>
-            <li>Keep your number</li>
-            <li>Month to month</li>
-          </ul>
-        </div>
+      <JsonLd data={faqSchema(FAQS)} />
 
-        <div className={m.heroAside}>
-          <figure className={s.call} aria-label="Example after-hours maintenance call">
-            <div className={s.callTop}>
-              <span className={s.callTime}>
-                <span className={s.callDot} aria-hidden="true" />
-                Example call · 11:12 PM
-              </span>
-              <span className={s.callProperty}>Ridgeview Apartments</span>
-            </div>
-            <dl className={s.transcript}>
-              {CALL.map((line) => (
-                <div key={line.text} className={s.line}>
-                  <dt className={line.who === 'AI' ? s.whoAi : s.who}>{line.who}</dt>
-                  <dd>{line.text}</dd>
-                </div>
-              ))}
-            </dl>
-            <figcaption className={s.alert}>
-              <span className={s.alertLabel}>Example maintenance alert</span>
-              <span className={s.alertTitle}>Active leak · Building B, unit 204</span>
-              <span className={s.alertText}>
-                Routed to the on-call contact under the property’s rules. You decide which
-                situations reach your on-call team.
-              </span>
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-
-      {/* ---------- Why it matters ---------- */}
-      <section className={m.section} aria-labelledby="why-title">
-        <div className={m.sectionHead}>
-          <h2 id="why-title" className={m.h2}>
-            Your phone line is a maintenance queue, a leasing office, and an owner hotline. At once.
-          </h2>
-          <p className={m.tag}>Why it matters</p>
-        </div>
-        <div className={m.cols3}>
-          {PROBLEMS.map((p, i) => (
-            <div key={p.title}>
-              <span className={m.num}>{String(i + 1).padStart(2, '0')}</span>
-              <h3 className={m.colTitle}>{p.title}</h3>
-              <p className={m.colBody}>{p.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ---------- Coverage ---------- */}
-      <section className={m.band} aria-labelledby="coverage-title">
-        <div className={m.bandHead}>
-          <h2 id="coverage-title" className={m.bandTitle}>
-            One number for maintenance, leasing, and resident questions.
-          </h2>
-          <p className={m.bandIntro}>
-            Jesse sets up your properties, policies, and on-call contacts. You approve the routing
-            rules before launch.
-          </p>
-        </div>
-        <div className={m.cols4}>
-          {COVERAGE.map((c) => (
-            <div key={c.title}>
-              <span className={m.bandLabel}>{c.who}</span>
-              <h3 className={m.bandColTitle}>{c.title}</h3>
-              <p className={m.bandBody}>{c.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ---------- Calculator ---------- */}
-      <section className={s.numbers} aria-labelledby="calc-title">
-        <div className={s.numbersCopy}>
-          <p className={m.eyebrow}>Run your numbers</p>
-          <h2 id="calc-title" className={s.numbersTitle}>
-            What does a missed leasing call cost you?
-          </h2>
-          <p className={s.numbersText}>
-            Estimate how much a delay in filling vacant units could cost your portfolio.
-          </p>
-          <p className={s.numbersNote}>
-            Example inputs. Adjust to your portfolio. This is an estimate from a calculator, not a
-            client result.
-          </p>
-        </div>
-        <RentCalculator />
-      </section>
-
-      {/* ---------- Founder ---------- */}
-      <section className={s.founder} aria-labelledby="founder-title">
-        <div className={s.portrait}>
-          <Image
-            src="/assets/jesse-bender.png"
-            alt="Jesse Bender, founder of SMB Automation"
-            fill
-            sizes="(max-width: 900px) 100vw, 360px"
-            className={s.portraitImg}
-          />
-        </div>
-        <div className={s.founderCopy}>
-          <p className={m.eyebrow}>Who builds your agent</p>
-          <h2 id="founder-title" className={s.founderTitle}>
-            Jesse builds your agent and walks you through it.
-          </h2>
-          <p className={s.founderText}>
-            I&apos;m Jesse. I was employee #6 at TelePharm and built customer success from 3 accounts
-            to 300+ through our acquisition by Cardinal Health. For 13 years I&apos;ve helped
-            independent operators compete with companies ten times their size. I set up every agent
-            myself, from Iowa City.
-          </p>
-          <dl className={s.stats}>
-            {STATS.map((stat) => (
-              <div key={stat.label}>
-                <dt className={s.statValue}>{stat.value}</dt>
-                <dd className={s.statLabel}>{stat.label}</dd>
+      <Hero
+        title={<>Tenant calls at 11&nbsp;PM.</>}
+        accent="We handle it."
+        lede="The Front Desk Assistant answers maintenance calls, leasing questions, and resident requests 24/7. Emergencies reach your on-call team. Showings land on your calendar."
+        points={['No setup fee', 'Keep your office number', 'Month to month']}
+        location="pm_hero"
+        visual={
+          <>
+            <figure className={ind.callCard} aria-label="Example after-hours maintenance call">
+              <div className={ind.callTop}>
+                <span className={ind.callAvatar} aria-hidden="true">
+                  <Icon name="phone" size={18} />
+                </span>
+                <span className={ind.callWho}>
+                  <span className={ind.callName}>Ridgeview Apartments</span>
+                  <span className={ind.callMeta}>Voice Agent · 11:12 p.m.</span>
+                </span>
+                <span className={ind.callBars} aria-hidden="true">
+                  <span />
+                  <span />
+                  <span />
+                  <span />
+                  <span />
+                </span>
               </div>
-            ))}
-          </dl>
-        </div>
-      </section>
+              <ol className={ind.lines}>
+                {HERO_CALL.map((line) => (
+                  <li key={line.text} className={line.from === 'agent' ? ind.lineAgent : ind.lineCustomer}>
+                    <span className={ind.lineWho}>{line.from === 'agent' ? 'Voice Agent' : 'Resident'}</span>
+                    <span className={ind.lineText}>{line.text}</span>
+                  </li>
+                ))}
+              </ol>
+              <figcaption className="sr-only">
+                The Voice Agent collects the unit and alerts the on-call team about an active leak.
+              </figcaption>
+            </figure>
+            <FloatCard position="top" tone="red" icon="bell" label="Urgent · routed to on-call" text="Active leak · Bldg B, #204" />
+            <FloatCard position="bottom" tone="green" icon="calendar" label="Showing booked" text="Sat 11:00 a.m. · 2 bed, Maple Ct" />
+          </>
+        }
+      />
 
-      {/* ---------- Closing CTA ---------- */}
-      <section className={m.closing} aria-labelledby="closing-title">
-        <div className={m.closingCopy}>
-          <h2 id="closing-title" className={m.closingTitle}>
-            Try it with your own properties for 30 days.
-          </h2>
-          <p className={m.closingText}>
-            Most clients go live within 48 hours. Custom setups can take longer. {TRIAL_START_COPY}{' '}
-            Monthly billing begins after 30 days unless you cancel.
-          </p>
-        </div>
-        <div className={m.closingActions}>
-          <BookingLink flow="trial" location="pm_closing" className={m.btnPrimary}>
-            Start my 30-day free trial
-          </BookingLink>
-          <BookingLink flow="demo" location="pm_closing" className={m.closingLink}>
-            Book a demo
-          </BookingLink>
-        </div>
-      </section>
+      <WorksWith />
+
+      <Problem
+        title="Your office line rings 168 hours a week. Who answers at midnight?"
+        problems={PROBLEMS}
+        hireLabel="Office staff"
+      />
+
+      <HowItWorks
+        title="From the midnight leak to the signed lease."
+        text="Every plan answers, routes, and books. Front Desk adds the reminders and review requests that keep units full."
+        steps={STEPS}
+      />
+
+      <Examples
+        title="Five calls your team won’t have to take this week."
+        text="Everyday situations from a property management office. Pick one to see how the Voice Agent and Chat Agent handle it, and where each one ends up."
+      >
+        <ScenarioTabs scenarios={SCENARIOS} customerLabel="Caller" />
+      </Examples>
+
+      <Agents tinted title="One Front Desk Assistant for your whole portfolio." agents={AGENTS} />
+
+      <Pricing locationPrefix="pm_" />
+
+      <Compare
+        title="More coverage than office hours. Fewer calls for your on-call tech."
+        rows={COMPARE}
+        hireLabel="Office staff"
+      />
+
+      <Team location="pm_team" />
+
+      <FaqSection title="Questions property managers ask first." faqs={FAQS} />
+
+      <Closing
+        location="pm_closing"
+        title="Try it with your own properties for 30 days."
+        text={`Most clients go live within 48 hours. You approve the routing rules before launch. ${TRIAL_START_COPY}`}
+      />
     </>
   );
 }

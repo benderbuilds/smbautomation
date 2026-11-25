@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import BookingLink from './BookingLink';
+import Icon from './Icon';
 import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/booking';
 import s from './Nav.module.css';
 
@@ -18,10 +19,12 @@ const LINKS = [
 export function Logo() {
   return (
     <Link href="/" className={s.logo} aria-label="SMB Automation home">
-      <svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true">
-        <path d="M13 0L0 15h9l-2 11L22 10h-9l2-10z" fill="#2540D9" />
-      </svg>
-      <span>SMB AUTOMATION</span>
+      <span className={s.logoMark} aria-hidden="true">
+        <svg width="14" height="17" viewBox="0 0 22 26">
+          <path d="M13 0L0 15h9l-2 11L22 10h-9l2-10z" fill="#fff" />
+        </svg>
+      </span>
+      <span>SMB Automation</span>
     </Link>
   );
 }
@@ -61,7 +64,7 @@ export default function Nav() {
         <span className={s.dot} aria-hidden="true" />
         <span>No setup fee</span>
         <span className={s.dot} aria-hidden="true" />
-        <span>Cancel anytime</span>
+        <span>Month to month</span>
       </div>
 
       <header className={s.header}>
@@ -101,12 +104,18 @@ export default function Nav() {
         </nav>
 
         <div className={s.right}>
-          <a href={PHONE_TEL} className={s.phone}>
-            {PHONE_DISPLAY}
+          {/* The number rings the Voice Agent demo line (AI only, no transfer). */}
+          <a href={PHONE_TEL} className={s.phone} aria-label={`Call our Voice Agent demo at ${PHONE_DISPLAY}`}>
+            <Icon name="phone" size={16} />
+            <span className={s.phoneText}>
+              <span className={s.phoneLabel}>Voice Agent demo</span>
+              {PHONE_DISPLAY}
+            </span>
           </a>
           <BookingLink flow="trial" location="header" className={s.cta}>
             Start free trial
           </BookingLink>
+          {/* Hamburger shows below 1080px, where the inline links are hidden. */}
           <button
             type="button"
             className={s.hamburger}
@@ -136,7 +145,7 @@ export default function Nav() {
           </Link>
         ))}
         <a href={PHONE_TEL} className={s.drawerLink}>
-          Call {PHONE_DISPLAY}
+          Try our Voice Agent: {PHONE_DISPLAY}
         </a>
         <BookingLink flow="demo" location="mobile_menu" className={s.drawerSecondary}>
           Book a demo

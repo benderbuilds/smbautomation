@@ -1,7 +1,8 @@
 // Run with: node scripts/check-copy.js (or npm run check:copy)
-// Fails the build conventions check when:
-//   1. An em dash appears in a .tsx/.ts file under app/ or components/ (rendered copy rule)
-//   2. A css module sets a border-radius other than 0
+// Fails the build conventions check when an em dash appears in a .tsx/.ts file
+// under app/ or components/ (rendered copy rule).
+// The zero-border-radius rule was retired in the 2026-11 redesign, which moved
+// the (site) pages to a rounded, light glassmorphism system.
 const fs = require('fs');
 const path = require('path');
 
@@ -27,15 +28,6 @@ for (const root of ROOTS) {
         }
       });
     }
-    if (/\.css$/.test(file)) {
-      const lines = fs.readFileSync(file, 'utf8').split('\n');
-      lines.forEach((line, i) => {
-        const m = line.match(/border-radius:\s*([^;]+);/);
-        if (m && !/^0(px|rem|em)?\s*$/.test(m[1].trim())) {
-          failures.push(`${rel}:${i + 1} sets border-radius ${m[1].trim()}`);
-        }
-      });
-    }
   });
 }
 
@@ -44,4 +36,4 @@ if (failures.length) {
   failures.forEach((f) => console.error('  ' + f));
   process.exit(1);
 }
-console.log('check-copy passed: no em dashes, no rounded corners.');
+console.log('check-copy passed: no em dashes.');

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 import BookingCalendar from '@/components/BookingCalendar';
-import { PHONE_DISPLAY, PHONE_TEL, TRIAL_START_COPY } from '@/lib/booking';
+import { HELLO_EMAIL, PHONE_DISPLAY, PHONE_TEL, TRIAL_START_COPY } from '@/lib/booking';
 import { ATTR_COOKIE, campaignParams, parseAttribution } from '@/lib/attribution';
 import m from '@/components/Marketing.module.css';
 import s from '@/components/BookingPage.module.css';
@@ -27,8 +27,8 @@ export default function StartTrialPage({ searchParams }: { searchParams: SearchP
         <p className={m.eyebrow}>Free trial</p>
         <h1 className={s.title}>Start your 30-day free trial</h1>
         <p className={s.lede}>
-          On the onboarding call, Jesse connects your website chat, Voice AI, or both, depending on
-          your plan.
+          On the onboarding call, Jesse sets up your Front Desk Assistant: the Chat Agent, the Voice
+          Agent, or both, depending on your plan.
         </p>
         <ol className={s.steps}>
           <li>
@@ -59,7 +59,8 @@ export default function StartTrialPage({ searchParams }: { searchParams: SearchP
         </ol>
         <p className={s.note}>{TRIAL_START_COPY}</p>
         <p className={s.help}>
-          Questions first? Call <a href={PHONE_TEL}>{PHONE_DISPLAY}</a>.
+          Questions first? Email <a href={`mailto:${HELLO_EMAIL}`}>{HELLO_EMAIL}</a>, or hear our Voice Agent at{' '}
+          <a href={PHONE_TEL}>{PHONE_DISPLAY}</a>.
         </p>
       </div>
       <BookingCalendar flow="trial" params={params} />

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 import BookingCalendar from '@/components/BookingCalendar';
-import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/booking';
+import { HELLO_EMAIL, PHONE_DISPLAY, PHONE_TEL } from '@/lib/booking';
 import { ATTR_COOKIE, campaignParams, parseAttribution } from '@/lib/attribution';
 import m from '@/components/Marketing.module.css';
 import s from '@/components/BookingPage.module.css';
@@ -47,7 +47,8 @@ export default function BookDemoPage({ searchParams }: { searchParams: SearchPar
         </ol>
         <p className={s.note}>Booking a demo does not start a free trial.</p>
         <p className={s.help}>
-          Prefer to call? <a href={PHONE_TEL}>{PHONE_DISPLAY}</a>.
+          Want a preview first? Call <a href={PHONE_TEL}>{PHONE_DISPLAY}</a> to talk to our Voice Agent, or
+          email <a href={`mailto:${HELLO_EMAIL}`}>{HELLO_EMAIL}</a>.
         </p>
       </div>
       <BookingCalendar flow="demo" params={params} />

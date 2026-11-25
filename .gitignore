@@ -39,3 +39,8 @@ next-env.d.ts
 
 .superpowers/
 Gemini_Generated_Image_*.png
+
+# local agent and browser-test files
+.playwright-mcp/
+.claude/settings.local.json
+.codex/
